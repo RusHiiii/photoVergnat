@@ -1,0 +1,78 @@
+<!-- Header Area Start -->
+<header class="header-area">
+    <!-- Main Header Start -->
+    <div class="main-header-area">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="alimeNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand" href="{{ path('app_home') }}">Photo'Vergnat</a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li class="active"><a href="{{ path('app_home') }}">Accueil</a></li>
+                                <li><a href="#">Catégorie</a>
+                                    <ul class="dropdown">
+                                        <li><a href="#">Été</a>
+                                            <ul class="dropdown">
+                                                <li><a href="#">Nébouzat</a></li>
+                                                <li><a href="#">Astrophoto</a></li>
+                                                <li><a href="#">Mont-Dore</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Automne</a>
+                                            <ul class="dropdown">
+                                                <li><a href="#">Lac Pavin</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Hiver</a>
+                                            <ul class="dropdown">
+                                                <li><a href="#">Le Lioran</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Printemps</a>
+                                            <ul class="dropdown">
+                                                <li><a href="#">Cascade</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">A propos</a></li>
+                                <li><a href="#">Contact</a></li>
+
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    <li><a href="#">Mon compte</a>
+                                        <ul class="dropdown">
+                                            <li><a href="#">Mon profil</a></li>
+                                            <li><a href="#">Administration</a></li>
+                                            <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+                                        </ul>
+                                    </li>
+                                {% else %}
+                                    <li><a href="{{ path('app_login') }}" title="Se connecter">Connexion</a></li>
+                                {% endif %}
+                            </ul>
+
+                            <!-- Search Icon -->
+                            <div class="search-icon" data-toggle="modal" data-target="#searchModal"><i class="ti-search"></i></div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

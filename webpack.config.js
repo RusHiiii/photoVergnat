@@ -17,7 +17,7 @@ Encore
     /*
      * ENTRY CONFIG
      */
-    .addEntry('app', './assets/js/app/entrypoint.js')
+    .addEntry('front/app', './assets/js/app/front/entrypoint.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

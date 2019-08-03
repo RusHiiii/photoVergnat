@@ -1,0 +1,206 @@
+@import '../variables.scss';
+
+.classy-navbar .nav-brand{
+  color: white;
+}
+
+.classy-nav-container a:hover, .classy-nav-container a:focus{
+  color: $orange;
+}
+
+.breadcrumb-image{
+  background-image: url("/theme/img/bg-img/1.jpg");
+}
+
+.welcome-photo-first{
+  background-image: url("/theme/img/bg-img/1.jpg");
+}
+
+.welcome-photo-second{
+  background-image: url("/theme/img/bg-img/2.jpg");
+}
+
+.classynav ul li.active a::before{
+  background-color: $orange;
+}
+
+.classy-nav-container .classy-navbar .classynav ul li a:hover{
+  color: $orange;
+}
+
+.classy-nav-container .classy-navbar .classynav ul li a:focus{
+  color: $orange;
+}
+
+.classynav ul li.has-down > a::after, .classynav ul li.has-down.active > a::after, .classynav ul li.megamenu-item > a::after{
+  color: $orange;
+}
+
+.classy-nav-container .classy-navbar .classynav ul li.cn-dropdown-item ul li a:hover{
+  color: $orange;
+}
+
+.welcome-slides .owl-prev:hover, .welcome-slides .owl-next:hover{
+  background-color: $orange;
+}
+
+.breakpoint-off .classynav ul li .dropdown li .dropdown{
+  width: 200px;
+}
+
+.breakpoint-off .classynav ul li .dropdown, .breakpoint-off .classynav ul li .megamenu{
+  width: 190px;
+}
+
+.single-post-area .post-catagory{
+  background-color: $orange;
+}
+
+.single-post-area .post-content .post-meta a:hover, .single-post-area .post-content .post-meta a:focus{
+  color: $orange;
+}
+
+.single-post-area .post-content .post-title:hover, .single-post-area .post-content .post-title:focus{
+  color: $orange;
+}
+
+#scrollUp{
+  background-color: $orange;
+}
+
+.alime-projects-menu .portfolio-menu .btn::after{
+  background-color: $orange;
+}
+
+.single-portfolio-content .hover-content a{
+  background-color: $orange;
+}
+
+.footer-content .copywrite-text p a{
+  color: $orange;
+}
+
+button.mfp-close, button.mfp-arrow{
+  background: $orange;
+}
+
+.mfp-image-holder .mfp-close{
+  background: $orange;
+}
+
+.breadcrumb-content .breadcrumb .breadcrumb-item, .breadcrumb-content .breadcrumb .breadcrumb-item a:hover{
+  color: $orange;
+}
+
+.alime-btn{
+  border: 2px solid $orange;
+}
+
+.alime-btn:focus, .alime-btn:hover{
+  background-color: $orange;
+}
+
+.top-search-area form button{
+  background-color: $orange;
+}
+
+.breadcrumb-area.blog .breadcrumb-content .post-catagory{
+  background-color: $orange;
+}
+
+.single-post-area .post-thumbnail{
+  max-height: 430px;
+}
+
+.breadcrumb-area.blog .breadcrumb-content .post-catagory:hover, .breadcrumb-area.blog .breadcrumb-content .post-catagory:focus{
+  background-color: $orange;
+}
+
+.breadcrumb-area.blog .breadcrumb-content .post-meta a:hover, .breadcrumb-area.blog .breadcrumb-content .post-meta a:focus,
+.breadcrumb-area.blog .breadcrumb-content .date-meta a:hover, .breadcrumb-area.blog .breadcrumb-content .date-meta a:focus{
+  color: $orange;
+}
+
+.badges-btn:hover, .badges-btn:focus{
+  background-color: $orange;
+}
+
+.fa{
+  font-size: 20px;
+  color: $dark-blue;
+  min-width: 24px;
+  margin-right: 20px;
+  line-height: 40px;
+}
+
+.post-table{
+  width: 100%;
+  border-top: 1px solid rgba(50, 48, 69, 0.49);
+}
+
+.post-table tr{
+  border-bottom: 1px solid rgba(50, 48, 69, 0.49);
+}
+
+.contact-area .contact-title{
+  font-size: 36px;
+}
+
+.contact-area .header{
+  margin: auto;
+}
+
+.contact-content{
+  padding: 0 50px;
+}
+
+.about-area{
+  border-radius: 10px;
+}
+
+.about-me-icon > i{
+  font-size: inherit;
+  margin-right: 0;
+  color: white;
+}
+
+.connexion .mail, .connexion .mdp{
+  float: right;
+}
+
+.connexion{
+  margin: auto;
+}
+
+.connexion .submit{
+  text-align: center;
+}
+
+.profile{
+  margin: auto;
+}
+
+.profile-content h3{
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.single-welcome-slide{
+  background-color: white;
+}
+
+.photo-detail{
+  margin: auto;
+  display: block;
+  max-height:400px;
+  width: auto !important;
+  height: auto;
+}
+
+.photo-detail-slide{
+  height: auto !important;
+}
+
+.detail-slide .owl-next, .detail-slide .owl-prev{
+  background-color: $orange;
+}
