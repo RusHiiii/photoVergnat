@@ -6,15 +6,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="app_home")
+     * @Route("/mon-compte", name="app_profil")
      */
     public function index(
         Request $request
     )
     {
-        return $this->render('home/index.html.twig', []);
+        $currentUser = $this->getUser();
+
+        return $this->render('user/index.html.twig', [
+            'user' => $currentUser,
+        ]);
     }
 }

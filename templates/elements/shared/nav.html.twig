@@ -57,7 +57,7 @@
                                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                                     <li><a href="#">Mon compte</a>
                                         <ul class="dropdown">
-                                            <li><a href="#">Mon profil</a></li>
+                                            <li><a href="{{ path('app_profil') }}">Mon profil</a></li>
                                             <li><a href="#">Administration</a></li>
                                             <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
                                         </ul>

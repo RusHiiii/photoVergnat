@@ -1,0 +1,103 @@
+{% extends 'elements/layout/front.html.twig' %}
+
+{% block title %}Photo'Vergnat - Profil{% endblock %}
+
+{% block body %}
+    <!-- Breadcrumb Area Start -->
+    <section class="breadcrumb-area bg-img bg-overlay jarallax breadcrumb-image">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center">
+                        <h2 class="page-title">Mon profil</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="{{ path('app_home') }}"><i class="icon_house_alt"></i> Accueil</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Profil</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h2>Paramètre</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-8 profile">
+                    <div class="profile-content">
+                        <h3 class="wow fadeInUp" data-wow-delay="100ms">Mes informations</h3>
+                        <div class="line wow fadeInUp" data-wow-delay="200ms"></div>
+                        <div class="alert alert-danger" role="alert" id="alert-edit"></div>
+                        <form action="#" method="POST" class="form-horizontal connexion" id="update-user">
+                            <div class="form-group mb-40">
+                                <label class="col-sm-3 control-label">Email</label>
+                                <div class="col-sm-9 mail">
+                                    <input data-validation="email" class="form-control" name="email" id="email" value="{{ user.email }}">
+                                </div>
+                            </div>
+                            <div class="form-group mb-40">
+                                <label class="col-sm-3 control-label">Nom</label>
+                                <div class="col-sm-9 mail">
+                                    <input type="text" data-validation="length" data-validation-length="min3" class="form-control" name="lastname" id="lastname" value="{{ user.lastname }}">
+                                </div>
+                            </div>
+                            <div class="form-group mb-40">
+                                <label class="col-sm-3 control-label">Prénom</label>
+                                <div class="col-sm-9 mail">
+                                    <input type="text" data-validation="length" data-validation-length="min3" class="form-control" name="firstname" id="firstname" value="{{ user.firstname }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12 submit">
+                                    <input type="hidden" name="token" value="{{ csrf_token('update-user') }}"/>
+                                    <button type="submit" class="btn alime-btn btn-2 mt-15 edit-user">Mettre à jours</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="profile-content">
+                        <h3 class="wow fadeInUp" data-wow-delay="100ms">Sécurité</h3>
+                        <div class="line wow fadeInUp" data-wow-delay="200ms"></div>
+                        <form action="#" method="POST" class="form-horizontal connexion">
+                            <div class="form-group mb-40">
+                                <label class="col-sm-3 control-label">Mot de passe</label>
+                                <div class="col-sm-9 mail">
+                                    <input type="email" class="form-control" name="password_first" placeholder="Mot de passe">
+                                    <ul class="password_profil">
+                                        <li>Pour votre sécurité, utilisez un mot de passe contenant :</li>
+                                        <li>• Minimun 6 caractères</li>
+                                        <li>•  Et des caractères spéciaux parmi =/+|.-_~^@!#$%?*€,;:)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group mb-40 password_repeat">
+                                <label class="col-sm-3 control-label">Confirmer mot de passe</label>
+                                <div class="col-sm-9 mail">
+                                    <input type="email" class="form-control" name="password_second" placeholder="Mot de passe">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12 submit">
+                                    <input type="hidden" name="token" value="{{ csrf_token('update-password') }}"/>
+                                    <button type="submit" class="btn alime-btn btn-2 mt-15">Valider</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

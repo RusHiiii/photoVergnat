@@ -1,4 +1,22 @@
-@import '../variables.scss';
+@import '../variables';
+
+.password_profil{
+  padding-left: 10px;
+  list-style: none;
+  font-size: 0.7em;
+  color: $dark-grey;
+  margin-bottom: 30px;
+}
+
+.form-error{
+  color: red;
+  font-size: 0.8em;
+  padding-left: 10px;
+}
+
+.password_repeat{
+  clear: both;
+}
 
 .classy-navbar .nav-brand{
   color: white;
@@ -203,4 +221,65 @@ button.mfp-close, button.mfp-arrow{
 
 .detail-slide .owl-next, .detail-slide .owl-prev{
   background-color: $orange;
+}
+
+#alert-edit{
+  display: none;
+}
+
+/* Spinner loading: suffit d'ajouter: loading spinner */
+.loading {
+  position: relative;
+}
+
+@keyframes spinner {
+  to { transform: rotate(360deg); }
+}
+@-webkit-keyframes spinner {
+  to { -webkit-transform: rotate(360deg); }
+}
+.spinner {
+  min-width: 24px;
+  min-height: 24px;
+}
+.spinner:before {
+  content:'Loading…';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+.spinner:not(:required):before {
+  content: '';
+  border-radius: 50%;
+  border-top: 2px solid white;
+  border-right: 2px solid transparent;
+  animation: spinner .6s linear infinite;
+  -webkit-animation: spinner .6s linear infinite;
+}
+
+/* refresh loading: suffit d'ajouter: glyphicon-refresh-animate */
+.glyphicon-refresh-animate {
+  -animation: spin .8s infinite linear;
+  -ms-animation: spin .8s infinite linear;
+  -webkit-animation: spinw .8s infinite linear;
+  -moz-animation: spinm .8s infinite linear;
+}
+
+@keyframes spin {
+  from { transform: scale(1) rotate(0deg);}
+  to { transform: scale(1) rotate(360deg);}
+}
+
+@-webkit-keyframes spinw {
+  from { -webkit-transform: rotate(0deg);}
+  to { -webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes spinm {
+  from { -moz-transform: rotate(0deg);}
+  to { -moz-transform: rotate(360deg);}
 }

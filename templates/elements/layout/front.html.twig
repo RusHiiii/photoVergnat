@@ -14,23 +14,28 @@
         <link rel="stylesheet" href="{{ asset('theme/style.css') }}">
         <link rel="stylesheet" href="{{ asset('build/front/app.css') }}">
 
+        <!-- Jquery -->
+        <script type="text/javascript" src="{{ asset('build/runtime.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('theme/js/jquery.min.js') }}"></script>
+
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% include 'elements/shared/preloader.html.twig' %}
-        {% include 'elements/shared/search.html.twig' %}
-        {% include 'elements/shared/nav.html.twig' %}
+    {% include 'elements/shared/preloader.html.twig' %}
+    {% include 'elements/shared/search.html.twig' %}
+    {% include 'elements/shared/nav.html.twig' %}
 
-        {% block body %}{% endblock %}
+    {% block body %}{% endblock %}
 
-        {% include 'elements/shared/footer.html.twig' %}
+    {% include 'elements/shared/footer.html.twig' %}
 
-        <!-- Javascript -->
-        <script src="{{ asset('theme/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('theme/js/popper.min.js') }}"></script>
-        <script src="{{ asset('theme/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('theme/js/alime.bundle.js') }}"></script>
-        <script src="{{ asset('theme/js/default-assets/active.js') }}"></script>
-        {% block javascripts %}{% endblock %}
+    <!-- Javascript -->
+    <script type="text/javascript" src="{{ asset('build/front/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('theme/js/popper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('theme/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('theme/js/alime.bundle.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('theme/js/default-assets/active.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('theme/js/jquery.form-validator.min.js') }}"></script>
+    {% block javascripts %}{% endblock %}
     </body>
 </html>

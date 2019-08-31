@@ -43,17 +43,22 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="datetime")
      */
-    private $date;
+    private $created;
 
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private $roles = ['ROLE_USER'];
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="user")
      */
     private $categories;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
 
     public function __construct()
     {
@@ -113,14 +118,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getCreated(): ?\DateTimeInterface
     {
-        return $this->date;
+        return $this->created;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setCreated(\DateTimeInterface $created): self
     {
-        $this->date = $date;
+        $this->created = $created;
 
         return $this;
     }
@@ -181,5 +186,17 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getUpdated(): ?\DateTimeInterface
+    {
+        return $this->updated;
+    }
+
+    public function setUpdated(\DateTimeInterface $updated): self
+    {
+        $this->updated = $updated;
+
+        return $this;
     }
 }

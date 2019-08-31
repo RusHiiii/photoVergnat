@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "380d8020b67e24972577a5c3ce39c560",
+    "content-hash": "beb742546b471cc489f602d27eb4b3c2",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -4570,16 +4570,16 @@
         },
         {
             "name": "symfony/security-csrf",
-            "version": "v4.3.2",
+            "version": "v4.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-csrf.git",
-                "reference": "e7e3509ef7de66ea4970c75f9a0a72bf132d452e"
+                "reference": "d218ba086ef4a68081f3dd5ec11611f5d64d58f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-csrf/zipball/e7e3509ef7de66ea4970c75f9a0a72bf132d452e",
-                "reference": "e7e3509ef7de66ea4970c75f9a0a72bf132d452e",
+                "url": "https://api.github.com/repos/symfony/security-csrf/zipball/d218ba086ef4a68081f3dd5ec11611f5d64d58f3",
+                "reference": "d218ba086ef4a68081f3dd5ec11611f5d64d58f3",
                 "shasum": ""
             },
             "require": {
@@ -4625,7 +4625,7 @@
             ],
             "description": "Symfony Security Component - CSRF Library",
             "homepage": "https://symfony.com",
-            "time": "2019-05-30T16:10:05+00:00"
+            "time": "2019-08-13T06:39:03+00:00"
         },
         {
             "name": "symfony/security-guard",
