@@ -12,7 +12,6 @@ class FrontController extends AbstractController
 {
     /**
      * Edtion d'un utilisateur
-     *
      * @Route("/xhr/front/edit-user", condition="request.isXmlHttpRequest()")
      */
     public function editUser(
@@ -21,7 +20,24 @@ class FrontController extends AbstractController
     ) {
         $data = $request->request->all();
 
-        $resultEdit = $userService->updateUser($data['user']);
+        $resultEdit = $userService->updateProfile($data['user']);
+
+        return new JsonResponse([
+            'errors' => $resultEdit['errors']
+        ]);
+    }
+
+    /**
+     * Edtion d'un mot de passe
+     * @Route("/xhr/front/edit-password", condition="request.isXmlHttpRequest()")
+     */
+    public function editPassword(
+        Request $request,
+        UserService $userService
+    ) {
+        $data = $request->request->all();
+
+        $resultEdit = $userService->updatePassword($data['user']);
 
         return new JsonResponse([
             'errors' => $resultEdit['errors']

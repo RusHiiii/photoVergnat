@@ -19,6 +19,8 @@ class DataValidatorService
     const MSG_ERROR_EMAIL = 'Le champs « %s » est invalide';
     const MSG_ERROR_BLANK = 'Le champs « %s » est vide';
     const MSG_ERROR_TOKEN = 'Token invalide';
+    const MSG_ERROR_EQUAL = 'Les champs « %s » ne sont pas identique';
+    const MSG_ERROR_REGEX = 'Le champs « %s » n\'a pas le bon pattern';
 
     private $validator;
     private $token;
@@ -70,6 +72,55 @@ class DataValidatorService
         $errors = $this->validator->validate(
             $blank,
             $notBlank
+        );
+
+        if(count($errors) > 0) {
+            $this->errors[] = sprintf($errors[0]->getMessage(), $key);
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Validation valeur identique
+     * @param string $first
+     * @param string $second
+     * @param string $key
+     * @return bool
+     */
+    public function validateEqualTo(string $first, string $second, string $key): bool
+    {
+        $equalTo = new Assert\EqualTo(['value' => $first]);
+        $equalTo->message = self::MSG_ERROR_EQUAL;
+
+        $errors = $this->validator->validate(
+            $second,
+            $equalTo
+        );
+
+        if(count($errors) > 0) {
+            $this->errors[] = sprintf($errors[0]->getMessage(), $key);
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Validation de regex
+     * @param string $value
+     * @param string $key
+     * @return bool
+     */
+    public function validateRegex(string $value, string $key): bool
+    {
+        $regex = new Assert\Regex(['pattern' => '/(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}/']);
+        $regex->message = self::MSG_ERROR_REGEX;
+
+        $errors = $this->validator->validate(
+            $value,
+            $regex
         );
 
         if(count($errors) > 0) {

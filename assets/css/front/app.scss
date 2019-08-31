@@ -215,6 +215,19 @@ button.mfp-close, button.mfp-arrow{
   height: auto;
 }
 
+.strength-meter{
+  background: none !important;
+  margin-left: 10px !important;
+  border-width: 0px 0px 2px !important;
+  margin-bottom: 15px;
+  float: right;
+}
+
+.pswd{
+  float: left;
+  width: 85% !important;
+}
+
 .photo-detail-slide{
   height: auto !important;
 }
@@ -223,7 +236,7 @@ button.mfp-close, button.mfp-arrow{
   background-color: $orange;
 }
 
-#alert-edit{
+#alert-edit, #alert-password{
   display: none;
 }
 

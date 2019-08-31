@@ -1,13 +1,16 @@
 $( document ).ready(function() {
     // Envoie du formulaire
-    initUpdateEdit();
+    initUpdateUser();
+
+    // MàJ du mot de passe
+    initUpdatePassword();
 
     // Validation du formulaire
     initFormValidation();
 });
 
 // Fonction d'envoie du formulaire
-function initUpdateEdit() {
+function initUpdateUser() {
     $('#update-user').on('submit', function(event) {
         event.preventDefault();
 
@@ -37,23 +40,68 @@ function initUpdateEdit() {
 }
 
 // Fonction d'envoie du formulaire
+function initUpdatePassword() {
+    $('#update-password').on('submit', function(event) {
+        event.preventDefault();
+
+        $('.edit-password').empty();
+        $('.edit-password').addClass('loading spinner');
+
+        var data = $('#update-password').serializeArray().reduce(function(obj, item) {
+            obj[item.name] = item.value;
+            return obj;
+        }, {});
+
+        $.ajax({
+            url : '/xhr/front/edit-password',
+            type : 'POST',
+            data : {
+                'user': data
+            },
+            dataType:'json',
+            success : function(res) {
+                $('.edit-password').removeClass('loading spinner');
+                $('.edit-password').html('Valider');
+
+                showErrors(res['errors'], 'alert-password');
+            }
+        });
+    });
+}
+
+// Fonction d'envoie du formulaire
 function initFormValidation() {
     $.validate({
         lang: 'fr',
         borderColorOnError : '#ff001c',
-        scrollToTopOnError: false
+        scrollToTopOnError: false,
+        modules : 'security',
+        onModulesLoaded : function() {
+            var optionalConfig = {
+                fontSize: '8pt',
+                padding: '4px',
+                bad : 'Trop faible',
+                weak : 'Faible',
+                good : 'Bon',
+                strong : 'Très bon'
+            };
+
+            $('input[name="password_first"]').displayPasswordStrength(optionalConfig);
+        }
     });
 }
 
 // Fonction affichage des erreurs
 function showErrors(data, element) {
-    if(!$.isEmptyObject(data)){
-        $("#" + element).empty();
+    $("#" + element).empty();
 
+    if(!$.isEmptyObject(data)){
         Object.keys(data).forEach(function(key) {
             $("#" + element).append(data[key]).append('<br>');
         });
 
         $("#" + element).show();
+    }else{
+        $("#" + element).hide();
     }
 }
