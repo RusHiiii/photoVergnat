@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 10]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Meta -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Favicon icon -->
+        <link rel="icon" href="{{ asset('theme/img/core-img/favicon.png') }}" type="image/x-icon">
+
+        <!-- Google font-->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+
+        <!-- Required Fremwork -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/bower_components/bootstrap/css/bootstrap.min.css') }}">
+
+        <!-- feather Awesome -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/icon/feather/css/feather.css') }}">
+
+        <!-- icoFont -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/icon/icofont/css/icofont.css') }}">
+
+        <!-- Style.css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/admin/admin.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/css/jquery.mCustomScrollbar.css') }}">
+
+        <!-- Data Table Css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/pages/data-table/css/buttons.dataTables.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
+
+        <!-- jQuery -->
+        <script type="text/javascript" src="{{ asset('build/runtime.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('adminity/bower_components/jquery/js/jquery.min.js') }}"></script>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+
+    {% include 'elements/shared/admin/preloader.html.twig' %}
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            {% include 'elements/shared/admin/nav.html.twig' %}
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    {% include 'elements/shared/admin/menu.html.twig' %}
+
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    {% block body %}{% endblock %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Required Jquery -->
+    <script type="text/javascript" src="{{ asset('adminity/bower_components/jquery-ui/js/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminity/bower_components/popper.js/js/popper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminity/bower_components/bootstrap/js/bootstrap.min.js') }}"></script>
+
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="{{ asset('adminity/bower_components/jquery-slimscroll/js/jquery.slimscroll.js') }}"></script>
+
+    <!-- modernizr js -->
+    <script type="text/javascript" src="{{ asset('adminity/bower_components/modernizr/js/modernizr.js') }}"></script>
+
+    <!-- Chart js -->
+    <script type="text/javascript" src="{{ asset('adminity/bower_components/chart.js/js/Chart.js') }}"></script>
+
+    <!-- amchart js -->
+    <script src="{{ asset('adminity/assets/pages/widget/amchart/amcharts.js') }}"></script>
+    <script src="{{ asset('adminity/assets/pages/widget/amchart/serial.js') }}"></script>
+    <script src="{{ asset('adminity/assets/pages/widget/amchart/light.js') }}"></script>
+    <script src="{{ asset('adminity/assets/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminity/assets/js/SmoothScroll.js') }}"></script>
+    <script src="{{ asset('adminity/assets/js/pcoded.min.js') }}"></script>
+
+    <!-- data-table js -->
+    <script src="{{ asset('adminity/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('adminity/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('adminity/assets/pages/data-table/js/jszip.min.js') }}"></script>
+
+
+    <script src="{{ asset('adminity/assets/pages/data-table/js/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('adminity/assets/pages/data-table/js/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('adminity/bower_components/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('adminity/bower_components/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('adminity/bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('adminity/bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('adminity/bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+
+    <!-- custom js -->
+    <script src="{{ asset('adminity/assets/js/vartical-layout.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminity/assets/pages/dashboard/custom-dashboard.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminity/assets/js/script.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/admin/admin.js') }}"></script>
+    {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -12,7 +12,7 @@
 
         <!-- Style -->
         <link rel="stylesheet" href="{{ asset('theme/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/front/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('build/app/app.css') }}">
 
         <!-- Jquery -->
         <script type="text/javascript" src="{{ asset('build/runtime.js') }}"></script>
@@ -21,16 +21,16 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-    {% include 'elements/shared/preloader.html.twig' %}
-    {% include 'elements/shared/search.html.twig' %}
-    {% include 'elements/shared/nav.html.twig' %}
+    {% include 'elements/shared/app/preloader.html.twig' %}
+    {% include 'elements/shared/app/search.html.twig' %}
+    {% include 'elements/shared/app/nav.html.twig' %}
 
     {% block body %}{% endblock %}
 
-    {% include 'elements/shared/footer.html.twig' %}
+    {% include 'elements/shared/app/footer.html.twig' %}
 
     <!-- Javascript -->
-    <script type="text/javascript" src="{{ asset('build/front/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/app/app.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/js/popper.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/js/alime.bundle.js') }}"></script>

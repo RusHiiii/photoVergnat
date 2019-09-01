@@ -23,6 +23,7 @@
 /node_modules/
 /public/build/
 /public/theme/
+/public/adminity/
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Main;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+class AppController extends AbstractController
 {
     /**
      * @Route("/", name="app_home")
@@ -15,6 +15,6 @@ class HomeController extends AbstractController
         Request $request
     )
     {
-        return $this->render('home/index.html.twig', []);
+        return $this->render('main/app/index.html.twig', []);
     }
 }

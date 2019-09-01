@@ -1,0 +1,22 @@
+{% extends 'elements/layout/admin/base.html.twig' %}
+
+{% block title %}Photo'Vergnat - Administration{% endblock %}
+
+{% block body %}
+<div class="col-md-6 col-xl-3">
+    <div class="card widget-card-1">
+        <div class="card-block-small">
+            <i class="feather icon-users bg-c-yellow card1-icon"></i>
+            <span class="text-c-yellow f-w-600">Utilisateurs</span>
+            <h4>{{ users | length }}</h4>
+            <div>
+                <span class="f-left m-t-10 text-muted">
+                    <i class="text-c-yellow f-16 feather icon-clock m-r-10"></i>
+                    Depuis le {{ (users | first).created | date('d/m/Y') }}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

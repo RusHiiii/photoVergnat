@@ -8,11 +8,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class FrontController extends AbstractController
+class AppController extends AbstractController
 {
     /**
      * Edtion d'un utilisateur
-     * @Route("/xhr/front/edit-user", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/app/edit-user", condition="request.isXmlHttpRequest()")
      */
     public function editUser(
         Request $request,
@@ -29,7 +29,7 @@ class FrontController extends AbstractController
 
     /**
      * Edtion d'un mot de passe
-     * @Route("/xhr/front/edit-password", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/app/edit-password", condition="request.isXmlHttpRequest()")
      */
     public function editPassword(
         Request $request,
