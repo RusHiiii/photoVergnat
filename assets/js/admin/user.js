@@ -10,6 +10,9 @@ $( document ).ready(function() {
 
     // Initialisation de la modal de mot de passe
     initModalPassword();
+
+    // Initialisation de la modal de création
+    initModalCreate();
 });
 
 // Fonction d'initialisation de la table
@@ -95,6 +98,21 @@ function initModalPassword() {
 
         $.ajax({
             url : '/xhr/admin/user/display/password/' + id,
+            type : 'GET',
+            success : function(res) {
+                $('#large-Modal').html(res);
+                $('#large-Modal').modal();
+            }
+        });
+    });
+}
+
+// Initialisation de la modal
+function initModalCreate() {
+    $('.add').on('click', function(e){
+
+        $.ajax({
+            url : '/xhr/admin/user/display/create/',
             type : 'GET',
             success : function(res) {
                 $('#large-Modal').html(res);

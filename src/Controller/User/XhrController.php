@@ -89,4 +89,15 @@ class XhrController extends AbstractController
             'user' => $user,
         ]);
     }
+
+    /**
+     * Edtion d'un mot de passe
+     * @Route("/xhr/admin/user/display/create/", condition="request.isXmlHttpRequest()")
+     */
+    public function displayModalCreate(
+        Request $request
+    ) {
+
+        return $this->render('user/xhr/create.html.twig', []);
+    }
 }

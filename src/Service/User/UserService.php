@@ -115,12 +115,14 @@ class UserService
     {
         $errors = [];
 
+        // On check le role
         if(!$this->security->isGranted('remove', User::class)) {
             return [
                 'errors' => self::MSG_ACCESS_UNAUTHORIZED
             ];
         }
 
+        // On récupére l'utilisateur
         $user = $this->userRepository->findById($data['user']);
         if($user === null) {
             return [
