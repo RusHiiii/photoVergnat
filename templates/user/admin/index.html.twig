@@ -60,31 +60,21 @@
                                 </thead>
                                 <tbody>
                                 {% for user in users %}
-                                <tr>
+                                <tr id="user_{{ user.id }}">
                                     <td>{{ user.id }}</td>
-                                    <td>{{ user.lastname }}</td>
+                                    <td class="lastname">{{ user.lastname }}</td>
                                     <td>{{ user.firstname }}</td>
                                     <td>{{ user.email }}</td>
                                     <td>{{ user.created | date('d-m-Y H:i:s') }}</td>
-                                    <td>{{ user.roles | join(' | ') }}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning edit"><i class="icofont icofont-edit-alt"></i></button>
-                                        <button type="button" class="btn btn-danger delete"><i class="icofont icofont-bin"></i></button>
+                                    <td>{{ user.roles | join(' | ') |replace({'ROLE_' : ''}) }}</td>
+                                    <td class="action">
+                                        <button type="button" class="btn btn-warning waves-effect edit" data-id="{{ user.id }}" data-toggle="modal"><i class="icofont icofont-edit-alt"></i></button>
+                                        <button type="button" class="btn btn-danger alert-ajax m-b-10 delete" data-id="{{ user.id }}" onclick="if (!window.__cfRLUnblockHandlers) return false; _gaq.push(['_trackEvent', 'example', 'try', 'alert-ajax']);"><i class="icofont icofont-bin"></i></button>
+                                        <button type="button" class="btn btn-info m-b-10 pswd" data-id="{{ user.id }}" onclick="if (!window.__cfRLUnblockHandlers) return false; _gaq.push(['_trackEvent', 'example', 'try', 'alert-ajax']);"><i class="icofont icofont-lock"></i></button>
                                     </td>
                                 </tr>
                                 {% endfor %}
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nom</th>
-                                    <th>Prénom</th>
-                                    <th>Mail</th>
-                                    <th>Date de création</th>
-                                    <th>Rôle</th>
-                                    <th>Action</th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -92,4 +82,7 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog" style="z-index: 1050; display: none;" aria-hidden="true"></div>
 {% endblock %}

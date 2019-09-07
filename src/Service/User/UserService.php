@@ -6,36 +6,39 @@
  * Time: 15:26
  */
 
-namespace App\Service;
+namespace App\Service\User;
 
 
+use App\Entity\User;
 use App\Repository\UserRepository;
-use App\Service\Tools\DataValidatorService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
 
 class UserService
 {
+    const MSG_UNKNOWN_USER = 'Utilisateur inexistant !';
+    const MSG_ACCESS_UNAUTHORIZED = 'Action interdite !';
+
     private $entityManager;
-    private $validatorService;
     private $userRepository;
     private $security;
     private $encoder;
+    private $userValidatorService;
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        DataValidatorService $dataValidatorService,
         UserRepository $userRepository,
         UserPasswordEncoderInterface $passwordEncoder,
-        Security $security
+        Security $security,
+        UserValidatorService $userValidatorService
     )
     {
         $this->entityManager = $entityManager;
-        $this->validatorService = $dataValidatorService;
         $this->userRepository = $userRepository;
         $this->security = $security;
         $this->encoder = $passwordEncoder;
+        $this->userValidatorService = $userValidatorService;
     }
 
     /**
@@ -47,7 +50,7 @@ class UserService
     public function updateProfile(array $data): array
     {
         // Validation des données
-        $validatedData = $this->checkUpdateProfile($data);
+        $validatedData = $this->userValidatorService->checkUpdateProfile($data);
         if(count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors']
@@ -80,7 +83,7 @@ class UserService
     public function updatePassword(array $data): array
     {
         // Validation des données
-        $validatedData = $this->checkUpdatePassword($data);
+        $validatedData =$this->userValidatorService->checkUpdatePassword($data);
         if(count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors']
@@ -100,54 +103,36 @@ class UserService
         return [
             'errors' => []
         ];
-
-
     }
 
     /**
-     * Validation de la données pour la mise à jour
+     * Suppression d'un utilisateur
      * @param array $data
      * @return array
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    private function checkUpdateProfile(array $data): array
+    public function removeUser(array $data): array
     {
-        // On trim les données
-        $data = array_map('trim', $data);
+        $errors = [];
 
-        // Validation des données
-        $this->validatorService->validateCsrfToken($data['token'], 'update-user');
-        $this->validatorService->validateEmail($data['email'], 'mail');
-        $this->validatorService->validateNotBlank($data['lastname'], 'nom');
-        $this->validatorService->validateNotBlank($data['firstname'], 'prénom');
+        if(!$this->security->isGranted('remove', User::class)) {
+            return [
+                'errors' => self::MSG_ACCESS_UNAUTHORIZED
+            ];
+        }
 
-        // Traitement des erreurs
-        $errors = $this->validatorService->getErrors();
+        $user = $this->userRepository->findById($data['user']);
+        if($user === null) {
+            return [
+                'errors' => self::MSG_UNKNOWN_USER
+            ];
+        }
+
+        $this->entityManager->remove($user);
+        $this->entityManager->flush();
+
         return [
-            'errors' => $errors,
-            'data' => $data
-        ];
-    }
-
-    /**
-     * Validation du mot de passe
-     * @param array $data
-     * @return array
-     */
-    private function checkUpdatePassword(array $data): array
-    {
-        // On trim les données
-        $data = array_map('trim', $data);
-
-        // Validation des données
-        $this->validatorService->validateCsrfToken($data['token'], 'update-password');
-        $this->validatorService->validateEqualTo($data['password_first'],$data['password_second'], 'mot de passe');
-        $this->validatorService->validateRegex($data['password_first'], 'mot de passe');
-
-        // Traitement des erreurs
-        $errors = $this->validatorService->getErrors();
-        return [
-            'errors' => $errors,
-            'data' => $data
+            'errors' => $errors
         ];
     }
 }

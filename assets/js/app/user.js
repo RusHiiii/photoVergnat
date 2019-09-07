@@ -23,7 +23,7 @@ function initUpdateUser() {
         }, {});
 
         $.ajax({
-            url : '/xhr/app/edit-user',
+            url : '/xhr/app/user/edit-user',
             type : 'POST',
             data : {
                 'user': data
@@ -53,7 +53,7 @@ function initUpdatePassword() {
         }, {});
 
         $.ajax({
-            url : '/xhr/app/edit-password',
+            url : '/xhr/app/user/edit-password',
             type : 'POST',
             data : {
                 'user': data
