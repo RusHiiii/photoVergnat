@@ -29,6 +29,11 @@ class Tag
      */
     private $categories;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -75,6 +80,18 @@ class Tag
             $this->categories->removeElement($category);
             $category->removeTag($this);
         }
+
+        return $this;
+    }
+
+    public function getCreated(): ?\DateTimeInterface
+    {
+        return $this->created;
+    }
+
+    public function setCreated(\DateTimeInterface $created): self
+    {
+        $this->created = $created;
 
         return $this;
     }

@@ -137,7 +137,7 @@ function initCreateUser() {
 // Ajoute une ligne au tableau
 function addRow(user) {
     let current_datetime = new Date(user.created);
-    let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds();
+    let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 
     var table = $('#users-table').DataTable();
     var row = table.row.add([
@@ -146,7 +146,7 @@ function addRow(user) {
         user.firstname,
         user.email,
         formatted_date,
-        user.roles.join(" | ").replace('ROLE_', ''),
+        user.roles.map(e => e.replace('ROLE_', '')).join(" | "),
         getHtmlButton(user)
     ])
         .draw(false)
@@ -160,7 +160,7 @@ function addRow(user) {
 // Ajoute une ligne au tableau
 function updateRow(user) {
     let current_datetime = new Date(user.created);
-    let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds();
+    let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 
     var table = $('#users-table').DataTable();
     var row = table.row('#user_' + user.id).data([
@@ -169,7 +169,7 @@ function updateRow(user) {
         user.firstname,
         user.email,
         formatted_date,
-        user.roles.join(" | ").replace('ROLE_', ''),
+        user.roles.map(e => e.replace('ROLE_', '')).join(" | "),
         getHtmlButton(user)
     ])
         .draw(false);

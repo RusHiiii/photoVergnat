@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d0ad162-b511-4cf7-bc8e-e12bdd55a0fa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/assets/css/admin/admin.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/admin/admin.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/admin/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/admin/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/User/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/User/XhrController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Main/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Main/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tag.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/User/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/User/UserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/User/UserValidatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/User/UserValidatorService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/xhr/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/xhr/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/admin/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/admin/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/admin/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/admin/index.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,23 +24,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/admin/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="310" column="1" lean-forward="true" selection-start-line="310" selection-start-column="1" selection-end-line="310" selection-end-column="1" />
+            <state relative-caret-position="323">
+              <caret line="148" column="60" selection-start-line="148" selection-start-column="60" selection-end-line="148" selection-end-column="60" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/User/AdminController.php">
+        <entry file="file://$PROJECT_DIR$/src/Controller/Main/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="47" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="47" />
+            <state relative-caret-position="391">
+              <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
               <folding>
-                <element signature="e#39#73#0#PHP" expanded="true" />
+                <element signature="e#39#59#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/main/admin/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/Season.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="167">
+              <caret line="61" column="34" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -49,18 +68,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
               <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/User/XhrController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
-              <folding>
-                <element signature="e#39#59#0#PHP" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -95,32 +102,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/user/admin/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="43" column="108" selection-start-line="43" selection-start-column="108" selection-end-line="43" selection-end-column="108" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Service/User/UserService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="97" column="62" selection-start-line="97" selection-start-column="62" selection-end-line="97" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Service/User/UserValidatorService.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Service/Tools/DataValidatorService.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="158" column="13" selection-start-line="158" selection-start-column="13" selection-end-line="158" selection-end-column="13" />
-              <folding>
-                <element signature="e#117#163#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1822">
+              <caret line="86" column="30" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -141,7 +136,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/assets/js/front/entrypoint.js" />
         <option value="$PROJECT_DIR$/config/services.yaml" />
         <option value="$PROJECT_DIR$/templates/elements/layout/front.html.twig" />
         <option value="$PROJECT_DIR$/templates/user/index.html.twig" />
@@ -167,13 +161,11 @@
         <option value="$PROJECT_DIR$/assets/js/admin/entrypoint.js" />
         <option value="$PROJECT_DIR$/assets/js/app/entrypoint.js" />
         <option value="$PROJECT_DIR$/templates/elements/shared/admin/menu.html.twig" />
-        <option value="$PROJECT_DIR$/templates/main/admin/index.html.twig" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/Controller/Xhr/AppController.php" />
         <option value="$PROJECT_DIR$/assets/js/app/user.js" />
         <option value="$PROJECT_DIR$/config/packages/security.yaml" />
         <option value="$PROJECT_DIR$/src/Repository/UserRepository.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Main/AdminController.php" />
         <option value="$PROJECT_DIR$/src/Service/UserService.php" />
         <option value="$PROJECT_DIR$/src/Controller/Security/Voter/UserVoter.php" />
         <option value="$PROJECT_DIR$/templates/elements/layout/admin/base.html.twig" />
@@ -182,16 +174,19 @@
         <option value="$PROJECT_DIR$/src/EventListener/UserEntityListener.php" />
         <option value="$PROJECT_DIR$/src/Service/Tools/ToolsService.php" />
         <option value="$PROJECT_DIR$/src/Service/Tools/DataValidatorService.php" />
-        <option value="$PROJECT_DIR$/templates/user/admin/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/user/xhr/create.html.twig" />
         <option value="$PROJECT_DIR$/templates/user/xhr/password.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/User/XhrController.php" />
         <option value="$PROJECT_DIR$/src/Service/User/UserValidatorService.php" />
-        <option value="$PROJECT_DIR$/src/Service/User/UserService.php" />
         <option value="$PROJECT_DIR$/assets/css/admin/admin.scss" />
         <option value="$PROJECT_DIR$/templates/user/xhr/edit.html.twig" />
         <option value="$PROJECT_DIR$/src/Service/Twig/ExtensionsService.php" />
+        <option value="$PROJECT_DIR$/src/Service/Tools/LoggedService.php" />
+        <option value="$PROJECT_DIR$/src/Service/User/UserService.php" />
         <option value="$PROJECT_DIR$/assets/js/admin/user.js" />
+        <option value="$PROJECT_DIR$/src/Controller/Main/AdminController.php" />
+        <option value="$PROJECT_DIR$/templates/main/admin/index.html.twig" />
+        <option value="$PROJECT_DIR$/templates/user/admin/index.html.twig" />
       </list>
     </option>
   </component>
@@ -388,15 +383,7 @@
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
-              <item name="Security" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-              <item name="Security" type="462c0819:PsiDirectoryNode" />
-              <item name="Voter" type="462c0819:PsiDirectoryNode" />
+              <item name="Main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
@@ -404,6 +391,12 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
               <item name="User" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
@@ -446,15 +439,13 @@
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -469,20 +460,6 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="xhr" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -547,16 +524,15 @@
       <workItem from="1567279063876" duration="5129000" />
       <workItem from="1567338410099" duration="12819000" />
       <workItem from="1567857283475" duration="13554000" />
-      <workItem from="1567942468493" duration="16123000" />
+      <workItem from="1567942468493" duration="17890000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79048000" />
+    <option name="totallyTimeSpent" value="80815000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4957627" visible="true" weight="0.19261745" />
       <window_info id="Structure" order="1" sideWeight="0.5042373" side_tool="true" weight="0.19261745" />
@@ -583,17 +559,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/build/front/app.js" />
-    <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
-          <folding>
-            <element signature="e#30#78#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/framework-bundle/Controller/AbstractController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
@@ -685,13 +650,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/main/admin/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -718,16 +676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="490">
           <caret line="43" column="28" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Main/AdminController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding>
-            <element signature="e#39#59#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -822,13 +770,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/user/admin/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="68" column="100" selection-start-line="68" selection-start-column="100" selection-end-line="68" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/app/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -870,13 +811,6 @@
           <folding>
             <element signature="e#39#59#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/User/UserService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="97" column="62" selection-start-line="97" selection-start-column="62" selection-end-line="97" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -928,10 +862,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/Tools/LoggedService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding>
+            <element signature="e#117#162#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/User/UserService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1822">
+          <caret line="86" column="30" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Season.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="61" column="34" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/admin/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="310" column="1" lean-forward="true" selection-start-line="310" selection-start-column="1" selection-end-line="310" selection-end-column="1" />
+        <state relative-caret-position="323">
+          <caret line="148" column="60" selection-start-line="148" selection-start-column="60" selection-end-line="148" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Main/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+          <folding>
+            <element signature="e#39#59#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/main/admin/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/user/admin/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="43" column="108" selection-start-line="43" selection-start-column="108" selection-end-line="43" selection-end-column="108" />
         </state>
       </provider>
     </entry>

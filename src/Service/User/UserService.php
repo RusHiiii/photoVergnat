@@ -82,15 +82,14 @@ class UserService
      * Mise à jours d'un utilisateur
      * @param array $data
      * @return array
-     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws \Exception
      */
     public function updateUser(array $data): array
     {
         // On check le role
         if(!$this->security->isGranted('edit', User::class)) {
             return [
-                'errors' => [self::MSG_ACCESS_UNAUTHORIZED],
-                'user' => []
+                'errors' => [self::MSG_ACCESS_UNAUTHORIZED]
             ];
         }
 
@@ -98,8 +97,7 @@ class UserService
         $validatedData = $this->userValidatorService->checkUpdateUser($data);
         if(count($validatedData['errors']) > 0) {
             return [
-                'errors' => $validatedData['errors'],
-                'user' => []
+                'errors' => $validatedData['errors']
             ];
         }
 
@@ -198,8 +196,7 @@ class UserService
         // On check le role
         if(!$this->security->isGranted('remove', User::class)) {
             return [
-                'errors' => [self::MSG_ACCESS_UNAUTHORIZED],
-                'user' => []
+                'errors' => [self::MSG_ACCESS_UNAUTHORIZED]
             ];
         }
 
@@ -207,8 +204,7 @@ class UserService
         $validatedData = $this->userValidatorService->checkCreateUser($data);
         if(count($validatedData['errors']) > 0) {
             return [
-                'errors' => $validatedData['errors'],
-                'user' => []
+                'errors' => $validatedData['errors']
             ];
         }
 
