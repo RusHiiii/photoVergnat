@@ -83,6 +83,32 @@ class UserValidatorService
     }
 
     /**
+     * Validation de la données pour la MàJ
+     * @param array $data
+     * @return array
+     */
+    public function checkUpdateUser(array $data): array
+    {
+        // On trim les données
+        $data = $this->toolsService->trimData($data);
+
+        // Validation des données
+        $this->validatorService->validateCsrfToken($data['token'], 'update-user');
+        $this->validatorService->validateEmail($data['email'], 'mail');
+        $this->validatorService->validateNotBlank($data['lastname'], 'nom');
+        $this->validatorService->validateNotBlank($data['firstname'], 'prénom');
+        $this->validatorService->validateExist($data, 'roles', 'roles');
+        $this->validatorService->validateNotBlank($data['created'], 'date');
+
+        // Traitement des erreurs
+        $errors = $this->validatorService->getErrors();
+        return [
+            'errors' => $errors,
+            'data' => $data
+        ];
+    }
+
+    /**
      * Validation du mot de passe
      * @param array $data
      * @return array

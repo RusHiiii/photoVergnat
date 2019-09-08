@@ -15,7 +15,7 @@ class XhrController extends AbstractController
      * Edtion d'un utilisateur
      * @Route("/xhr/app/user/edit-user", condition="request.isXmlHttpRequest()")
      */
-    public function editUser(
+    public function updateProfile(
         Request $request,
         UserService $userService
     ) {
@@ -32,7 +32,7 @@ class XhrController extends AbstractController
      * Edtion d'un mot de passe
      * @Route("/xhr/app/user/edit-password", condition="request.isXmlHttpRequest()")
      */
-    public function editPassword(
+    public function updatePassword(
         Request $request,
         UserService $userService
     ) {
@@ -63,9 +63,9 @@ class XhrController extends AbstractController
     }
 
     /**
-     * Création d'un utilisateur
-     * @Route("/xhr/admin/user/create", condition="request.isXmlHttpRequest()")
-     */
+ * Création d'un utilisateur
+ * @Route("/xhr/admin/user/create", condition="request.isXmlHttpRequest()")
+ */
     public function createUser(
         Request $request,
         UserService $userService
@@ -77,6 +77,24 @@ class XhrController extends AbstractController
         return new JsonResponse([
             'errors' => $resultCreate['errors'],
             'user' => $resultCreate['user']
+        ]);
+    }
+
+    /**
+     * MàJ d'un utilisateur
+     * @Route("/xhr/admin/user/update", condition="request.isXmlHttpRequest()")
+     */
+    public function updateUser(
+        Request $request,
+        UserService $userService
+    ) {
+        $data = $request->request->all();
+
+        $resultUpdate = $userService->updateUser($data['user']);
+
+        return new JsonResponse([
+            'errors' => $resultUpdate['errors'],
+            'user' => $resultUpdate['user']
         ]);
     }
 

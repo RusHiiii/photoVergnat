@@ -79,6 +79,49 @@ class UserService
     }
 
     /**
+     * Mise à jours d'un utilisateur
+     * @param array $data
+     * @return array
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function updateUser(array $data): array
+    {
+        // On check le role
+        if(!$this->security->isGranted('edit', User::class)) {
+            return [
+                'errors' => [self::MSG_ACCESS_UNAUTHORIZED],
+                'user' => []
+            ];
+        }
+
+        // Validation des données
+        $validatedData = $this->userValidatorService->checkUpdateUser($data);
+        if(count($validatedData['errors']) > 0) {
+            return [
+                'errors' => $validatedData['errors'],
+                'user' => []
+            ];
+        }
+
+        // MàJ de l'utilisateur et sauvegarde
+        $user = $this->userRepository->find($validatedData['data']['id']);
+
+        $user->setEmail($validatedData['data']['email']);
+        $user->setFirstname($validatedData['data']['firstname']);
+        $user->setLastname($validatedData['data']['lastname']);
+        $user->setCreated(new \DateTime($validatedData['data']['created']));
+        $user->setRoles($validatedData['data']['roles']);
+
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
+
+        return [
+            'errors' => [],
+            'user' => $this->serialize->serialize($user, 'json')
+        ];
+    }
+
+    /**
      * Mise à jour du mot de passe
      * @param array $data
      * @return array

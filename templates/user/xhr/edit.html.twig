@@ -6,36 +6,37 @@
                 <span aria-hidden="true">×</span>
             </button>
         </div>
-        <div class="modal-body">
-            <form>
+        <form method="POST" id="update-user">
+            <div class="modal-body">
+                <div class="alert alert-danger" role="alert" id="alert-update"></div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Identifiant</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" value="{{ user.id }}" readonly>
+                        <input type="text" class="form-control" value="{{ user.id }}" readonly name="id">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Nom</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" data-validation="length" data-validation-length="min3" value="{{ user.lastname }}">
+                        <input type="text" class="form-control" data-validation="length" name="lastname" data-validation-length="min3" value="{{ user.lastname }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Prénom</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" data-validation="length" data-validation-length="min3" value="{{ user.firstname }}">
+                        <input type="text" class="form-control" data-validation="length" name="firstname" data-validation-length="min3" value="{{ user.firstname }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" data-validation="email" value="{{ user.email }}">
+                        <input type="text" class="form-control" data-validation="email" name="email" value="{{ user.email }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Création</label>
                     <div class="col-sm-10">
-                        <input type="datetime-local" class="form-control" value="{{ user.created | date('Y-m-d\\TH:i') }}">
+                        <input type="datetime-local" class="form-control" name="created" value="{{ user.created | date('Y-m-d\\TH:i') }}">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -47,19 +48,20 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Roles</label>
                     <div class="col-sm-10">
-                        <select class="roles col-sm-12" multiple="multiple">
-                            <option value="ROLE_USER" {% if is_granted('ROLE_ADMIN') %} selected {% endif %}>USER</option>
-                            <option value="ROLE_ADMIN" {% if is_granted('ROLE_ADMIN') %} selected {% endif %}>ADMIN</option>
-                            <option value="ROLE_SUPER_ADMIN" {% if is_granted('ROLE_ADMIN') %} selected {% endif %}>SUPER ADMIN</option>
+                        <select class="roles col-sm-12" multiple="multiple" name="roles">
+                            <option value="ROLE_USER" {{ (user | hasRole('ROLE_USER')) ? 'selected' }}>USER</option>
+                            <option value="ROLE_ADMIN" {{ (user | hasRole('ROLE_ADMIN')) ? 'selected' }}>ADMIN</option>
+                            <option value="ROLE_SUPER_ADMIN" {{ (user | hasRole('ROLE_SUPER_ADMIN')) ? 'selected' }}>SUPER ADMIN</option>
                         </select>
                     </div>
                 </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Fermer</button>
-            <button type="button" class="btn btn-primary waves-effect waves-light ">Valider</button>
-        </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" name="token" value="{{ csrf_token('update-user') }}"/>
+                <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn btn-primary waves-effect waves-light update-user">Valider</button>
+            </div>
+        </form>
     </div>
 </div>
 {% block javascripts %}

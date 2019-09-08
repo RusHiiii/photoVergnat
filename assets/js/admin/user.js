@@ -20,6 +20,9 @@ $( document ).ready(function() {
 
     // Initialisation du submit
     initUpdatePassword();
+
+    // Initialisation de la MàJ
+    initUpdateUser();
 });
 
 // Initialisation formualire d'ajout
@@ -46,6 +49,45 @@ function initUpdatePassword() {
 
                 showErrors(res['errors'], 'alert-password');
                 if(res['errors'].length === 0){
+                    $('#large-Modal').modal('hide');
+                }
+            }
+        });
+    });
+}
+
+// Initialisation formualire d'ajout
+function initUpdateUser() {
+    $('body').on('submit', '#update-user', function(e){
+        e.preventDefault();
+
+        addSpiner('.update-user');
+
+        var data = $('#update-user').serializeArray().reduce(function(obj, item) {
+            if(item.name === 'roles'){
+                if(obj[item.name] === undefined){
+                    obj[item.name] = [];
+                }
+                obj[item.name].push(item.value);
+            }else{
+                obj[item.name] = item.value;
+            }
+            return obj;
+        }, {});
+
+        $.ajax({
+            url : '/xhr/admin/user/update',
+            type : 'POST',
+            data : {
+                'user': data
+            },
+            dataType:'json',
+            success : function(res) {
+                removeSpinner('.update-user', 'Valider');
+
+                showErrors(res['errors'], 'alert-update');
+                if(res['errors'].length === 0){
+                    updateRow(JSON.parse(res['user']));
                     $('#large-Modal').modal('hide');
                 }
             }
@@ -113,6 +155,24 @@ function addRow(user) {
         .attr('id', 'user_' + user.id);
 
     table.row(row).column(1).nodes().to$().addClass('lastname');
+}
+
+// Ajoute une ligne au tableau
+function updateRow(user) {
+    let current_datetime = new Date(user.created);
+    let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds();
+
+    var table = $('#users-table').DataTable();
+    var row = table.row('#user_' + user.id).data([
+        user.id,
+        user.lastname,
+        user.firstname,
+        user.email,
+        formatted_date,
+        user.roles.join(" | ").replace('ROLE_', ''),
+        getHtmlButton(user)
+    ])
+        .draw(false);
 }
 
 // Génération du bouton
