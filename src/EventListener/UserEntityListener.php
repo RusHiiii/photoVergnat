@@ -32,6 +32,7 @@ class UserEntityListener
 
         $password = $this->encoder->encodePassword($entity, $entity->getPassword());
         $entity->setPassword($password);
+        $entity->setCreated(new \DateTime('now'));
         $entity->setUpdated(new \DateTime('now'));
     }
 

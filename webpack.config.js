@@ -18,6 +18,7 @@ Encore
      * ENTRY CONFIG
      */
     .addEntry('app/app', './assets/js/app/entrypoint.js')
+
     .addEntry('admin/admin', './assets/js/admin/entrypoint.js')
 
     // will require an extra script tag for runtime.js

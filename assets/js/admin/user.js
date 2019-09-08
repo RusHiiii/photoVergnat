@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+
     // Initialisation de la table
     initDatatable();
 
@@ -13,7 +14,48 @@ $( document ).ready(function() {
 
     // Initialisation de la modal de création
     initModalCreate();
+
+    // Initialisation submit ajout
+    initCreateUser();
 });
+
+// Initialisation formualire d'ajout
+function initCreateUser() {
+    $('body').on('submit', '#create-user', function(e){
+        e.preventDefault();
+
+        $('.create-user').empty();
+        $('.create-user').addClass('loading spinner');
+
+        var data = $('#create-user').serializeArray().reduce(function(obj, item) {
+            if(item.name === 'roles'){
+                if(obj[item.name] === undefined){
+                    obj[item.name] = [];
+                }
+                obj[item.name].push(item.value);
+            }else{
+                obj[item.name] = item.value;
+            }
+            return obj;
+        }, {});
+
+        $.ajax({
+            url : '/xhr/admin/user/create',
+            type : 'POST',
+            data : {
+                'user': data
+            },
+            dataType:'json',
+            success : function(res) {
+                console.log(res);
+                $('.create-user').removeClass('loading spinner');
+                $('.create-user').html('Valider');
+
+                showErrors(res['errors'], 'alert-create');
+            }
+        });
+    });
+}
 
 // Fonction d'initialisation de la table
 function initDatatable() {
@@ -120,4 +162,19 @@ function initModalCreate() {
             }
         });
     });
+}
+
+// Fonction affichage des erreurs
+function showErrors(data, element) {
+    $("#" + element).empty();
+
+    if(!$.isEmptyObject(data)){
+        Object.keys(data).forEach(function(key) {
+            $("#" + element).append(data[key]).append('<br>');
+        });
+
+        $("#" + element).show();
+    }else{
+        $("#" + element).hide();
+    }
 }

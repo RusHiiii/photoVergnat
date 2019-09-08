@@ -107,14 +107,12 @@ class UserService
 
     /**
      * Suppression d'un utilisateur
-     * @param array $data
+     * @param string $data
      * @return array
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function removeUser(array $data): array
+    public function removeUser(string $data): array
     {
-        $errors = [];
-
         // On check le role
         if(!$this->security->isGranted('remove', User::class)) {
             return [
@@ -123,7 +121,7 @@ class UserService
         }
 
         // On récupére l'utilisateur
-        $user = $this->userRepository->findById($data['user']);
+        $user = $this->userRepository->findById($data);
         if($user === null) {
             return [
                 'errors' => self::MSG_UNKNOWN_USER
@@ -134,7 +132,45 @@ class UserService
         $this->entityManager->flush();
 
         return [
-            'errors' => $errors
+            'errors' => []
+        ];
+    }
+
+    /**
+     * Création d'un utilisateur
+     * @param array $data
+     * @return array
+     */
+    public function createUser(array $data): array
+    {
+        // On check le role
+        if(!$this->security->isGranted('remove', User::class)) {
+            return [
+                'errors' => [self::MSG_ACCESS_UNAUTHORIZED]
+            ];
+        }
+
+        // Validation des données
+        $validatedData = $this->userValidatorService->checkCreateUser($data);
+        if(count($validatedData['errors']) > 0) {
+            return [
+                'errors' => $validatedData['errors']
+            ];
+        }
+
+        // Insertion de l'utilisateur et sauvegarde
+        $user = new User();
+        $user->setEmail($validatedData['data']['email']);
+        $user->setFirstname($validatedData['data']['firstname']);
+        $user->setLastname($validatedData['data']['lastname']);
+        $user->setPassword($validatedData['data']['password_first']);
+        $user->setRoles($validatedData['data']['roles']);
+
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
+
+        return [
+            'errors' => []
         ];
     }
 }

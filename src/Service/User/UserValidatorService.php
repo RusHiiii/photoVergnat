@@ -12,6 +12,7 @@ namespace App\Service\User;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Service\Tools\DataValidatorService;
+use App\Service\Tools\ToolsService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
@@ -19,12 +20,15 @@ use Symfony\Component\Security\Core\Security;
 class UserValidatorService
 {
     private $validatorService;
+    private $toolsService;
 
     public function __construct(
-        DataValidatorService $dataValidatorService
+        DataValidatorService $dataValidatorService,
+        ToolsService $toolsService
     )
     {
         $this->validatorService = $dataValidatorService;
+        $this->toolsService = $toolsService;
     }
 
     /**
@@ -35,13 +39,40 @@ class UserValidatorService
     public function checkUpdateProfile(array $data): array
     {
         // On trim les données
-        $data = array_map('trim', $data);
+        $data = $this->toolsService->trimData($data);
 
         // Validation des données
         $this->validatorService->validateCsrfToken($data['token'], 'update-user');
         $this->validatorService->validateEmail($data['email'], 'mail');
         $this->validatorService->validateNotBlank($data['lastname'], 'nom');
         $this->validatorService->validateNotBlank($data['firstname'], 'prénom');
+
+        // Traitement des erreurs
+        $errors = $this->validatorService->getErrors();
+        return [
+            'errors' => $errors,
+            'data' => $data
+        ];
+    }
+
+    /**
+     * Validation de la données pour la création
+     * @param array $data
+     * @return array
+     */
+    public function checkCreateUser(array $data): array
+    {
+        // On trim les données
+        $data = $this->toolsService->trimData($data);
+
+        // Validation des données
+        $this->validatorService->validateCsrfToken($data['token'], 'create-user');
+        $this->validatorService->validateEmail($data['email'], 'mail');
+        $this->validatorService->validateNotBlank($data['lastname'], 'nom');
+        $this->validatorService->validateNotBlank($data['firstname'], 'prénom');
+        $this->validatorService->validateEqualTo($data['password_first'],$data['password_second'], 'mot de passe');
+        $this->validatorService->validateRegex($data['password_first'], 'mot de passe');
+        $this->validatorService->validateExist($data, 'roles', 'roles');
 
         // Traitement des erreurs
         $errors = $this->validatorService->getErrors();
@@ -59,7 +90,7 @@ class UserValidatorService
     public function checkUpdatePassword(array $data): array
     {
         // On trim les données
-        $data = array_map('trim', $data);
+        $data = $this->toolsService->trimData($data);
 
         // Validation des données
         $this->validatorService->validateCsrfToken($data['token'], 'update-password');

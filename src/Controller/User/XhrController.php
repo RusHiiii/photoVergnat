@@ -55,10 +55,27 @@ class XhrController extends AbstractController
     ) {
         $data = $request->request->all();
 
-        $resultRemove = $userService->removeUser($data);
+        $resultRemove = $userService->removeUser($data['user']);
 
         return new JsonResponse([
             'errors' => $resultRemove['errors']
+        ]);
+    }
+
+    /**
+     * Création d'un utilisateur
+     * @Route("/xhr/admin/user/create", condition="request.isXmlHttpRequest()")
+     */
+    public function createUser(
+        Request $request,
+        UserService $userService
+    ) {
+        $data = $request->request->all();
+
+        $resultCreate = $userService->createUser($data['user']);
+
+        return new JsonResponse([
+            'errors' => $resultCreate['errors']
         ]);
     }
 

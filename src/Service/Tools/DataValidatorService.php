@@ -21,6 +21,7 @@ class DataValidatorService
     const MSG_ERROR_TOKEN = 'Token invalide';
     const MSG_ERROR_EQUAL = 'Les champs « %s » ne sont pas identique';
     const MSG_ERROR_REGEX = 'Le champs « %s » n\'a pas le bon pattern';
+    const MSG_ERROR_EMPTY = 'Le champs « %s » ne peux pas être vide';
 
     private $validator;
     private $token;
@@ -141,6 +142,22 @@ class DataValidatorService
     {
         if (!$this->token->isTokenValid(new CsrfToken($key, $token))) {
             $this->errors[] = self::MSG_ERROR_TOKEN;
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Validation array not empty
+     * @param array $data
+     * @param string $key
+     * @return bool
+     */
+    public function validateExist(array $data, string $key, string $value): bool
+    {
+        if (!isset($data[$value])) {
+            $this->errors[] = sprintf(self::MSG_ERROR_EMPTY, $key);
             return false;
         }
 
