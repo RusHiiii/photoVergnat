@@ -17,15 +17,48 @@ $( document ).ready(function() {
 
     // Initialisation submit ajout
     initCreateUser();
+
+    // Initialisation du submit
+    initUpdatePassword();
 });
+
+// Initialisation formualire d'ajout
+function initUpdatePassword() {
+    $('body').on('submit', '#update-password', function(e){
+        e.preventDefault();
+
+        addSpiner('.edit-password');
+
+        var data = $('#update-password').serializeArray().reduce(function(obj, item) {
+            obj[item.name] = item.value;
+            return obj;
+        }, {});
+
+        $.ajax({
+            url : '/xhr/app/user/edit-password',
+            type : 'POST',
+            data : {
+                'user': data
+            },
+            dataType:'json',
+            success : function(res) {
+                removeSpinner('.edit-password', 'Valider');
+
+                showErrors(res['errors'], 'alert-password');
+                if(res['errors'].length === 0){
+                    $('#large-Modal').modal('hide');
+                }
+            }
+        });
+    });
+}
 
 // Initialisation formualire d'ajout
 function initCreateUser() {
     $('body').on('submit', '#create-user', function(e){
         e.preventDefault();
 
-        $('.create-user').empty();
-        $('.create-user').addClass('loading spinner');
+        addSpiner('.create-user');
 
         var data = $('#create-user').serializeArray().reduce(function(obj, item) {
             if(item.name === 'roles'){
@@ -47,14 +80,46 @@ function initCreateUser() {
             },
             dataType:'json',
             success : function(res) {
-                console.log(res);
-                $('.create-user').removeClass('loading spinner');
-                $('.create-user').html('Valider');
+                removeSpinner('.create-user', 'Valider');
 
                 showErrors(res['errors'], 'alert-create');
+                if(res['errors'].length === 0){
+                    addRow(JSON.parse(res['user']));
+                    $('#large-Modal').modal('hide');
+                }
             }
         });
     });
+}
+
+// Ajoute une ligne au tableau
+function addRow(user) {
+    let current_datetime = new Date(user.created);
+    let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds();
+
+    var table = $('#users-table').DataTable();
+    var row = table.row.add([
+        user.id,
+        user.lastname,
+        user.firstname,
+        user.email,
+        formatted_date,
+        user.roles.join(" | ").replace('ROLE_', ''),
+        getHtmlButton(user)
+    ])
+        .draw(false)
+        .nodes()
+        .to$()
+        .attr('id', 'user_' + user.id);
+
+    table.row(row).column(1).nodes().to$().addClass('lastname');
+}
+
+// Génération du bouton
+function getHtmlButton(data) {
+    return '<button type="button" class="btn btn-warning waves-effect edit" data-id="'+data.id+'" data-toggle="modal"><i class="icofont icofont-edit-alt"></i></button>\n' +
+        '<button type="button" class="btn btn-danger alert-ajax m-b-10 delete" data-id="'+data.id+'"><i class="icofont icofont-bin"></i></button>\n' +
+        '<button type="button" class="btn btn-info m-b-10 pswd" data-id="'+data.id+'"><i class="icofont icofont-lock"></i></button>\n';
 }
 
 // Fonction d'initialisation de la table
@@ -103,7 +168,7 @@ function initDeleteButton() {
                 success : function(res) {
                     var message = 'Suppression terminée !';
                     if(res.errors.length > 0) {
-                        message = res.errors;
+                        message = res.errors[0];
                     }else{
                         table
                             .row($("#user_" + id))
@@ -177,4 +242,16 @@ function showErrors(data, element) {
     }else{
         $("#" + element).hide();
     }
+}
+
+// Ajout du spinner
+function addSpiner(data) {
+    $(data).empty();
+    $(data).addClass('loading spinner');
+}
+
+// Suppression du spinner
+function removeSpinner(data, value) {
+    $(data).removeClass('loading spinner');
+    $(data).html(value);
 }

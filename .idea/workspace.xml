@@ -6,14 +6,9 @@
       <change beforePath="$PROJECT_DIR$/assets/css/admin/admin.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/admin/admin.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/admin/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/admin/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/User/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/User/XhrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventListener/UserEntityListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/UserEntityListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Tools/DataValidatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Tools/DataValidatorService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/User/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/User/UserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/User/UserValidatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/User/UserValidatorService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/admin/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/admin/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/xhr/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/xhr/create.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/xhr/password.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/xhr/password.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,8 +27,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/admin/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="49" column="33" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
+            <state relative-caret-position="238">
+              <caret line="29" column="33" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/css/admin/admin.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/User/XhrController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-343">
+              <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+              <folding>
+                <element signature="e#39#59#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/js/app/user.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="52" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/user/xhr/edit.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="445">
+              <caret line="65" column="32" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -41,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/user/xhr/create.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="490">
-              <caret line="45" column="62" selection-start-line="45" selection-start-column="62" selection-end-line="45" selection-end-column="62" />
+            <state relative-caret-position="493">
+              <caret line="91" column="13" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -50,13 +84,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Service/User/UserService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="153" column="56" selection-start-line="153" selection-start-column="56" selection-end-line="153" selection-end-column="56" />
+            <state relative-caret-position="476">
+              <caret line="182" column="16" selection-start-line="182" selection-start-column="16" selection-end-line="182" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Service/User/UserValidatorService.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="254">
@@ -66,13 +100,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Service/Tools/DataValidatorService.php">
+        <entry file="file://$PROJECT_DIR$/templates/user/admin/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="156" column="25" selection-start-line="156" selection-start-column="25" selection-end-line="156" selection-end-column="25" />
-              <folding>
-                <element signature="e#117#163#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="499">
+              <caret line="68" column="100" selection-start-line="68" selection-start-column="100" selection-end-line="68" selection-end-column="100" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/user/xhr/password.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="69" column="11" selection-start-line="69" selection-start-column="11" selection-end-line="69" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -130,20 +170,20 @@
         <option value="$PROJECT_DIR$/src/Service/UserService.php" />
         <option value="$PROJECT_DIR$/src/Controller/Security/Voter/UserVoter.php" />
         <option value="$PROJECT_DIR$/templates/elements/layout/admin/base.html.twig" />
-        <option value="$PROJECT_DIR$/templates/user/admin/index.html.twig" />
         <option value="$PROJECT_DIR$/assets/js/admin/user-form.js" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
-        <option value="$PROJECT_DIR$/templates/user/xhr/password.html.twig" />
         <option value="$PROJECT_DIR$/templates/user/xhr/edit.html.twig" />
-        <option value="$PROJECT_DIR$/assets/css/admin/admin.scss" />
         <option value="$PROJECT_DIR$/src/EventListener/UserEntityListener.php" />
         <option value="$PROJECT_DIR$/src/Service/Tools/ToolsService.php" />
-        <option value="$PROJECT_DIR$/assets/js/admin/user.js" />
-        <option value="$PROJECT_DIR$/src/Service/User/UserService.php" />
-        <option value="$PROJECT_DIR$/src/Controller/User/XhrController.php" />
-        <option value="$PROJECT_DIR$/templates/user/xhr/create.html.twig" />
         <option value="$PROJECT_DIR$/src/Service/Tools/DataValidatorService.php" />
         <option value="$PROJECT_DIR$/src/Service/User/UserValidatorService.php" />
+        <option value="$PROJECT_DIR$/src/Controller/User/XhrController.php" />
+        <option value="$PROJECT_DIR$/templates/user/admin/index.html.twig" />
+        <option value="$PROJECT_DIR$/assets/js/admin/user.js" />
+        <option value="$PROJECT_DIR$/assets/css/admin/admin.scss" />
+        <option value="$PROJECT_DIR$/src/Service/User/UserService.php" />
+        <option value="$PROJECT_DIR$/templates/user/xhr/create.html.twig" />
+        <option value="$PROJECT_DIR$/templates/user/xhr/password.html.twig" />
       </list>
     </option>
   </component>
@@ -261,8 +301,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="606" />
-    <option name="y" value="-10" />
+    <option name="x" value="556" />
+    <option name="y" value="-9" />
     <option name="width" value="960" />
     <option name="height" value="1035" />
   </component>
@@ -499,12 +539,12 @@
       <workItem from="1567279063876" duration="5129000" />
       <workItem from="1567338410099" duration="12819000" />
       <workItem from="1567857283475" duration="13554000" />
-      <workItem from="1567942468493" duration="6295000" />
+      <workItem from="1567942468493" duration="12612000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69220000" />
+    <option name="totallyTimeSpent" value="75537000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
@@ -535,9 +575,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/build/entrypoints.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/build/front/app.css" />
     <entry file="file://$PROJECT_DIR$/public/build/front/app.js" />
     <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
@@ -725,13 +762,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/user/admin/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="78" column="30" selection-start-line="78" selection-start-column="30" selection-end-line="78" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/admin/user-form.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -743,20 +773,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="21" column="63" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/user/xhr/password.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="69" column="13" selection-start-line="50" selection-start-column="4" selection-end-line="69" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/user/xhr/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="64" selection-start-line="64" selection-end-line="73" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -774,24 +790,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/app/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="745">
-          <caret line="93" selection-start-line="93" selection-end-line="106" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/app/app.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
           <caret line="238" selection-start-line="238" selection-end-line="240" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/admin/admin.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -819,41 +821,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/User/XhrController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="74" column="42" selection-start-line="74" selection-start-column="42" selection-end-line="74" selection-end-column="42" />
-          <folding>
-            <element signature="e#39#59#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/EventListener/UserEntityListener.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="34" column="50" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/user/xhr/create.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="45" column="62" selection-start-line="45" selection-start-column="62" selection-end-line="45" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/admin/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="49" column="33" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/User/UserService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="153" column="56" selection-start-line="153" selection-start-column="56" selection-end-line="153" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -871,6 +842,79 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
           <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/serializer/SerializerInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/user/admin/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="68" column="100" selection-start-line="68" selection-start-column="100" selection-end-line="68" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/app/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="52" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/admin/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/admin/admin.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/User/UserService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="182" column="16" selection-start-line="182" selection-start-column="16" selection-end-line="182" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/User/XhrController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-343">
+          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+          <folding>
+            <element signature="e#39#59#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/user/xhr/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="65" column="32" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/user/xhr/create.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="91" column="13" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/user/xhr/password.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="69" column="11" selection-start-line="69" selection-start-column="11" selection-end-line="69" selection-end-column="11" />
         </state>
       </provider>
     </entry>

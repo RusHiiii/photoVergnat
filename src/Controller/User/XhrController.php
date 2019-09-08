@@ -75,7 +75,8 @@ class XhrController extends AbstractController
         $resultCreate = $userService->createUser($data['user']);
 
         return new JsonResponse([
-            'errors' => $resultCreate['errors']
+            'errors' => $resultCreate['errors'],
+            'user' => $resultCreate['user']
         ]);
     }
 

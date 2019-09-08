@@ -14,6 +14,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class UserService
 {
@@ -25,13 +26,15 @@ class UserService
     private $security;
     private $encoder;
     private $userValidatorService;
+    private $serialize;
 
     public function __construct(
         EntityManagerInterface $entityManager,
         UserRepository $userRepository,
         UserPasswordEncoderInterface $passwordEncoder,
         Security $security,
-        UserValidatorService $userValidatorService
+        UserValidatorService $userValidatorService,
+        SerializerInterface $serializer
     )
     {
         $this->entityManager = $entityManager;
@@ -39,6 +42,7 @@ class UserService
         $this->security = $security;
         $this->encoder = $passwordEncoder;
         $this->userValidatorService = $userValidatorService;
+        $this->serialize = $serializer;
     }
 
     /**
@@ -91,8 +95,13 @@ class UserService
         }
 
         // Récupération de l'utilisateur
-        $currentUser = $this->security->getUser();
-        $user = $this->userRepository->findByEmail($currentUser->getUsername());
+        $mail = $this->security->getUser()->getUsername();
+        if($this->security->isGranted('edit', User::class) && isset($validatedData['data']['email'])) {
+            $mail = $validatedData['data']['email'];
+        }
+
+        // Récupération du l'utilisateur
+        $user = $this->userRepository->findByEmail($mail);
 
         // Modification de l'utilisateur et sauvegarde
         $user->setPassword($this->encoder->encodePassword($user, $validatedData['data']['password_first']));
@@ -116,7 +125,7 @@ class UserService
         // On check le role
         if(!$this->security->isGranted('remove', User::class)) {
             return [
-                'errors' => self::MSG_ACCESS_UNAUTHORIZED
+                'errors' => [self::MSG_ACCESS_UNAUTHORIZED]
             ];
         }
 
@@ -124,7 +133,7 @@ class UserService
         $user = $this->userRepository->findById($data);
         if($user === null) {
             return [
-                'errors' => self::MSG_UNKNOWN_USER
+                'errors' => [self::MSG_UNKNOWN_USER]
             ];
         }
 
@@ -146,7 +155,8 @@ class UserService
         // On check le role
         if(!$this->security->isGranted('remove', User::class)) {
             return [
-                'errors' => [self::MSG_ACCESS_UNAUTHORIZED]
+                'errors' => [self::MSG_ACCESS_UNAUTHORIZED],
+                'user' => []
             ];
         }
 
@@ -154,7 +164,8 @@ class UserService
         $validatedData = $this->userValidatorService->checkCreateUser($data);
         if(count($validatedData['errors']) > 0) {
             return [
-                'errors' => $validatedData['errors']
+                'errors' => $validatedData['errors'],
+                'user' => []
             ];
         }
 
@@ -170,7 +181,8 @@ class UserService
         $this->entityManager->flush();
 
         return [
-            'errors' => []
+            'errors' => [],
+            'user' => $this->serialize->serialize($user, 'json')
         ];
     }
 }
