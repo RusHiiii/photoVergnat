@@ -19,7 +19,6 @@ use Symfony\Component\Serializer\SerializerInterface;
 class UserService
 {
     const MSG_UNKNOWN_USER = 'Utilisateur inexistant !';
-    const MSG_ACCESS_UNAUTHORIZED = 'Action interdite !';
 
     private $entityManager;
     private $userRepository;
@@ -62,8 +61,7 @@ class UserService
         }
 
         // Récupération de l'utilisateur
-        $currentUser = $this->security->getUser();
-        $user = $this->userRepository->findByEmail($currentUser->getUsername());
+        $user = $this->security->getUser();
 
         // Modification de l'utilisateur et sauvegarde
         $user->setEmail($validatedData['data']['email']);
@@ -86,13 +84,6 @@ class UserService
      */
     public function updateUser(array $data): array
     {
-        // On check le role
-        if(!$this->security->isGranted('edit', User::class)) {
-            return [
-                'errors' => [self::MSG_ACCESS_UNAUTHORIZED]
-            ];
-        }
-
         // Validation des données
         $validatedData = $this->userValidatorService->checkUpdateUser($data);
         if(count($validatedData['errors']) > 0) {
@@ -102,7 +93,7 @@ class UserService
         }
 
         // MàJ de l'utilisateur et sauvegarde
-        $user = $this->userRepository->find($validatedData['data']['id']);
+        $user = $this->userRepository->findById($validatedData['data']['id']);
 
         $user->setEmail($validatedData['data']['email']);
         $user->setFirstname($validatedData['data']['firstname']);
@@ -136,13 +127,10 @@ class UserService
         }
 
         // Récupération de l'utilisateur
-        $mail = $this->security->getUser()->getUsername();
+        $user = $this->security->getUser()->getUsername();
         if($this->security->isGranted('edit', User::class) && isset($validatedData['data']['email'])) {
-            $mail = $validatedData['data']['email'];
+            $user = $this->userRepository->findByEmail($validatedData['data']['email']);
         }
-
-        // Récupération du l'utilisateur
-        $user = $this->userRepository->findByEmail($mail);
 
         // Modification de l'utilisateur et sauvegarde
         $user->setPassword($this->encoder->encodePassword($user, $validatedData['data']['password_first']));
@@ -163,13 +151,6 @@ class UserService
      */
     public function removeUser(string $data): array
     {
-        // On check le role
-        if(!$this->security->isGranted('remove', User::class)) {
-            return [
-                'errors' => [self::MSG_ACCESS_UNAUTHORIZED]
-            ];
-        }
-
         // On récupére l'utilisateur
         $user = $this->userRepository->findById($data);
         if($user === null) {
@@ -193,13 +174,6 @@ class UserService
      */
     public function createUser(array $data): array
     {
-        // On check le role
-        if(!$this->security->isGranted('remove', User::class)) {
-            return [
-                'errors' => [self::MSG_ACCESS_UNAUTHORIZED]
-            ];
-        }
-
         // Validation des données
         $validatedData = $this->userValidatorService->checkCreateUser($data);
         if(count($validatedData['errors']) > 0) {

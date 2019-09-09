@@ -20,7 +20,6 @@ class XhrController extends AbstractController
         UserService $userService
     ) {
         $data = $request->request->all();
-
         $resultEdit = $userService->updateProfile($data['user']);
 
         return new JsonResponse([
@@ -37,7 +36,6 @@ class XhrController extends AbstractController
         UserService $userService
     ) {
         $data = $request->request->all();
-
         $resultEdit = $userService->updatePassword($data['user']);
 
         return new JsonResponse([
@@ -53,8 +51,9 @@ class XhrController extends AbstractController
         Request $request,
         UserService $userService
     ) {
-        $data = $request->request->all();
+        $this->denyAccessUnlessGranted('remove', User::class);
 
+        $data = $request->request->all();
         $resultRemove = $userService->removeUser($data['user']);
 
         return new JsonResponse([
@@ -70,8 +69,9 @@ class XhrController extends AbstractController
         Request $request,
         UserService $userService
     ) {
-        $data = $request->request->all();
+        $this->denyAccessUnlessGranted('create', User::class);
 
+        $data = $request->request->all();
         $resultCreate = $userService->createUser($data['user']);
 
         return new JsonResponse([
@@ -88,8 +88,9 @@ class XhrController extends AbstractController
         Request $request,
         UserService $userService
     ) {
-        $data = $request->request->all();
+        $this->denyAccessUnlessGranted('edit', User::class);
 
+        $data = $request->request->all();
         $resultUpdate = $userService->updateUser($data['user']);
 
         return new JsonResponse([
@@ -106,6 +107,7 @@ class XhrController extends AbstractController
         Request $request,
         User $user
     ) {
+        $this->denyAccessUnlessGranted('view', User::class);
 
         return $this->render('user/xhr/edit.html.twig', [
             'user' => $user,
@@ -120,6 +122,7 @@ class XhrController extends AbstractController
         Request $request,
         User $user
     ) {
+        $this->denyAccessUnlessGranted('view', User::class);
 
         return $this->render('user/xhr/password.html.twig', [
             'user' => $user,
@@ -133,6 +136,7 @@ class XhrController extends AbstractController
     public function displayModalCreate(
         Request $request
     ) {
+        $this->denyAccessUnlessGranted('view', User::class);
 
         return $this->render('user/xhr/create.html.twig', []);
     }

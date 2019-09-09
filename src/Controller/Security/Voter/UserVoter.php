@@ -19,6 +19,7 @@ class UserVoter extends Voter
     const REMOVE = 'remove';
     const EDIT = 'edit';
     const CREATE = 'create';
+    const VIEW = 'view';
 
     private $security;
 
@@ -29,7 +30,7 @@ class UserVoter extends Voter
 
     protected function supports($attribute, $subject)
     {
-        if (!in_array($attribute, [self::REMOVE, self::EDIT, self::CREATE])) {
+        if (!in_array($attribute, [self::REMOVE, self::EDIT, self::CREATE, self::VIEW])) {
             return false;
         }
 
@@ -49,17 +50,23 @@ class UserVoter extends Voter
         }
 
         switch ($attribute) {
-            case self::CREATE:
             case self::EDIT:
-                return $this->canCreateOrEdit($user);
+            case self::VIEW:
+                return $this->canEdit($user);
+            case self::CREATE:
             case self::REMOVE:
-                return $this->canRemove($user);
+                return $this->canCreateOrRemove($user);
         }
 
         throw new \LogicException('This code should not be reached!');
     }
 
-    private function canCreateOrEdit(User $user)
+    /**
+     * Vérifier si le user peux créer ou editer
+     * @param User $user
+     * @return bool
+     */
+    private function canEdit(User $user)
     {
         if ($this->security->isGranted('ROLE_ADMIN')) {
             return true;
@@ -68,7 +75,12 @@ class UserVoter extends Voter
         return false;
     }
 
-    private function canRemove(User $user)
+    /**
+     * Si il peux supprimer
+     * @param User $user
+     * @return bool
+     */
+    private function canCreateOrRemove(User $user)
     {
         if ($this->security->isGranted('ROLE_SUPER_ADMIN')) {
             return true;
