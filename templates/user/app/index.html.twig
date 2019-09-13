@@ -97,3 +97,25 @@
         </div>
     </section>
 {% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        $.validate({
+            lang: 'fr',
+            borderColorOnError : '#ff001c',
+            scrollToTopOnError: false,
+            modules : 'security',
+            onModulesLoaded : function() {
+                var optionalConfig = {
+                    fontSize: '8pt',
+                    padding: '4px',
+                    bad : 'Trop faible',
+                    weak : 'Faible',
+                    good : 'Bon',
+                    strong : 'Très bon'
+                };
+
+                $('input[name="password_first"]').displayPasswordStrength(optionalConfig);
+            }
+        });
+    </script>
+{% endblock %}

@@ -38,16 +38,16 @@ class UserValidatorService
      */
     public function checkUpdateProfile(array $data): array
     {
-        // On trim les données
+        /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
-        // Validation des données
+        /** Validation des données */
         $this->validatorService->validateCsrfToken($data['token'], 'update-user');
         $this->validatorService->validateEmail($data['email'], 'mail');
         $this->validatorService->validateNotBlank($data['lastname'], 'nom');
         $this->validatorService->validateNotBlank($data['firstname'], 'prénom');
 
-        // Traitement des erreurs
+        /** Récupération des erreurs */
         $errors = $this->validatorService->getErrors();
         return [
             'errors' => $errors,
@@ -62,10 +62,10 @@ class UserValidatorService
      */
     public function checkCreateUser(array $data): array
     {
-        // On trim les données
+        /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
-        // Validation des données
+        /** Validation des données */
         $this->validatorService->validateCsrfToken($data['token'], 'create-user');
         $this->validatorService->validateEmail($data['email'], 'mail');
         $this->validatorService->validateNotBlank($data['lastname'], 'nom');
@@ -74,7 +74,7 @@ class UserValidatorService
         $this->validatorService->validateRegex($data['password_first'], 'mot de passe');
         $this->validatorService->validateExist($data, 'roles', 'roles');
 
-        // Traitement des erreurs
+        /** Récupération des erreurs */
         $errors = $this->validatorService->getErrors();
         return [
             'errors' => $errors,
@@ -89,10 +89,10 @@ class UserValidatorService
      */
     public function checkUpdateUser(array $data): array
     {
-        // On trim les données
+        /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
-        // Validation des données
+        /** Validation des données */
         $this->validatorService->validateCsrfToken($data['token'], 'update-user');
         $this->validatorService->validateEmail($data['email'], 'mail');
         $this->validatorService->validateNotBlank($data['lastname'], 'nom');
@@ -100,7 +100,7 @@ class UserValidatorService
         $this->validatorService->validateExist($data, 'roles', 'roles');
         $this->validatorService->validateNotBlank($data['created'], 'date');
 
-        // Traitement des erreurs
+        /** Récupération des erreurs */
         $errors = $this->validatorService->getErrors();
         return [
             'errors' => $errors,
@@ -115,15 +115,16 @@ class UserValidatorService
      */
     public function checkUpdatePassword(array $data): array
     {
-        // On trim les données
+        /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
-        // Validation des données
+        /** Validation des données */
         $this->validatorService->validateCsrfToken($data['token'], 'update-password');
+        $this->validatorService->validateNotBlank($data['password_first'], 'mot de passe');
         $this->validatorService->validateEqualTo($data['password_first'],$data['password_second'], 'mot de passe');
         $this->validatorService->validateRegex($data['password_first'], 'mot de passe');
 
-        // Traitement des erreurs
+        /** Récupération des erreurs */
         $errors = $this->validatorService->getErrors();
         return [
             'errors' => $errors,

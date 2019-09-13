@@ -34,6 +34,11 @@ class Tag
      */
     private $created;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -92,6 +97,18 @@ class Tag
     public function setCreated(\DateTimeInterface $created): self
     {
         $this->created = $created;
+
+        return $this;
+    }
+
+    public function getUpdated(): ?\DateTimeInterface
+    {
+        return $this->updated;
+    }
+
+    public function setUpdated(\DateTimeInterface $updated): self
+    {
+        $this->updated = $updated;
 
         return $this;
     }

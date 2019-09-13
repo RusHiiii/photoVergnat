@@ -1,42 +1,96 @@
-@import '../variables';
+@import "../variables";
 
-.main-body .page-wrapper .page-header-title span{
-  text-transform: none !important;
+/* Spinner loading: suffit d'ajouter: loading spinner */
+@keyframes "spinner" {
+  to {
+    transform: rotate(360deg);
+  }
 }
-
-.select2-container--default .select2-selection--multiple .select2-selection__choice {
-  background-color: #01a9ac !important;
-  border: 1px solid #01a9ac !important;
-  padding: 5px 15px !important;
-  color: #fff !important;
+@-webkit-keyframes "spinner" {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
 }
-
-.select2-container--default.select2-container--focus .select2-selection--multiple {
-  border: 1px solid #01a9ac !important;
+/* refresh loading: suffit d'ajouter: glyphicon-refresh-animate */
+@keyframes "spin" {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1) rotate(360deg);
+  }
 }
-
-.select2-container--default .select2-results__option--highlighted[aria-selected] {
-  background-color: #01a9ac !important;
+@-webkit-keyframes "spinw" {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
 }
-
-.header-button{
+@-moz-keyframes "spinm" {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+.main-body {
+  .page-wrapper {
+    .page-header-title {
+      span {
+        text-transform: none !important;
+      }
+    }
+  }
+}
+.select2-container--default {
+  .select2-selection--multiple {
+    .select2-selection__choice {
+      background-color: $blue !important;
+      border: 1px solid #01a9ac !important;
+      padding: 5px 15px !important;
+      color: $white !important;
+    }
+  }
+  .select2-results__option--highlighted[aria-selected] {
+    background-color: $blue !important;
+  }
+}
+.select2-container--default.select2-container--focus {
+  .select2-selection--multiple {
+    border: 1px solid #01a9ac !important;
+  }
+}
+.header-button {
   float: right;
 }
-
-#alert-create, #alert-password, #alert-update{
+#alert-create {
   display: none;
 }
-
-.create-user, .edit-password, .update-user{
+#alert-password {
+  display: none;
+}
+#alert-update {
+  display: none;
+}
+.create-user {
   height: 40.4px;
   width: 88.6px;
 }
-
-.password{
+.edit-password {
+  height: 40.4px;
+  width: 88.6px;
+}
+.update-user {
+  height: 40.4px;
+  width: 88.6px;
+}
+.password {
   float: left;
   width: 85% !important;
 }
-
 .strength-meter {
   background: none !important;
   margin-left: 10px !important;
@@ -44,90 +98,72 @@
   margin-bottom: 15px;
   float: right;
 }
-
-.form-error{
+.form-error {
   padding-left: 20%;
   color: red;
   font-size: 0.8em;
 }
-
-.header-text{
+.header-text {
   float: left;
 }
-
-.add{
+.add {
   width: 55px;
   height: 40px;
 }
-
-#users-table{
-  td:last-child{
-    text-align: center;
+#users-table {
+  td: last-child{ text-align: center;
   }
-
-  td{
+  td {
     vertical-align: middle;
   }
-
-  .edit, .delete, .pswd{
+  .edit {
+    width: 16px;
+    height: 20px;
+  }
+  .delete {
+    width: 16px;
+    height: 20px;
+  }
+  .pswd {
     width: 16px;
     height: 20px;
   }
 }
-
-/* Spinner loading: suffit d'ajouter: loading spinner */
 .loading {
   position: relative;
 }
 
-@keyframes spinner {
-  to { transform: rotate(360deg); }
+.action{
+  text-align: center;
 }
-@-webkit-keyframes spinner {
-  to { -webkit-transform: rotate(360deg); }
-}
+
 .spinner {
   min-width: 24px;
   min-height: 24px;
+  &:before {
+    content: 'Loading…';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin-top: -10px;
+    margin-left: -10px;
+  }
+  &:not(:required) {
+    &:before {
+      content: '';
+      border-radius: 50%;
+      border-top: 2px solid white;
+      border-right: 2px solid transparent;
+      animation: spinner .6s linear infinite;
+      -webkit-animation: spinner .6s linear infinite;
+    }
+  }
 }
-.spinner:before {
-  content:'Loading…';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 16px;
-  height: 16px;
-  margin-top: -10px;
-  margin-left: -10px;
-}
-.spinner:not(:required):before {
-  content: '';
-  border-radius: 50%;
-  border-top: 2px solid white;
-  border-right: 2px solid transparent;
-  animation: spinner .6s linear infinite;
-  -webkit-animation: spinner .6s linear infinite;
-}
-
-/* refresh loading: suffit d'ajouter: glyphicon-refresh-animate */
 .glyphicon-refresh-animate {
   -animation: spin .8s infinite linear;
   -ms-animation: spin .8s infinite linear;
   -webkit-animation: spinw .8s infinite linear;
   -moz-animation: spinm .8s infinite linear;
-}
-
-@keyframes spin {
-  from { transform: scale(1) rotate(0deg);}
-  to { transform: scale(1) rotate(360deg);}
-}
-
-@-webkit-keyframes spinw {
-  from { -webkit-transform: rotate(0deg);}
-  to { -webkit-transform: rotate(360deg);}
-}
-
-@-moz-keyframes spinm {
-  from { -moz-transform: rotate(0deg);}
-  to { -moz-transform: rotate(360deg);}
 }

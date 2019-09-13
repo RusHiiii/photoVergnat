@@ -52,7 +52,7 @@ class UserService
      */
     public function updateProfile(array $data): array
     {
-        // Validation des données
+        /** Validation des données */
         $validatedData = $this->userValidatorService->checkUpdateProfile($data);
         if(count($validatedData['errors']) > 0) {
             return [
@@ -60,10 +60,10 @@ class UserService
             ];
         }
 
-        // Récupération de l'utilisateur
+        /** Récupération de l'utilisateur */
         $user = $this->security->getUser();
 
-        // Modification de l'utilisateur et sauvegarde
+        /** Modification de l'utilisateur et sauvegarde */
         $user->setEmail($validatedData['data']['email']);
         $user->setFirstname($validatedData['data']['firstname']);
         $user->setLastname($validatedData['data']['lastname']);
@@ -84,7 +84,7 @@ class UserService
      */
     public function updateUser(array $data): array
     {
-        // Validation des données
+        /** Validation des données */
         $validatedData = $this->userValidatorService->checkUpdateUser($data);
         if(count($validatedData['errors']) > 0) {
             return [
@@ -92,7 +92,7 @@ class UserService
             ];
         }
 
-        // MàJ de l'utilisateur et sauvegarde
+        /** MàJ de l'utilisateur et sauvegarde */
         $user = $this->userRepository->findById($validatedData['data']['id']);
 
         $user->setEmail($validatedData['data']['email']);
@@ -118,7 +118,7 @@ class UserService
      */
     public function updatePassword(array $data): array
     {
-        // Validation des données
+        /** Validation des données */
         $validatedData =$this->userValidatorService->checkUpdatePassword($data);
         if(count($validatedData['errors']) > 0) {
             return [
@@ -126,13 +126,13 @@ class UserService
             ];
         }
 
-        // Récupération de l'utilisateur
+        /** Récupération de l'utilisateur */
         $user = $this->security->getUser()->getUsername();
         if($this->security->isGranted('edit', User::class) && isset($validatedData['data']['email'])) {
             $user = $this->userRepository->findByEmail($validatedData['data']['email']);
         }
 
-        // Modification de l'utilisateur et sauvegarde
+        /** Modification de l'utilisateur et sauvegarde */
         $user->setPassword($this->encoder->encodePassword($user, $validatedData['data']['password_first']));
 
         $this->entityManager->persist($user);
@@ -151,7 +151,7 @@ class UserService
      */
     public function removeUser(string $data): array
     {
-        // On récupére l'utilisateur
+        /** On récupére l'utilisateur */
         $user = $this->userRepository->findById($data);
         if($user === null) {
             return [
@@ -159,6 +159,7 @@ class UserService
             ];
         }
 
+        /** Suppression */
         $this->entityManager->remove($user);
         $this->entityManager->flush();
 
@@ -174,15 +175,16 @@ class UserService
      */
     public function createUser(array $data): array
     {
-        // Validation des données
+        /** Validation des données */
         $validatedData = $this->userValidatorService->checkCreateUser($data);
         if(count($validatedData['errors']) > 0) {
             return [
-                'errors' => $validatedData['errors']
+                'errors' => $validatedData['errors'],
+                'user' => []
             ];
         }
 
-        // Insertion de l'utilisateur et sauvegarde
+        /** Insertion de l'utilisateur et sauvegarde */
         $user = new User();
         $user->setEmail($validatedData['data']['email']);
         $user->setFirstname($validatedData['data']['firstname']);
