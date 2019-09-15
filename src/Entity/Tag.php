@@ -39,6 +39,11 @@ class Tag
      */
     private $updated;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -109,6 +114,18 @@ class Tag
     public function setUpdated(\DateTimeInterface $updated): self
     {
         $this->updated = $updated;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

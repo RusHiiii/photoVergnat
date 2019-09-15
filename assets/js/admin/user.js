@@ -25,7 +25,7 @@ $('body').on('submit', '#update-password', function(e){
     });
 });
 
-/** Initialisation formualire d'ajout */
+/** Initialisation formualire de MàJ */
 $('body').on('submit', '#update-user', function(e){
     e.preventDefault();
 
@@ -226,7 +226,7 @@ function addRow(user) {
     table.row(row).column(1).nodes().to$().addClass('lastname');
 }
 
-/** Ajoute une ligne au tableau */
+/** MàJ une ligne au tableau */
 function updateRow(user) {
     let current_datetime = new Date(user.created);
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);

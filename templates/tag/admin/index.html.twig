@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header tag">
                         <div class="header-text">
                             <h5>Listes des tags</h5>
                             <span>Adminisatration de tous les tags du site Photo'Vergnat. Il est possible de les supprimer, éditer, ajouter. </span>
@@ -53,6 +53,7 @@
                                     <th>Titre</th>
                                     <th>Date de création</th>
                                     <th>Nombre de catégories</th>
+                                    <th>Type</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -60,9 +61,10 @@
                                 {% for tag in tags %}
                                 <tr id="tag_{{ tag.id }}">
                                     <td>{{ tag.id }}</td>
-                                    <td>{{ tag.title }}</td>
+                                    <td class="title">{{ tag.title }}</td>
                                     <td>{{ tag.created | date('d-m-Y H:i:s') }}</td>
                                     <td>{{ tag.categories | length }}</td>
+                                    <td>{{ tag.type }}</td>
                                     <td class="action">
                                         <button type="button" class="btn btn-warning waves-effect edit" data-id="{{ tag.id }}" data-toggle="modal"><i class="icofont icofont-edit-alt"></i></button>
                                         <button type="button" class="btn btn-danger alert-ajax m-b-10 delete" data-id="{{ tag.id }}"><i class="icofont icofont-bin"></i></button>
@@ -74,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-            </div>s
+            </div>
         </div>
     </div>
 

@@ -44,7 +44,7 @@ class XhrController extends AbstractController
     }
 
     /**
-     * Edtion d'un mot de passe
+     * Suppression d'un utilisateur
      * @Route("/xhr/admin/user/remove", condition="request.isXmlHttpRequest()")
      */
     public function removeUser(
@@ -62,9 +62,9 @@ class XhrController extends AbstractController
     }
 
     /**
- * Création d'un utilisateur
- * @Route("/xhr/admin/user/create", condition="request.isXmlHttpRequest()")
- */
+     * Création d'un utilisateur
+     * @Route("/xhr/admin/user/create", condition="request.isXmlHttpRequest()")
+     */
     public function createUser(
         Request $request,
         UserService $userService

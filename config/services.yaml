@@ -28,3 +28,9 @@ services:
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
+
+    App\EventListener\TagEntityListener:
+        class: App\EventListener\TagEntityListener
+        tags:
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: prePersist }

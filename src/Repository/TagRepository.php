@@ -19,32 +19,19 @@ class TagRepository extends ServiceEntityRepository
         parent::__construct($registry, Tag::class);
     }
 
-    // /**
-    //  * @return Tag[] Returns an array of Tag objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Récupération par ID
+     * @param int $id
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findById(int $id)
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Tag
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('t.id = :id')
+            ->setParameter('id', $id)
             ->getQuery()
             ->getOneOrNullResult()
-        ;
+            ;
     }
-    */
 }

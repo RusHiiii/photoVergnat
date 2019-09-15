@@ -88,7 +88,8 @@ class UserService
         $validatedData = $this->userValidatorService->checkUpdateUser($data);
         if(count($validatedData['errors']) > 0) {
             return [
-                'errors' => $validatedData['errors']
+                'errors' => $validatedData['errors'],
+                'user' => []
             ];
         }
 

@@ -75,10 +75,15 @@
 #alert-update {
   display: none;
 }
-.create-user {
+.create-user, .create-tag, .update-tag {
   height: 40.4px;
   width: 88.6px;
 }
+
+#tags-table td:nth-last-child(2){
+  text-transform: capitalize;
+}
+
 .edit-password {
   height: 40.4px;
   width: 88.6px;
@@ -111,8 +116,6 @@
   height: 40px;
 }
 #users-table {
-  td: last-child{ text-align: center;
-  }
   td {
     vertical-align: middle;
   }
@@ -133,7 +136,7 @@
   position: relative;
 }
 
-.action{
+#tags-table td:last-child, #users-table td:last-child{
   text-align: center;
 }
 

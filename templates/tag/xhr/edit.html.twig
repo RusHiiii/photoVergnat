@@ -1,0 +1,63 @@
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Edition d'un tag</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <form method="POST" id="update-tag">
+            <div class="modal-body">
+                <div class="alert alert-danger" role="alert" id="alert-update"></div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Identifiant</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" value="{{ tag.id }}" readonly name="id">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Titre</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" data-validation="length" name="title" data-validation-length="min3" value="{{ tag.title }}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Type</label>
+                    <div class="col-sm-10">
+                        <select class="form-control form-control-primary" name="type">
+                            <option value="category" {{ tag.type == 'category' ? 'selected' }}>Catégorie</option>
+                            <option value="photo" {{ tag.type == 'photo' ? 'selected' }}>Photo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Création</label>
+                    <div class="col-sm-10">
+                        <input type="datetime-local" class="form-control" name="created" value="{{ tag.created | date('Y-m-d\\TH:i') }}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Mise à jour</label>
+                    <div class="col-sm-10">
+                        <input type="datetime-local" class="form-control" value="{{ tag.updated | date('Y-m-d\\TH:i') }}" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" name="token" value="{{ csrf_token('update-tag') }}"/>
+                <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn btn-primary waves-effect waves-light update-tag">Valider</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% block javascripts %}
+    <script type="text/javascript">
+        $(".roles").select2();
+        $.validate({
+            lang: 'fr',
+            borderColorOnError : '#ff001c',
+            scrollToTopOnError: false
+        });
+    </script>
+{% endblock %}
