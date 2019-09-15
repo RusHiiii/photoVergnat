@@ -65,7 +65,7 @@ $('#tags-table tbody').on('click', '.alert-ajax', function(e){
 $('body').on('submit', '#create-tag', function(e){
     e.preventDefault();
 
-    addSpiner('.create-tag');
+    $.addSpinner('.create-tag');
 
     $.ajax({
         url : '/xhr/admin/tag/create',
@@ -75,8 +75,8 @@ $('body').on('submit', '#create-tag', function(e){
         },
         dataType:'json',
         success : function(res) {
-            removeSpinner('.create-tag', 'Valider');
-            showErrors(res['errors'], 'alert-create');
+            $.removeSpinner('.create-tag', 'Valider');
+            $.showErrors(res['errors'], '#alert-create');
 
             if(res['errors'].length === 0){
                 addRow(JSON.parse(res['tag']));
@@ -89,7 +89,7 @@ $('body').on('submit', '#create-tag', function(e){
 $('body').on('submit', '#update-tag', function(e){
     e.preventDefault();
 
-    addSpiner('.update-tag');
+    $.addSpinner('.update-tag');
 
     $.ajax({
         url : '/xhr/admin/tag/update',
@@ -99,8 +99,8 @@ $('body').on('submit', '#update-tag', function(e){
         },
         dataType:'json',
         success : function(res) {
-            removeSpinner('.update-tag', 'Valider');
-            showErrors(res['errors'], 'alert-update');
+            $.removeSpinner('.update-tag', 'Valider');
+            $.showErrors(res['errors'], '#alert-update');
 
             if(res['errors'].length === 0){
                 updateRow(JSON.parse(res['tag']));
@@ -156,32 +156,4 @@ function updateRow(tag) {
         tag.type,
         getHtmlButton(tag)
     ]).draw(false);
-}
-
-/** Fonction affichage des erreurs */
-function showErrors(data, element) {
-    $("#" + element).empty();
-
-    if(!$.isEmptyObject(data)){
-        Object.keys(data).forEach(function(key) {
-            $("#" + element).append(data[key]).append('<br>');
-        });
-
-        $("#" + element).show();
-    }else{
-        $("#" + element).hide();
-        $('#large-Modal').modal('hide');
-    }
-}
-
-/** Ajout du spinner */
-function addSpiner(data) {
-    $(data).empty();
-    $(data).addClass('loading spinner');
-}
-
-/** Suppression du spinner */
-function removeSpinner(data, value) {
-    $(data).removeClass('loading spinner');
-    $(data).html(value);
 }

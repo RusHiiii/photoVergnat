@@ -4,7 +4,7 @@
 $('body').on('submit', '#update-password', function(e){
     e.preventDefault();
 
-    addSpiner('.edit-password');
+    $.addSpinner('.edit-password');
 
     $.ajax({
         url : '/xhr/app/user/edit-password',
@@ -19,8 +19,8 @@ $('body').on('submit', '#update-password', function(e){
             },
         },
         success : function(res) {
-            removeSpinner('.edit-password', 'Valider');
-            showErrors(res['errors'], 'alert-password');
+            $.removeSpinner('.edit-password', 'Valider');
+            $.showErrors(res['errors'], '#alert-password');
         }
     });
 });
@@ -29,7 +29,7 @@ $('body').on('submit', '#update-password', function(e){
 $('body').on('submit', '#update-user', function(e){
     e.preventDefault();
 
-    addSpiner('.update-user');
+    $.addSpinner('.update-user');
 
     $.ajax({
         url : '/xhr/admin/user/update',
@@ -44,8 +44,8 @@ $('body').on('submit', '#update-user', function(e){
             },
         },
         success : function(res) {
-            removeSpinner('.update-user', 'Valider');
-            showErrors(res['errors'], 'alert-update');
+            $.removeSpinner('.update-user', 'Valider');
+            $.showErrors(res['errors'], '#alert-update');
 
             if(res['errors'].length === 0){
                 updateRow(JSON.parse(res['user']));
@@ -58,7 +58,7 @@ $('body').on('submit', '#update-user', function(e){
 $('body').on('submit', '#create-user', function(e){
     e.preventDefault();
 
-    addSpiner('.create-user');
+    $.addSpinner('.create-user');
 
     $.ajax({
         url : '/xhr/admin/user/create',
@@ -74,8 +74,8 @@ $('body').on('submit', '#create-user', function(e){
             },
         },
         success : function(res) {
-            removeSpinner('.create-user', 'Valider');
-            showErrors(res['errors'], 'alert-create');
+            $.removeSpinner('.create-user', 'Valider');
+            $.showErrors(res['errors'], '#alert-create');
 
             if(res['errors'].length === 0){
                 addRow(JSON.parse(res['user']));
@@ -164,34 +164,6 @@ $('.user .add').on('click', function(e){
 });
 
 /****************** FONCTION **********************/
-
-/** Fonction affichage des erreurs */
-function showErrors(data, element) {
-    $("#" + element).empty();
-
-    if(!$.isEmptyObject(data)){
-        Object.keys(data).forEach(function(key) {
-            $("#" + element).append(data[key]).append('<br>');
-        });
-
-        $("#" + element).show();
-    }else{
-        $("#" + element).hide();
-        $('#large-Modal').modal('hide');
-    }
-}
-
-/** Ajout du spinner */
-function addSpiner(data) {
-    $(data).empty();
-    $(data).addClass('loading spinner');
-}
-
-/** Suppression du spinner */
-function removeSpinner(data, value) {
-    $(data).removeClass('loading spinner');
-    $(data).html(value);
-}
 
 /** Génération du bouton */
 function getHtmlButton(data) {

@@ -10,11 +10,8 @@ namespace App\Service\Tag;
 
 
 use App\Entity\Tag;
-use App\Entity\User;
 use App\Repository\TagRepository;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Serializer\SerializerInterface;
 

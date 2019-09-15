@@ -68,7 +68,7 @@ class UserVoter extends Voter
      */
     private function canEdit(User $user)
     {
-        if ($this->security->isGranted('ROLE_ADMIN')) {
+        if ($this->security->isGranted('ROLE_AUTHOR')) {
             return true;
         }
 
@@ -82,7 +82,7 @@ class UserVoter extends Voter
      */
     private function canCreateOrRemove(User $user)
     {
-        if ($this->security->isGranted('ROLE_SUPER_ADMIN')) {
+        if ($this->security->isGranted('ROLE_ADMIN')) {
             return true;
         }
 

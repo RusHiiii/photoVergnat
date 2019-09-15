@@ -68,7 +68,7 @@ class TagVoter extends Voter
      */
     private function canCreateOrRemoveOrEdit(User $user)
     {
-        if ($this->security->isGranted('ROLE_ADMIN')) {
+        if ($this->security->isGranted('ROLE_AUTHOR')) {
             return true;
         }
 
