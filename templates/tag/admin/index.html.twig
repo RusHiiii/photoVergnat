@@ -52,7 +52,7 @@
                                     <th>#</th>
                                     <th>Titre</th>
                                     <th>Date de création</th>
-                                    <th>Nombre de catégories</th>
+                                    <th>Nombre d'utilisation</th>
                                     <th>Type</th>
                                     <th>Action</th>
                                 </tr>
@@ -63,7 +63,7 @@
                                     <td>{{ tag.id }}</td>
                                     <td class="title">{{ tag.title }}</td>
                                     <td>{{ tag.created | date('d-m-Y H:i:s') }}</td>
-                                    <td>{{ tag.categories | length }}</td>
+                                    <td>{{ tag.categories | length + tag.photos | length }}</td>
                                     <td>{{ tag.type }}</td>
                                     <td class="action">
                                         <button type="button" class="btn btn-warning waves-effect edit" data-id="{{ tag.id }}" data-toggle="modal"><i class="icofont icofont-edit-alt"></i></button>
