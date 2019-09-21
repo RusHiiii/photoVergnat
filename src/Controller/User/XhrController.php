@@ -2,6 +2,7 @@
 
 namespace App\Controller\User;
 
+use App\Controller\Security\Voter\UserVoter;
 use App\Entity\User;
 use App\Service\User\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -51,7 +52,7 @@ class XhrController extends AbstractController
         Request $request,
         UserService $userService
     ) {
-        $this->denyAccessUnlessGranted('remove', User::class);
+        $this->denyAccessUnlessGranted(UserVoter::REMOVE, User::class);
 
         $data = $request->request->all();
         $resultRemove = $userService->removeUser($data['user']);
@@ -69,7 +70,7 @@ class XhrController extends AbstractController
         Request $request,
         UserService $userService
     ) {
-        $this->denyAccessUnlessGranted('create', User::class);
+        $this->denyAccessUnlessGranted(UserVoter::CREATE, User::class);
 
         $data = $request->request->all();
         $resultCreate = $userService->createUser($data['user']);
@@ -88,7 +89,7 @@ class XhrController extends AbstractController
         Request $request,
         UserService $userService
     ) {
-        $this->denyAccessUnlessGranted('edit', User::class);
+        $this->denyAccessUnlessGranted(UserVoter::EDIT, User::class);
 
         $data = $request->request->all();
         $resultUpdate = $userService->updateUser($data['user']);
@@ -107,7 +108,7 @@ class XhrController extends AbstractController
         Request $request,
         User $user
     ) {
-        $this->denyAccessUnlessGranted('view', User::class);
+        $this->denyAccessUnlessGranted(UserVoter::VIEW, User::class);
 
         return $this->render('user/xhr/edit.html.twig', [
             'user' => $user,
@@ -122,7 +123,7 @@ class XhrController extends AbstractController
         Request $request,
         User $user
     ) {
-        $this->denyAccessUnlessGranted('view', User::class);
+        $this->denyAccessUnlessGranted(UserVoter::VIEW, User::class);
 
         return $this->render('user/xhr/password.html.twig', [
             'user' => $user,
@@ -136,7 +137,7 @@ class XhrController extends AbstractController
     public function displayModalCreate(
         Request $request
     ) {
-        $this->denyAccessUnlessGranted('view', User::class);
+        $this->denyAccessUnlessGranted(UserVoter::VIEW, User::class);
 
         return $this->render('user/xhr/create.html.twig', []);
     }

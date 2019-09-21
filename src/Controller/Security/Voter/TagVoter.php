@@ -35,7 +35,7 @@ class TagVoter extends Voter
             return false;
         }
 
-        if ($subject != Tag::class) {
+        if ($subject !== Tag::class) {
             return false;
         }
 

@@ -75,7 +75,7 @@
 #alert-update {
   display: none;
 }
-.create-user, .create-tag, .update-tag {
+.create-user, .create-tag, .update-tag, .create-season, .update-season {
   height: 40.4px;
   width: 88.6px;
 }
@@ -136,7 +136,7 @@
   position: relative;
 }
 
-#tags-table td:last-child, #users-table td:last-child{
+#tags-table td:last-child, #users-table td:last-child, #seasons-table td:last-child{
   text-align: center;
 }
 
