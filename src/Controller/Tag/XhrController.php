@@ -2,6 +2,7 @@
 
 namespace App\Controller\Tag;
 
+use App\Controller\Security\Voter\TagVoter;
 use App\Entity\Tag;
 use App\Entity\User;
 use App\Service\Tag\TagService;
@@ -21,7 +22,7 @@ class XhrController extends AbstractController
         Request $request,
         TagService $tagService
     ) {
-        $this->denyAccessUnlessGranted('create', Tag::class);
+        $this->denyAccessUnlessGranted(TagVoter::CREATE, Tag::class);
 
         $data = $request->request->all();
         $resultCreate = $tagService->createTag($data['tag']);
@@ -40,7 +41,7 @@ class XhrController extends AbstractController
         Request $request,
         TagService $tagService
     ) {
-        $this->denyAccessUnlessGranted('edit', Tag::class);
+        $this->denyAccessUnlessGranted(TagVoter::EDIT, Tag::class);
 
         $data = $request->request->all();
         $resultUpdate = $tagService->updateTag($data['tag']);
@@ -59,7 +60,7 @@ class XhrController extends AbstractController
         Request $request,
         TagService $tagService
     ) {
-        $this->denyAccessUnlessGranted('remove', Tag::class);
+        $this->denyAccessUnlessGranted(TagVoter::REMOVE, Tag::class);
 
         $data = $request->request->all();
         $resultRemove = $tagService->removeTag($data['tag']);
@@ -77,7 +78,7 @@ class XhrController extends AbstractController
         Request $request,
         Tag $tag
     ) {
-        $this->denyAccessUnlessGranted('view', Tag::class);
+        $this->denyAccessUnlessGranted(TagVoter::VIEW, Tag::class);
 
         return $this->render('tag/xhr/edit.html.twig', [
             'tag' => $tag,
@@ -91,7 +92,7 @@ class XhrController extends AbstractController
     public function displayModalCreate(
         Request $request
     ) {
-        $this->denyAccessUnlessGranted('view', Tag::class);
+        $this->denyAccessUnlessGranted(TagVoter::VIEW, Tag::class);
 
         return $this->render('tag/xhr/create.html.twig', []);
     }
