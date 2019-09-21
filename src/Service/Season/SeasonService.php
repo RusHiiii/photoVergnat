@@ -113,7 +113,7 @@ class SeasonService
             ];
         }
 
-        /** MàJ de l'utilisateur et sauvegarde */
+        /** MàJ de la saison et sauvegarde */
         $season = $this->seasonRepository->findById($validatedData['data']['id']);
 
         $season->setTitle($validatedData['data']['title']);

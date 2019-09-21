@@ -85,7 +85,7 @@ $('body').on('submit', '#create-tag', function(e){
     });
 });
 
-/** Initialisation formualire d'ajout */
+/** Initialisation formualire de MàJ */
 $('body').on('submit', '#update-tag', function(e){
     e.preventDefault();
 
@@ -133,7 +133,7 @@ function addRow(tag) {
     table.row(row).column(1).nodes().to$().addClass('title');
 }
 
-/** Ajoute une ligne au tableau */
+/** MàJ une ligne au tableau */
 function updateRow(tag) {
     let current_datetime = new Date(tag.created);
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
@@ -145,6 +145,6 @@ function updateRow(tag) {
         formatted_date,
         tag.categories.length,
         tag.type,
-        getHtmlButton(tag)
+        $.getHtmlButton(tag)
     ]).draw(false);
 }
