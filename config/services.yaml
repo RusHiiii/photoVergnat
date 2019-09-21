@@ -34,3 +34,9 @@ services:
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
+
+    App\EventListener\SeasonEntityListener:
+        class: App\EventListener\SeasonEntityListener
+        tags:
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: prePersist }

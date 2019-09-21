@@ -1,6 +1,6 @@
 {% extends 'elements/layout/admin/base.html.twig' %}
 
-{% block title %}Photo'Vergnat - Gestions des tags{% endblock %}
+{% block title %}Photo'Vergnat - Gestions des saisons{% endblock %}
 
 {% block body %}
     <!-- Page-header start -->
@@ -9,8 +9,8 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Gestion des tags</h4>
-                        <span>Gérez les tags du site Photo'Vergnat.fr</span>
+                        <h4>Gestion des saisons</h4>
+                        <span>Gérez les saisons du site Photo'Vergnat.fr</span>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                             <a href="{{ path('admin_home') }}"> <i class="feather icon-home"></i> Accueil</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ path('admin_tags') }}">Tags</a>
+                            <a href="{{ path('admin_seasons') }}">Saisons</a>
                         </li>
                     </ul>
                 </div>
@@ -35,10 +35,10 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header tag">
+                    <div class="card-header season">
                         <div class="header-text">
-                            <h5>Listes des tags</h5>
-                            <span>Adminisatration de tous les tags du site Photo'Vergnat. Il est possible de les supprimer, éditer, ajouter. </span>
+                            <h5>Listes des saisons</h5>
+                            <span>Adminisatration de toutes les saisons du site Photo'Vergnat. Il est possible de les supprimer, éditer, ajouter. </span>
                         </div>
                         <div class="header-button">
                             <button type="button" class="btn btn-primary add"><i class="icofont icofont-plus"></i></button>
@@ -46,28 +46,26 @@
                     </div>
                     <div class="card-block">
                         <div class="dt-responsive table-responsive">
-                            <table id="tags-table" class="table table-striped table-bordered nowrap">
+                            <table id="seasons-table" class="table table-striped table-bordered nowrap">
                                 <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Titre</th>
                                     <th>Date de création</th>
                                     <th>Nombre d'utilisation</th>
-                                    <th>Type</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for tag in tags %}
-                                <tr id="tag_{{ tag.id }}">
-                                    <td>{{ tag.id }}</td>
-                                    <td class="title">{{ tag.title }}</td>
-                                    <td>{{ tag.created | date('d-m-Y H:i:s') }}</td>
-                                    <td>{{ tag.categories | length + tag.photos | length }}</td>
-                                    <td>{{ tag.type }}</td>
+                                {% for season in seasons %}
+                                <tr id="season_{{ season.id }}">
+                                    <td>{{ season.id }}</td>
+                                    <td class="title">{{ season.title }}</td>
+                                    <td>{{ season.created | date('d-m-Y H:i:s') }}</td>
+                                    <td>{{ season.categories | length }}</td>
                                     <td class="action">
-                                        <button type="button" class="btn btn-warning waves-effect edit" data-id="{{ tag.id }}" data-toggle="modal"><i class="icofont icofont-edit-alt"></i></button>
-                                        <button type="button" class="btn btn-danger alert-ajax m-b-10 delete" data-id="{{ tag.id }}"><i class="icofont icofont-bin"></i></button>
+                                        <button type="button" class="btn btn-warning waves-effect edit" data-id="{{ season.id }}" data-toggle="modal"><i class="icofont icofont-edit-alt"></i></button>
+                                        <button type="button" class="btn btn-danger alert-ajax m-b-10 delete" data-id="{{ season.id }}"><i class="icofont icofont-bin"></i></button>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -86,7 +84,7 @@
 
 {% block javascripts %}
     <script type="text/javascript">
-        $('#tags-table').DataTable({
+        $('#seasons-table').DataTable({
             "searching": true,
             "lengthChange": true,
             "ordering": false,

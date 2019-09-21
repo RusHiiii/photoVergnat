@@ -1,10 +1,10 @@
 /****************** LISTENER **********************/
 
 /** Initialisation de la modal */
-$('#tags-table tbody').on('click', '.edit', function(e){
+$('#seasons-table tbody').on('click', '.edit', function(e){
     var id = $(this).data('id');
     $.ajax({
-        url : '/xhr/admin/tag/display/edit/' + id,
+        url : '/xhr/admin/season/display/edit/' + id,
         type : 'GET',
         success : function(res) {
             $('#large-Modal').html(res);
@@ -14,9 +14,9 @@ $('#tags-table tbody').on('click', '.edit', function(e){
 });
 
 /** Initialisation de la modal */
-$('.tag .add').on('click', function(e){
+$('.season .add').on('click', function(e){
     $.ajax({
-        url : '/xhr/admin/tag/display/create/',
+        url : '/xhr/admin/season/display/create/',
         type : 'GET',
         success : function(res) {
             $('#large-Modal').html(res);
@@ -26,23 +26,23 @@ $('.tag .add').on('click', function(e){
 });
 
 /** Initilisation des modals de suppression */
-$('#tags-table tbody').on('click', '.alert-ajax', function(e){
-    var table = $('#tags-table').DataTable();
+$('#seasons-table tbody').on('click', '.alert-ajax', function(e){
+    var table = $('#seasons-table').DataTable();
     var id = $(this).data('id');
 
     swal({
         title: "Suppression",
-        text: "Suppression de « "+ $("#tag_" + id).children('.title').text() +" »",
+        text: "Suppression de « "+ $("#season_" + id).children('.title').text() +" »",
         type: "warning",
         showCancelButton: true,
         closeOnConfirm: false,
         showLoaderOnConfirm: true
     }, function () {
         $.ajax({
-            url : '/xhr/admin/tag/remove',
+            url : '/xhr/admin/season/remove',
             type : 'POST',
             data : {
-                'tag': id
+                'season': id
             },
             dataType:'json',
             success : function(res) {
@@ -51,7 +51,7 @@ $('#tags-table tbody').on('click', '.alert-ajax', function(e){
                     message = res.errors[0];
                 }else{
                     table
-                        .row($("#tag_" + id))
+                        .row($("#season_" + id))
                         .remove()
                         .draw();
                 }
@@ -62,89 +62,88 @@ $('#tags-table tbody').on('click', '.alert-ajax', function(e){
 });
 
 /** Initialisation formualire d'ajout */
-$('body').on('submit', '#create-tag', function(e){
+$('body').on('submit', '#create-season', function(e){
     e.preventDefault();
 
-    $.addSpinner('.create-tag');
+    $.addSpinner('.create-season');
 
     $.ajax({
-        url : '/xhr/admin/tag/create',
+        url : '/xhr/admin/season/create',
         type : 'POST',
         data : {
-            'tag': $('#create-tag').serializeObject()
+            'season': $('#create-season').serializeObject()
         },
         dataType:'json',
         success : function(res) {
-            $.removeSpinner('.create-tag', 'Valider');
+            $.removeSpinner('.create-season', 'Valider');
             $.showErrors(res['errors'], '#alert-create');
 
             if(res['errors'].length === 0){
-                addRow(JSON.parse(res['tag']));
+                addRow(JSON.parse(res['season']));
             }
         }
     });
 });
 
 /** Initialisation formualire de MàJ */
-$('body').on('submit', '#update-tag', function(e){
+$('body').on('submit', '#update-season', function(e){
     e.preventDefault();
 
-    $.addSpinner('.update-tag');
+    $.addSpinner('.update-season');
 
     $.ajax({
-        url : '/xhr/admin/tag/update',
+        url : '/xhr/admin/season/update',
         type : 'POST',
         data : {
-            'tag': $('#update-tag').serializeObject()
+            'season': $('#update-season').serializeObject()
         },
         dataType:'json',
         success : function(res) {
-            $.removeSpinner('.update-tag', 'Valider');
+            $.removeSpinner('.update-season', 'Valider');
             $.showErrors(res['errors'], '#alert-update');
 
             if(res['errors'].length === 0){
-                updateRow(JSON.parse(res['tag']));
+                updateRow(JSON.parse(res['season']));
             }
         }
     });
 });
 
+
 /****************** FONCTION **********************/
 
 /** Ajoute une ligne au tableau */
-function addRow(tag) {
-    let current_datetime = new Date(tag.created);
+function addRow(season) {
+    let current_datetime = new Date(season.created);
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 
-    var table = $('#tags-table').DataTable();
+    var table = $('#seasons-table').DataTable();
     var row = table.row.add([
-        tag.id,
-        tag.title,
+        season.id,
+        season.title,
         formatted_date,
-        tag.categories.length,
-        tag.type,
-        $.getHtmlButton(tag)
+        season.categories.length,
+        $.getHtmlButton(season)
     ])
         .draw(false)
         .nodes()
         .to$()
-        .attr('id', 'tag_' + tag.id);
+        .attr('id', 'season_' + season.id);
 
     table.row(row).column(1).nodes().to$().addClass('title');
 }
 
 /** MàJ une ligne au tableau */
-function updateRow(tag) {
-    let current_datetime = new Date(tag.created);
+function updateRow(season) {
+    let current_datetime = new Date(season.created);
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 
-    var table = $('#tags-table').DataTable();
-    table.row('#tag_' + tag.id).data([
-        tag.id,
-        tag.title,
+    var table = $('#seasons-table').DataTable();
+    table.row('#season_' + season.id).data([
+        season.id,
+        season.title,
         formatted_date,
-        tag.categories.length,
-        tag.type,
-        $.getHtmlButton(tag)
+        season.categories.length,
+        $.getHtmlButton(season)
     ]).draw(false);
 }

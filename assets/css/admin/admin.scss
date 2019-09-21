@@ -1,18 +1,18 @@
 @import "../variables";
 
 /* Spinner loading: suffit d'ajouter: loading spinner */
-@keyframes "spinner" {
+@keyframes spinner {
   to {
     transform: rotate(360deg);
   }
 }
-@-webkit-keyframes "spinner" {
+@-webkit-keyframes spinner {
   to {
     -webkit-transform: rotate(360deg);
   }
 }
 /* refresh loading: suffit d'ajouter: glyphicon-refresh-animate */
-@keyframes "spin" {
+@keyframes spin {
   from {
     transform: scale(1) rotate(0deg);
   }
@@ -20,7 +20,7 @@
     transform: scale(1) rotate(360deg);
   }
 }
-@-webkit-keyframes "spinw" {
+@-webkit-keyframes spinw {
   from {
     -webkit-transform: rotate(0deg);
   }
@@ -28,7 +28,7 @@
     -webkit-transform: rotate(360deg);
   }
 }
-@-moz-keyframes "spinm" {
+@-moz-keyframes spinm {
   from {
     -moz-transform: rotate(0deg);
   }
@@ -75,7 +75,7 @@
 #alert-update {
   display: none;
 }
-.create-user, .create-tag, .update-tag {
+.create-user, .create-tag, .update-tag, .create-season, .update-season {
   height: 40.4px;
   width: 88.6px;
 }
@@ -136,7 +136,7 @@
   position: relative;
 }
 
-#tags-table td:last-child, #users-table td:last-child{
+#tags-table td:last-child, #users-table td:last-child, #seasons-table td:last-child{
   text-align: center;
 }
 

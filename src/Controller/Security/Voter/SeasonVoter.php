@@ -9,12 +9,13 @@
 namespace App\Controller\Security\Voter;
 
 
+use App\Entity\Season;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\Security;
 
-class UserVoter extends Voter
+class SeasonVoter extends Voter
 {
     const REMOVE = 'remove';
     const EDIT = 'edit';
@@ -34,7 +35,7 @@ class UserVoter extends Voter
             return false;
         }
 
-        if ($subject !== User::class) {
+        if ($subject !== Season::class) {
             return false;
         }
 
@@ -62,13 +63,13 @@ class UserVoter extends Voter
     }
 
     /**
-     * Vérifier si le user peux créer ou editer
+     * Vérifier si le user peux créer ou supprimer
      * @param User $user
      * @return bool
      */
-    private function canEdit(User $user)
+    private function canCreateOrRemove(User $user)
     {
-        if ($this->security->isGranted('ROLE_AUTHOR')) {
+        if ($this->security->isGranted('ROLE_ADMIN')) {
             return true;
         }
 
@@ -76,13 +77,13 @@ class UserVoter extends Voter
     }
 
     /**
-     * Si il peux supprimer
+     * Vérifier si le user peux créer ou editer
      * @param User $user
      * @return bool
      */
-    private function canCreateOrRemove(User $user)
+    private function canEdit(User $user)
     {
-        if ($this->security->isGranted('ROLE_ADMIN')) {
+        if ($this->security->isGranted('ROLE_AUTHOR')) {
             return true;
         }
 
