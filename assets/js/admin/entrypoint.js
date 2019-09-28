@@ -6,3 +6,4 @@ require('./user.js');
 require('./tag.js');
 require('./season.js');
 require('./type.js');
+require('./photo.js');

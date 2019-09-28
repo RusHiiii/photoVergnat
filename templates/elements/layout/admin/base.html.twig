@@ -44,6 +44,10 @@
         <script type="text/javascript" src="{{ asset('adminity/bower_components/jquery/js/jquery.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('theme/js/jquery.ba-serializeobject.min.js') }}"></script>
 
+        <!-- Filer -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/pages/jquery.filer/css/jquery.filer.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css') }}">
+
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -120,6 +124,9 @@
     <script type="text/javascript" src="{{ asset('adminity/assets/js/jquery.quicksearch.js') }}"></script>
     <script type="text/javascript" src="{{ asset('adminity/assets/pages/advance-elements/select2-custom.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/js/jquery.form-validator.min.js') }}"></script>
+
+    <!-- File upload -->
+    <script type="text/javascript" src="{{ asset('adminity/assets/pages/jquery.filer/js/jquery.filer.min.js') }}"></script>
 
     {% block javascripts %}{% endblock %}
     </body>
