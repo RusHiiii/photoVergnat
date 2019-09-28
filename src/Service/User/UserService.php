@@ -9,6 +9,7 @@
 namespace App\Service\User;
 
 
+use App\Controller\Security\Voter\UserVoter;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -129,7 +130,7 @@ class UserService
 
         /** Récupération de l'utilisateur */
         $user = $this->security->getUser()->getUsername();
-        if($this->security->isGranted('edit', User::class) && isset($validatedData['data']['email'])) {
+        if($this->security->isGranted(UserVoter::EDIT, User::class) && isset($validatedData['data']['email'])) {
             $user = $this->userRepository->findByEmail($validatedData['data']['email']);
         }
 

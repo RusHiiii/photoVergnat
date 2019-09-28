@@ -4,7 +4,7 @@
 $('#update-user').on('submit', function(event) {
     event.preventDefault();
 
-    addSpiner('.edit-user');
+    $.addSpinner('.edit-user');
 
     $.ajax({
         url : '/xhr/app/user/edit-user',
@@ -14,8 +14,8 @@ $('#update-user').on('submit', function(event) {
         },
         dataType:'json',
         success : function(res) {
-            removeSpinner('.edit-user', 'Mettre a jours');
-            showErrors(res['errors'], 'alert-edit');
+            $.removeSpinner('.edit-user', 'Mettre a jours');
+            $.showErrors(res['errors'], 'alert-edit');
         }
     });
 });
@@ -24,7 +24,7 @@ $('#update-user').on('submit', function(event) {
 $('#update-password').on('submit', function(event) {
     event.preventDefault();
 
-    addSpiner('.edit-password');
+    $.addSpinner('.edit-password');
 
     $.ajax({
         url : '/xhr/app/user/edit-password',
@@ -34,37 +34,8 @@ $('#update-password').on('submit', function(event) {
         },
         dataType:'json',
         success : function(res) {
-            removeSpinner('.edit-password', 'Valider');
-            showErrors(res['errors'], 'alert-password');
+            $.removeSpinner('.edit-password', 'Valider');
+            $.showErrors(res['errors'], 'alert-password');
         }
     });
 });
-
-/****************** FONCTION **********************/
-
-/** Fonction affichage des erreurs */
-function showErrors(data, element) {
-    $("#" + element).empty();
-
-    if(!$.isEmptyObject(data)){
-        Object.keys(data).forEach(function(key) {
-            $("#" + element).append(data[key]).append('<br>');
-        });
-
-        $("#" + element).show();
-    }else{
-        $("#" + element).hide();
-    }
-}
-
-/** Ajout du spinner */
-function addSpiner(data) {
-    $(data).empty();
-    $(data).addClass('loading spinner');
-}
-
-/** Suppression du spinner */
-function removeSpinner(data, value) {
-    $(data).removeClass('loading spinner');
-    $(data).html(value);
-}

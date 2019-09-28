@@ -38,7 +38,7 @@
                     <div class="card-header season">
                         <div class="header-text">
                             <h5>Listes des saisons</h5>
-                            <span>Adminisatration de toutes les saisons du site Photo'Vergnat. Il est possible de les supprimer, éditer, ajouter. </span>
+                            <span>Administration de toutes les saisons du site Photo'Vergnat. Il est possible de les supprimer, éditer, ajouter. </span>
                         </div>
                         <div class="header-button">
                             <button type="button" class="btn btn-primary add"><i class="icofont icofont-plus"></i></button>
@@ -61,7 +61,7 @@
                                 <tr id="season_{{ season.id }}">
                                     <td>{{ season.id }}</td>
                                     <td class="title">{{ season.title }}</td>
-                                    <td>{{ season.created | date('d-m-Y H:i:s') }}</td>
+                                    <td>{{ season.created | date('Y-m-d H:i:s') }}</td>
                                     <td>{{ season.categories | length }}</td>
                                     <td class="action">
                                         <button type="button" class="btn btn-warning waves-effect edit" data-id="{{ season.id }}" data-toggle="modal"><i class="icofont icofont-edit-alt"></i></button>

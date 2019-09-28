@@ -38,7 +38,7 @@
                     <div class="card-header user">
                         <div class="header-text">
                             <h5>Listes des utilisateurs</h5>
-                            <span>Adminisatration de tous les utilisateurs du site Photo'Vergnat. Il est possible de les supprimer, éditer, ajouter. </span>
+                            <span>Administration de tous les utilisateurs du site Photo'Vergnat. Il est possible de les supprimer, éditer, ajouter. </span>
                         </div>
                         <div class="header-button">
                             <button type="button" class="btn btn-primary add"><i class="icofont icofont-plus"></i></button>
@@ -65,7 +65,7 @@
                                     <td class="lastname">{{ user.lastname }}</td>
                                     <td>{{ user.firstname }}</td>
                                     <td>{{ user.email }}</td>
-                                    <td>{{ user.created | date('d-m-Y H:i:s') }}</td>
+                                    <td>{{ user.created | date('Y-m-d H:i:s') }}</td>
                                     <td>{{ user.roles | join(' | ') |replace({'ROLE_' : ''}) }}</td>
                                     <td class="action">
                                         <button type="button" class="btn btn-warning waves-effect edit" data-id="{{ user.id }}" data-toggle="modal"><i class="icofont icofont-edit-alt"></i></button>

@@ -2,13 +2,14 @@
 
 namespace App\EventListener;
 
-use App\Entity\Season;
+use App\Entity\Tag;
+use App\Entity\Type;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 
-class SeasonEntityListener
+class TypeEntityListener
 {
     /**
-     * Insertion d'une saison
+     * Insertion d'un tag
      * @param LifecycleEventArgs $args
      * @throws \Exception
      */
@@ -16,7 +17,7 @@ class SeasonEntityListener
     {
         $entity = $args->getEntity();
 
-        if (!$entity instanceof Season) {
+        if (!$entity instanceof Type) {
             return;
         }
 
@@ -25,7 +26,7 @@ class SeasonEntityListener
     }
 
     /**
-     * MàJ d'une saison
+     * MàJ d'un tag
      * @param LifecycleEventArgs $args
      * @throws \Exception
      */
@@ -33,7 +34,7 @@ class SeasonEntityListener
     {
         $entity = $args->getEntity();
 
-        if (!$entity instanceof Season) {
+        if (!$entity instanceof Type) {
             return;
         }
 
