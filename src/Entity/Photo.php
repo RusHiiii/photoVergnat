@@ -36,16 +36,16 @@ class Photo
     private $category;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Type", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $type;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="photos")
      * @ORM\JoinTable(name="photos_tags")
      */
     private $tags;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="photos")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $type;
 
     public function __construct()
     {
@@ -93,18 +93,6 @@ class Photo
         return $this;
     }
 
-    public function getType(): ?Type
-    {
-        return $this->type;
-    }
-
-    public function setType(Type $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Tag[]
      */
@@ -127,6 +115,18 @@ class Photo
         if ($this->tags->contains($tag)) {
             $this->tags->removeElement($tag);
         }
+
+        return $this;
+    }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }
