@@ -47,6 +47,7 @@
 }
 
 .photo-screen{
+  text-align: center;
   img{
     width: 150px;
   }
@@ -82,7 +83,7 @@
 #alert-update {
   display: none;
 }
-.create-user, .create-tag, .update-tag, .create-season, .update-season, .create-type, .update-type {
+.create-user, .create-tag, .update-tag, .create-season, .update-season, .create-type, .update-type, .create-photo {
   height: 40.4px;
   width: 88.6px;
 }

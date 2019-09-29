@@ -20,11 +20,6 @@ class Photo
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $path;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="photos")
      * @ORM\JoinColumn(nullable=true)
      */
@@ -57,6 +52,11 @@ class Photo
      */
     private $title;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $file;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -65,18 +65,6 @@ class Photo
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getPath(): ?string
-    {
-        return $this->path;
-    }
-
-    public function setPath(string $path): self
-    {
-        $this->path = $path;
-
-        return $this;
     }
 
     public function getCategory(): ?Category
@@ -161,6 +149,18 @@ class Photo
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function setFile($file): self
+    {
+        $this->file = $file;
 
         return $this;
     }

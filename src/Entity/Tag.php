@@ -168,6 +168,4 @@ class Tag
     {
         return $this->title;
     }
-
-
 }

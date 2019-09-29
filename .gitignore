@@ -23,6 +23,8 @@
 /node_modules/
 /public/build/
 /public/theme/
+/public/media/
+/public/images/
 /public/adminity/
 npm-debug.log
 yarn-error.log
