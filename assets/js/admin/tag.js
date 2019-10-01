@@ -81,6 +81,10 @@ $('body').on('submit', '#create-tag', function(e){
             if(res['errors'].length === 0){
                 addRow(JSON.parse(res['tag']));
             }
+        },
+        error: function(res) {
+            $.removeSpinner('.create-tag', 'Valider');
+            $.showErrors(['Oops an errors occured :('], '#alert-create');
         }
     });
 });
@@ -103,8 +107,12 @@ $('body').on('submit', '#update-tag', function(e){
             $.showErrors(res['errors'], '#alert-update');
 
             if(res['errors'].length === 0){
-                updateRow(JSON.parse(res['type']));
+                updateRow(JSON.parse(res['tag']));
             }
+        },
+        error: function(res) {
+            $.removeSpinner('.update-tag', 'Valider');
+            $.showErrors(['Oops an errors occured :('], '#alert-update');
         }
     });
 });

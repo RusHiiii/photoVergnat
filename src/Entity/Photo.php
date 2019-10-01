@@ -87,6 +87,13 @@ class Photo
         return $this->tags;
     }
 
+    public function resetTags(): self
+    {
+        $this->tags->clear();
+
+        return $this;
+    }
+
     public function addTag(Tag $tag): self
     {
         if (!$this->tags->contains($tag)) {

@@ -21,6 +21,10 @@ $('body').on('submit', '#update-password', function(e){
         success : function(res) {
             $.removeSpinner('.edit-password', 'Valider');
             $.showErrors(res['errors'], '#alert-password');
+        },
+        error: function(res) {
+            $.removeSpinner('.edit-password', 'Valider');
+            $.showErrors(['Oops an errors occured :('], '#alert-password');
         }
     });
 });
@@ -50,6 +54,10 @@ $('body').on('submit', '#update-user', function(e){
             if(res['errors'].length === 0){
                 updateRow(JSON.parse(res['user']));
             }
+        },
+        error: function(res) {
+            $.removeSpinner('.edit-user', 'Valider');
+            $.showErrors(['Oops an errors occured :('], '#alert-update');
         }
     });
 });
@@ -80,6 +88,10 @@ $('body').on('submit', '#create-user', function(e){
             if(res['errors'].length === 0){
                 addRow(JSON.parse(res['user']));
             }
+        },
+        error: function(res) {
+            $.removeSpinner('.create-user', 'Valider');
+            $.showErrors(['Oops an errors occured :('], '#alert-create');
         }
     });
 });

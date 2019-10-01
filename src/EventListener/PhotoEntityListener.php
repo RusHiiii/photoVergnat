@@ -5,6 +5,7 @@ namespace App\EventListener;
 use App\Entity\Photo;
 use App\Service\Tools\FileUploaderService;
 use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class PhotoEntityListener
@@ -47,22 +48,28 @@ class PhotoEntityListener
             return;
         }
 
-        if(file_exists($this->uploader->getTargetDirectory() . $entity->getFile())){
-            unlink($this->uploader->getTargetDirectory() . $entity->getFile());
-        }
+        $this->removeFile($entity->getFile());
     }
 
     /**
      * MàJ d'une photo
-     * @param LifecycleEventArgs $args
+     * @param PreUpdateEventArgs $args
      * @throws \Exception
      */
-    public function preUpdate(LifecycleEventArgs $args)
+    public function preUpdate(PreUpdateEventArgs $args)
     {
         $entity = $args->getEntity();
 
         if (!$entity instanceof Photo) {
             return;
+        }
+
+        $oldFile = $args->getOldValue('file');
+        if($entity->getFile() === null) {
+            $entity->setFile($oldFile);
+        }else{
+            $this->removeFile($oldFile);
+            $this->uploadFile($entity);
         }
 
         $entity->setUpdated(new \DateTime('now'));
@@ -81,5 +88,20 @@ class PhotoEntityListener
             $fileName = $this->uploader->upload($file);
             $entity->setFile($fileName['filename']);
         }
+    }
+
+    /**
+     * Suppression d'un fichier
+     * @param string $filename
+     * @return bool
+     */
+    private function removeFile(string $filename)
+    {
+        if(file_exists($this->uploader->getTargetDirectory() . $filename)){
+            unlink($this->uploader->getTargetDirectory() . $filename);
+            return true;
+        }
+
+        return false;
     }
 }

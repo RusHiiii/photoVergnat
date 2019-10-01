@@ -5,3 +5,8 @@ liip_imagine:
   filter_sets:
     admin:
       quality: 70
+      filters:
+        watermark:
+          image: ../public/images/static/watermark.png
+          size: 0.2
+          position: bottomright

@@ -87,6 +87,7 @@ class SeasonService
         $season = new Season();
         $season->setTitle($validatedData['data']['title']);
 
+        /** Sauvegarde */
         $this->entityManager->persist($season);
         $this->entityManager->flush();
 
@@ -115,10 +116,9 @@ class SeasonService
 
         /** MàJ de la saison et sauvegarde */
         $season = $this->seasonRepository->findById($validatedData['data']['id']);
-
         $season->setTitle($validatedData['data']['title']);
 
-        $this->entityManager->persist($season);
+        /** Sauvegarde */
         $this->entityManager->flush();
 
         return [

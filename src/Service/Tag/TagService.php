@@ -86,6 +86,7 @@ class TagService
         $tag->setTitle($validatedData['data']['title']);
         $tag->setType($validatedData['data']['type']);
 
+        /** Sauvegarde */
         $this->entityManager->persist($tag);
         $this->entityManager->flush();
 
@@ -114,11 +115,10 @@ class TagService
 
         /** MàJ de l'utilisateur et sauvegarde */
         $tag = $this->tagRepository->findById($validatedData['data']['id']);
-
         $tag->setTitle($validatedData['data']['title']);
         $tag->setType($validatedData['data']['type']);
 
-        $this->entityManager->persist($tag);
+        /** Sauvegarde */
         $this->entityManager->flush();
 
         return [

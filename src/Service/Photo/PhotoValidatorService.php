@@ -47,7 +47,33 @@ class PhotoValidatorService
         $this->validatorService->validateNotBlank($data['title'], 'Titre');
         $this->validatorService->validateExist($data, 'format', 'format');
         $this->validatorService->validateExist($data, 'tags', 'tags');
-        $this->validatorService->validateNotNull($file, 'photo', 'Photo');
+        $this->validatorService->validateNotNull($file, 'photo');
+        $this->validatorService->validateImage($file, 'photo');
+
+        /** Récupération des erreurs */
+        $errors = $this->validatorService->getErrors();
+        return [
+            'errors' => $errors,
+            'data' => $data
+        ];
+    }
+
+    /**
+     * Validation de la données pour la MàJ
+     * @param array $data
+     * @param UploadedFile|null $file
+     * @return array
+     */
+    public function checkUpdatePhoto(array $data, ?UploadedFile $file): array
+    {
+        /** Trim les données */
+        $data = $this->toolsService->trimData($data);
+
+        /** Validation des données */
+        $this->validatorService->validateCsrfToken($data['token'], 'update-photo');
+        $this->validatorService->validateNotBlank($data['title'], 'Titre');
+        $this->validatorService->validateExist($data, 'format', 'format');
+        $this->validatorService->validateExist($data, 'tags', 'tags');
         $this->validatorService->validateImage($file, 'photo');
 
         /** Récupération des erreurs */

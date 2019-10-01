@@ -12,6 +12,19 @@ $('.photo .add').on('click', function(e){
     });
 });
 
+/** Initialisation de la modal */
+$('#photos-table tbody').on('click', '.edit', function(e){
+    var id = $(this).data('id');
+    $.ajax({
+        url : '/xhr/admin/photo/display/edit/' + id,
+        type : 'GET',
+        success : function(res) {
+            $('#large-Modal').html(res);
+            $('#large-Modal').modal();
+        }
+    });
+});
+
 /** Initialisation formualire d'ajout */
 $('body').on('submit', '#create-photo', function(e){
     e.preventDefault();
@@ -33,6 +46,39 @@ $('body').on('submit', '#create-photo', function(e){
             if(res['errors'].length === 0){
                 addRow(JSON.parse(res['photo']));
             }
+        },
+        error: function(res) {
+            $.removeSpinner('.create-photo', 'Valider');
+            $.showErrors(['Oops an errors occured :('], '#alert-create');
+        }
+    });
+});
+
+/** Initialisation formualire de MàJ */
+$('body').on('submit', '#update-photo', function(e){
+    e.preventDefault();
+
+    $.addSpinner('.update-photo');
+
+    $.ajax({
+        url : '/xhr/admin/photo/update',
+        type : 'POST',
+        data : new FormData(this),
+        dataType:'json',
+        contentType: false,
+        cache: false,
+        processData:false,
+        success : function(res) {
+            $.removeSpinner('.update-photo', 'Valider');
+            $.showErrors(res['errors'], '#alert-update');
+
+            if(res['errors'].length === 0){
+                updateRow(JSON.parse(res['photo']));
+            }
+        },
+        error: function(res) {
+            $.removeSpinner('.update-photo', 'Valider');
+            $.showErrors(['Oops an errors occured :('], '#alert-update');
         }
     });
 });
@@ -97,4 +143,21 @@ function addRow(photo) {
 
     table.row(row).column(1).nodes().to$().addClass('photo-screen');
     table.row(row).column(2).nodes().to$().addClass('title');
+}
+
+/** Ajoute une ligne au tableau */
+function updateRow(photo) {
+    let current_datetime = new Date(photo.created);
+    let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
+
+    var table = $('#photos-table').DataTable();
+    table.row('#photo_' + photo.id).data([
+        photo.id,
+        "<img src='/images/uploads/"+photo.file+"'>",
+        photo.title,
+        photo.type.title,
+        photo.tags.map(a => a.title).join('|'),
+        formatted_date,
+        $.getHtmlButton(photo)
+    ]).draw(false);
 }

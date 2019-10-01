@@ -87,6 +87,7 @@ class TypeService
         $type = new Type();
         $type->setTitle($validatedData['data']['title']);
 
+        /** Sauvegarde */
         $this->entityManager->persist($type);
         $this->entityManager->flush();
 
@@ -115,10 +116,9 @@ class TypeService
 
         /** MàJ de l'utilisateur et sauvegarde */
         $type = $this->typeRepository->findById($validatedData['data']['id']);
-
         $type->setTitle($validatedData['data']['title']);
 
-        $this->entityManager->persist($type);
+        /** Sauvegarde */
         $this->entityManager->flush();
 
         return [

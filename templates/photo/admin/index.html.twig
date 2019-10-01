@@ -62,7 +62,7 @@
                                 {% for photo in photos %}
                                 <tr id="photo_{{ photo.id }}">
                                     <td>{{ photo.id }}</td>
-                                    <td class="photo-screen"><img src="{{ ('/images/uploads/' ~ photo.file) | imagine_filter('admin') }}"></td>
+                                    <td class="photo-screen"><img class="lazy" data-src="{{ ('/images/uploads/' ~ photo.file) | imagine_filter('admin') }}"></td>
                                     <td class="title">{{ photo.title }}</td>
                                     <td>{{ photo.type.title }}</td>
                                     <td>{{ photo.tags | join('|') }}</td>
@@ -88,6 +88,7 @@
 
 {% block javascripts %}
     <script type="text/javascript">
+        $('.lazy').Lazy();
         $('#photos-table').DataTable({
             "searching": true,
             "lengthChange": true,

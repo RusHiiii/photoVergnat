@@ -10,7 +10,6 @@ namespace App\Service\Photo;
 
 
 use App\Entity\Photo;
-use App\Entity\Tag;
 use App\Repository\PhotoRepository;
 use App\Repository\TagRepository;
 use App\Repository\TypeRepository;
@@ -50,6 +49,13 @@ class PhotoService
         $this->photoRepository = $photoRepository;
     }
 
+    /**
+     * Création de photo
+     * @param array $data
+     * @param UploadedFile|null $file
+     * @return array
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function createPhoto(array $data, ?UploadedFile $file): array
     {
         /** Validation des données */
@@ -70,7 +76,45 @@ class PhotoService
             $photo->addTag($this->tagRepository->findById($tag));
         }
 
+        /** Sauvegarde */
         $this->entityManager->persist($photo);
+        $this->entityManager->flush();
+
+        return [
+            'errors' => [],
+            'photo' => $this->serialize->serialize($photo, 'json')
+        ];
+    }
+
+    /**
+     * MàJ d'une photo
+     * @param array $data
+     * @param UploadedFile|null $file
+     * @return array
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function updatePhoto(array $data, ?UploadedFile $file): array
+    {
+        /** Validation des données */
+        $validatedData = $this->photoValidatorService->checkUpdatePhoto($data, $file);
+        if(count($validatedData['errors']) > 0) {
+            return [
+                'errors' => $validatedData['errors'],
+                'photo' => []
+            ];
+        }
+
+        /** MàJ de la photo et sauvegarde */
+        $photo = $this->photoRepository->findById($validatedData['data']['id']);
+        $photo->setTitle($validatedData['data']['title']);
+        $photo->setType($this->typeRepository->findById($validatedData['data']['format']));
+        $photo->setFile($file);
+        $photo->resetTags();
+        foreach ($validatedData['data']['tags'] as $tag) {
+            $photo->addTag($this->tagRepository->findById($tag));
+        }
+
+        /** Sauvegarde */
         $this->entityManager->flush();
 
         return [

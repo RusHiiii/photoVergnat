@@ -45,6 +45,11 @@ $('#types-table tbody').on('click', '.alert-ajax', function(e){
                 'type': id
             },
             dataType:'json',
+            statusCode: {
+                403: function (res) {
+                    swal('Action interdite !');
+                },
+            },
             success : function(res) {
                 var message = 'Suppression terminée !';
                 if(res.errors.length > 0) {
@@ -74,6 +79,12 @@ $('body').on('submit', '#create-type', function(e){
             'type': $('#create-type').serializeObject()
         },
         dataType:'json',
+        statusCode: {
+            403: function (res) {
+                swal('Action interdite !');
+                $('#large-Modal').modal('hide');
+            },
+        },
         success : function(res) {
             $.removeSpinner('.create-type', 'Valider');
             $.showErrors(res['errors'], '#alert-create');
@@ -81,6 +92,10 @@ $('body').on('submit', '#create-type', function(e){
             if(res['errors'].length === 0){
                 addRow(JSON.parse(res['type']));
             }
+        },
+        error: function(res) {
+            $.removeSpinner('.create-type', 'Valider');
+            $.showErrors(['Oops an errors occured :('], '#alert-create');
         }
     });
 });
@@ -105,6 +120,10 @@ $('body').on('submit', '#update-type', function(e){
             if(res['errors'].length === 0){
                 updateRow(JSON.parse(res['type']));
             }
+        },
+        error: function(res) {
+            $.removeSpinner('.update-type', 'Valider');
+            $.showErrors(['Oops an errors occured :('], '#alert-update');
         }
     });
 });
