@@ -34,4 +34,19 @@ class TagRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
             ;
     }
+
+    /**
+     * Récupération par type
+     * @param string $type
+     * @return mixed
+     */
+    public function findByType(string $type)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.type = :type')
+            ->setParameter('type', $type)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

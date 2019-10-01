@@ -8,6 +8,7 @@
 
 namespace App\Service\Tools;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -18,10 +19,12 @@ class DataValidatorService
 {
     const MSG_ERROR_EMAIL = 'Le champs « %s » est invalide';
     const MSG_ERROR_BLANK = 'Le champs « %s » est vide';
+    const MSG_ERROR_NULL = 'Le champs « %s » est obligatoire';
     const MSG_ERROR_TOKEN = 'Token invalide';
     const MSG_ERROR_EQUAL = 'Les champs « %s » ne sont pas identique';
     const MSG_ERROR_REGEX = 'Le champs « %s » n\'a pas le bon pattern';
     const MSG_ERROR_EMPTY = 'Le champs « %s » ne peux pas être vide';
+    const MSG_ERROR_IMAGE = 'Le fichier « %s » n\'est pas valide';
 
     private $validator;
     private $token;
@@ -84,6 +87,30 @@ class DataValidatorService
     }
 
     /**
+     * Validation du champs non null
+     * @param $value
+     * @param string $key
+     * @return bool
+     */
+    public function validateNotNull($value, string $key): bool
+    {
+        $notNull = new Assert\NotNull();
+        $notNull->message = self::MSG_ERROR_NULL;
+
+        $errors = $this->validator->validate(
+            $value,
+            $notNull
+        );
+
+        if(count($errors) > 0) {
+            $this->errors[] = sprintf($errors[0]->getMessage(), $key);
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Validation valeur identique
      * @param string $first
      * @param string $second
@@ -98,6 +125,31 @@ class DataValidatorService
         $errors = $this->validator->validate(
             $second,
             $equalTo
+        );
+
+        if(count($errors) > 0) {
+            $this->errors[] = sprintf($errors[0]->getMessage(), $key);
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Validation de l'image
+     * @param UploadedFile $file
+     * @param string $key
+     * @return bool
+     */
+    public function validateImage(?UploadedFile $file, string $key): bool
+    {
+        $image = new Assert\Image();
+        $image->mimeTypesMessage = self::MSG_ERROR_IMAGE;
+        $image->maxSize = '30M';
+
+        $errors = $this->validator->validate(
+            $file,
+            $image
         );
 
         if(count($errors) > 0) {

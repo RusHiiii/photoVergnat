@@ -1,0 +1,12 @@
+liip_imagine:
+  # As mentioned above, gd, imagick or gmagick are possible
+  driver: "gd"
+  # This is where all the filters sets are located
+  filter_sets:
+    admin:
+      quality: 70
+      filters:
+        watermark:
+          image: ../public/images/static/watermark.png
+          size: 0.2
+          position: bottomright

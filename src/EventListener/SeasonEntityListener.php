@@ -4,6 +4,7 @@ namespace App\EventListener;
 
 use App\Entity\Season;
 use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
 
 class SeasonEntityListener
 {
@@ -29,7 +30,7 @@ class SeasonEntityListener
      * @param LifecycleEventArgs $args
      * @throws \Exception
      */
-    public function preUpdate(LifecycleEventArgs $args)
+    public function preUpdate(PreUpdateEventArgs $args)
     {
         $entity = $args->getEntity();
 

@@ -63,13 +63,11 @@ class UserService
 
         /** Récupération de l'utilisateur */
         $user = $this->security->getUser();
-
-        /** Modification de l'utilisateur et sauvegarde */
         $user->setEmail($validatedData['data']['email']);
         $user->setFirstname($validatedData['data']['firstname']);
         $user->setLastname($validatedData['data']['lastname']);
 
-        $this->entityManager->persist($user);
+        /** Sauvegarde */
         $this->entityManager->flush();
 
         return [
@@ -96,14 +94,13 @@ class UserService
 
         /** MàJ de l'utilisateur et sauvegarde */
         $user = $this->userRepository->findById($validatedData['data']['id']);
-
         $user->setEmail($validatedData['data']['email']);
         $user->setFirstname($validatedData['data']['firstname']);
         $user->setLastname($validatedData['data']['lastname']);
         $user->setCreated(new \DateTime($validatedData['data']['created']));
         $user->setRoles($validatedData['data']['roles']);
 
-        $this->entityManager->persist($user);
+        /** Sauvegarde */
         $this->entityManager->flush();
 
         return [
@@ -137,7 +134,7 @@ class UserService
         /** Modification de l'utilisateur et sauvegarde */
         $user->setPassword($this->encoder->encodePassword($user, $validatedData['data']['password_first']));
 
-        $this->entityManager->persist($user);
+        /** Sauvegarde */
         $this->entityManager->flush();
 
         return [
@@ -194,6 +191,7 @@ class UserService
         $user->setPassword($validatedData['data']['password_first']);
         $user->setRoles($validatedData['data']['roles']);
 
+        /** Sauvegarde */
         $this->entityManager->persist($user);
         $this->entityManager->flush();
 

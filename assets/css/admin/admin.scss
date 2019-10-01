@@ -45,6 +45,14 @@
     }
   }
 }
+
+.photo-screen{
+  text-align: center;
+  img{
+    width: 150px;
+  }
+}
+
 .select2-container--default {
   .select2-selection--multiple {
     .select2-selection__choice {
@@ -75,7 +83,7 @@
 #alert-update {
   display: none;
 }
-.create-user, .create-tag, .update-tag, .create-season, .update-season, .create-type, .update-type {
+.create-user, .create-tag, .update-tag, .create-season, .update-season, .create-type, .update-type, .create-photo, .update-photo {
   height: 40.4px;
   width: 88.6px;
 }
@@ -132,12 +140,27 @@
     height: 20px;
   }
 }
+
+.jFiler-item-container{
+  margin-bottom: 0 !important;
+  margin-top: 25px !important;
+}
+
+.jFiler-input-dragDrop{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+  margin-bottom: 0 !important;
+}
+
 .loading {
   position: relative;
 }
 
-#tags-table td:last-child, #users-table td:last-child, #seasons-table td:last-child,  #types-table td:last-child{
-  text-align: center;
+#tags-table, #users-table, #seasons-table,  #types-table, #photos-table{
+  td:last-child{
+    text-align: center;
+  }
 }
 
 .spinner {

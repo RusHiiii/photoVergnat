@@ -1,0 +1,100 @@
+{% extends 'elements/layout/admin/base.html.twig' %}
+
+{% block title %}Photo'Vergnat - Gestions des photos{% endblock %}
+
+{% block body %}
+    <!-- Page-header start -->
+    <div class="page-header">
+        <div class="row align-items-end">
+            <div class="col-lg-8">
+                <div class="page-header-title">
+                    <div class="d-inline">
+                        <h4>Gestion des photos</h4>
+                        <span>Gérez les photos du site Photo'Vergnat.fr</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="page-header-breadcrumb">
+                    <ul class="breadcrumb-title">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_home') }}"> <i class="feather icon-home"></i> Accueil</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('admin_photos') }}">Photos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page-header end -->
+
+    <!-- Page-body start -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header photo">
+                        <div class="header-text">
+                            <h5>Listes des tags</h5>
+                            <span>Administration de toutes les photos du site Photo'Vergnat. Il est possible de les supprimer, éditer, ajouter. </span>
+                        </div>
+                        <div class="header-button">
+                            <button type="button" class="btn btn-primary add"><i class="icofont icofont-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div class="dt-responsive table-responsive">
+                            <table id="photos-table" class="table table-striped table-bordered nowrap">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Aperçu</th>
+                                    <th>Titre</th>
+                                    <th>Type</th>
+                                    <th>Tags</th>
+                                    <th>Date de création</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for photo in photos %}
+                                <tr id="photo_{{ photo.id }}">
+                                    <td>{{ photo.id }}</td>
+                                    <td class="photo-screen"><img class="lazy" data-src="{{ ('/images/uploads/' ~ photo.file) | imagine_filter('admin') }}"></td>
+                                    <td class="title">{{ photo.title }}</td>
+                                    <td>{{ photo.type.title }}</td>
+                                    <td>{{ photo.tags | join('|') }}</td>
+                                    <td>{{ photo.created | date('Y-m-d H:i:s') }}</td>
+                                    <td class="action">
+                                        <button type="button" class="btn btn-warning waves-effect edit" data-id="{{ photo.id }}" data-toggle="modal"><i class="icofont icofont-edit-alt"></i></button>
+                                        <button type="button" class="btn btn-danger alert-ajax m-b-10 delete" data-id="{{ photo.id }}"><i class="icofont icofont-bin"></i></button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog" style="z-index: 1050; display: none;" aria-hidden="true"></div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        $('.lazy').Lazy();
+        $('#photos-table').DataTable({
+            "searching": true,
+            "lengthChange": true,
+            "ordering": false,
+            "pageLength": 10,
+            "pagingType": "simple"
+        });
+    </script>
+{% endblock %}
