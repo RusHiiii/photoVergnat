@@ -8,7 +8,6 @@
 
 namespace App\Controller\Security\Voter;
 
-
 use App\Entity\Photo;
 use App\Entity\Tag;
 use App\Entity\User;

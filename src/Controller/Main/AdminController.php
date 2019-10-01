@@ -20,8 +20,7 @@ class AdminController extends AbstractController
         UserRepository $userRepository,
         TagRepository $tagRepository,
         PhotoRepository $photoRepository
-    )
-    {
+    ) {
         $users = $userRepository->findAll();
         $tags = $tagRepository->findAll();
         $photos = $photoRepository->findAll();

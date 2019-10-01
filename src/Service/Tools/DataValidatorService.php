@@ -33,8 +33,7 @@ class DataValidatorService
     public function __construct(
         ValidatorInterface $validator,
         CsrfTokenManagerInterface $csrfTokenManager
-    )
-    {
+    ) {
         $this->validator = $validator;
         $this->token = $csrfTokenManager;
     }
@@ -78,7 +77,7 @@ class DataValidatorService
             $notBlank
         );
 
-        if(count($errors) > 0) {
+        if (count($errors) > 0) {
             $this->errors[] = sprintf($errors[0]->getMessage(), $key);
             return false;
         }
@@ -102,7 +101,7 @@ class DataValidatorService
             $notNull
         );
 
-        if(count($errors) > 0) {
+        if (count($errors) > 0) {
             $this->errors[] = sprintf($errors[0]->getMessage(), $key);
             return false;
         }
@@ -127,7 +126,7 @@ class DataValidatorService
             $equalTo
         );
 
-        if(count($errors) > 0) {
+        if (count($errors) > 0) {
             $this->errors[] = sprintf($errors[0]->getMessage(), $key);
             return false;
         }
@@ -152,7 +151,7 @@ class DataValidatorService
             $image
         );
 
-        if(count($errors) > 0) {
+        if (count($errors) > 0) {
             $this->errors[] = sprintf($errors[0]->getMessage(), $key);
             return false;
         }
@@ -176,7 +175,7 @@ class DataValidatorService
             $regex
         );
 
-        if(count($errors) > 0) {
+        if (count($errors) > 0) {
             $this->errors[] = sprintf($errors[0]->getMessage(), $key);
             return false;
         }

@@ -8,7 +8,6 @@
 
 namespace App\Service\User;
 
-
 use App\Controller\Security\Voter\UserVoter;
 use App\Entity\User;
 use App\Repository\UserRepository;
@@ -35,8 +34,7 @@ class UserService
         Security $security,
         UserValidatorService $userValidatorService,
         SerializerInterface $serializer
-    )
-    {
+    ) {
         $this->entityManager = $entityManager;
         $this->userRepository = $userRepository;
         $this->security = $security;
@@ -55,7 +53,7 @@ class UserService
     {
         /** Validation des données */
         $validatedData = $this->userValidatorService->checkUpdateProfile($data);
-        if(count($validatedData['errors']) > 0) {
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors']
             ];
@@ -85,7 +83,7 @@ class UserService
     {
         /** Validation des données */
         $validatedData = $this->userValidatorService->checkUpdateUser($data);
-        if(count($validatedData['errors']) > 0) {
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'user' => []
@@ -119,7 +117,7 @@ class UserService
     {
         /** Validation des données */
         $validatedData =$this->userValidatorService->checkUpdatePassword($data);
-        if(count($validatedData['errors']) > 0) {
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors']
             ];
@@ -127,7 +125,7 @@ class UserService
 
         /** Récupération de l'utilisateur */
         $user = $this->security->getUser()->getUsername();
-        if($this->security->isGranted(UserVoter::EDIT, User::class) && isset($validatedData['data']['email'])) {
+        if ($this->security->isGranted(UserVoter::EDIT, User::class) && isset($validatedData['data']['email'])) {
             $user = $this->userRepository->findByEmail($validatedData['data']['email']);
         }
 
@@ -152,7 +150,7 @@ class UserService
     {
         /** On récupére l'utilisateur */
         $user = $this->userRepository->findById($data);
-        if($user === null) {
+        if ($user === null) {
             return [
                 'errors' => [self::MSG_UNKNOWN_USER]
             ];
@@ -176,7 +174,7 @@ class UserService
     {
         /** Validation des données */
         $validatedData = $this->userValidatorService->checkCreateUser($data);
-        if(count($validatedData['errors']) > 0) {
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'user' => []

@@ -8,7 +8,6 @@
 
 namespace App\Service\Type;
 
-
 use App\Entity\Tag;
 use App\Entity\Type;
 use App\Repository\TagRepository;
@@ -33,8 +32,7 @@ class TypeService
         TypeRepository $typeRepository,
         SerializerInterface $serializer,
         TypeValidatorService $typeValidatorService
-    )
-    {
+    ) {
         $this->entityManager = $entityManager;
         $this->security = $security;
         $this->serialize = $serializer;
@@ -52,7 +50,7 @@ class TypeService
     {
         /** On récupére le type */
         $type = $this->typeRepository->findById($data);
-        if($type === null) {
+        if ($type === null) {
             return [
                 'errors' => [self::MSG_UNKNOWN_TYPE]
             ];
@@ -76,7 +74,7 @@ class TypeService
     {
         /** Validation des données */
         $validatedData = $this->typeValidatorService->checkCreateType($data);
-        if(count($validatedData['errors']) > 0) {
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'type' => []
@@ -107,7 +105,7 @@ class TypeService
     {
         /** Validation des données */
         $validatedData = $this->typeValidatorService->checkUpdateType($data);
-        if(count($validatedData['errors']) > 0) {
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'type' => []

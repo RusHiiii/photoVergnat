@@ -8,7 +8,6 @@
 
 namespace App\Controller\Security\Voter;
 
-
 use App\Entity\Tag;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;

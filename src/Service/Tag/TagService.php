@@ -8,7 +8,6 @@
 
 namespace App\Service\Tag;
 
-
 use App\Entity\Tag;
 use App\Repository\TagRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -31,8 +30,7 @@ class TagService
         TagRepository $tagRepository,
         TagValidatorService $tagValidatorService,
         SerializerInterface $serializer
-    )
-    {
+    ) {
         $this->entityManager = $entityManager;
         $this->security = $security;
         $this->tagValidatorService = $tagValidatorService;
@@ -50,7 +48,7 @@ class TagService
     {
         /** On récupére le tag */
         $tag = $this->tagRepository->findById($data);
-        if($tag === null) {
+        if ($tag === null) {
             return [
                 'errors' => [self::MSG_UNKNOWN_TAG]
             ];
@@ -74,7 +72,7 @@ class TagService
     {
         /** Validation des données */
         $validatedData = $this->tagValidatorService->checkCreateTag($data);
-        if(count($validatedData['errors']) > 0) {
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'tag' => []
@@ -106,7 +104,7 @@ class TagService
     {
         /** Validation des données */
         $validatedData = $this->tagValidatorService->checkUpdateTag($data);
-        if(count($validatedData['errors']) > 0) {
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'tag' => []

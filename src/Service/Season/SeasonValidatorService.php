@@ -8,7 +8,6 @@
 
 namespace App\Service\Season;
 
-
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Service\Tools\DataValidatorService;
@@ -25,8 +24,7 @@ class SeasonValidatorService
     public function __construct(
         DataValidatorService $dataValidatorService,
         ToolsService $toolsService
-    )
-    {
+    ) {
         $this->validatorService = $dataValidatorService;
         $this->toolsService = $toolsService;
     }

@@ -37,8 +37,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         CsrfTokenManagerInterface $csrfTokenManager,
         RouterInterface $router,
         UserPasswordEncoderInterface $encoder
-    )
-    {
+    ) {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->csrfTokenManager = $csrfTokenManager;

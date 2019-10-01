@@ -27,8 +27,7 @@ class XhrController extends AbstractController
         Request $request,
         TagRepository $tagRepository,
         TypeRepository $typeRepository
-    )
-    {
+    ) {
         $this->denyAccessUnlessGranted(PhotoVoter::VIEW, Photo::class);
 
         $tags = $tagRepository->findByType('photo');
@@ -49,8 +48,7 @@ class XhrController extends AbstractController
         TagRepository $tagRepository,
         TypeRepository $typeRepository,
         Photo $photo
-    )
-    {
+    ) {
         $this->denyAccessUnlessGranted(PhotoVoter::EDIT, Photo::class);
 
         $tags = $tagRepository->findByType('photo');
@@ -70,8 +68,7 @@ class XhrController extends AbstractController
     public function createPhoto(
         Request $request,
         PhotoService $photoService
-    )
-    {
+    ) {
         $this->denyAccessUnlessGranted(PhotoVoter::CREATE, Photo::class);
 
         $data = $request->request->all();
@@ -111,8 +108,7 @@ class XhrController extends AbstractController
     public function removePhoto(
         Request $request,
         PhotoService $photoService
-    )
-    {
+    ) {
         $this->denyAccessUnlessGranted(PhotoVoter::REMOVE, Photo::class);
 
         $data = $request->request->all();
@@ -121,6 +117,5 @@ class XhrController extends AbstractController
         return new JsonResponse([
             'errors' => $resultRemove['errors']
         ]);
-
     }
 }

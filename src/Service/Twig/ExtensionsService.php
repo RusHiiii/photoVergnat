@@ -28,7 +28,7 @@ class ExtensionsService extends AbstractExtension
      */
     public function hasRole(User $user, string $role)
     {
-        if(in_array($role, $user->getRoles())) {
+        if (in_array($role, $user->getRoles())) {
             return true;
         }
         return false;

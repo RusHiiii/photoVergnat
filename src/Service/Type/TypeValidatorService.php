@@ -8,7 +8,6 @@
 
 namespace App\Service\Type;
 
-
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Service\Tools\DataValidatorService;
@@ -25,8 +24,7 @@ class TypeValidatorService
     public function __construct(
         DataValidatorService $dataValidatorService,
         ToolsService $toolsService
-    )
-    {
+    ) {
         $this->validatorService = $dataValidatorService;
         $this->toolsService = $toolsService;
     }

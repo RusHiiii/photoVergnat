@@ -23,13 +23,13 @@ class ToolsService
      */
     public function trimData($data)
     {
-        if($data === null) {
+        if ($data === null) {
             return null;
         }
 
-        if(is_array($data)) {
+        if (is_array($data)) {
             return array_map(array($this, 'trimData'), $data);
-        }else{
+        } else {
             return trim($data);
         }
     }

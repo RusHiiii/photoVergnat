@@ -13,8 +13,7 @@ class AppController extends AbstractController
      */
     public function index(
         Request $request
-    )
-    {
+    ) {
         return $this->render('main/app/index.html.twig', []);
     }
 }

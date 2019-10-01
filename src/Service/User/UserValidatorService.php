@@ -8,7 +8,6 @@
 
 namespace App\Service\User;
 
-
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Service\Tools\DataValidatorService;
@@ -25,8 +24,7 @@ class UserValidatorService
     public function __construct(
         DataValidatorService $dataValidatorService,
         ToolsService $toolsService
-    )
-    {
+    ) {
         $this->validatorService = $dataValidatorService;
         $this->toolsService = $toolsService;
     }
@@ -70,7 +68,7 @@ class UserValidatorService
         $this->validatorService->validateEmail($data['email'], 'mail');
         $this->validatorService->validateNotBlank($data['lastname'], 'nom');
         $this->validatorService->validateNotBlank($data['firstname'], 'prénom');
-        $this->validatorService->validateEqualTo($data['password_first'],$data['password_second'], 'mot de passe');
+        $this->validatorService->validateEqualTo($data['password_first'], $data['password_second'], 'mot de passe');
         $this->validatorService->validateRegex($data['password_first'], 'mot de passe');
         $this->validatorService->validateExist($data, 'roles', 'roles');
 
@@ -121,7 +119,7 @@ class UserValidatorService
         /** Validation des données */
         $this->validatorService->validateCsrfToken($data['token'], 'update-password');
         $this->validatorService->validateNotBlank($data['password_first'], 'mot de passe');
-        $this->validatorService->validateEqualTo($data['password_first'],$data['password_second'], 'mot de passe');
+        $this->validatorService->validateEqualTo($data['password_first'], $data['password_second'], 'mot de passe');
         $this->validatorService->validateRegex($data['password_first'], 'mot de passe');
 
         /** Récupération des erreurs */

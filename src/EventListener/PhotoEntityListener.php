@@ -65,9 +65,9 @@ class PhotoEntityListener
         }
 
         $oldFile = $args->getOldValue('file');
-        if($entity->getFile() === null) {
+        if ($entity->getFile() === null) {
             $entity->setFile($oldFile);
-        }else{
+        } else {
             $this->removeFile($oldFile);
             $this->uploadFile($entity);
         }
@@ -97,7 +97,7 @@ class PhotoEntityListener
      */
     private function removeFile(string $filename)
     {
-        if(file_exists($this->uploader->getTargetDirectory() . $filename)){
+        if (file_exists($this->uploader->getTargetDirectory() . $filename)) {
             unlink($this->uploader->getTargetDirectory() . $filename);
             return true;
         }

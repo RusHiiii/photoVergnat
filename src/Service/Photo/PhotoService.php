@@ -8,7 +8,6 @@
 
 namespace App\Service\Photo;
 
-
 use App\Entity\Photo;
 use App\Repository\PhotoRepository;
 use App\Repository\TagRepository;
@@ -38,8 +37,7 @@ class PhotoService
         SerializerInterface $serializer,
         TypeRepository $typeRepository,
         PhotoRepository $photoRepository
-    )
-    {
+    ) {
         $this->entityManager = $entityManager;
         $this->security = $security;
         $this->photoValidatorService = $photoValidatorService;
@@ -60,7 +58,7 @@ class PhotoService
     {
         /** Validation des données */
         $validatedData = $this->photoValidatorService->checkCreatePhoto($data, $file);
-        if(count($validatedData['errors']) > 0) {
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'photo' => []
@@ -97,7 +95,7 @@ class PhotoService
     {
         /** Validation des données */
         $validatedData = $this->photoValidatorService->checkUpdatePhoto($data, $file);
-        if(count($validatedData['errors']) > 0) {
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'photo' => []
@@ -133,7 +131,7 @@ class PhotoService
     {
         /** On récupére le tag */
         $photo = $this->photoRepository->findById($data);
-        if($photo === null) {
+        if ($photo === null) {
             return [
                 'errors' => [self::MSG_UNKNOWN_PHOTO]
             ];

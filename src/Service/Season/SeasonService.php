@@ -8,7 +8,6 @@
 
 namespace App\Service\Season;
 
-
 use App\Entity\Season;
 use App\Entity\Tag;
 use App\Repository\SeasonRepository;
@@ -33,8 +32,7 @@ class SeasonService
         SeasonRepository $seasonRepository,
         SeasonValidatorService $tagValidatorService,
         SerializerInterface $serializer
-    )
-    {
+    ) {
         $this->entityManager = $entityManager;
         $this->security = $security;
         $this->seasonValidatorService = $tagValidatorService;
@@ -52,7 +50,7 @@ class SeasonService
     {
         /** On récupére la saison */
         $season = $this->seasonRepository->findById($data);
-        if($season === null) {
+        if ($season === null) {
             return [
                 'errors' => [self::MSG_UNKNOWN_SEASON]
             ];
@@ -76,7 +74,7 @@ class SeasonService
     {
         /** Validation des données */
         $validatedData = $this->seasonValidatorService->checkCreateSeason($data);
-        if(count($validatedData['errors']) > 0) {
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'season' => []
@@ -107,7 +105,7 @@ class SeasonService
     {
         /** Validation des données */
         $validatedData = $this->seasonValidatorService->checkUpdateSeason($data);
-        if(count($validatedData['errors']) > 0) {
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'season' => []

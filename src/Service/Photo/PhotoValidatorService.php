@@ -8,7 +8,6 @@
 
 namespace App\Service\Photo;
 
-
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Service\Tools\DataValidatorService;
@@ -26,8 +25,7 @@ class PhotoValidatorService
     public function __construct(
         DataValidatorService $dataValidatorService,
         ToolsService $toolsService
-    )
-    {
+    ) {
         $this->validatorService = $dataValidatorService;
         $this->toolsService = $toolsService;
     }
