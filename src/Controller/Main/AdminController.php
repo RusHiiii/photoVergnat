@@ -3,6 +3,7 @@
 namespace App\Controller\Main;
 
 use App\Entity\User;
+use App\Repository\CategoryRepository;
 use App\Repository\PhotoRepository;
 use App\Repository\TagRepository;
 use App\Repository\UserRepository;
@@ -19,16 +20,19 @@ class AdminController extends AbstractController
         Request $request,
         UserRepository $userRepository,
         TagRepository $tagRepository,
-        PhotoRepository $photoRepository
+        PhotoRepository $photoRepository,
+        CategoryRepository $categoryRepository
     ) {
         $users = $userRepository->findAll();
         $tags = $tagRepository->findAll();
         $photos = $photoRepository->findAll();
+        $categories = $categoryRepository->findAll();
 
         return $this->render('main/admin/index.html.twig', [
             'users' => $users,
             'tags' => $tags,
-            'photos' => $photos
+            'photos' => $photos,
+            'categories' => $categories
         ]);
     }
 }

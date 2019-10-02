@@ -1,11 +1,6 @@
 {% extends 'elements/layout/admin/base.html.twig' %}
 
-{% block title %}Photo'Vergnat - Gestions des photos{% endblock %}
-
-{% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/pages/jquery.filer/css/jquery.filer.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css') }}">
-{% endblock %}
+{% block title %}Photo'Vergnat - Gestions des catégories{% endblock %}
 
 {% block body %}
     <!-- Page-header start -->
@@ -14,8 +9,8 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Gestion des photos</h4>
-                        <span>Gérez les photos du site Photo'Vergnat.fr</span>
+                        <h4>Gestion des catégories</h4>
+                        <span>Gérez les catégories du site Photo'Vergnat.fr</span>
                     </div>
                 </div>
             </div>
@@ -26,7 +21,7 @@
                             <a href="{{ path('admin_home') }}"> <i class="feather icon-home"></i> Accueil</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ path('admin_photos') }}">Photos</a>
+                            <a href="{{ path('admin_categories') }}">Catégories</a>
                         </li>
                     </ul>
                 </div>
@@ -40,10 +35,10 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header photo">
+                    <div class="card-header category">
                         <div class="header-text">
-                            <h5>Listes des tags</h5>
-                            <span>Administration de toutes les photos du site Photo'Vergnat. Il est possible de les supprimer, éditer, ajouter. </span>
+                            <h5>Listes des Catégories</h5>
+                            <span>Administration de toutes les Catégories du site Photo'Vergnat. Il est possible de les supprimer, éditer, ajouter. </span>
                         </div>
                         <div class="header-button">
                             <button type="button" class="btn btn-primary add"><i class="icofont icofont-plus"></i></button>
@@ -51,30 +46,34 @@
                     </div>
                     <div class="card-block">
                         <div class="dt-responsive table-responsive">
-                            <table id="photos-table" class="table table-striped table-bordered nowrap">
+                            <table id="categories-table" class="table table-striped table-bordered nowrap">
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Aperçu</th>
                                     <th>Titre</th>
-                                    <th>Type</th>
-                                    <th>Tags</th>
                                     <th>Date de création</th>
+                                    <th>Tags</th>
+                                    <th>Ville</th>
+                                    <th>Saison</th>
+                                    <th>Nombre de photo</th>
+                                    <th>Active</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for photo in photos %}
-                                <tr id="photo_{{ photo.id }}">
-                                    <td>{{ photo.id }}</td>
-                                    <td class="photo-screen"><img class="lazy" data-src="{{ ('/images/uploads/' ~ photo.file) | imagine_filter('admin') }}"></td>
-                                    <td class="title">{{ photo.title }}</td>
-                                    <td>{{ photo.type.title }}</td>
-                                    <td>{{ photo.tags | join('|') }}</td>
-                                    <td>{{ photo.created | date('Y-m-d H:i:s') }}</td>
+                                {% for category in categories %}
+                                <tr id="category_{{ category.id }}">
+                                    <td>{{ category.id }}</td>
+                                    <td class="title">{{ category.title }}</td>
+                                    <td>{{ category.created | date('Y-m-d H:i:s') }}</td>
+                                    <td>{{ category.tags | join('|') }}</td>
+                                    <td>{{ category.city }}</td>
+                                    <td>{{ category.season.title }}</td>
+                                    <td>{{ category.photos | length }}</td>
+                                    <td>{{ category.active ? 'Oui' : 'Non' }}</td>
                                     <td class="action">
-                                        <button type="button" class="btn btn-warning waves-effect edit" data-id="{{ photo.id }}" data-toggle="modal"><i class="icofont icofont-edit-alt"></i></button>
-                                        <button type="button" class="btn btn-danger alert-ajax m-b-10 delete" data-id="{{ photo.id }}"><i class="icofont icofont-bin"></i></button>
+                                        <button type="button" class="btn btn-warning waves-effect edit" data-id="{{ category.id }}" data-toggle="modal"><i class="icofont icofont-edit-alt"></i></button>
+                                        <button type="button" class="btn btn-danger alert-ajax m-b-10 delete" data-id="{{ category.id }}"><i class="icofont icofont-bin"></i></button>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -92,11 +91,8 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('adminity/assets/js/jquery.lazy.min.js') }}"></script>
-
     <script type="text/javascript">
-        $('.lazy').Lazy();
-        $('#photos-table').DataTable({
+        $('#categories-table').DataTable({
             "searching": true,
             "lengthChange": true,
             "ordering": false,

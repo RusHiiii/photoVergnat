@@ -49,6 +49,21 @@
             </div>
         </div>
     </div>
+    <div class="col-md-6 col-xl-3">
+        <div class="card widget-card-1">
+            <div class="card-block-small">
+                <i class="feather icon-file-text bg-c-orenge card1-icon"></i>
+                <span class="text-c-orenge f-w-600">Articles</span>
+                <h4>{{ categories | length }}</h4>
+                <div>
+            <span class="f-left m-t-10 text-muted">
+                <i class="text-c-orenge f-16 feather icon-clock m-r-10"></i>
+                Depuis le {{ (categories | first).created | date('d/m/Y') }}
+            </span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 

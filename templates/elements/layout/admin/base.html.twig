@@ -26,27 +26,18 @@
         <!-- Style.css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('build/admin/admin.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/css/style.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/css/jquery.mCustomScrollbar.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('adminity/bower_components/sweetalert/css/sweetalert.css') }}">
-
-        <!-- Select 2 css -->
         <link rel="stylesheet" href="{{ asset('adminity/bower_components/select2/css/select2.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/bower_components/bootstrap-multiselect/css/bootstrap-multiselect.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/bower_components/multiselect/css/multi-select.css') }}">
 
         <!-- Data Table Css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('adminity/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/pages/data-table/css/buttons.dataTables.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('adminity/bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
 
         <!-- jQuery -->
         <script type="text/javascript" src="{{ asset('build/runtime.js') }}"></script>
         <script type="text/javascript" src="{{ asset('adminity/bower_components/jquery/js/jquery.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('theme/js/jquery.ba-serializeobject.min.js') }}"></script>
-
-        <!-- Filer -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/pages/jquery.filer/css/jquery.filer.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css') }}">
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXTerqaOjZ_27sfAA2qOIaCrn3OLWJPBI"></script>
 
         {% block stylesheets %}{% endblock %}
     </head>
@@ -87,22 +78,12 @@
     <script type="text/javascript" src="{{ asset('adminity/bower_components/modernizr/js/modernizr.js') }}"></script>
 
     <!-- Chart js -->
-    <script type="text/javascript" src="{{ asset('adminity/bower_components/chart.js/js/Chart.js') }}"></script>
-    <script src="{{ asset('adminity/assets/pages/widget/amchart/amcharts.js') }}"></script>
-    <script src="{{ asset('adminity/assets/pages/widget/amchart/serial.js') }}"></script>
-    <script src="{{ asset('adminity/assets/pages/widget/amchart/light.js') }}"></script>
     <script src="{{ asset('adminity/assets/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('adminity/assets/js/SmoothScroll.js') }}"></script>
     <script src="{{ asset('adminity/assets/js/pcoded.min.js') }}"></script>
 
     <!-- data-table js -->
     <script src="{{ asset('adminity/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('adminity/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('adminity/assets/pages/data-table/js/jszip.min.js') }}"></script>
-    <script src="{{ asset('adminity/assets/pages/data-table/js/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('adminity/assets/pages/data-table/js/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('adminity/bower_components/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('adminity/bower_components/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('adminity/bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('adminity/bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('adminity/bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
@@ -111,23 +92,11 @@
     <script src="{{ asset('adminity/assets/js/vartical-layout.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('adminity/assets/js/script.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('build/admin/admin.js') }}"></script>
-
-    <!-- sweet alert js -->
     <script type="text/javascript" src="{{ asset('adminity/bower_components/sweetalert/js/sweetalert.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('adminity/assets/js/modalEffects.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('adminity/assets/js/classie.js') }}"></script>
 
     <!-- Select 2 js -->
     <script type="text/javascript" src="{{ asset('adminity/bower_components/select2/js/select2.full.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('adminity/bower_components/bootstrap-multiselect/js/bootstrap-multiselect.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('adminity/bower_components/multiselect/js/jquery.multi-select.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('adminity/assets/js/jquery.quicksearch.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('adminity/assets/pages/advance-elements/select2-custom.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/js/jquery.form-validator.min.js') }}"></script>
-
-    <!-- File upload -->
-    <script type="text/javascript" src="{{ asset('adminity/assets/pages/jquery.filer/js/jquery.filer.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('adminity/assets/js/jquery.lazy.min.js') }}"></script>
 
     {% block javascripts %}{% endblock %}
     </body>

@@ -20,9 +20,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class XhrController extends AbstractController
 {
     /**
- * Création d'une photo
- * @Route("/xhr/admin/photo/display/create/", condition="request.isXmlHttpRequest()")
- */
+     * Création d'une photo
+     * @Route("/xhr/admin/photo/display/create/", condition="request.isXmlHttpRequest()")
+     */
     public function displayModalCreate(
         Request $request,
         TagRepository $tagRepository,
