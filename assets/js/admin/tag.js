@@ -1,12 +1,12 @@
 /****************** LISTENER **********************/
 
 /** Initialisation de la modal */
-$('#tags-table tbody').on('click', '.edit', function(e){
+$('#tags-table tbody').on('click', '.edit', function (e) {
     var id = $(this).data('id');
     $.ajax({
         url : '/xhr/admin/tag/display/edit/' + id,
         type : 'GET',
-        success : function(res) {
+        success : function (res) {
             $('#large-Modal').html(res);
             $('#large-Modal').modal();
         }
@@ -14,11 +14,11 @@ $('#tags-table tbody').on('click', '.edit', function(e){
 });
 
 /** Initialisation de la modal */
-$('.tag .add').on('click', function(e){
+$('.tag .add').on('click', function (e) {
     $.ajax({
         url : '/xhr/admin/tag/display/create/',
         type : 'GET',
-        success : function(res) {
+        success : function (res) {
             $('#large-Modal').html(res);
             $('#large-Modal').modal();
         }
@@ -26,7 +26,7 @@ $('.tag .add').on('click', function(e){
 });
 
 /** Initilisation des modals de suppression */
-$('#tags-table tbody').on('click', '.alert-ajax', function(e){
+$('#tags-table tbody').on('click', '.alert-ajax', function (e) {
     var table = $('#tags-table').DataTable();
     var id = $(this).data('id');
 
@@ -40,16 +40,16 @@ $('#tags-table tbody').on('click', '.alert-ajax', function(e){
     }, function () {
         $.ajax({
             url : '/xhr/admin/tag/remove',
-            type : 'POST',
+            type : 'DELETE',
             data : {
                 'tag': id
             },
             dataType:'json',
-            success : function(res) {
+            success : function (res) {
                 var message = 'Suppression terminée !';
-                if(res.errors.length > 0) {
+                if (res.errors.length > 0) {
                     message = res.errors[0];
-                }else{
+                } else {
                     table
                         .row($("#tag_" + id))
                         .remove()
@@ -62,7 +62,7 @@ $('#tags-table tbody').on('click', '.alert-ajax', function(e){
 });
 
 /** Initialisation formualire d'ajout */
-$('body').on('submit', '#create-tag', function(e){
+$('body').on('submit', '#create-tag', function (e) {
     e.preventDefault();
 
     $.addSpinner('.create-tag');
@@ -74,15 +74,15 @@ $('body').on('submit', '#create-tag', function(e){
             'tag': $('#create-tag').serializeObject()
         },
         dataType:'json',
-        success : function(res) {
+        success : function (res) {
             $.removeSpinner('.create-tag', 'Valider');
             $.showErrors(res['errors'], '#alert-create');
 
-            if(res['errors'].length === 0){
+            if (res['errors'].length === 0) {
                 addRow(JSON.parse(res['tag']));
             }
         },
-        error: function(res) {
+        error: function (res) {
             $.removeSpinner('.create-tag', 'Valider');
             $.showErrors(['Oops an errors occured :('], '#alert-create');
         }
@@ -90,7 +90,7 @@ $('body').on('submit', '#create-tag', function(e){
 });
 
 /** Initialisation formualire de MàJ */
-$('body').on('submit', '#update-tag', function(e){
+$('body').on('submit', '#update-tag', function (e) {
     e.preventDefault();
 
     $.addSpinner('.update-tag');
@@ -102,15 +102,15 @@ $('body').on('submit', '#update-tag', function(e){
             'tag': $('#update-tag').serializeObject()
         },
         dataType:'json',
-        success : function(res) {
+        success : function (res) {
             $.removeSpinner('.update-tag', 'Valider');
             $.showErrors(res['errors'], '#alert-update');
 
-            if(res['errors'].length === 0){
+            if (res['errors'].length === 0) {
                 updateRow(JSON.parse(res['tag']));
             }
         },
-        error: function(res) {
+        error: function (res) {
             $.removeSpinner('.update-tag', 'Valider');
             $.showErrors(['Oops an errors occured :('], '#alert-update');
         }
@@ -120,7 +120,8 @@ $('body').on('submit', '#update-tag', function(e){
 /****************** FONCTION **********************/
 
 /** Ajoute une ligne au tableau */
-function addRow(tag) {
+function addRow(tag)
+{
     let current_datetime = new Date(tag.created);
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 
@@ -142,7 +143,8 @@ function addRow(tag) {
 }
 
 /** MàJ une ligne au tableau */
-function updateRow(tag) {
+function updateRow(tag)
+{
     let current_datetime = new Date(tag.created);
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 

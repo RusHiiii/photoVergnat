@@ -176,6 +176,4 @@ class Photo
     {
         return $this->title;
     }
-
-
 }

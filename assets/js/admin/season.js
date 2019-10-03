@@ -1,12 +1,12 @@
 /****************** LISTENER **********************/
 
 /** Initialisation de la modal */
-$('#seasons-table tbody').on('click', '.edit', function(e){
+$('#seasons-table tbody').on('click', '.edit', function (e) {
     var id = $(this).data('id');
     $.ajax({
         url : '/xhr/admin/season/display/edit/' + id,
         type : 'GET',
-        success : function(res) {
+        success : function (res) {
             $('#large-Modal').html(res);
             $('#large-Modal').modal();
         }
@@ -14,11 +14,11 @@ $('#seasons-table tbody').on('click', '.edit', function(e){
 });
 
 /** Initialisation de la modal */
-$('.season .add').on('click', function(e){
+$('.season .add').on('click', function (e) {
     $.ajax({
         url : '/xhr/admin/season/display/create/',
         type : 'GET',
-        success : function(res) {
+        success : function (res) {
             $('#large-Modal').html(res);
             $('#large-Modal').modal();
         }
@@ -26,7 +26,7 @@ $('.season .add').on('click', function(e){
 });
 
 /** Initilisation des modals de suppression */
-$('#seasons-table tbody').on('click', '.alert-ajax', function(e){
+$('#seasons-table tbody').on('click', '.alert-ajax', function (e) {
     var table = $('#seasons-table').DataTable();
     var id = $(this).data('id');
 
@@ -40,7 +40,7 @@ $('#seasons-table tbody').on('click', '.alert-ajax', function(e){
     }, function () {
         $.ajax({
             url : '/xhr/admin/season/remove',
-            type : 'POST',
+            type : 'DELETE',
             data : {
                 'season': id
             },
@@ -50,11 +50,11 @@ $('#seasons-table tbody').on('click', '.alert-ajax', function(e){
                     swal('Action interdite !');
                 },
             },
-            success : function(res) {
+            success : function (res) {
                 var message = 'Suppression terminée !';
-                if(res.errors.length > 0) {
+                if (res.errors.length > 0) {
                     message = res.errors[0];
-                }else{
+                } else {
                     table
                         .row($("#season_" + id))
                         .remove()
@@ -67,7 +67,7 @@ $('#seasons-table tbody').on('click', '.alert-ajax', function(e){
 });
 
 /** Initialisation formualire d'ajout */
-$('body').on('submit', '#create-season', function(e){
+$('body').on('submit', '#create-season', function (e) {
     e.preventDefault();
 
     $.addSpinner('.create-season');
@@ -85,15 +85,15 @@ $('body').on('submit', '#create-season', function(e){
                 $('#large-Modal').modal('hide');
             },
         },
-        success : function(res) {
+        success : function (res) {
             $.removeSpinner('.create-season', 'Valider');
             $.showErrors(res['errors'], '#alert-create');
 
-            if(res['errors'].length === 0){
+            if (res['errors'].length === 0) {
                 addRow(JSON.parse(res['season']));
             }
         },
-        error: function(res) {
+        error: function (res) {
             $.removeSpinner('.create-season', 'Valider');
             $.showErrors(['Oops an errors occured :('], '#alert-create');
         }
@@ -101,7 +101,7 @@ $('body').on('submit', '#create-season', function(e){
 });
 
 /** Initialisation formualire de MàJ */
-$('body').on('submit', '#update-season', function(e){
+$('body').on('submit', '#update-season', function (e) {
     e.preventDefault();
 
     $.addSpinner('.update-season');
@@ -113,15 +113,15 @@ $('body').on('submit', '#update-season', function(e){
             'season': $('#update-season').serializeObject()
         },
         dataType:'json',
-        success : function(res) {
+        success : function (res) {
             $.removeSpinner('.update-season', 'Valider');
             $.showErrors(res['errors'], '#alert-update');
 
-            if(res['errors'].length === 0){
+            if (res['errors'].length === 0) {
                 updateRow(JSON.parse(res['season']));
             }
         },
-        error: function(res) {
+        error: function (res) {
             $.removeSpinner('.update-season', 'Valider');
             $.showErrors(['Oops an errors occured :('], '#alert-update');
         }
@@ -132,7 +132,8 @@ $('body').on('submit', '#update-season', function(e){
 /****************** FONCTION **********************/
 
 /** Ajoute une ligne au tableau */
-function addRow(season) {
+function addRow(season)
+{
     let current_datetime = new Date(season.created);
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 
@@ -153,7 +154,8 @@ function addRow(season) {
 }
 
 /** MàJ une ligne au tableau */
-function updateRow(season) {
+function updateRow(season)
+{
     let current_datetime = new Date(season.created);
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 

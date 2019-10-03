@@ -1,11 +1,11 @@
 /****************** LISTENER **********************/
 
 /** Initialisation de la modal */
-$('.category .add').on('click', function(e) {
+$('.category .add').on('click', function (e) {
     $.ajax({
         url : '/xhr/admin/category/display/create/',
         type : 'GET',
-        success : function(res) {
+        success : function (res) {
             $('#large-Modal').html(res);
             $('#large-Modal').modal();
         }
@@ -13,12 +13,12 @@ $('.category .add').on('click', function(e) {
 });
 
 /** Initialisation de la modal */
-$('#categories-table tbody').on('click', '.edit', function(e){
+$('#categories-table tbody').on('click', '.edit', function (e) {
     var id = $(this).data('id');
     $.ajax({
         url : '/xhr/admin/category/display/edit/' + id,
         type : 'GET',
-        success : function(res) {
+        success : function (res) {
             $('#large-Modal').html(res);
             $('#large-Modal').modal();
         }
@@ -27,7 +27,7 @@ $('#categories-table tbody').on('click', '.edit', function(e){
 
 
 /** Initilisation des modals de suppression */
-$('#categories-table tbody').on('click', '.alert-ajax', function(e){
+$('#categories-table tbody').on('click', '.alert-ajax', function (e) {
     var table = $('#categories-table').DataTable();
     var id = $(this).data('id');
 
@@ -46,11 +46,11 @@ $('#categories-table tbody').on('click', '.alert-ajax', function(e){
                 'category': id
             },
             dataType:'json',
-            success : function(res) {
+            success : function (res) {
                 var message = 'Suppression terminée !';
-                if(res.errors.length > 0) {
+                if (res.errors.length > 0) {
                     message = res.errors[0];
-                }else{
+                } else {
                     table
                         .row($("#category_" + id))
                         .remove()
@@ -63,7 +63,7 @@ $('#categories-table tbody').on('click', '.alert-ajax', function(e){
 });
 
 /** Initialisation formualire d'ajout */
-$('body').on('submit', '#create-category', function(e){
+$('body').on('submit', '#create-category', function (e) {
     e.preventDefault();
 
     $.addSpinner('.create-category');
@@ -83,15 +83,15 @@ $('body').on('submit', '#create-category', function(e){
         data : {
             'category': data
         },
-        success : function(res) {
+        success : function (res) {
             $.removeSpinner('.create-category', 'Valider');
             $.showErrors(res['errors'], '#alert-create');
 
-            if(res['errors'].length === 0){
+            if (res['errors'].length === 0) {
                 addRow(JSON.parse(res['category']));
             }
         },
-        error: function(res) {
+        error: function (res) {
             $.removeSpinner('.create-category', 'Valider');
             $.showErrors(['Oops an errors occured :('], '#alert-create');
         }
@@ -101,7 +101,8 @@ $('body').on('submit', '#create-category', function(e){
 /****************** FONCTION **********************/
 
 /** Ajoute une ligne au tableau */
-function addRow(category) {
+function addRow(category)
+{
     let current_datetime = new Date(category.created);
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 

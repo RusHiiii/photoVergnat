@@ -1,11 +1,11 @@
 /****************** LISTENER **********************/
 
 /** Initialisation de la modal */
-$('.photo .add').on('click', function(e){
+$('.photo .add').on('click', function (e) {
     $.ajax({
         url : '/xhr/admin/photo/display/create/',
         type : 'GET',
-        success : function(res) {
+        success : function (res) {
             $('#large-Modal').html(res);
             $('#large-Modal').modal();
         }
@@ -13,12 +13,12 @@ $('.photo .add').on('click', function(e){
 });
 
 /** Initialisation de la modal */
-$('#photos-table tbody').on('click', '.edit', function(e){
+$('#photos-table tbody').on('click', '.edit', function (e) {
     var id = $(this).data('id');
     $.ajax({
         url : '/xhr/admin/photo/display/edit/' + id,
         type : 'GET',
-        success : function(res) {
+        success : function (res) {
             $('#large-Modal').html(res);
             $('#large-Modal').modal();
         }
@@ -26,7 +26,7 @@ $('#photos-table tbody').on('click', '.edit', function(e){
 });
 
 /** Initialisation formualire d'ajout */
-$('body').on('submit', '#create-photo', function(e){
+$('body').on('submit', '#create-photo', function (e) {
     e.preventDefault();
 
     $.addSpinner('.create-photo');
@@ -39,15 +39,15 @@ $('body').on('submit', '#create-photo', function(e){
         contentType: false,
         cache: false,
         processData:false,
-        success : function(res) {
+        success : function (res) {
             $.removeSpinner('.create-photo', 'Valider');
             $.showErrors(res['errors'], '#alert-create');
 
-            if(res['errors'].length === 0){
+            if (res['errors'].length === 0) {
                 addRow(JSON.parse(res['photo']));
             }
         },
-        error: function(res) {
+        error: function (res) {
             $.removeSpinner('.create-photo', 'Valider');
             $.showErrors(['Oops an errors occured :('], '#alert-create');
         }
@@ -55,7 +55,7 @@ $('body').on('submit', '#create-photo', function(e){
 });
 
 /** Initialisation formualire de MàJ */
-$('body').on('submit', '#update-photo', function(e){
+$('body').on('submit', '#update-photo', function (e) {
     e.preventDefault();
 
     $.addSpinner('.update-photo');
@@ -68,15 +68,15 @@ $('body').on('submit', '#update-photo', function(e){
         contentType: false,
         cache: false,
         processData:false,
-        success : function(res) {
+        success : function (res) {
             $.removeSpinner('.update-photo', 'Valider');
             $.showErrors(res['errors'], '#alert-update');
 
-            if(res['errors'].length === 0){
+            if (res['errors'].length === 0) {
                 updateRow(JSON.parse(res['photo']));
             }
         },
-        error: function(res) {
+        error: function (res) {
             $.removeSpinner('.update-photo', 'Valider');
             $.showErrors(['Oops an errors occured :('], '#alert-update');
         }
@@ -84,7 +84,7 @@ $('body').on('submit', '#update-photo', function(e){
 });
 
 /** Initilisation des modals de suppression */
-$('#photos-table tbody').on('click', '.alert-ajax', function(e){
+$('#photos-table tbody').on('click', '.alert-ajax', function (e) {
     var table = $('#photos-table').DataTable();
     var id = $(this).data('id');
 
@@ -98,16 +98,16 @@ $('#photos-table tbody').on('click', '.alert-ajax', function(e){
     }, function () {
         $.ajax({
             url : '/xhr/admin/photo/remove',
-            type : 'POST',
+            type : 'DELETE',
             data : {
                 'photo': id
             },
             dataType:'json',
-            success : function(res) {
+            success : function (res) {
                 var message = 'Suppression terminée !';
-                if(res.errors.length > 0) {
+                if (res.errors.length > 0) {
                     message = res.errors[0];
-                }else{
+                } else {
                     table
                         .row($("#photo_" + id))
                         .remove()
@@ -122,7 +122,8 @@ $('#photos-table tbody').on('click', '.alert-ajax', function(e){
 /****************** FONCTION **********************/
 
 /** Ajoute une ligne au tableau */
-function addRow(photo) {
+function addRow(photo)
+{
     let current_datetime = new Date(photo.created);
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 
@@ -146,7 +147,8 @@ function addRow(photo) {
 }
 
 /** Ajoute une ligne au tableau */
-function updateRow(photo) {
+function updateRow(photo)
+{
     let current_datetime = new Date(photo.created);
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 
