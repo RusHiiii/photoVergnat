@@ -4,58 +4,7 @@
     <list default="true" id="6d0ad162-b511-4cf7-bc8e-e12bdd55a0fa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/admin/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/admin/category.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/admin/photo.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/admin/photo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/admin/season.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/admin/season.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/admin/tag.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/admin/tag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/admin/type.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/admin/type.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/admin/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/admin/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Category/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Category/XhrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Main/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Main/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Photo/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Photo/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Photo/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Photo/XhrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Season/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Season/XhrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Security/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Security/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Security/Voter/CategoryVoter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Security/Voter/CategoryVoter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Security/Voter/PhotoVoter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Security/Voter/PhotoVoter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Security/Voter/SeasonVoter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Security/Voter/SeasonVoter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Security/Voter/TagVoter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Security/Voter/TagVoter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Security/Voter/TypeVoter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Security/Voter/TypeVoter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Security/Voter/UserVoter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Security/Voter/UserVoter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Tag/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Tag/XhrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Type/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Type/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Type/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Type/XhrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/User/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/User/XhrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Photo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Photo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventListener/CategoryEntityListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/CategoryEntityListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventListener/PhotoEntityListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/PhotoEntityListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventListener/SeasonEntityListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/SeasonEntityListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventListener/TagEntityListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/TagEntityListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventListener/TypeEntityListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/TypeEntityListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventListener/UserEntityListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/UserEntityListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PhotoRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PhotoRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/SeasonRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/SeasonRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TagRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TagRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TypeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TypeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Serializer/CircularReferenceHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Serializer/CircularReferenceHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Category/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Category/CategoryService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Category/CategoryValidatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Category/CategoryValidatorService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Photo/PhotoService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Photo/PhotoService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Photo/PhotoValidatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Photo/PhotoValidatorService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Season/SeasonService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Season/SeasonService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Season/SeasonValidatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Season/SeasonValidatorService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Tag/TagService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Tag/TagService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Tag/TagValidatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Tag/TagValidatorService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Tools/DataValidatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Tools/DataValidatorService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Tools/FileUploaderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Tools/FileUploaderService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Tools/ToolsService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Tools/ToolsService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Twig/ExtensionsService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Twig/ExtensionsService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Type/TypeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Type/TypeService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Type/TypeValidatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Type/TypeValidatorService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/User/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/User/UserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/User/UserValidatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/User/UserValidatorService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/category/xhr/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/category/xhr/create.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +64,7 @@
         <entry file="file://$PROJECT_DIR$/assets/js/admin/user.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="218" lean-forward="true" selection-start-line="218" selection-end-line="218" />
+              <caret line="218" selection-start-line="218" selection-end-line="218" />
             </state>
           </provider>
         </entry>
@@ -132,14 +81,41 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Service/Category/CategoryService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="111" column="61" selection-start-line="111" selection-start-column="61" selection-end-line="111" selection-end-column="61" />
+            <state relative-caret-position="269">
+              <caret line="108" column="21" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="21" />
               <folding>
                 <element signature="e#120#144#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/category/xhr/create.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="131" column="23" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/js/admin/category.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/elements/layout/admin/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="71" column="121" selection-start-line="71" selection-start-column="121" selection-end-line="71" selection-end-column="121" />
             </state>
           </provider>
         </entry>
@@ -212,25 +188,25 @@
         <option value="$PROJECT_DIR$/config/services.yaml" />
         <option value="$PROJECT_DIR$/src/Service/Tools/DataValidatorService.php" />
         <option value="$PROJECT_DIR$/assets/css/admin/admin.scss" />
-        <option value="$PROJECT_DIR$/templates/category/xhr/create.html.twig" />
         <option value="$PROJECT_DIR$/src/Service/Category/CategoryValidatorService.php" />
         <option value="$PROJECT_DIR$/src/EventListener/PhotoEntityListener.php" />
         <option value="$PROJECT_DIR$/src/Entity/Category.php" />
         <option value="$PROJECT_DIR$/src/Controller/Category/XhrController.php" />
         <option value="$PROJECT_DIR$/src/Repository/PhotoRepository.php" />
-        <option value="$PROJECT_DIR$/templates/elements/layout/admin/base.html.twig" />
         <option value="$PROJECT_DIR$/templates/photo/xhr/create.html.twig" />
         <option value="$PROJECT_DIR$/templates/photo/admin/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/photo/xhr/edit.html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/Photo.php" />
         <option value="$PROJECT_DIR$/templates/category/xhr/edit.html.twig" />
-        <option value="$PROJECT_DIR$/assets/js/admin/category.js" />
         <option value="$PROJECT_DIR$/assets/js/admin/photo.js" />
         <option value="$PROJECT_DIR$/assets/js/admin/season.js" />
         <option value="$PROJECT_DIR$/assets/js/admin/tag.js" />
         <option value="$PROJECT_DIR$/assets/js/admin/type.js" />
         <option value="$PROJECT_DIR$/assets/js/admin/user.js" />
         <option value="$PROJECT_DIR$/src/Service/Category/CategoryService.php" />
+        <option value="$PROJECT_DIR$/templates/elements/layout/admin/base.html.twig" />
+        <option value="$PROJECT_DIR$/assets/js/admin/category.js" />
+        <option value="$PROJECT_DIR$/templates/category/xhr/create.html.twig" />
       </list>
     </option>
   </component>
@@ -357,8 +333,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="517" />
-    <option name="y" value="-10" />
+    <option name="x" value="557" />
+    <option name="y" value="-9" />
     <option name="width" value="960" />
     <option name="height" value="1035" />
   </component>
@@ -486,6 +462,40 @@
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="category" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="category" type="462c0819:PsiDirectoryNode" />
+              <item name="xhr" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="elements" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="elements" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="elements" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
               <item name="translations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -598,12 +608,12 @@
       <workItem from="1569962317185" duration="3550000" />
       <workItem from="1570008294283" duration="1552000" />
       <workItem from="1570017194962" duration="8548000" />
-      <workItem from="1570103943686" duration="9249000" />
+      <workItem from="1570103943686" duration="11944000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162987000" />
+    <option name="totallyTimeSpent" value="165682000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
@@ -853,13 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/category/xhr/create.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="40" column="51" selection-end-line="150" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/Photo/XhrController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="490">
@@ -894,13 +897,6 @@
           <folding>
             <element signature="e#34#58#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/elements/layout/admin/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="90" column="22" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -956,13 +952,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/admin/category.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="649">
-          <caret line="112" column="23" lean-forward="true" selection-start-line="112" selection-start-column="23" selection-end-line="112" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/admin/photo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -994,7 +983,7 @@
     <entry file="file://$PROJECT_DIR$/assets/js/admin/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="218" lean-forward="true" selection-start-line="218" selection-end-line="218" />
+          <caret line="218" selection-start-line="218" selection-end-line="218" />
         </state>
       </provider>
     </entry>
@@ -1010,11 +999,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Service/Category/CategoryService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="111" column="61" selection-start-line="111" selection-start-column="61" selection-end-line="111" selection-end-column="61" />
+        <state relative-caret-position="269">
+          <caret line="108" column="21" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="21" />
           <folding>
             <element signature="e#120#144#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/elements/layout/admin/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="71" column="121" selection-start-line="71" selection-start-column="121" selection-end-line="71" selection-end-column="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/admin/category.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/category/xhr/create.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="131" column="23" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="23" />
         </state>
       </provider>
     </entry>

@@ -7,7 +7,7 @@ $('.category .add').on('click', function (e) {
         type : 'GET',
         success : function (res) {
             $('#large-Modal').html(res);
-            $('#large-Modal').modal();
+            $('#large-Modal').modal({'focus': false});
         }
     });
 });
@@ -20,7 +20,7 @@ $('#categories-table tbody').on('click', '.edit', function (e) {
         type : 'GET',
         success : function (res) {
             $('#large-Modal').html(res);
-            $('#large-Modal').modal();
+            $('#large-Modal').modal({'focus': false});
         }
     });
 });
