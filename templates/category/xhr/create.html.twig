@@ -27,20 +27,28 @@
                 <div class="tab-content card-block">
                     <div class="tab-pane active" id="home3" role="tabpanel" aria-expanded="true">
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Titre</label>
+                            <label class="col-sm-2 col-form-label">Publication</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" data-validation="length" data-validation-length="min3" placeholder="Titre" name="title">
+                                <div class="form-radio">
+                                    <div class="radio radio-inline">
+                                        <label>
+                                            <input type="radio" name="active" value="1">
+                                            <i class="helper"></i>Oui
+                                        </label>
+                                    </div>
+                                    <div class="radio radio-inline">
+                                        <label>
+                                            <input type="radio" name="active" value="0" checked="checked">
+                                            <i class="helper"></i>Non
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Publication</label>
+                            <label class="col-sm-2 col-form-label">Titre</label>
                             <div class="col-sm-10">
-                                <div class="border-checkbox-section">
-                                    <div class="border-checkbox-group border-checkbox-group-primary">
-                                        <input class="border-checkbox" type="checkbox" id="checkbox" name="active">
-                                        <label class="border-checkbox-label" for="checkbox">Actif ?</label>
-                                    </div>
-                                </div>
+                                <input type="text" class="form-control" data-validation="length" data-validation-length="min3" placeholder="Titre" name="title">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -56,9 +64,19 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Tags</label>
                             <div class="col-sm-10">
-                                <select class="tags col-sm-12" multiple="multiple" name="tags[]">
+                                <select class="tags col-sm-12" multiple="multiple" name="tags">
                                     {% for tag in tags %}
                                         <option value="{{ tag.id }}">{{ tag.title }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Photos</label>
+                            <div class="col-sm-10">
+                                <select class="photos col-sm-12" multiple="multiple" name="photos">
+                                    {% for photo in photos %}
+                                        <option value="{{ photo.id }}">{{ photo.title }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -85,13 +103,13 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Longitude</label>
                             <div class="col-sm-10">
-                                <input type="text" id="lng" class="form-control" value="-" readonly name="lng">
+                                <input type="text" id="lng" class="form-control" readonly name="lng">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Latitude</label>
                             <div class="col-sm-10">
-                                <input type="text" id="lat" class="form-control" value="-" readonly name="lat">
+                                <input type="text" id="lat" class="form-control" readonly name="lat">
                             </div>
                         </div>
                         <div class="map-container">
@@ -99,7 +117,7 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="profile4" role="tabpanel" aria-expanded="false">
-                        <textarea id="editor"></textarea>
+                        <textarea id="editor" name="description"></textarea>
                     </div>
                 </div>
             </div>
@@ -116,6 +134,7 @@
     <script type="text/javascript" src="{{ asset('adminity/assets/pages/ckeditor/adapters/jquery.js') }}"></script>
     <script type="text/javascript">
         $(".tags").select2();
+        $(".photos").select2();
         $( '#editor' ).ckeditor();
         $.initMap();
 

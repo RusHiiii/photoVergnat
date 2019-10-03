@@ -64,12 +64,13 @@ class PhotoEntityListener
             return;
         }
 
-        $oldFile = $args->getOldValue('file');
-        if ($entity->getFile() === null) {
-            $entity->setFile($oldFile);
-        } else {
-            $this->removeFile($oldFile);
+        if ($entity->getFile() instanceof UploadedFile) {
+            $this->removeFile($args->getOldValue('file'));
             $this->uploadFile($entity);
+        }
+
+        if ($entity->getFile() === null) {
+            $entity->setFile($args->getOldValue('file'));
         }
 
         $entity->setUpdated(new \DateTime('now'));

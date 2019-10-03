@@ -21,7 +21,7 @@ class Photo
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="photos")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $category;
 
@@ -171,4 +171,11 @@ class Photo
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->title;
+    }
+
+
 }

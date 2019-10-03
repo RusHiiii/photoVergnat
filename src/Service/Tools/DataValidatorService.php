@@ -207,8 +207,8 @@ class DataValidatorService
      */
     public function validateExist(array $data, string $key, string $value): bool
     {
-        if (!isset($data[$value])) {
-            $this->errors[] = sprintf(self::MSG_ERROR_EMPTY, $key);
+        if (!isset($data[$key])) {
+            $this->errors[] = sprintf(self::MSG_ERROR_EMPTY, $value);
             return false;
         }
 

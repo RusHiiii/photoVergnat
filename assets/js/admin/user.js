@@ -68,11 +68,16 @@ $('body').on('submit', '#create-user', function(e){
 
     $.addSpinner('.create-user');
 
+    var data = $('#create-user').serializeObject();
+    if (!$.isArray(data['roles'])) {
+        data['roles'] = [data['roles']];
+    }
+
     $.ajax({
         url : '/xhr/admin/user/create',
         type : 'POST',
         data : {
-            'user': $('#create-user').serializeObject()
+            'user': data
         },
         dataType:'json',
         statusCode: {

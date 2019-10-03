@@ -129,7 +129,7 @@ class PhotoService
      */
     public function removePhoto(string $data): array
     {
-        /** On récupére le tag */
+        /** On récupére la photo */
         $photo = $this->photoRepository->findById($data);
         if ($photo === null) {
             return [

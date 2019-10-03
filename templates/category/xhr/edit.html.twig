@@ -1,49 +1,143 @@
 <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title">Edition d'une saison</h4>
+            <h4 class="modal-title">Edition d'une catégorie</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
         </div>
-        <form method="POST" id="update-season">
+        <form method="POST" id="update-category">
             <div class="modal-body">
                 <div class="alert alert-danger" role="alert" id="alert-update"></div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Identifiant</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" value="{{ season.id }}" readonly name="id">
+                <ul class="nav nav-tabs md-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#home3" role="tab" aria-expanded="true"><i class="icofont icofont-edit"></i> Information</a>
+                        <div class="slide"></div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#profile4" role="tab" aria-expanded="false"><i class="icofont icofont-file-text"></i> Description</a>
+                        <div class="slide"></div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#profile3" role="tab" aria-expanded="false"><i class="icofont icofont-map-pins"></i> Localisation</a>
+                        <div class="slide"></div>
+                    </li>
+                </ul>
+
+                <div class="tab-content card-block">
+                    <div class="tab-pane active" id="home3" role="tabpanel" aria-expanded="true">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Publication</label>
+                            <div class="col-sm-10">
+                                <div class="form-radio">
+                                    <div class="radio radio-inline">
+                                        <label>
+                                            <input type="radio" name="active" value="1" {{ category.active ? 'checked' }}>
+                                            <i class="helper"></i>Oui
+                                        </label>
+                                    </div>
+                                    <div class="radio radio-inline">
+                                        <label>
+                                            <input type="radio" name="active" value="0" {{ category.active ?: 'checked' }}>
+                                            <i class="helper"></i>Non
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Titre</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" data-validation="length" data-validation-length="min3" value="{{ category.title }}" name="title">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Saison</label>
+                            <div class="col-sm-10">
+                                <select class="form-control form-control-primary" name="season">
+                                    {% for season in seasons %}
+                                        <option value="{{ season.id }}" {{ (category.season.id == season.id) ? 'selected' }}>{{ season.title }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Tags</label>
+                            <div class="col-sm-10">
+                                <select class="tags col-sm-12" multiple="multiple" name="tags">
+                                    {% for tag in tags %}
+                                        <option value="{{ tag.id }}" {{ (tag.title in category.tags) ? 'selected' }}>{{ tag.title }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Photos</label>
+                            <div class="col-sm-10">
+                                <select class="photos col-sm-12" multiple="multiple" name="photos">
+                                    {% for photo in photos %}
+                                        <option value="{{ photo.id }}" {{ (photo.title in category.photos) ? 'selected' }}>{{ photo.title }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Création</label>
+                            <div class="col-sm-10">
+                                <input type="datetime-local" class="form-control" value="{{ category.created | date('Y-m-d\\TH:i') }}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Mise à jour</label>
+                            <div class="col-sm-10">
+                                <input type="datetime-local" class="form-control" value="{{ category.updated | date('Y-m-d\\TH:i') }}" readonly>
+                            </div>
+                        </div>            </div>
+                    <div class="tab-pane" id="profile3" role="tabpanel" aria-expanded="false">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Ville</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="city" class="form-control" data-validation="length" data-validation-length="min3" value="{{ category.city }}" name="city">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Longitude</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="lng" class="form-control" readonly name="lng" value="{{ category.longitude }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Latitude</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="lat" class="form-control" readonly name="lat" value="{{ category.latitude }}">
+                            </div>
+                        </div>
+                        <div class="map-container">
+                            <div id="map" style="width:100%;height:300px;"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Titre</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" data-validation="length" name="title" data-validation-length="min3" value="{{ season.title }}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Création</label>
-                    <div class="col-sm-10">
-                        <input type="datetime-local" class="form-control" name="created" value="{{ season.created | date('Y-m-d\\TH:i') }}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Mise à jour</label>
-                    <div class="col-sm-10">
-                        <input type="datetime-local" class="form-control" value="{{ season.updated | date('Y-m-d\\TH:i') }}" readonly>
+                    <div class="tab-pane" id="profile4" role="tabpanel" aria-expanded="false">
+                        <textarea id="editor" name="description">{{ category.description }}</textarea>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <input type="hidden" name="token" value="{{ csrf_token('update-season') }}"/>
+                <input type="hidden" name="token" value="{{ csrf_token('update-category') }}"/>
                 <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Fermer</button>
-                <button type="submit" class="btn btn-primary waves-effect waves-light update-season">Valider</button>
+                <button type="submit" class="btn btn-primary waves-effect waves-light update-category">Valider</button>
             </div>
         </form>
     </div>
 </div>
 {% block javascripts %}
+    <script type="text/javascript" src="{{ asset('adminity/assets/pages/ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminity/assets/pages/ckeditor/adapters/jquery.js') }}"></script>
     <script type="text/javascript">
+        $(".tags").select2();
+        $(".photos").select2();
+        $( '#editor' ).ckeditor();
+        $.initMap();
+
         $.validate({
             lang: 'fr',
             borderColorOnError : '#ff001c',
@@ -51,3 +145,6 @@
         });
     </script>
 {% endblock %}
+
+
+
