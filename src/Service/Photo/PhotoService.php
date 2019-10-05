@@ -57,7 +57,7 @@ class PhotoService
     public function createPhoto(array $data, ?UploadedFile $file): array
     {
         /** Validation des données */
-        $validatedData = $this->photoValidatorService->checkCreatePhoto($data, $file);
+        $validatedData = $this->photoValidatorService->checkCreatePhoto($data, $file, PhotoValidatorService::TOKEN_CREATE);
         if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
@@ -94,7 +94,7 @@ class PhotoService
     public function updatePhoto(array $data, ?UploadedFile $file): array
     {
         /** Validation des données */
-        $validatedData = $this->photoValidatorService->checkUpdatePhoto($data, $file);
+        $validatedData = $this->photoValidatorService->checkUpdatePhoto($data, $file, PhotoValidatorService::TOKEN_UPDATE);
         if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],

@@ -73,7 +73,7 @@ class TypeService
     public function createType(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->typeValidatorService->checkCreateType($data);
+        $validatedData = $this->typeValidatorService->checkType($data, TypeValidatorService::TOKEN_CREATE);
         if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
@@ -104,7 +104,7 @@ class TypeService
     public function updateType(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->typeValidatorService->checkUpdateType($data);
+        $validatedData = $this->typeValidatorService->checkType($data, TypeValidatorService::TOKEN_UPDATE);
         if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],

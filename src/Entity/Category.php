@@ -220,6 +220,13 @@ class Category
         return $this;
     }
 
+    public function resetPhoto(): self
+    {
+        $this->photos->clear();
+
+        return $this;
+    }
+
     public function removePhoto(Photo $photo): self
     {
         if ($this->photos->contains($photo)) {
@@ -246,6 +253,13 @@ class Category
         if (!$this->tags->contains($tag)) {
             $this->tags[] = $tag;
         }
+
+        return $this;
+    }
+
+    public function resetTags(): self
+    {
+        $this->tags->clear();
 
         return $this;
     }

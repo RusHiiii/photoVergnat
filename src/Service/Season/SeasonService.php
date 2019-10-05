@@ -73,7 +73,7 @@ class SeasonService
     public function createSeason(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->seasonValidatorService->checkCreateSeason($data);
+        $validatedData = $this->seasonValidatorService->checkSeason($data, SeasonValidatorService::TOKEN_CREATE);
         if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
@@ -104,7 +104,7 @@ class SeasonService
     public function updateSeason(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->seasonValidatorService->checkUpdateSeason($data);
+        $validatedData = $this->seasonValidatorService->checkSeason($data, SeasonValidatorService::TOKEN_UPDATE);
         if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],

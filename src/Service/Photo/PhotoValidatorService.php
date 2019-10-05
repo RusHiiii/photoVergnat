@@ -19,6 +19,9 @@ use Symfony\Component\Security\Core\Security;
 
 class PhotoValidatorService
 {
+    const TOKEN_CREATE = 'create-photo';
+    const TOKEN_UPDATE = 'update-photo';
+
     private $validatorService;
     private $toolsService;
 
@@ -35,13 +38,13 @@ class PhotoValidatorService
      * @param array $data
      * @return array
      */
-    public function checkCreatePhoto(array $data, ?UploadedFile $file): array
+    public function checkCreatePhoto(array $data, ?UploadedFile $file, string $token): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], 'create-photo');
+        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateNotBlank($data['title'], 'Titre');
         $this->validatorService->validateExist($data, 'format', 'format');
         $this->validatorService->validateExist($data, 'tags', 'tags');
@@ -62,13 +65,13 @@ class PhotoValidatorService
      * @param UploadedFile|null $file
      * @return array
      */
-    public function checkUpdatePhoto(array $data, ?UploadedFile $file): array
+    public function checkUpdatePhoto(array $data, ?UploadedFile $file, string $token): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], 'update-photo');
+        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateNotBlank($data['title'], 'Titre');
         $this->validatorService->validateExist($data, 'format', 'format');
         $this->validatorService->validateExist($data, 'tags', 'tags');

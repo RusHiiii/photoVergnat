@@ -87,7 +87,7 @@ class CategoryService
     public function createCategory(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->categoryValidatorService->checkCreateCategory($data);
+        $validatedData = $this->categoryValidatorService->checkCategory($data, CategoryValidatorService::TOKEN_CREATE);
         if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
@@ -115,6 +115,52 @@ class CategoryService
 
         /** Sauvegarde */
         $this->entityManager->persist($category);
+        $this->entityManager->flush();
+
+        return [
+            'errors' => [],
+            'category' => $this->serialize->serialize($category, 'json')
+        ];
+    }
+
+    /**
+     * MàJ d'une catégorie
+     * @param array $data
+     * @return array
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function updateCategory(array $data): array
+    {
+        /** Validation des données */
+        $validatedData = $this->categoryValidatorService->checkCategory($data, CategoryValidatorService::TOKEN_UPDATE);
+        if (count($validatedData['errors']) > 0) {
+            return [
+                'errors' => $validatedData['errors'],
+                'category' => []
+            ];
+        }
+
+        /** MàJ de la category et sauvegarde */
+        $category = $this->categoryRepository->findById($validatedData['data']['id']);
+        $category->setTitle($validatedData['data']['title']);
+        $category->setDescription($validatedData['data']['description']);
+        $category->setCity($validatedData['data']['city']);
+        $category->setActive($validatedData['data']['active']);
+        $category->setLatitude($validatedData['data']['lat']);
+        $category->setLongitude($validatedData['data']['lng']);
+        $category->setSeason($this->seasonRepository->findById($validatedData['data']['season']));
+
+        $category->resetTags();
+        foreach ($validatedData['data']['tags'] as $tag) {
+            $category->addTag($this->tagRepository->findById($tag));
+        }
+
+        $category->resetPhoto();
+        foreach ($validatedData['data']['photos'] as $photo) {
+            $category->addPhoto($this->photoRepository->findById($photo));
+        }
+
+        /** Sauvegarde */
         $this->entityManager->flush();
 
         return [

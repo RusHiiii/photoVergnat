@@ -99,4 +99,23 @@ class XhrController extends AbstractController
             'errors' => $resultRemove['errors']
         ]);
     }
+
+    /**
+     * MàJ d'une catégorie
+     * @Route("/xhr/admin/category/update", condition="request.isXmlHttpRequest()")
+     */
+    public function updateCategory(
+        Request $request,
+        CategoryService $categoryService
+    ) {
+        $this->denyAccessUnlessGranted(CategoryVoter::EDIT, Category::class);
+
+        $data = $request->request->all();
+        $resultUpdate = $categoryService->updateCategory($data['category']);
+
+        return new JsonResponse([
+            'errors' => $resultUpdate['errors'],
+            'category' => $resultUpdate['category']
+        ]);
+    }
 }

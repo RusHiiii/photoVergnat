@@ -18,6 +18,9 @@ use Symfony\Component\Security\Core\Security;
 
 class TagValidatorService
 {
+    const TOKEN_CREATE = 'create-tag';
+    const TOKEN_UPDATE = 'update-tag';
+
     private $validatorService;
     private $toolsService;
 
@@ -34,36 +37,13 @@ class TagValidatorService
      * @param array $data
      * @return array
      */
-    public function checkCreateTag(array $data): array
+    public function checkTag(array $data, string $token): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], 'create-tag');
-        $this->validatorService->validateNotBlank($data['title'], 'Titre');
-        $this->validatorService->validateNotBlank($data['type'], 'Type');
-
-        /** Récupération des erreurs */
-        $errors = $this->validatorService->getErrors();
-        return [
-            'errors' => $errors,
-            'data' => $data
-        ];
-    }
-
-    /**
-     * Validation de la données pour la MàJ
-     * @param array $data
-     * @return array
-     */
-    public function checkUpdateTag(array $data): array
-    {
-        /** Trim les données */
-        $data = $this->toolsService->trimData($data);
-
-        /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], 'update-tag');
+        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateNotBlank($data['title'], 'Titre');
         $this->validatorService->validateNotBlank($data['type'], 'Type');
 

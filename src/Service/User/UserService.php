@@ -52,7 +52,7 @@ class UserService
     public function updateProfile(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->userValidatorService->checkUpdateProfile($data);
+        $validatedData = $this->userValidatorService->checkUpdateProfile($data, UserValidatorService::TOKEN_UPDATE_USER);
         if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors']
@@ -82,7 +82,7 @@ class UserService
     public function updateUser(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->userValidatorService->checkUpdateUser($data);
+        $validatedData = $this->userValidatorService->checkUpdateUser($data, UserValidatorService::TOKEN_UPDATE_USER);
         if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
@@ -116,7 +116,7 @@ class UserService
     public function updatePassword(array $data): array
     {
         /** Validation des données */
-        $validatedData =$this->userValidatorService->checkUpdatePassword($data);
+        $validatedData =$this->userValidatorService->checkUpdatePassword($data, UserValidatorService::TOKEN_UPDATE_PSWD);
         if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors']
@@ -173,7 +173,7 @@ class UserService
     public function createUser(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->userValidatorService->checkCreateUser($data);
+        $validatedData = $this->userValidatorService->checkCreateUser($data, UserValidatorService::TOKEN_CREATE_USER);
         if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
