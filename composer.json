@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "friendsofphp/php-cs-fixer": "^2.15",
+        "knplabs/knp-menu-bundle": "^2.0",
         "liip/imagine-bundle": "^2.1",
         "sensio/framework-extra-bundle": "^5.1",
         "squizlabs/php_codesniffer": "*",
@@ -30,7 +31,8 @@
         "symfony/validator": "4.3.*",
         "symfony/web-link": "4.3.*",
         "symfony/webpack-encore-bundle": "^1.6",
-        "symfony/yaml": "4.3.*"
+        "symfony/yaml": "4.3.*",
+        "twig/extensions": "^1.5"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.2",

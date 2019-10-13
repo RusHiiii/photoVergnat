@@ -119,7 +119,7 @@ class CategoryService
 
         return [
             'errors' => [],
-            'category' => $this->serialize->serialize($category, 'json')
+            'category' => $this->serialize->serialize($category, 'json', ['groups' => ['default', 'category']])
         ];
     }
 
@@ -165,7 +165,7 @@ class CategoryService
 
         return [
             'errors' => [],
-            'category' => $this->serialize->serialize($category, 'json')
+            'category' => $this->serialize->serialize($category, 'json', ['groups' => ['default', 'category']])
         ];
     }
 }

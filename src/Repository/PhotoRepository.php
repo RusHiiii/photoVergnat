@@ -63,4 +63,22 @@ class PhotoRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+
+    /**
+     * Récupération des thumbnails
+     * @return array
+     */
+    public function findByUsed(string $type): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.category IS NOT NULL')
+            ->innerJoin('p.type', 'type', 'type.id = p.type')
+            ->andWhere('type.title = :val')
+            ->setParameter('val', $type)
+            ->orderBy('p.id')
+            ->setMaxResults(8)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

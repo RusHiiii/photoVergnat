@@ -64,3 +64,17 @@ services:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preRemove }
+
+    app.menu_builder:
+        class: App\Menu\MenuBuilder
+
+    app.menu.main:
+        class: Knp\Menu\MenuItem
+        factory: ['@app.menu_builder', 'main']
+        tags:
+            - { name: knp_menu.menu, alias: main }
+
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }

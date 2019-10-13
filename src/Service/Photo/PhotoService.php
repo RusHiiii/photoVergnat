@@ -80,7 +80,7 @@ class PhotoService
 
         return [
             'errors' => [],
-            'photo' => $this->serialize->serialize($photo, 'json')
+            'photo' => $this->serialize->serialize($photo, 'json', ['groups' => ['default', 'photo']])
         ];
     }
 
@@ -117,7 +117,7 @@ class PhotoService
 
         return [
             'errors' => [],
-            'photo' => $this->serialize->serialize($photo, 'json')
+            'photo' => $this->serialize->serialize($photo, 'json', ['groups' => ['default', 'photo']])
         ];
     }
 

@@ -103,7 +103,7 @@ class UserService
 
         return [
             'errors' => [],
-            'user' => $this->serialize->serialize($user, 'json')
+            'user' => $this->serialize->serialize($user, 'json', ['groups' => ['default']])
         ];
     }
 
@@ -195,7 +195,7 @@ class UserService
 
         return [
             'errors' => [],
-            'user' => $this->serialize->serialize($user, 'json')
+            'user' => $this->serialize->serialize($user, 'json', ['groups' => ['default']])
         ];
     }
 }

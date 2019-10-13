@@ -34,4 +34,19 @@ class CategoryRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    /**
+     * Récupération par active
+     * @param string $value
+     * @return Category|null
+     */
+    public function findByActive(string $value): array
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.active = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

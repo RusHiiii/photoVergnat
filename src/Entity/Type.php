@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TypeRepository")
@@ -16,16 +17,19 @@ class Type
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"default"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=80)
+     * @Groups({"default"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"default"})
      */
     private $created;
 
@@ -36,6 +40,7 @@ class Type
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Photo", mappedBy="type")
+     * @Groups({"type"})
      */
     private $photos;
 

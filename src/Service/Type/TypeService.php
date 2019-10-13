@@ -91,7 +91,7 @@ class TypeService
 
         return [
             'errors' => [],
-            'type' => $this->serialize->serialize($type, 'json')
+            'type' => $this->serialize->serialize($type, 'json', ['groups' => ['default', 'type']])
         ];
     }
 
@@ -121,7 +121,7 @@ class TypeService
 
         return [
             'errors' => [],
-            'type' => $this->serialize->serialize($type, 'json')
+            'type' => $this->serialize->serialize($type, 'json', ['groups' => ['default', 'type']])
         ];
     }
 }

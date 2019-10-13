@@ -103,6 +103,7 @@ $('body').on('submit', '#update-tag', function (e) {
         },
         dataType:'json',
         success : function (res) {
+            console.log(res);
             $.removeSpinner('.update-tag', 'Valider');
             $.showErrors(res['errors'], '#alert-update');
 

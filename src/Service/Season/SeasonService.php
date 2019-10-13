@@ -91,7 +91,7 @@ class SeasonService
 
         return [
             'errors' => [],
-            'season' => $this->serialize->serialize($season, 'json')
+            'season' => $this->serialize->serialize($season, 'json', ['groups' => ['default', 'season']])
         ];
     }
 
@@ -121,7 +121,7 @@ class SeasonService
 
         return [
             'errors' => [],
-            'season' => $this->serialize->serialize($season, 'json')
+            'season' => $this->serialize->serialize($season, 'json', ['groups' => ['default', 'season']])
         ];
     }
 }

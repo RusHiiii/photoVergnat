@@ -114,6 +114,7 @@ $('body').on('submit', '#update-type', function (e) {
         },
         dataType:'json',
         success : function (res) {
+            console.log(res);
             $.removeSpinner('.update-type', 'Valider');
             $.showErrors(res['errors'], '#alert-update');
 

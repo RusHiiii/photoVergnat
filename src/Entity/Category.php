@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
@@ -16,16 +17,19 @@ class Category
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"default"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"default"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"default"})
      */
     private $city;
 
@@ -42,6 +46,7 @@ class Category
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Season", inversedBy="categories")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"category"})
      */
     private $season;
 
@@ -58,22 +63,26 @@ class Category
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Photo", mappedBy="category")
+     * @Groups({"category"})
      */
     private $photos;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="categories")
      * @ORM\JoinTable(name="categories_tags")
+     * @Groups({"category"})
      */
     private $tags;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"default"})
      */
     private $active;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"default"})
      */
     private $created;
 

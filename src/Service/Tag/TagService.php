@@ -90,7 +90,7 @@ class TagService
 
         return [
             'errors' => [],
-            'tag' => $this->serialize->serialize($tag, 'json')
+            'tag' => $this->serialize->serialize($tag, 'json', ['groups' => ['default', 'tag']])
         ];
     }
 
@@ -121,7 +121,7 @@ class TagService
 
         return [
             'errors' => [],
-            'tag' => $this->serialize->serialize($tag, 'json')
+            'tag' => $this->serialize->serialize($tag, 'json', ['groups' => ['default', 'tag']])
         ];
     }
 }
