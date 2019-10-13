@@ -15,8 +15,7 @@ class AdminController extends AbstractController
     public function index(
         Request $request,
         SeasonRepository $seasonRepository
-    )
-    {
+    ) {
         $seasons = $seasonRepository->findAll();
 
         return $this->render('season/admin/index.html.twig', [

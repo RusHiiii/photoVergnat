@@ -8,7 +8,6 @@
 
 namespace App\Service\User;
 
-
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Service\Tools\DataValidatorService;
@@ -19,14 +18,17 @@ use Symfony\Component\Security\Core\Security;
 
 class UserValidatorService
 {
+    const TOKEN_UPDATE_USER = 'update-user';
+    const TOKEN_UPDATE_PSWD = 'update-password';
+    const TOKEN_CREATE_USER = 'create-user';
+
     private $validatorService;
     private $toolsService;
 
     public function __construct(
         DataValidatorService $dataValidatorService,
         ToolsService $toolsService
-    )
-    {
+    ) {
         $this->validatorService = $dataValidatorService;
         $this->toolsService = $toolsService;
     }
@@ -36,13 +38,13 @@ class UserValidatorService
      * @param array $data
      * @return array
      */
-    public function checkUpdateProfile(array $data): array
+    public function checkUpdateProfile(array $data, string $token): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], 'update-user');
+        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateEmail($data['email'], 'mail');
         $this->validatorService->validateNotBlank($data['lastname'], 'nom');
         $this->validatorService->validateNotBlank($data['firstname'], 'prénom');
@@ -60,17 +62,17 @@ class UserValidatorService
      * @param array $data
      * @return array
      */
-    public function checkCreateUser(array $data): array
+    public function checkCreateUser(array $data, string $token): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], 'create-user');
+        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateEmail($data['email'], 'mail');
         $this->validatorService->validateNotBlank($data['lastname'], 'nom');
         $this->validatorService->validateNotBlank($data['firstname'], 'prénom');
-        $this->validatorService->validateEqualTo($data['password_first'],$data['password_second'], 'mot de passe');
+        $this->validatorService->validateEqualTo($data['password_first'], $data['password_second'], 'mot de passe');
         $this->validatorService->validateRegex($data['password_first'], 'mot de passe');
         $this->validatorService->validateExist($data, 'roles', 'roles');
 
@@ -87,13 +89,13 @@ class UserValidatorService
      * @param array $data
      * @return array
      */
-    public function checkUpdateUser(array $data): array
+    public function checkUpdateUser(array $data, string $token): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], 'update-user');
+        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateEmail($data['email'], 'mail');
         $this->validatorService->validateNotBlank($data['lastname'], 'nom');
         $this->validatorService->validateNotBlank($data['firstname'], 'prénom');
@@ -113,15 +115,15 @@ class UserValidatorService
      * @param array $data
      * @return array
      */
-    public function checkUpdatePassword(array $data): array
+    public function checkUpdatePassword(array $data, string $token): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], 'update-password');
+        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateNotBlank($data['password_first'], 'mot de passe');
-        $this->validatorService->validateEqualTo($data['password_first'],$data['password_second'], 'mot de passe');
+        $this->validatorService->validateEqualTo($data['password_first'], $data['password_second'], 'mot de passe');
         $this->validatorService->validateRegex($data['password_first'], 'mot de passe');
 
         /** Récupération des erreurs */

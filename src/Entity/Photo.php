@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PhotoRepository")
@@ -16,29 +17,33 @@ class Photo
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"default"})
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="photos")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $category;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="photos")
      * @ORM\JoinTable(name="photos_tags")
+     * @Groups({"photo"})
      */
     private $tags;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="photos")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"photo"})
      */
     private $type;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"default"})
      */
     private $created;
 
@@ -49,13 +54,20 @@ class Photo
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"default"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"default"})
      */
     private $file;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $information;
 
     public function __construct()
     {
@@ -168,6 +180,23 @@ class Photo
     public function setFile($file): self
     {
         $this->file = $file;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->title;
+    }
+
+    public function getInformation(): ?string
+    {
+        return $this->information;
+    }
+
+    public function setInformation(string $information): self
+    {
+        $this->information = $information;
 
         return $this;
     }

@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SeasonRepository")
@@ -16,21 +17,25 @@ class Season
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"default"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Groups({"default"})
      */
     private $title;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="season")
+     * @Groups({"season"})
      */
     private $categories;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"default"})
      */
     private $created;
 

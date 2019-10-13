@@ -1,0 +1,194 @@
+{% extends 'elements/layout/app/base.html.twig' %}
+
+{% block title %}Photo'Vergnat - {{ category.title }}{% endblock %}
+
+{% block body %}
+    <!-- Breadcrumb Area Start -->
+    <section class="breadcrumb-area blog bg-img bg-overlay jarallax" style="background-image: url('{{ ('/images/uploads/' ~ (category | getMainPhotoUrl('Paysage') )) }}')">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center">
+                        {% for tag in category.tags %}
+                            <a href="#" class="btn post-catagory">{{ tag.title }}</a>
+                        {% endfor %}
+                        <h2 class="page-title">{{ category.title }}</h2>
+                        <div class="post-meta">
+                            <a href="#" class="post-author">{{ category.user.fullname }}</a>
+                            <a href="#" class="post-date">{{ category.created | localizeddate('none', 'none', null, null, 'MMMM Y') | capitalize }}</a>
+                            <a href="#" class="post-number">{{ category.photos | length }} photos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="alime--blog-area section-padding-80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                    <!-- Blog Details Text -->
+                    <div class="blog-details-text">
+                        {{ category.description | raw }}
+
+                        <table class="post-table">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <span class="fa fa-calendar"></span>{{ category.created | localizeddate('none', 'none', null, null, 'MMMM Y') | capitalize }}
+                                </td>
+                                <td>
+                                    <span class="fa fa-user"></span>{{ category.user.fullname }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="fa fa-bookmark"></span>{{ category.city }}
+                                </td>
+                                <td colspan="2">
+                                    <span class="fa fa-map-marker"></span>{{ category.latitude }} {{ category.longitude }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="fa fa-comments"></span>{{ category.comments | length }} commentaires
+                                </td>
+                                <td>
+                                    <span class="fa fa-camera"></span>{{ category.photos | length }} photos
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Post Author Area -->
+                    <div class="post-author-area mt-50 d-flex align-items-center justify-content-between">
+                        <ul class="popular-tags">
+                            {% for tag in category.tags %}
+                                <li><a class="btn badges-btn" href="#">{{ tag.title | upper }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related News Area Start -->
+    <div class="related-news-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading">
+                        <h2>Catégorie récente</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                {% for category in categories %}
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-post-area wow fadeInUpBig" data-wow-delay="100ms">
+                            <a href="#" class="post-thumbnail">
+                                <img class="lazy" data-src="{{ ('/images/uploads/' ~ (category | getMainPhotoUrl('Portrait') )) | imagine_filter('thumbnail_category') }}">
+                            </a>
+                            <div class="tags-category">
+                                {% for tag in category.tags %}
+                                    <a href="#" class="btn post-catagory">{{ tag.title }}</a>
+                                {% endfor %}
+                            </div>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <a href="#">{{ category.created | localizeddate('none', 'none', null, null, 'MMMM Y') | capitalize }}</a>
+                                    <a href="#">{{ category.photos | length }} photos</a>
+                                </div>
+                                <a href="{{ path('app_category', {'id': category.id, 'slug': category.title | slugify() }) }}" class="post-title">{{ category.title }}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="border-top mt-5"></div>
+        </div>
+    </div>
+
+    <!-- Comment Area Start -->
+    <div class="comment-area section-padding-80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <!-- Comments Area -->
+                    <div class="comment_area clearfix">
+                        <h4 class="mb-30">2 Commentaires</h4>
+
+                        <ol>
+                            <!-- Single Comment Area -->
+                            <li class="single_comment_area">
+                                <!-- Comment Content -->
+                                <div class="comment-content d-flex">
+                                    <!-- Comment Author -->
+                                    <div class="comment-author">
+                                        <img src="/theme/img/bg-img/Person.jpg" alt="author">
+                                    </div>
+                                    <!-- Comment Meta -->
+                                    <div class="comment-meta">
+                                        <a href="#" class="post-date">Août 2019</a>
+                                        <h5>Florent Damiens</h5>
+                                        <p>Re asperner re non nam inquam flagitem admodum oratio inquam dicit fallare intellegam tamen istius possumus sed philosopho aeque et.</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!-- Single Comment Area -->
+                            <li class="single_comment_area">
+                                <!-- Comment Content -->
+                                <div class="comment-content d-flex">
+                                    <!-- Comment Author -->
+                                    <div class="comment-author">
+                                        <img src="/theme/img/bg-img/Person.jpg" alt="author">
+                                    </div>
+                                    <!-- Comment Meta -->
+                                    <div class="comment-meta">
+                                        <a href="#" class="post-date">Août 2018</a>
+                                        <h5>Jean Dupond</h5>
+                                        <p>Nobilem fama Aginatium explanare nobilem maioribus nunc nec iam nec fama arbitror maioribus a ad rata inde ulla documentorum pertinacior.</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <!-- Leave A Reply -->
+                    <div class="alime-contact-form mt-50">
+                        <h4 class="mb-30">Laisser un commentaire</h4>
+
+                        <!-- Form -->
+                        <form action="#" method="post">
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <input type="text" name="message-name" class="form-control mb-30" placeholder="Nom">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <input type="email" name="message-email" class="form-control mb-30" placeholder="Mail">
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" class="form-control mb-30" placeholder="Messages"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn alime-btn btn-2 mt-15">Envoyer</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        $('.lazy').Lazy();
+    </script>
+{% endblock %}

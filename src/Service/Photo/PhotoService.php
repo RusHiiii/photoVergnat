@@ -8,7 +8,6 @@
 
 namespace App\Service\Photo;
 
-
 use App\Entity\Photo;
 use App\Repository\PhotoRepository;
 use App\Repository\TagRepository;
@@ -38,8 +37,7 @@ class PhotoService
         SerializerInterface $serializer,
         TypeRepository $typeRepository,
         PhotoRepository $photoRepository
-    )
-    {
+    ) {
         $this->entityManager = $entityManager;
         $this->security = $security;
         $this->photoValidatorService = $photoValidatorService;
@@ -59,8 +57,8 @@ class PhotoService
     public function createPhoto(array $data, ?UploadedFile $file): array
     {
         /** Validation des données */
-        $validatedData = $this->photoValidatorService->checkCreatePhoto($data, $file);
-        if(count($validatedData['errors']) > 0) {
+        $validatedData = $this->photoValidatorService->checkCreatePhoto($data, $file, PhotoValidatorService::TOKEN_CREATE);
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'photo' => []
@@ -82,7 +80,7 @@ class PhotoService
 
         return [
             'errors' => [],
-            'photo' => $this->serialize->serialize($photo, 'json')
+            'photo' => $this->serialize->serialize($photo, 'json', ['groups' => ['default', 'photo']])
         ];
     }
 
@@ -96,8 +94,8 @@ class PhotoService
     public function updatePhoto(array $data, ?UploadedFile $file): array
     {
         /** Validation des données */
-        $validatedData = $this->photoValidatorService->checkUpdatePhoto($data, $file);
-        if(count($validatedData['errors']) > 0) {
+        $validatedData = $this->photoValidatorService->checkUpdatePhoto($data, $file, PhotoValidatorService::TOKEN_UPDATE);
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'photo' => []
@@ -119,7 +117,7 @@ class PhotoService
 
         return [
             'errors' => [],
-            'photo' => $this->serialize->serialize($photo, 'json')
+            'photo' => $this->serialize->serialize($photo, 'json', ['groups' => ['default', 'photo']])
         ];
     }
 
@@ -131,9 +129,9 @@ class PhotoService
      */
     public function removePhoto(string $data): array
     {
-        /** On récupére le tag */
+        /** On récupére la photo */
         $photo = $this->photoRepository->findById($data);
-        if($photo === null) {
+        if ($photo === null) {
             return [
                 'errors' => [self::MSG_UNKNOWN_PHOTO]
             ];

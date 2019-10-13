@@ -34,6 +34,7 @@ class PhotoEntityListener
         $entity->setUpdated(new \DateTime('now'));
 
         $this->uploadFile($entity);
+        $this->getExifData($entity);
     }
 
     /**
@@ -64,14 +65,16 @@ class PhotoEntityListener
             return;
         }
 
-        $oldFile = $args->getOldValue('file');
-        if($entity->getFile() === null) {
-            $entity->setFile($oldFile);
-        }else{
-            $this->removeFile($oldFile);
+        if ($entity->getFile() instanceof UploadedFile) {
+            $this->removeFile($args->getOldValue('file'));
             $this->uploadFile($entity);
         }
 
+        if ($entity->getFile() === null) {
+            $entity->setFile($args->getOldValue('file'));
+        }
+
+        $this->getExifData($entity);
         $entity->setUpdated(new \DateTime('now'));
     }
 
@@ -97,11 +100,26 @@ class PhotoEntityListener
      */
     private function removeFile(string $filename)
     {
-        if(file_exists($this->uploader->getTargetDirectory() . $filename)){
+        if (file_exists($this->uploader->getTargetDirectory() . $filename)) {
             unlink($this->uploader->getTargetDirectory() . $filename);
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * Récupération de la photo
+     * @param Photo $photo
+     */
+    private function getExifData(Photo $photo){
+        $data = exif_read_data($this->uploader->getTargetDirectory() . $photo->getFile(),0, true);
+
+        $information = 'NC';
+        if (isset($data['COMPUTED']['ApertureFNumber'])) {
+            $information = sprintf('%s: %ss à %s, %s ISO', $data['IFD0']['Model'], $data['EXIF']['ExposureTime'], $data['COMPUTED']['ApertureFNumber'], $data['EXIF']['ISOSpeedRatings']);
+        }
+
+        $photo->setInformation($information);
     }
 }

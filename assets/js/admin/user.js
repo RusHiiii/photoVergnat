@@ -1,7 +1,7 @@
 /****************** LISTENER **********************/
 
 /** Initialisation formualire d'ajout */
-$('body').on('submit', '#update-password', function(e){
+$('body').on('submit', '#update-password', function (e) {
     e.preventDefault();
 
     $.addSpinner('.edit-password');
@@ -18,11 +18,11 @@ $('body').on('submit', '#update-password', function(e){
                 swal('Action interdite !');
             },
         },
-        success : function(res) {
+        success : function (res) {
             $.removeSpinner('.edit-password', 'Valider');
             $.showErrors(res['errors'], '#alert-password');
         },
-        error: function(res) {
+        error: function (res) {
             $.removeSpinner('.edit-password', 'Valider');
             $.showErrors(['Oops an errors occured :('], '#alert-password');
         }
@@ -30,7 +30,7 @@ $('body').on('submit', '#update-password', function(e){
 });
 
 /** Initialisation formualire de MàJ */
-$('body').on('submit', '#update-user', function(e){
+$('body').on('submit', '#update-user', function (e) {
     e.preventDefault();
 
     $.addSpinner('.update-user');
@@ -47,15 +47,15 @@ $('body').on('submit', '#update-user', function(e){
                 swal('Action interdite !');
             },
         },
-        success : function(res) {
+        success : function (res) {
             $.removeSpinner('.update-user', 'Valider');
             $.showErrors(res['errors'], '#alert-update');
 
-            if(res['errors'].length === 0){
+            if (res['errors'].length === 0) {
                 updateRow(JSON.parse(res['user']));
             }
         },
-        error: function(res) {
+        error: function (res) {
             $.removeSpinner('.edit-user', 'Valider');
             $.showErrors(['Oops an errors occured :('], '#alert-update');
         }
@@ -63,16 +63,21 @@ $('body').on('submit', '#update-user', function(e){
 });
 
 /** Initialisation formualire d'ajout */
-$('body').on('submit', '#create-user', function(e){
+$('body').on('submit', '#create-user', function (e) {
     e.preventDefault();
 
     $.addSpinner('.create-user');
+
+    var data = $('#create-user').serializeObject();
+    if (!$.isArray(data['roles'])) {
+        data['roles'] = [data['roles']];
+    }
 
     $.ajax({
         url : '/xhr/admin/user/create',
         type : 'POST',
         data : {
-            'user': $('#create-user').serializeObject()
+            'user': data
         },
         dataType:'json',
         statusCode: {
@@ -81,15 +86,15 @@ $('body').on('submit', '#create-user', function(e){
                 $('#large-Modal').modal('hide');
             },
         },
-        success : function(res) {
+        success : function (res) {
             $.removeSpinner('.create-user', 'Valider');
             $.showErrors(res['errors'], '#alert-create');
 
-            if(res['errors'].length === 0){
+            if (res['errors'].length === 0) {
                 addRow(JSON.parse(res['user']));
             }
         },
-        error: function(res) {
+        error: function (res) {
             $.removeSpinner('.create-user', 'Valider');
             $.showErrors(['Oops an errors occured :('], '#alert-create');
         }
@@ -97,7 +102,7 @@ $('body').on('submit', '#create-user', function(e){
 });
 
 /** Initilisation des modals de suppression */
-$('#users-table tbody').on('click', '.alert-ajax', function(e){
+$('#users-table tbody').on('click', '.alert-ajax', function (e) {
     var table = $('#users-table').DataTable();
     var id = $(this).data('id');
 
@@ -111,7 +116,7 @@ $('#users-table tbody').on('click', '.alert-ajax', function(e){
     }, function () {
         $.ajax({
             url : '/xhr/admin/user/remove',
-            type : 'POST',
+            type : 'DELETE',
             data : {
                 'user': id
             },
@@ -121,11 +126,11 @@ $('#users-table tbody').on('click', '.alert-ajax', function(e){
                     swal('Action interdite !');
                 },
             },
-            success : function(res) {
+            success : function (res) {
                 var message = 'Suppression terminée !';
-                if(res.errors.length > 0) {
+                if (res.errors.length > 0) {
                     message = res.errors[0];
-                }else{
+                } else {
                     table
                         .row($("#user_" + id))
                         .remove()
@@ -138,12 +143,12 @@ $('#users-table tbody').on('click', '.alert-ajax', function(e){
 });
 
 /** Initialisation de la modal */
-$('#users-table tbody').on('click', '.edit', function(e){
+$('#users-table tbody').on('click', '.edit', function (e) {
     var id = $(this).data('id');
     $.ajax({
         url : '/xhr/admin/user/display/edit/' + id,
         type : 'GET',
-        success : function(res) {
+        success : function (res) {
             $('#large-Modal').html(res);
             $('#large-Modal').modal();
         }
@@ -151,12 +156,12 @@ $('#users-table tbody').on('click', '.edit', function(e){
 });
 
 /** Initialisation de la modal */
-$('#users-table tbody').on('click', '.pswd', function(e){
+$('#users-table tbody').on('click', '.pswd', function (e) {
     var id = $(this).data('id');
     $.ajax({
         url : '/xhr/admin/user/display/password/' + id,
         type : 'GET',
-        success : function(res) {
+        success : function (res) {
             $('#large-Modal').html(res);
             $('#large-Modal').modal();
         }
@@ -164,11 +169,11 @@ $('#users-table tbody').on('click', '.pswd', function(e){
 });
 
 /** Initialisation de la modal */
-$('.user .add').on('click', function(e){
+$('.user .add').on('click', function (e) {
     $.ajax({
         url : '/xhr/admin/user/display/create/',
         type : 'GET',
-        success : function(res) {
+        success : function (res) {
             $('#large-Modal').html(res);
             $('#large-Modal').modal();
         }
@@ -178,7 +183,8 @@ $('.user .add').on('click', function(e){
 /****************** FONCTION **********************/
 
 /** Génération du bouton */
-function getHtmlButton(data) {
+function getHtmlButton(data)
+{
     var html =
         '<button type="button" class="btn btn-warning waves-effect edit" data-id="'+data.id+'" data-toggle="modal"><i class="icofont icofont-edit-alt"></i></button>\n' +
         '<button type="button" class="btn btn-danger alert-ajax m-b-10 delete" data-id="'+data.id+'"><i class="icofont icofont-bin"></i></button>\n' +
@@ -188,7 +194,8 @@ function getHtmlButton(data) {
 }
 
 /** Ajoute une ligne au tableau */
-function addRow(user) {
+function addRow(user)
+{
     let current_datetime = new Date(user.created);
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 
@@ -211,7 +218,8 @@ function addRow(user) {
 }
 
 /** MàJ une ligne au tableau */
-function updateRow(user) {
+function updateRow(user)
+{
     let current_datetime = new Date(user.created);
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 

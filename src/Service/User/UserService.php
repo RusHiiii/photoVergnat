@@ -8,7 +8,6 @@
 
 namespace App\Service\User;
 
-
 use App\Controller\Security\Voter\UserVoter;
 use App\Entity\User;
 use App\Repository\UserRepository;
@@ -35,8 +34,7 @@ class UserService
         Security $security,
         UserValidatorService $userValidatorService,
         SerializerInterface $serializer
-    )
-    {
+    ) {
         $this->entityManager = $entityManager;
         $this->userRepository = $userRepository;
         $this->security = $security;
@@ -54,8 +52,8 @@ class UserService
     public function updateProfile(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->userValidatorService->checkUpdateProfile($data);
-        if(count($validatedData['errors']) > 0) {
+        $validatedData = $this->userValidatorService->checkUpdateProfile($data, UserValidatorService::TOKEN_UPDATE_USER);
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors']
             ];
@@ -84,8 +82,8 @@ class UserService
     public function updateUser(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->userValidatorService->checkUpdateUser($data);
-        if(count($validatedData['errors']) > 0) {
+        $validatedData = $this->userValidatorService->checkUpdateUser($data, UserValidatorService::TOKEN_UPDATE_USER);
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'user' => []
@@ -105,7 +103,7 @@ class UserService
 
         return [
             'errors' => [],
-            'user' => $this->serialize->serialize($user, 'json')
+            'user' => $this->serialize->serialize($user, 'json', ['groups' => ['default']])
         ];
     }
 
@@ -118,8 +116,8 @@ class UserService
     public function updatePassword(array $data): array
     {
         /** Validation des données */
-        $validatedData =$this->userValidatorService->checkUpdatePassword($data);
-        if(count($validatedData['errors']) > 0) {
+        $validatedData =$this->userValidatorService->checkUpdatePassword($data, UserValidatorService::TOKEN_UPDATE_PSWD);
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors']
             ];
@@ -127,7 +125,7 @@ class UserService
 
         /** Récupération de l'utilisateur */
         $user = $this->security->getUser()->getUsername();
-        if($this->security->isGranted(UserVoter::EDIT, User::class) && isset($validatedData['data']['email'])) {
+        if ($this->security->isGranted(UserVoter::EDIT, User::class) && isset($validatedData['data']['email'])) {
             $user = $this->userRepository->findByEmail($validatedData['data']['email']);
         }
 
@@ -152,7 +150,7 @@ class UserService
     {
         /** On récupére l'utilisateur */
         $user = $this->userRepository->findById($data);
-        if($user === null) {
+        if ($user === null) {
             return [
                 'errors' => [self::MSG_UNKNOWN_USER]
             ];
@@ -175,8 +173,8 @@ class UserService
     public function createUser(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->userValidatorService->checkCreateUser($data);
-        if(count($validatedData['errors']) > 0) {
+        $validatedData = $this->userValidatorService->checkCreateUser($data, UserValidatorService::TOKEN_CREATE_USER);
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'user' => []
@@ -197,7 +195,7 @@ class UserService
 
         return [
             'errors' => [],
-            'user' => $this->serialize->serialize($user, 'json')
+            'user' => $this->serialize->serialize($user, 'json', ['groups' => ['default']])
         ];
     }
 }

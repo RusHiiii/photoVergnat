@@ -16,8 +16,7 @@ class AdminController extends AbstractController
     public function index(
         Request $request,
         PhotoRepository $photoRepository
-    )
-    {
+    ) {
         $photos = $photoRepository->findAll();
 
         return $this->render('photo/admin/index.html.twig', [

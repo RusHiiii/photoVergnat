@@ -53,6 +53,10 @@
   }
 }
 
+.jFiler-input-choose-btn:hover{
+  color: #01a9ac !important;
+}
+
 .select2-container--default {
   .select2-selection--multiple {
     .select2-selection__choice {
@@ -83,7 +87,7 @@
 #alert-update {
   display: none;
 }
-.create-user, .create-tag, .update-tag, .create-season, .update-season, .create-type, .update-type, .create-photo, .update-photo {
+.create-user, .create-tag, .update-tag, .create-season, .update-season, .create-type, .update-type, .create-photo, .update-photo, .create-category, .update-category {
   height: 40.4px;
   width: 88.6px;
 }
@@ -157,7 +161,15 @@
   position: relative;
 }
 
-#tags-table, #users-table, #seasons-table,  #types-table, #photos-table{
+.border-checkbox-group{
+  vertical-align: -webkit-baseline-middle;
+
+  label{
+    margin-bottom: 0;
+  }
+}
+
+#tags-table, #users-table, #seasons-table,  #types-table, #photos-table, #categories-table{
   td:last-child{
     text-align: center;
   }

@@ -1,12 +1,12 @@
 /****************** LISTENER **********************/
 
 /** Initialisation de la modal */
-$('#types-table tbody').on('click', '.edit', function(e){
+$('#types-table tbody').on('click', '.edit', function (e) {
     var id = $(this).data('id');
     $.ajax({
         url : '/xhr/admin/type/display/edit/' + id,
         type : 'GET',
-        success : function(res) {
+        success : function (res) {
             $('#large-Modal').html(res);
             $('#large-Modal').modal();
         }
@@ -14,11 +14,11 @@ $('#types-table tbody').on('click', '.edit', function(e){
 });
 
 /** Initialisation de la modal */
-$('.type .add').on('click', function(e){
+$('.type .add').on('click', function (e) {
     $.ajax({
         url : '/xhr/admin/type/display/create/',
         type : 'GET',
-        success : function(res) {
+        success : function (res) {
             $('#large-Modal').html(res);
             $('#large-Modal').modal();
         }
@@ -26,7 +26,7 @@ $('.type .add').on('click', function(e){
 });
 
 /** Initilisation des modals de suppression */
-$('#types-table tbody').on('click', '.alert-ajax', function(e){
+$('#types-table tbody').on('click', '.alert-ajax', function (e) {
     var table = $('#types-table').DataTable();
     var id = $(this).data('id');
 
@@ -40,7 +40,7 @@ $('#types-table tbody').on('click', '.alert-ajax', function(e){
     }, function () {
         $.ajax({
             url : '/xhr/admin/type/remove',
-            type : 'POST',
+            type : 'DELETE',
             data : {
                 'type': id
             },
@@ -50,11 +50,11 @@ $('#types-table tbody').on('click', '.alert-ajax', function(e){
                     swal('Action interdite !');
                 },
             },
-            success : function(res) {
+            success : function (res) {
                 var message = 'Suppression terminée !';
-                if(res.errors.length > 0) {
+                if (res.errors.length > 0) {
                     message = res.errors[0];
-                }else{
+                } else {
                     table
                         .row($("#type_" + id))
                         .remove()
@@ -67,7 +67,7 @@ $('#types-table tbody').on('click', '.alert-ajax', function(e){
 });
 
 /** Initialisation formualire d'ajout */
-$('body').on('submit', '#create-type', function(e){
+$('body').on('submit', '#create-type', function (e) {
     e.preventDefault();
 
     $.addSpinner('.create-type');
@@ -85,15 +85,15 @@ $('body').on('submit', '#create-type', function(e){
                 $('#large-Modal').modal('hide');
             },
         },
-        success : function(res) {
+        success : function (res) {
             $.removeSpinner('.create-type', 'Valider');
             $.showErrors(res['errors'], '#alert-create');
 
-            if(res['errors'].length === 0){
+            if (res['errors'].length === 0) {
                 addRow(JSON.parse(res['type']));
             }
         },
-        error: function(res) {
+        error: function (res) {
             $.removeSpinner('.create-type', 'Valider');
             $.showErrors(['Oops an errors occured :('], '#alert-create');
         }
@@ -101,7 +101,7 @@ $('body').on('submit', '#create-type', function(e){
 });
 
 /** Initialisation formualire de MàJ */
-$('body').on('submit', '#update-type', function(e){
+$('body').on('submit', '#update-type', function (e) {
     e.preventDefault();
 
     $.addSpinner('.update-type');
@@ -113,15 +113,16 @@ $('body').on('submit', '#update-type', function(e){
             'type': $('#update-type').serializeObject()
         },
         dataType:'json',
-        success : function(res) {
+        success : function (res) {
+            console.log(res);
             $.removeSpinner('.update-type', 'Valider');
             $.showErrors(res['errors'], '#alert-update');
 
-            if(res['errors'].length === 0){
+            if (res['errors'].length === 0) {
                 updateRow(JSON.parse(res['type']));
             }
         },
-        error: function(res) {
+        error: function (res) {
             $.removeSpinner('.update-type', 'Valider');
             $.showErrors(['Oops an errors occured :('], '#alert-update');
         }
@@ -131,7 +132,8 @@ $('body').on('submit', '#update-type', function(e){
 /****************** FONCTION **********************/
 
 /** Ajoute une ligne au tableau */
-function addRow(type) {
+function addRow(type)
+{
     let current_datetime = new Date(type.created);
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 
@@ -152,7 +154,8 @@ function addRow(type) {
 }
 
 /** MàJ une ligne au tableau */
-function updateRow(type) {
+function updateRow(type)
+{
     let current_datetime = new Date(type.created);
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 

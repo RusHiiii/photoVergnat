@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
@@ -16,26 +17,19 @@ class Category
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"default"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"default"})
      */
     private $title;
 
     /**
-     * @ORM\Column(type="date")
-     */
-    private $date;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $text;
-
-    /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"default"})
      */
     private $city;
 
@@ -52,6 +46,7 @@ class Category
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Season", inversedBy="categories")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"category"})
      */
     private $season;
 
@@ -68,14 +63,38 @@ class Category
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Photo", mappedBy="category")
+     * @Groups({"category"})
      */
     private $photos;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="categories")
      * @ORM\JoinTable(name="categories_tags")
+     * @Groups({"category"})
      */
     private $tags;
+
+    /**
+     * @ORM\Column(type="boolean")
+     * @Groups({"default"})
+     */
+    private $active;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Groups({"default"})
+     */
+    private $created;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
 
     public function __construct()
     {
@@ -97,30 +116,6 @@ class Category
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    public function getText(): ?string
-    {
-        return $this->text;
-    }
-
-    public function setText(string $text): self
-    {
-        $this->text = $text;
 
         return $this;
     }
@@ -234,6 +229,13 @@ class Category
         return $this;
     }
 
+    public function resetPhoto(): self
+    {
+        $this->photos->clear();
+
+        return $this;
+    }
+
     public function removePhoto(Photo $photo): self
     {
         if ($this->photos->contains($photo)) {
@@ -264,11 +266,66 @@ class Category
         return $this;
     }
 
+    public function resetTags(): self
+    {
+        $this->tags->clear();
+
+        return $this;
+    }
+
     public function removeTag(Tag $tag): self
     {
         if ($this->tags->contains($tag)) {
             $this->tags->removeElement($tag);
         }
+
+        return $this;
+    }
+
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    public function getCreated(): ?\DateTimeInterface
+    {
+        return $this->created;
+    }
+
+    public function setCreated(\DateTimeInterface $created): self
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    public function getUpdated(): ?\DateTimeInterface
+    {
+        return $this->updated;
+    }
+
+    public function setUpdated(\DateTimeInterface $updated): self
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

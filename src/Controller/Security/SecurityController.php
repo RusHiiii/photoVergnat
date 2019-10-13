@@ -15,8 +15,7 @@ class SecurityController extends AbstractController
      */
     public function login(
         AuthenticationUtils $authenticationUtils
-    )
-    {
+    ) {
 
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
@@ -32,8 +31,7 @@ class SecurityController extends AbstractController
      */
     public function logout(
         Request $request
-    )
-    {
+    ) {
         return $this->redirectToRoute('app_home');
     }
 }

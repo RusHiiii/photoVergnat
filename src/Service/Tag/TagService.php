@@ -8,7 +8,6 @@
 
 namespace App\Service\Tag;
 
-
 use App\Entity\Tag;
 use App\Repository\TagRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -31,8 +30,7 @@ class TagService
         TagRepository $tagRepository,
         TagValidatorService $tagValidatorService,
         SerializerInterface $serializer
-    )
-    {
+    ) {
         $this->entityManager = $entityManager;
         $this->security = $security;
         $this->tagValidatorService = $tagValidatorService;
@@ -50,7 +48,7 @@ class TagService
     {
         /** On récupére le tag */
         $tag = $this->tagRepository->findById($data);
-        if($tag === null) {
+        if ($tag === null) {
             return [
                 'errors' => [self::MSG_UNKNOWN_TAG]
             ];
@@ -73,8 +71,8 @@ class TagService
     public function createTag(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->tagValidatorService->checkCreateTag($data);
-        if(count($validatedData['errors']) > 0) {
+        $validatedData = $this->tagValidatorService->checkTag($data, TagValidatorService::TOKEN_CREATE);
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'tag' => []
@@ -92,7 +90,7 @@ class TagService
 
         return [
             'errors' => [],
-            'tag' => $this->serialize->serialize($tag, 'json')
+            'tag' => $this->serialize->serialize($tag, 'json', ['groups' => ['default', 'tag']])
         ];
     }
 
@@ -105,8 +103,8 @@ class TagService
     public function updateTag(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->tagValidatorService->checkUpdateTag($data);
-        if(count($validatedData['errors']) > 0) {
+        $validatedData = $this->tagValidatorService->checkTag($data, TagValidatorService::TOKEN_UPDATE);
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'tag' => []
@@ -123,7 +121,7 @@ class TagService
 
         return [
             'errors' => [],
-            'tag' => $this->serialize->serialize($tag, 'json')
+            'tag' => $this->serialize->serialize($tag, 'json', ['groups' => ['default', 'tag']])
         ];
     }
 }

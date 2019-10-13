@@ -36,6 +36,19 @@
     -moz-transform: rotate(360deg);
   }
 }
+
+.post-thumbnail{
+  img{
+    object-fit: cover;
+    height: 383px;
+  }
+}
+
+.img-thumb{
+  object-fit: cover;
+  max-height: 422px;
+}
+
 .password_profil {
   padding-left: 10px;
   list-style: none;
@@ -56,6 +69,22 @@
     color: $color_3;
   }
 }
+
+.tags-category{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 15;
+  width: 80%;
+  text-align: right;
+  align-content: inherit;
+}
+
+.post-catagory{
+  margin-left: 5px;
+  position: initial !important;
+}
+
 .classy-nav-container {
   a {
     &:hover {

@@ -2,6 +2,11 @@
 
 {% block title %}Photo'Vergnat - Gestions des photos{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/pages/jquery.filer/css/jquery.filer.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('adminity/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css') }}">
+{% endblock %}
+
 {% block body %}
     <!-- Page-header start -->
     <div class="page-header">
@@ -87,6 +92,9 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script type="text/javascript" src="{{ asset('adminity/assets/pages/jquery.filer/js/jquery.filer.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminity/assets/js/jquery.lazy.min.js') }}"></script>
+
     <script type="text/javascript">
         $('.lazy').Lazy();
         $('#photos-table').DataTable({

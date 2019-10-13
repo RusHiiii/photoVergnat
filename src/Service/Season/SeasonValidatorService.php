@@ -8,7 +8,6 @@
 
 namespace App\Service\Season;
 
-
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Service\Tools\DataValidatorService;
@@ -19,6 +18,9 @@ use Symfony\Component\Security\Core\Security;
 
 class SeasonValidatorService
 {
+    const TOKEN_UPDATE = 'update-season';
+    const TOKEN_CREATE = 'create-season';
+
     private $validatorService;
     private $toolsService;
 
@@ -36,35 +38,13 @@ class SeasonValidatorService
      * @param array $data
      * @return array
      */
-    public function checkCreateSeason(array $data): array
+    public function checkSeason(array $data, string $token): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], 'create-season');
-        $this->validatorService->validateNotBlank($data['title'], 'Titre');
-
-        /** Récupération des erreurs */
-        $errors = $this->validatorService->getErrors();
-        return [
-            'errors' => $errors,
-            'data' => $data
-        ];
-    }
-
-    /**
-     * Validation de la données pour la MàJ
-     * @param array $data
-     * @return array
-     */
-    public function checkUpdateSeason(array $data): array
-    {
-        /** Trim les données */
-        $data = $this->toolsService->trimData($data);
-
-        /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], 'update-season');
+        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateNotBlank($data['title'], 'Titre');
 
         /** Récupération des erreurs */

@@ -8,7 +8,6 @@
 
 namespace App\Service\Season;
 
-
 use App\Entity\Season;
 use App\Entity\Tag;
 use App\Repository\SeasonRepository;
@@ -33,8 +32,7 @@ class SeasonService
         SeasonRepository $seasonRepository,
         SeasonValidatorService $tagValidatorService,
         SerializerInterface $serializer
-    )
-    {
+    ) {
         $this->entityManager = $entityManager;
         $this->security = $security;
         $this->seasonValidatorService = $tagValidatorService;
@@ -52,7 +50,7 @@ class SeasonService
     {
         /** On récupére la saison */
         $season = $this->seasonRepository->findById($data);
-        if($season === null) {
+        if ($season === null) {
             return [
                 'errors' => [self::MSG_UNKNOWN_SEASON]
             ];
@@ -75,8 +73,8 @@ class SeasonService
     public function createSeason(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->seasonValidatorService->checkCreateSeason($data);
-        if(count($validatedData['errors']) > 0) {
+        $validatedData = $this->seasonValidatorService->checkSeason($data, SeasonValidatorService::TOKEN_CREATE);
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'season' => []
@@ -93,7 +91,7 @@ class SeasonService
 
         return [
             'errors' => [],
-            'season' => $this->serialize->serialize($season, 'json')
+            'season' => $this->serialize->serialize($season, 'json', ['groups' => ['default', 'season']])
         ];
     }
 
@@ -106,8 +104,8 @@ class SeasonService
     public function updateSeason(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->seasonValidatorService->checkUpdateSeason($data);
-        if(count($validatedData['errors']) > 0) {
+        $validatedData = $this->seasonValidatorService->checkSeason($data, SeasonValidatorService::TOKEN_UPDATE);
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'season' => []
@@ -123,7 +121,7 @@ class SeasonService
 
         return [
             'errors' => [],
-            'season' => $this->serialize->serialize($season, 'json')
+            'season' => $this->serialize->serialize($season, 'json', ['groups' => ['default', 'season']])
         ];
     }
 }

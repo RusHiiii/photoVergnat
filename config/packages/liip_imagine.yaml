@@ -10,3 +10,19 @@ liip_imagine:
           image: ../public/images/static/watermark.png
           size: 0.2
           position: bottomright
+
+    thumbnail_category:
+      filters:
+        thumbnail: { size: [1200, 1000], mode: inset }
+
+    thumbnail:
+      filters:
+        thumbnail: { size: [1200, 800], mode: outbound }
+
+    big:
+      quality: 60
+      filters:
+        watermark:
+          image: ../public/images/static/watermark.png
+          size: 0.2
+          position: bottomright

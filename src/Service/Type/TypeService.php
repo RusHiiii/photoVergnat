@@ -8,7 +8,6 @@
 
 namespace App\Service\Type;
 
-
 use App\Entity\Tag;
 use App\Entity\Type;
 use App\Repository\TagRepository;
@@ -33,8 +32,7 @@ class TypeService
         TypeRepository $typeRepository,
         SerializerInterface $serializer,
         TypeValidatorService $typeValidatorService
-    )
-    {
+    ) {
         $this->entityManager = $entityManager;
         $this->security = $security;
         $this->serialize = $serializer;
@@ -52,7 +50,7 @@ class TypeService
     {
         /** On récupére le type */
         $type = $this->typeRepository->findById($data);
-        if($type === null) {
+        if ($type === null) {
             return [
                 'errors' => [self::MSG_UNKNOWN_TYPE]
             ];
@@ -75,8 +73,8 @@ class TypeService
     public function createType(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->typeValidatorService->checkCreateType($data);
-        if(count($validatedData['errors']) > 0) {
+        $validatedData = $this->typeValidatorService->checkType($data, TypeValidatorService::TOKEN_CREATE);
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'type' => []
@@ -93,7 +91,7 @@ class TypeService
 
         return [
             'errors' => [],
-            'type' => $this->serialize->serialize($type, 'json')
+            'type' => $this->serialize->serialize($type, 'json', ['groups' => ['default', 'type']])
         ];
     }
 
@@ -106,8 +104,8 @@ class TypeService
     public function updateType(array $data): array
     {
         /** Validation des données */
-        $validatedData = $this->typeValidatorService->checkUpdateType($data);
-        if(count($validatedData['errors']) > 0) {
+        $validatedData = $this->typeValidatorService->checkType($data, TypeValidatorService::TOKEN_UPDATE);
+        if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors'],
                 'type' => []
@@ -123,7 +121,7 @@ class TypeService
 
         return [
             'errors' => [],
-            'type' => $this->serialize->serialize($type, 'json')
+            'type' => $this->serialize->serialize($type, 'json', ['groups' => ['default', 'type']])
         ];
     }
 }
