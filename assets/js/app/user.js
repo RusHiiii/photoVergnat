@@ -1,7 +1,7 @@
 /****************** LISTENER **********************/
 
 /** Fonction d'envoie du formulaire */
-$('#update-user').on('submit', function(event) {
+$('#update-user').on('submit', function (event) {
     event.preventDefault();
 
     $.addSpinner('.edit-user');
@@ -13,15 +13,15 @@ $('#update-user').on('submit', function(event) {
             'user': $('#update-user').serializeObject()
         },
         dataType:'json',
-        success : function(res) {
+        success : function (res) {
             $.removeSpinner('.edit-user', 'Mettre a jours');
-            $.showErrors(res['errors'], 'alert-edit');
+            $.showErrors(res['errors'], '#alert-edit');
         }
     });
 });
 
 /** Fonction d'envoie du formulaire */
-$('#update-password').on('submit', function(event) {
+$('#update-password').on('submit', function (event) {
     event.preventDefault();
 
     $.addSpinner('.edit-password');
@@ -33,9 +33,9 @@ $('#update-password').on('submit', function(event) {
             'user': $('#update-password').serializeObject()
         },
         dataType:'json',
-        success : function(res) {
+        success : function (res) {
             $.removeSpinner('.edit-password', 'Valider');
-            $.showErrors(res['errors'], 'alert-password');
+            $.showErrors(res['errors'], '#alert-password');
         }
     });
 });

@@ -77,8 +77,8 @@ class MenuBuilder
         }
 
         /** Menu complémentaire */
-        $menu->addChild('A propos', ['route' => 'app_home']);
-        $menu->addChild('Contact', ['route' => 'app_home']);
+        $menu->addChild('A propos', ['route' => 'app_information']);
+        $menu->addChild('Contact', ['route' => 'app_contact']);
 
         /** Menu de l'utilisateur */
         if ($this->security->getUser() === null) {

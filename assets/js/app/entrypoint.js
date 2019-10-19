@@ -3,3 +3,4 @@ require('../../css/app/app.scss');
 
 require('../tools.js');
 require('./user.js');
+require('./category.js');

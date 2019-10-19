@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b9daa59d26067a76a4dcf12c245ee5af",
+    "content-hash": "a0751b88929e76af762a0f7fa0949703",
     "packages": [
         {
             "name": "composer/semver",

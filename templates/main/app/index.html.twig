@@ -34,7 +34,7 @@
         </div>
     </section>
 
-    <section class="section-padding-80">
+    <section class="section-padding-80 homepage">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -45,31 +45,8 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="row">
-                {% for category in categories %}
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="single-post-area wow fadeInUpBig">
-                            <a href="#" class="post-thumbnail">
-                                <img class="lazy" data-src="{{ ('/images/uploads/' ~ (category | getMainPhotoUrl('Portrait') )) | imagine_filter('thumbnail_category') }}">
-                            </a>
-                            <div class="tags-category">
-                                {% for tag in category.tags %}
-                                    <a href="#" class="btn post-catagory">{{ tag.title }}</a>
-                                {% endfor %}
-                            </div>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <a href="#">{{ category.created | localizeddate('none', 'none', null, null, 'MMMM Y') | capitalize }}</a>
-                                    <a href="#">{{ category.photos | length }} photos</a>
-                                </div>
-                                <a href="#" class="post-title">{{ category.title }}</a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
+        <!-- Related News Area Start -->
+        {{ include('elements/shared/app/recent_categories.html.twig', { 'categories': categories }) }}
     </section>
 
     <div class="alime-portfolio-area clearfix">

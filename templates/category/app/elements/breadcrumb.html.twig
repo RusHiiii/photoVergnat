@@ -1,0 +1,19 @@
+<section class="breadcrumb-area blog bg-img bg-overlay jarallax" style="background-image: url('{{ ('/images/uploads/' ~ (category | getMainPhotoUrl('Paysage') )) }}')">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="breadcrumb-content text-center">
+                    {% for tag in category.tags %}
+                        <a href="#" class="btn post-catagory">{{ tag.title }}</a>
+                    {% endfor %}
+                    <h2 class="page-title">{{ category.title }}</h2>
+                    <div class="post-meta">
+                        <a href="#" class="post-author">{{ category.user.fullname }}</a>
+                        <a href="#" class="post-date">{{ category.created | localizeddate('none', 'none', null, null, 'MMMM Y') | capitalize }}</a>
+                        <a href="{{ path('app_category_photo', {'id': category.id, 'slug': category.title | slugify() }) }}" class="post-number">{{ category.photos | length }} photos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

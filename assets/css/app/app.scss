@@ -49,6 +49,12 @@
   max-height: 422px;
 }
 
+.homepage{
+  .related-news-area .title{
+    display: none;
+  }
+}
+
 .password_profil {
   padding-left: 10px;
   list-style: none;
@@ -420,6 +426,10 @@ button.mfp-arrow {
 }
 #alert-edit {
   display: none;
+}
+
+#alert-create{
+  display:none;
 }
 #alert-password {
   display: none;

@@ -58,6 +58,12 @@ services:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
 
+    App\EventListener\CommentEntityListener:
+        class: App\EventListener\CommentEntityListener
+        tags:
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: prePersist }
+
     App\EventListener\PhotoEntityListener:
         class: App\EventListener\PhotoEntityListener
         tags:

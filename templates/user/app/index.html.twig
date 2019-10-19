@@ -4,23 +4,7 @@
 
 {% block body %}
     <!-- Breadcrumb Area Start -->
-    <section class="breadcrumb-area bg-img bg-overlay jarallax breadcrumb-image">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="breadcrumb-content text-center">
-                        <h2 class="page-title">Mon profil</h2>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb justify-content-center">
-                                <li class="breadcrumb-item"><a href="{{ path('app_home') }}"><i class="icon_house_alt"></i> Accueil</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Profil</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    {{ include('elements/shared/app/breadcrumb.html.twig', { 'title': 'Mon profil', 'page':'Compte' }) }}
 
     <section class="section-padding-80">
         <div class="container">

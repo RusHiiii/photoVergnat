@@ -168,4 +168,20 @@ class CategoryService
             'category' => $this->serialize->serialize($category, 'json', ['groups' => ['default', 'category']])
         ];
     }
+
+    /**
+     * Filtrage des photos
+     * @param array $photos
+     * @return array
+     */
+    public function filterPhotoByType($photos): array
+    {
+        $filteredPhotos = [];
+
+        foreach ($photos as $photo) {
+            $filteredPhotos[strtolower($photo->getType()->getTitle())][] = $photo;
+        }
+
+        return $filteredPhotos;
+    }
 }

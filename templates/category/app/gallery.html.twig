@@ -1,0 +1,101 @@
+{% extends 'elements/layout/app/base.html.twig' %}
+
+{% block title %}Photo'Vergnat - {{ category.title }}{% endblock %}
+
+{% block body %}
+    <!-- Breadcrumb Area Start -->
+    {{ include('category/app/elements/breadcrumb.html.twig', { 'category': category }) }}
+
+    {% if photos.paysage is defined %}
+        <section class="section-padding-80">
+            <div class="alime-portfolio-area clearfix">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-heading text-center">
+                                <h2>Paysages</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row alime-portfolio">
+                        {% for landscape in photos.paysage %}
+                            <div class="col-12 col-sm-6 col-lg-3 single_gallery_item nature mb-30 wow fadeInUp">
+                                <div class="single-portfolio-content">
+                                    <img class="img-thumb" src="{{ ('/images/uploads/' ~ landscape.file) | imagine_filter('gallery_landscape') }}">
+                                    <div class="hover-content">
+                                        <a data-title="{{ landscape.information }}" href="{{ ('/images/uploads/' ~ landscape.file) | imagine_filter('big') }}" class="portfolio-img">+</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% if photos.portrait is defined %}
+        <section>
+            <div class="alime-portfolio-area clearfix">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-heading text-center">
+                                <h2>Portrait</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row alime-portfolio">
+                        {% for portrait in photos.portrait %}
+                            <div class="col-12 col-sm-6 col-lg-3 single_gallery_item nature mb-30 wow fadeInUp">
+                                <div class="single-portfolio-content">
+                                    <img class="img-thumb" src="{{ ('/images/uploads/' ~ portrait.file) | imagine_filter('gallery_portrait') }}">
+                                    <div class="hover-content">
+                                        <a data-title="{{ portrait.information }}" href="{{ ('/images/uploads/' ~ portrait.file) | imagine_filter('big') }}" class="portfolio-img">+</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% if photos.panoramique is defined %}
+        <section class="section-padding-80">
+            <div class="alime-portfolio-area clearfix">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-heading text-center">
+                                <h2>Panorama</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row alime-portfolio">
+                        {% for pano in photos.panoramique %}
+                            <div class="col-12 col-sm-12 col-lg-6 single_gallery_item nature mb-30 wow fadeInUp">
+                                <div class="single-portfolio-content">
+                                    <img class="img-thumb" src="{{ ('/images/uploads/' ~ pano.file) | imagine_filter('gallery_panoramique') }}">
+                                    <div class="hover-content">
+                                        <a data-title="{{ pano.information }}" href="{{ ('/images/uploads/' ~ pano.file) | imagine_filter('big') }}" class="portfolio-img">+</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}
