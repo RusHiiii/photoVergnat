@@ -22,6 +22,11 @@ services:
         arguments:
             $targetDirectory: '%photo_directory%'
 
+    App\Service\Tools\NotificationService:
+        arguments:
+            $config:
+                user: '%env(MAILER_USER)%'
+
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
     App\Controller\:

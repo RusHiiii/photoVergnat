@@ -31,23 +31,29 @@
                     </div>
 
                     <div class="alime-contact-form mt-50">
-                        <form method="POST" class="form-horizontal">
+                        <div class="alert alert-danger" role="alert" id="alert-send"></div>
+                        <div class="alert alert-success" role="alert" id="alert-success"></div>
+                        <form method="POST" class="form-horizontal" id="send-mail">
                             <div class="row">
-                                <div class="col-12 col-md-6">
-                                    <input type="email" name="email" class="form-control mb-30" placeholder="Email">
-                                    <select class="form-control mb-30" name="choice">
+                                <div class="col-12 col-md-7">
+                                    <select class="form-control" name="choice">
                                         <option selected>Information</option>
                                         <option>Erreur</option>
                                         <option>Autre</option>
                                     </select>
-                                    <input type="text" name="subject" class="form-control mb-30" placeholder="Sujet">
+                                </div>
+                                <div class="col-12 col-md-7">
+                                    <input data-validation="email" type="email" name="email" class="form-control mt-30" placeholder="Email">
+                                </div>
+                                <div class="col-12 col-md-7">
+                                    <input data-validation="length" data-validation-length="min3" type="text" name="subject" class="form-control mt-30" placeholder="Sujet">
                                 </div>
                                 <div class="col-12">
-                                    <textarea name="message" class="form-control mb-30" placeholder="Messages"></textarea>
+                                    <textarea data-validation="length" data-validation-length="min3" name="message" class="form-control mt-30" placeholder="Messages"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <input type="hidden" name="token" value="{{ csrf_token('contact') }}"/>
-                                    <button type="submit" class="btn alime-btn btn-2 mt-15">Envoyer</button>
+                                    <input type="hidden" name="token" value="{{ csrf_token('send-mail') }}"/>
+                                    <button type="submit" class="btn alime-btn btn-2 mt-15 send-mail">Envoyer</button>
                                 </div>
                             </div>
                         </form>
@@ -56,4 +62,13 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        $.validate({
+            lang: 'fr',
+            borderColorOnError : '#ff001c',
+            scrollToTopOnError: false
+        });
+    </script>
 {% endblock %}

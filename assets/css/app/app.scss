@@ -428,12 +428,29 @@ button.mfp-arrow {
   display: none;
 }
 
+.breadcrumb-image.mail {
+  height: 230px;
+
+  .breadcrumb-content{
+    margin-top: 0px;
+  }
+}
+
 #alert-create{
   display:none;
 }
 #alert-password {
   display: none;
 }
+
+#alert-success{
+  display: none;
+}
+
+#alert-send{
+  display: none;
+}
+
 .loading {
   position: relative;
 }

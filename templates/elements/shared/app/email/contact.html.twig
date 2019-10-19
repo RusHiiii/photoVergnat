@@ -1,0 +1,70 @@
+{% extends 'elements/layout/app/mail.html.twig' %}
+
+{% block body %}
+    <section class="breadcrumb-area bg-img bg-overlay jarallax breadcrumb-image mail">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center">
+                        <h2 class="page-title">Photo'Vergnat</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="contact-area section-padding-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="contact-info mb-30">
+                        <p>Développeur</p>
+                        <a href="#">Florent Damiens</a>
+                    </div>
+                    <div class="contact-info mb-30">
+                        <p>Email</p>
+                        <a href="mailto:contact[at]photovergnat.fr">contact[at]photovergnat.fr</a>
+                    </div>
+                    <div class="contact-info mb-30">
+                        <p>Localisation</p>
+                        <a href="#">Auvergne, France</a>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-9 contact-content">
+                    <div class="col-12 col-lg-10 header mb-80">
+                        <h2 class="contact-title">Demande de contact</h2>
+                        <div class="line"></div>
+                    </div>
+
+                    <div class="row">
+                        <label class="col-lg-2">Choix: </label>
+                        <div class="col-lg-10">
+                            {{ data.choice }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label class="col-lg-2">Email: </label>
+                        <div class="col-lg-10">
+                            {{ data.email }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label class="col-lg-2">Sujet: </label>
+                        <div class="col-lg-10">
+                            {{ data.subject }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label class="col-lg-2">Message: </label>
+                        <div class="col-lg-10">
+                            {{ data.message }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
