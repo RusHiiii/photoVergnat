@@ -49,4 +49,19 @@ class CategoryRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+
+    /**
+     * Récupération des dernieres catégorie
+     * @param int $nb
+     * @return array
+     */
+    public function findByLast(int $nb): array
+    {
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.id', 'DESC')
+            ->setMaxResults($nb)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

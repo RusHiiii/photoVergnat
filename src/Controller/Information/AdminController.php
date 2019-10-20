@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Main;
+namespace App\Controller\Information;
 
 use App\Entity\User;
 use App\Repository\CategoryRepository;
@@ -17,21 +17,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     /**
-     * @Route("/admin", name="admin_home")
+     * @Route("/admin/statistics", name="admin_statistics")
      */
-    public function index(
+    public function statistics(
         Request $request,
-        CommentRepository $commentRepository,
         StatisticService $statisticService
     ) {
         $items = $statisticService->getItems();
-        $comments = $commentRepository->findByLast(4);
-        $lastActions = $statisticService->getLastUpdate();
 
-        return $this->render('main/admin/index.html.twig', [
-            'items' => $items,
-            'comments' => $comments,
-            'lastActions' => $lastActions
+        return $this->render('information/admin/statistics.html.twig', [
+            'items' => $items
         ]);
     }
 }

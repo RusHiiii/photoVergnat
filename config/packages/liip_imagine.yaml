@@ -3,13 +3,18 @@ liip_imagine:
   driver: "gd"
   # This is where all the filters sets are located
   filter_sets:
-    admin:
+    admin_gallery:
       quality: 70
       filters:
         watermark:
           image: ../public/images/static/watermark.png
           size: 0.2
           position: bottomright
+
+    admin_thumbnail:
+      quality: 70
+      filters:
+        thumbnail: { size: [1200, 1200], mode: outbound }
 
     gallery_portrait:
       quality: 80

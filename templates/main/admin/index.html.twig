@@ -3,63 +3,81 @@
 {% block title %}Photo'Vergnat - Administration{% endblock %}
 
 {% block body %}
+<div class="row card-statistics">
+    {% for key, item in items %}
+        <div class="col-md-6 col-xl-3">
+            <div class="card widget-card-1">
+                <div class="card-block-small">
+                    <div class="header">
+                        <i class="feather icon-{{ item.icon }} {{ key }} card1-icon"></i>
+                        <span class="{{ key }}-text f-w-600">{{ key | trans }}</span>
+                    </div>
+                    <h4>{{ item.items | length }}</h4>
+                    <div class="time">
+                        <span class="f-left m-t-10 text-muted">
+                            <i class="{{ key }}-text f-16 feather icon-clock m-r-10"></i>
+                            Depuis le {{ (item.items | first).created | date('d/m/Y') }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 <div class="row">
-    <div class="col-md-6 col-xl-3">
-        <div class="card widget-card-1">
-            <div class="card-block-small">
-                <i class="feather icon-users bg-c-yellow card1-icon"></i>
-                <span class="text-c-yellow f-w-600">Utilisateurs</span>
-                <h4>{{ users | length }}</h4>
-                <div>
-            <span class="f-left m-t-10 text-muted">
-                <i class="text-c-yellow f-16 feather icon-clock m-r-10"></i>
-                Depuis le {{ (users | first).created | date('d/m/Y') }}
-            </span>
+    <div class="col-xl-7 col-md-12">
+        <div class="card latest-update-card">
+            <div class="card-header">
+                <h5>Dernière actions</h5>
+            </div>
+            <div class="card-block">
+                <div class="latest-update-box">
+                    {% for action in lastActions | slice(0,6) %}
+                        <div class="row p-b-15">
+                            <div class="col-auto text-right update-meta">
+                                <p class="text-muted m-b-0 d-inline">{{ action.updated | time_diff }}</p>
+                                <i class="feather icon-{{ action.icon }} {{ action.action }} update-icon"></i>
+                            </div>
+                            <div class="col">
+                                <h6>{{ (action.action ~ (action.updated == action.created ?  '_added' : '_updated')) | trans }}</h6>
+                                <div class="row col">
+                                    <p class="text-muted m-b-0"><i class="feather icon-{{ action.icon }} m-r-10"></i>{{ action.title }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="text-center">
+                    <a href="#!" class="b-b-primary text-primary">Voir les statistiques</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-xl-3">
-        <div class="card widget-card-1">
-            <div class="card-block-small">
-                <i class="feather icon-tag bg-c-green card1-icon"></i>
-                <span class="text-c-green f-w-600">Tags</span>
-                <h4>{{ tags | length }}</h4>
-                <div>
-            <span class="f-left m-t-10 text-muted">
-                <i class="text-c-green f-16 feather icon-clock m-r-10"></i>
-                Depuis le {{ (tags | first).created | date('d/m/Y') }}
-            </span>
-                </div>
+    <div class="col-xl-5 col-md-12">
+        <div class="card user-activity-card">
+            <div class="card-header">
+                <h5>Espace commentaire</h5>
             </div>
-        </div>
-    </div>
-    <div class="col-md-6 col-xl-3">
-        <div class="card widget-card-1">
-            <div class="card-block-small">
-                <i class="feather icon-camera bg-c-blue card1-icon"></i>
-                <span class="text-c-blue f-w-600">Photos</span>
-                <h4>{{ photos | length }}</h4>
-                <div>
-            <span class="f-left m-t-10 text-muted">
-                <i class="text-c-blue f-16 feather icon-clock m-r-10"></i>
-                Depuis le {{ (photos | first).created | date('d/m/Y') }}
-            </span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 col-xl-3">
-        <div class="card widget-card-1">
-            <div class="card-block-small">
-                <i class="feather icon-file-text bg-c-orenge card1-icon"></i>
-                <span class="text-c-orenge f-w-600">Articles</span>
-                <h4>{{ categories | length }}</h4>
-                <div>
-            <span class="f-left m-t-10 text-muted">
-                <i class="text-c-orenge f-16 feather icon-clock m-r-10"></i>
-                Depuis le {{ (categories | first).created | date('d/m/Y') }}
-            </span>
+            <div class="card-block">
+                {% for comment in comments %}
+                    <div class="row m-b-25">
+                        <div class="col-auto p-r-0">
+                            <div class="u-img">
+                                <img src="{{ ('/images/uploads/' ~ (comment.category | getMainPhotoUrl('Paysage') )) | imagine_filter('admin_thumbnail') }}" class="img-radius cover-img">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h6 class="m-b-5">{{ comment.name }}</h6>
+                            <p class="text-muted m-b-0">{{ comment.message }}</p>
+                            <div class="row">
+                                <p class="text-muted m-b-0 col-lg-5"><i class="feather icon-clock m-r-10"></i>{{ comment.created | time_diff }}</p>
+                                <p class="text-muted m-b-0 col-lg-7"><i class="feather icon-file-text m-r-10"></i>{{ comment.category.title }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="text-center">
+                    <a href="#!" class="b-b-primary text-primary">Voir les commentaires</a>
                 </div>
             </div>
         </div>

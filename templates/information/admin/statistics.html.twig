@@ -1,0 +1,26 @@
+{% extends 'elements/layout/admin/base.html.twig' %}
+
+{% block title %}Photo'Vergnat - Administration{% endblock %}
+
+{% block body %}
+<div class="row card-statistics">
+    {% for key, item in items %}
+        <div class="col-xl-3 col-md-6">
+            <div class="card">
+                <div class="card-block">
+                    <div class="row align-items-center m-l-0">
+                        <div class="col-auto">
+                            <i class="feather icon-{{ item.icon }} f-30 {{ key }}-text"></i>
+                        </div>
+                        <div class="col-auto">
+                            <h6 class="text-muted m-b-10">{{ key | trans }}</h6>
+                            <h2 class="m-b-0">{{ item.items | length }}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+

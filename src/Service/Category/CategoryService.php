@@ -184,4 +184,28 @@ class CategoryService
 
         return $filteredPhotos;
     }
+
+    /**
+     * Récupération des actions
+     * @return array
+     */
+    public function getLastAction(): array
+    {
+        $data = [];
+
+        /** Récupération des infos */
+        $categories = $this->categoryRepository->findByLast(5);
+
+        foreach ($categories as $category) {
+            $data[] = [
+                'icon' => 'file-text',
+                'action' => 'categories',
+                'title' => $category->getTitle(),
+                'created' => $category->getCreated(),
+                'updated' => $category->getUpdated()
+            ];
+        }
+
+        return $data;
+    }
 }

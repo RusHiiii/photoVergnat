@@ -55,4 +55,19 @@ class ToolsService
 
         return strtolower($slug);
     }
+
+    /**
+     * Comparaison de date
+     * @param $a
+     * @param $b
+     * @return bool|int
+     */
+    public function compareByUpdated($a, $b): bool
+    {
+        if ($a['updated'] == $b['updated']) {
+            return 0;
+        }
+
+        return $a['updated'] < $b['updated'];
+    }
 }

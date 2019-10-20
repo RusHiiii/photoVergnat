@@ -145,4 +145,28 @@ class PhotoService
             'errors' => []
         ];
     }
+
+    /**
+     * Récupération des actions
+     * @return array
+     */
+    public function getLastAction(): array
+    {
+        $data = [];
+
+        /** Récupération des infos */
+        $photos = $this->photoRepository->findByLast(5);
+
+        foreach ($photos as $photo) {
+            $data[] = [
+                'icon' => 'camera',
+                'action' => 'photos',
+                'title' => $photo->getTitle(),
+                'created' => $photo->getCreated(),
+                'updated' => $photo->getUpdated()
+            ];
+        }
+
+        return $data;
+    }
 }

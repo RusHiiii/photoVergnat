@@ -124,4 +124,28 @@ class TagService
             'tag' => $this->serialize->serialize($tag, 'json', ['groups' => ['default', 'tag']])
         ];
     }
+
+    /**
+     * Récupération des actions
+     * @return array
+     */
+    public function getLastAction(): array
+    {
+        $data = [];
+
+        /** Récupération des infos */
+        $tags = $this->tagRepository->findByLast(5);
+
+        foreach ($tags as $tag) {
+            $data[] = [
+                'icon' => 'tag',
+                'action' => 'tags',
+                'title' => $tag->getTitle(),
+                'created' => $tag->getCreated(),
+                'updated' => $tag->getUpdated()
+            ];
+        }
+
+        return $data;
+    }
 }

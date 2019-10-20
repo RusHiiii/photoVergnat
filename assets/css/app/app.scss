@@ -451,6 +451,30 @@ button.mfp-arrow {
   display: none;
 }
 
+.alime-btn{
+  &:before {
+    border-top: 2px solid $orange !important;
+  }
+}
+
+.alime-btn:hover{
+  &:before {
+    border-top: 2px solid white !important;
+  }
+}
+
+.alime-btn:focus{
+  &:before {
+    border-top: 2px solid white !important;
+  }
+}
+
+.alime-btn{
+  &:before {
+    border-top: 2px solid $orange !important;
+  }
+}
+
 .loading {
   position: relative;
 }

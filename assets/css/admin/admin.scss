@@ -53,6 +53,66 @@
   }
 }
 
+.latest-update-card .card-block .latest-update-box:after{
+  left: 144px !important;
+}
+
+.card-statistics{
+  .header > i.users{
+    background: linear-gradient(to right, #fe9365, #feb798)
+  }
+
+  .users-text{
+    color: #fe9365 !important;
+  }
+
+  .header > i.tags{
+    background: linear-gradient(to right,#0ac282,#0df3a3);
+  }
+
+  .tags-text{
+    color: #0ac282;
+  }
+
+  .header > i.categories{
+    background: linear-gradient(to right,#fe5d70,#fe909d);
+  }
+
+  .categories-text{
+    color: #fe5d70;
+  }
+
+  .header > i.photos{
+    background: linear-gradient(to right,#01a9ac,#01dbdf);
+  }
+
+  .photos-text{
+    color: #01a9ac;
+  }
+}
+
+.latest-update-box{
+  .users{
+    background: #fe9365;
+  }
+
+  .tags{
+    background: #0ac282;
+  }
+
+  .categories{
+    background: #fe5d70;
+  }
+
+  .photos{
+    background: #01a9ac;
+  }
+}
+
+.latest-update-card .card-block .latest-update-box .update-meta{
+  width: 195px !important;
+}
+
 .jFiler-input-choose-btn:hover{
   color: #01a9ac !important;
 }

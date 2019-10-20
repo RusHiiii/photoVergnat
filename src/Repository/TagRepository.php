@@ -49,4 +49,17 @@ class TagRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+
+    /**
+     * Récupération des derniers tags
+     * @return mixed
+     */
+    public function findByLast(int $nb)
+    {
+        return $this->createQueryBuilder('t')
+            ->orderBy('t.id', 'DESC')
+            ->setMaxResults($nb)
+            ->getQuery()
+            ->getResult();
+    }
 }

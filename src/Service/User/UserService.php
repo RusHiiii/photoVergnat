@@ -198,4 +198,28 @@ class UserService
             'user' => $this->serialize->serialize($user, 'json', ['groups' => ['default']])
         ];
     }
+
+    /**
+     * Récupération des actions
+     * @return array
+     */
+    public function getLastAction(): array
+    {
+        $data = [];
+
+        /** Récupération des infos */
+        $users = $this->userRepository->findByLast(5);
+
+        foreach ($users as $user) {
+            $data[] = [
+                'icon' => 'users',
+                'action' => 'users',
+                'title' => $user->getFullName(),
+                'created' => $user->getCreated(),
+                'updated' => $user->getUpdated()
+            ];
+        }
+
+        return $data;
+    }
 }

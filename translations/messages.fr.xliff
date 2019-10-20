@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="3">
+                <source>photos_updated</source>
+                <target>Modification d'une photo</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>photos_added</source>
+                <target>Ajout d'une photo</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>tags_updated</source>
+                <target>Modification d'un tag</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>tags_added</source>
+                <target>Ajout d'un tag</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>categories_updated</source>
+                <target>Modification d'un article</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>categories_added</source>
+                <target>Ajout d'un article</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>users_updated</source>
+                <target>Modification d'un utilisateur</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>users_added</source>
+                <target>Ajout d'un utilisateur</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>users</source>
+                <target>Utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>photos</source>
+                <target>Photos</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>categories</source>
+                <target>Articles</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>tags</source>
+                <target>Tags</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

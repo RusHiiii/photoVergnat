@@ -81,4 +81,17 @@ class PhotoRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+
+    /**
+     * Récupération des dernieres photos
+     * @return mixed
+     */
+    public function findByLast(int $nb)
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults($nb)
+            ->getQuery()
+            ->getResult();
+    }
 }
