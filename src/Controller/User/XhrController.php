@@ -3,8 +3,8 @@
 namespace App\Controller\User;
 
 use App\Controller\Security\Voter\UserVoter;
-use App\Entity\User;
-use App\Service\User\UserService;
+use App\Entity\WebApp\User;
+use App\Service\WebApp\User\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

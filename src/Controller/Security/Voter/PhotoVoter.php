@@ -8,9 +8,9 @@
 
 namespace App\Controller\Security\Voter;
 
-use App\Entity\Photo;
-use App\Entity\Tag;
-use App\Entity\User;
+use App\Entity\WebApp\Photo;
+use App\Entity\WebApp\Tag;
+use App\Entity\WebApp\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\Security;

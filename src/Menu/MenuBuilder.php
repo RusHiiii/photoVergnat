@@ -9,7 +9,7 @@
 namespace App\Menu;
 
 
-use App\Repository\SeasonRepository;
+use App\Repository\WebApp\Season\Doctrine\SeasonRepository;
 use App\Service\Tools\ToolsService;
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;

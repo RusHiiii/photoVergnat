@@ -2,8 +2,8 @@
 
 namespace App\Controller\Type;
 
-use App\Repository\TagRepository;
-use App\Repository\TypeRepository;
+use App\Repository\WebApp\Tag\Doctrine\TagRepository;
+use App\Repository\WebApp\Type\Doctrine\TypeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;

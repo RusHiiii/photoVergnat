@@ -2,8 +2,8 @@
 
 namespace App\Controller\Information;
 
-use App\Service\Comment\CommentService;
-use App\Service\Information\InformationService;
+use App\Service\WebApp\Comment\CommentService;
+use App\Service\WebApp\Information\InformationService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

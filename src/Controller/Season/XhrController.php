@@ -3,12 +3,12 @@
 namespace App\Controller\Season;
 
 use App\Controller\Security\Voter\SeasonVoter;
-use App\Entity\Season;
-use App\Entity\Tag;
-use App\Entity\User;
-use App\Service\Season\SeasonService;
-use App\Service\Tag\TagService;
-use App\Service\User\UserService;
+use App\Entity\WebApp\Season;
+use App\Entity\WebApp\Tag;
+use App\Entity\WebApp\User;
+use App\Service\WebApp\Season\SeasonService;
+use App\Service\WebApp\Tag\TagService;
+use App\Service\WebApp\User\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

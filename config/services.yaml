@@ -33,44 +33,44 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    App\EventListener\UserEntityListener:
-        class: App\EventListener\UserEntityListener
+    App\EventListener\WebApp\UserEntityListener:
+        class: App\EventListener\WebApp\UserEntityListener
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
 
-    App\EventListener\TagEntityListener:
-        class: App\EventListener\TagEntityListener
+    App\EventListener\WebApp\TagEntityListener:
+        class: App\EventListener\WebApp\TagEntityListener
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
 
-    App\EventListener\SeasonEntityListener:
-        class: App\EventListener\SeasonEntityListener
+    App\EventListener\WebApp\SeasonEntityListener:
+        class: App\EventListener\WebApp\SeasonEntityListener
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
 
-    App\EventListener\TypeEntityListener:
-        class: App\EventListener\TypeEntityListener
+    App\EventListener\WebApp\TypeEntityListener:
+        class: App\EventListener\WebApp\TypeEntityListener
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
 
-    App\EventListener\CategoryEntityListener:
-        class: App\EventListener\CategoryEntityListener
+    App\EventListener\WebApp\CategoryEntityListener:
+        class: App\EventListener\WebApp\CategoryEntityListener
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
 
-    App\EventListener\CommentEntityListener:
-        class: App\EventListener\CommentEntityListener
+    App\EventListener\WebApp\CommentEntityListener:
+        class: App\EventListener\WebApp\CommentEntityListener
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
 
-    App\EventListener\PhotoEntityListener:
-        class: App\EventListener\PhotoEntityListener
+    App\EventListener\WebApp\PhotoEntityListener:
+        class: App\EventListener\WebApp\PhotoEntityListener
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }

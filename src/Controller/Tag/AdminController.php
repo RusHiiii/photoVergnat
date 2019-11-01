@@ -2,7 +2,7 @@
 
 namespace App\Controller\Tag;
 
-use App\Repository\TagRepository;
+use App\Repository\WebApp\Tag\Doctrine\TagRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;

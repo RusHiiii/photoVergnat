@@ -2,14 +2,14 @@
 
 namespace App\Controller\Main;
 
-use App\Entity\User;
-use App\Repository\CategoryRepository;
-use App\Repository\CommentRepository;
-use App\Repository\PhotoRepository;
+use App\Entity\WebApp\User;
+use App\Repository\WebApp\Category\Doctrine\CategoryRepository;
+use App\Repository\WebApp\Comment\Doctrine\CommentRepository;
+use App\Repository\WebApp\Photo\Doctrine\PhotoRepository;
 use App\Repository\Statistic\StatisticRepository;
-use App\Repository\TagRepository;
-use App\Repository\UserRepository;
-use App\Service\Statistic\StatisticService;
+use App\Repository\WebApp\Tag\Doctrine\TagRepository;
+use App\Repository\WebApp\User\Doctrine\UserRepository;
+use App\Service\WebApp\Statistic\StatisticService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;

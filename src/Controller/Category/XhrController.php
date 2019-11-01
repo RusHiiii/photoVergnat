@@ -3,11 +3,11 @@
 namespace App\Controller\Category;
 
 use App\Controller\Security\Voter\CategoryVoter;
-use App\Entity\Category;
-use App\Repository\PhotoRepository;
-use App\Repository\SeasonRepository;
-use App\Repository\TagRepository;
-use App\Service\Category\CategoryService;
+use App\Entity\WebApp\Category;
+use App\Repository\WebApp\Photo\Doctrine\PhotoRepository;
+use App\Repository\WebApp\Season\Doctrine\SeasonRepository;
+use App\Repository\WebApp\Tag\Doctrine\TagRepository;
+use App\Service\WebApp\Category\CategoryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

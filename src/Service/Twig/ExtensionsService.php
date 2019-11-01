@@ -7,10 +7,10 @@
  */
 namespace App\Service\Twig;
 
-use App\Entity\Category;
-use App\Entity\Photo;
-use App\Entity\Tag;
-use App\Entity\User;
+use App\Entity\WebApp\Category;
+use App\Entity\WebApp\Photo;
+use App\Entity\WebApp\Tag;
+use App\Entity\WebApp\User;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 

@@ -2,9 +2,9 @@
 
 namespace App\Controller\Category;
 
-use App\Entity\Category;
-use App\Repository\CategoryRepository;
-use App\Service\Category\CategoryService;
+use App\Entity\WebApp\Category;
+use App\Repository\WebApp\Category\Doctrine\CategoryRepository;
+use App\Service\WebApp\Category\CategoryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
