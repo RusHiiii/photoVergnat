@@ -10,7 +10,7 @@ namespace App\Service\WebApp\Photo\Validator;
 
 use App\Entity\WebApp\User;
 use App\Repository\WebApp\User\Doctrine\UserRepository;
-use App\Service\Tools\DataValidatorService;
+use App\Service\Tools\Validator\DataValidatorService;
 use App\Service\Tools\ToolsService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -53,6 +53,7 @@ class PhotoValidator
 
         /** Récupération des erreurs */
         $errors = $this->validatorService->getErrors();
+
         return [
             'errors' => $errors,
             'data' => $data
@@ -79,6 +80,7 @@ class PhotoValidator
 
         /** Récupération des erreurs */
         $errors = $this->validatorService->getErrors();
+
         return [
             'errors' => $errors,
             'data' => $data

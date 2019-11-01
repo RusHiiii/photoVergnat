@@ -10,7 +10,7 @@ namespace App\Service\WebApp\Season\Validator;
 
 use App\Entity\WebApp\User;
 use App\Repository\WebApp\User\Doctrine\UserRepository;
-use App\Service\Tools\DataValidatorService;
+use App\Service\Tools\Validator\DataValidatorService;
 use App\Service\Tools\ToolsService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -48,6 +48,7 @@ class SeasonValidator
 
         /** Récupération des erreurs */
         $errors = $this->validatorService->getErrors();
+
         return [
             'errors' => $errors,
             'data' => $data

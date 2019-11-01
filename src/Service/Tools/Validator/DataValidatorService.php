@@ -6,7 +6,7 @@
  * Time: 15:26
  */
 
-namespace App\Service\Tools;
+namespace App\Service\Tools\Validator;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Csrf\CsrfToken;
@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
-class DataValidatorService
+class DataValidatorService implements DataValidatorInterface
 {
     const MSG_ERROR_EMAIL = 'Le champs « %s » est invalide';
     const MSG_ERROR_BLANK = 'Le champs « %s » est vide';

@@ -3,16 +3,11 @@
 namespace App\Repository\WebApp\Category\Doctrine;
 
 use App\Entity\WebApp\Category;
+use App\Repository\WebApp\Category\CategoryRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-/**
- * @method Category|null find($id, $lockMode = null, $lockVersion = null)
- * @method Category|null findOneBy(array $criteria, array $orderBy = null)
- * @method Category[]    findAll()
- * @method Category[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
-class CategoryRepository extends ServiceEntityRepository
+class CategoryRepository extends ServiceEntityRepository implements CategoryRepositoryInterface
 {
     public function __construct(RegistryInterface $registry)
     {
@@ -38,7 +33,7 @@ class CategoryRepository extends ServiceEntityRepository
     /**
      * Récupération par active
      * @param string $value
-     * @return Category|null
+     * @return array
      */
     public function findByActive(string $value): array
     {

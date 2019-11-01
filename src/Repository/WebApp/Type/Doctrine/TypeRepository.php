@@ -3,16 +3,11 @@
 namespace App\Repository\WebApp\Type\Doctrine;
 
 use App\Entity\WebApp\Type;
+use App\Repository\WebApp\Type\TypeRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-/**
- * @method Type|null find($id, $lockMode = null, $lockVersion = null)
- * @method Type|null findOneBy(array $criteria, array $orderBy = null)
- * @method Type[]    findAll()
- * @method Type[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
-class TypeRepository extends ServiceEntityRepository
+class TypeRepository extends ServiceEntityRepository implements TypeRepositoryInterface
 {
     public function __construct(RegistryInterface $registry)
     {
