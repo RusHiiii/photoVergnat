@@ -12,7 +12,6 @@ $.showErrors = function (data, element) {
         $(element).show();
     } else {
         $(element).hide();
-        $('#large-Modal').modal('hide');
     }
 };
 

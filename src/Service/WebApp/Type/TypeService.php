@@ -12,6 +12,8 @@ use App\Entity\WebApp\Tag;
 use App\Entity\WebApp\Type;
 use App\Repository\WebApp\Tag\Doctrine\TagRepository;
 use App\Repository\WebApp\Type\Doctrine\TypeRepository;
+use App\Service\WebApp\Type\Assembler\TypeAssembler;
+use App\Service\WebApp\Type\Exceptions\InvalidDataException;
 use App\Service\WebApp\Type\Validator\TypeValidator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Security;
@@ -19,26 +21,27 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class TypeService
 {
-    const MSG_UNKNOWN_TYPE = 'Type inexistant !';
+    const INVALID_UPDATE = 'Données de mise à jour du type invalide';
+    const INVALID_CREATE = 'Données de création du type invalide';
 
     private $entityManager;
     private $security;
-    private $serialize;
     private $typeRepository;
     private $typeValidatorService;
+    private $assembler;
 
     public function __construct(
         EntityManagerInterface $entityManager,
         Security $security,
         TypeRepository $typeRepository,
-        SerializerInterface $serializer,
-        TypeValidator $typeValidatorService
+        TypeValidator $typeValidatorService,
+        TypeAssembler $assembler
     ) {
         $this->entityManager = $entityManager;
         $this->security = $security;
-        $this->serialize = $serializer;
         $this->typeRepository = $typeRepository;
         $this->typeValidatorService = $typeValidatorService;
+        $this->assembler = $assembler;
     }
 
     /**
@@ -46,72 +49,61 @@ class TypeService
      * @param string $data
      * @return array
      */
-    public function removeType(Type $type): array
+    public function removeType(Type $type): bool
     {
         /** Suppression */
         $this->entityManager->remove($type);
         $this->entityManager->flush();
 
-        return [
-            'errors' => []
-        ];
+        return true;
     }
 
     /**
      * Création d'un type
      * @param array $data
      * @return array
+     * @throws InvalidDataException
      */
-    public function createType(array $data): array
+    public function createType(array $data): Type
     {
         /** Validation des données */
         $validatedData = $this->typeValidatorService->checkType($data, TypeValidator::TOKEN_CREATE);
         if (count($validatedData['errors']) > 0) {
-            return [
-                'errors' => $validatedData['errors'],
-                'type' => []
-            ];
+            throw new InvalidDataException($validatedData['errors'], self::INVALID_CREATE);
         }
 
         /** Insertion du type et sauvegarde */
-        $type = new Type();
-        $type->setTitle($validatedData['data']['title']);
+        $type = $this->assembler->create($validatedData['data']);
 
         /** Sauvegarde */
         $this->entityManager->persist($type);
         $this->entityManager->flush();
 
-        return [
-            'errors' => [],
-            'type' => $this->serialize->serialize($type, 'json', ['groups' => ['default', 'type']])
-        ];
+        return $type;
     }
 
     /**
      * MàJ d'un type
      * @param array $data
+     * @param Type $type
      * @return array
+     * @throws Exceptions\NotFoundException
+     * @throws InvalidDataException
      */
-    public function updateType(array $data, Type $type): array
+    public function updateType(array $data, Type $type): Type
     {
         /** Validation des données */
         $validatedData = $this->typeValidatorService->checkType($data, TypeValidator::TOKEN_UPDATE);
         if (count($validatedData['errors']) > 0) {
-            return [
-                'errors' => $validatedData['errors'],
-                'type' => []
-            ];
+            throw new InvalidDataException($validatedData['errors'], self::INVALID_UPDATE);
         }
 
         /** MàJ de l'utilisateur et sauvegarde */
-        $type->setTitle($validatedData['data']['title']);
+        $type = $this->assembler->edit($type, $validatedData['data']);
 
         /** Sauvegarde */
         $this->entityManager->flush();
 
-        return [
-            'errors' => [],
-            'type' => $this->serialize->serialize($type, 'json', ['groups' => ['default', 'type']])
-        ];
+        return $type;
     }
 }
