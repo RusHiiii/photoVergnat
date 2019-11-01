@@ -19,7 +19,6 @@ class PhotoVoter extends Voter
 {
     const REMOVE = 'remove';
     const EDIT = 'edit';
-    const CREATE = 'create';
     const VIEW = 'view';
 
     private $security;
@@ -31,11 +30,11 @@ class PhotoVoter extends Voter
 
     protected function supports($attribute, $subject)
     {
-        if (!in_array($attribute, [self::REMOVE, self::EDIT, self::CREATE, self::VIEW])) {
+        if (!in_array($attribute, [self::REMOVE, self::EDIT, self::VIEW])) {
             return false;
         }
 
-        if ($subject !== Photo::class) {
+        if (!$subject instanceof Photo) {
             return false;
         }
 
@@ -53,7 +52,6 @@ class PhotoVoter extends Voter
         switch ($attribute) {
             case self::EDIT:
             case self::VIEW:
-            case self::CREATE:
             case self::REMOVE:
                 return $this->canCreateOrRemoveOrEdit($user);
         }

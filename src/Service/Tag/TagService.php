@@ -44,16 +44,8 @@ class TagService
      * @return array
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function removeTag(string $data): array
+    public function removeTag(Tag $tag): array
     {
-        /** On récupére le tag */
-        $tag = $this->tagRepository->findById($data);
-        if ($tag === null) {
-            return [
-                'errors' => [self::MSG_UNKNOWN_TAG]
-            ];
-        }
-
         /** Suppression */
         $this->entityManager->remove($tag);
         $this->entityManager->flush();
@@ -100,7 +92,7 @@ class TagService
      * @return array
      * @throws \Exception
      */
-    public function updateTag(array $data): array
+    public function updateTag(array $data, Tag $tag): array
     {
         /** Validation des données */
         $validatedData = $this->tagValidatorService->checkTag($data, TagValidatorService::TOKEN_UPDATE);
@@ -112,7 +104,6 @@ class TagService
         }
 
         /** MàJ de l'utilisateur et sauvegarde */
-        $tag = $this->tagRepository->findById($validatedData['data']['id']);
         $tag->setTitle($validatedData['data']['title']);
         $tag->setType($validatedData['data']['type']);
 

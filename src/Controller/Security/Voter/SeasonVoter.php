@@ -18,7 +18,6 @@ class SeasonVoter extends Voter
 {
     const REMOVE = 'remove';
     const EDIT = 'edit';
-    const CREATE = 'create';
     const VIEW = 'view';
 
     private $security;
@@ -30,11 +29,11 @@ class SeasonVoter extends Voter
 
     protected function supports($attribute, $subject)
     {
-        if (!in_array($attribute, [self::REMOVE, self::EDIT, self::CREATE, self::VIEW])) {
+        if (!in_array($attribute, [self::REMOVE, self::EDIT, self::VIEW])) {
             return false;
         }
 
-        if ($subject !== Season::class) {
+        if (!$subject instanceof Season) {
             return false;
         }
 
@@ -53,7 +52,6 @@ class SeasonVoter extends Voter
             case self::EDIT:
             case self::VIEW:
                 return $this->canEdit($user);
-            case self::CREATE:
             case self::REMOVE:
                 return $this->canCreateOrRemove($user);
         }

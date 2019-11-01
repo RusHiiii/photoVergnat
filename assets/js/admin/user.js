@@ -6,11 +6,13 @@ $('body').on('submit', '#update-password', function (e) {
 
     $.addSpinner('.edit-password');
 
+    var data = $('#update-password').serializeObject();
+
     $.ajax({
-        url : '/xhr/app/user/edit-password',
+        url : '/xhr/app/user/edit-password/' + data['id'],
         type : 'POST',
         data : {
-            'user': $('#update-password').serializeObject()
+            'user': data
         },
         dataType:'json',
         statusCode: {
@@ -35,11 +37,16 @@ $('body').on('submit', '#update-user', function (e) {
 
     $.addSpinner('.update-user');
 
+    var data = $('#update-user').serializeObject();
+    if (!$.isArray(data['roles'])) {
+        data['roles'] = [data['roles']];
+    }
+
     $.ajax({
-        url : '/xhr/admin/user/update',
+        url : '/xhr/admin/user/update/' + data['id'],
         type : 'POST',
         data : {
-            'user': $('#update-user').serializeObject()
+            'user': data
         },
         dataType:'json',
         statusCode: {
@@ -115,11 +122,8 @@ $('#users-table tbody').on('click', '.alert-ajax', function (e) {
         showLoaderOnConfirm: true
     }, function () {
         $.ajax({
-            url : '/xhr/admin/user/remove',
+            url : '/xhr/admin/user/remove/' + id,
             type : 'DELETE',
-            data : {
-                'user': id
-            },
             dataType:'json',
             statusCode: {
                 403: function (res) {
@@ -176,6 +180,11 @@ $('.user .add').on('click', function (e) {
         success : function (res) {
             $('#large-Modal').html(res);
             $('#large-Modal').modal();
+        },
+        statusCode: {
+            403: function (response) {
+                swal('Action interdite !');
+            },
         }
     });
 });

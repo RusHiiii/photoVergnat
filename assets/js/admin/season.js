@@ -39,12 +39,8 @@ $('#seasons-table tbody').on('click', '.alert-ajax', function (e) {
         showLoaderOnConfirm: true
     }, function () {
         $.ajax({
-            url : '/xhr/admin/season/remove',
+            url : '/xhr/admin/season/remove/' + id,
             type : 'DELETE',
-            data : {
-                'season': id
-            },
-            dataType:'json',
             statusCode: {
                 403: function (res) {
                     swal('Action interdite !');
@@ -106,11 +102,13 @@ $('body').on('submit', '#update-season', function (e) {
 
     $.addSpinner('.update-season');
 
+    var data = $('#update-season').serializeObject();
+
     $.ajax({
-        url : '/xhr/admin/season/update',
+        url : '/xhr/admin/season/update/' + data['id'],
         type : 'POST',
         data : {
-            'season': $('#update-season').serializeObject()
+            'season': data
         },
         dataType:'json',
         success : function (res) {

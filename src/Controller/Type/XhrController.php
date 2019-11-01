@@ -14,40 +14,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class XhrController extends AbstractController
 {
     /**
-     * Création d'un type
-     * @Route("/xhr/admin/type/create", condition="request.isXmlHttpRequest()")
-     */
-    public function createType(
-        Request $request,
-        TypeService $typeService
-    ) {
-        $this->denyAccessUnlessGranted(TypeVoter::CREATE, Type::class);
-
-        $data = $request->request->all();
-        $resultCreate = $typeService->createType($data['type']);
-
-        return new JsonResponse([
-            'errors' => $resultCreate['errors'],
-            'type' => $resultCreate['type']
-        ]);
-    }
-
-    /**
      * Suppression d'un type
-     * @Route("/xhr/admin/type/remove", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/type/remove/{id}", condition="request.isXmlHttpRequest()")
      */
     public function removeType(
         Request $request,
-        TypeService $typeService
+        TypeService $typeService,
+        Type $type
     ) {
-        $this->denyAccessUnlessGranted(TypeVoter::REMOVE, Type::class);
+        $this->denyAccessUnlessGranted(TypeVoter::REMOVE, $type);
 
-        $data = $request->request->all();
-        $resultRemove = $typeService->removeType($data['type']);
+        $resultRemove = $typeService->removeType($type);
 
         return new JsonResponse([
             'errors' => $resultRemove['errors']
@@ -56,16 +39,17 @@ class XhrController extends AbstractController
 
     /**
      * MàJ d'un type
-     * @Route("/xhr/admin/type/update", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/type/update/{id}", condition="request.isXmlHttpRequest()")
      */
     public function updateType(
         Request $request,
-        TypeService $typeService
+        TypeService $typeService,
+        Type $type
     ) {
-        $this->denyAccessUnlessGranted(TypeVoter::EDIT, Type::class);
+        $this->denyAccessUnlessGranted(TypeVoter::EDIT, $type);
 
         $data = $request->request->all();
-        $resultUpdate = $typeService->updateType($data['type']);
+        $resultUpdate = $typeService->updateType($data['type'], $type);
 
         return new JsonResponse([
             'errors' => $resultUpdate['errors'],
@@ -81,7 +65,7 @@ class XhrController extends AbstractController
         Request $request,
         Type $type
     ) {
-        $this->denyAccessUnlessGranted(TypeVoter::VIEW, Type::class);
+        $this->denyAccessUnlessGranted(TypeVoter::VIEW, $type);
 
         return $this->render('type/xhr/edit.html.twig', [
             'type' => $type,
@@ -91,12 +75,29 @@ class XhrController extends AbstractController
     /**
      * Création d'un type
      * @Route("/xhr/admin/type/display/create/", condition="request.isXmlHttpRequest()")
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function displayModalCreate(
         Request $request
     ) {
-        $this->denyAccessUnlessGranted(TypeVoter::VIEW, Type::class);
-
         return $this->render('type/xhr/create.html.twig', []);
+    }
+
+    /**
+     * Création d'un type
+     * @Route("/xhr/admin/type/create", condition="request.isXmlHttpRequest()")
+     * @Security("is_granted('ROLE_ADMIN')")
+     */
+    public function createType(
+        Request $request,
+        TypeService $typeService
+    ) {
+        $data = $request->request->all();
+        $resultCreate = $typeService->createType($data['type']);
+
+        return new JsonResponse([
+            'errors' => $resultCreate['errors'],
+            'type' => $resultCreate['type']
+        ]);
     }
 }

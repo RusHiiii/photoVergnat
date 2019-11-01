@@ -79,7 +79,7 @@ class UserService
      * @return array
      * @throws \Exception
      */
-    public function updateUser(array $data): array
+    public function updateUser(array $data, User $user): array
     {
         /** Validation des données */
         $validatedData = $this->userValidatorService->checkUpdateUser($data, UserValidatorService::TOKEN_UPDATE_USER);
@@ -91,7 +91,6 @@ class UserService
         }
 
         /** MàJ de l'utilisateur et sauvegarde */
-        $user = $this->userRepository->findById($validatedData['data']['id']);
         $user->setEmail($validatedData['data']['email']);
         $user->setFirstname($validatedData['data']['firstname']);
         $user->setLastname($validatedData['data']['lastname']);
@@ -113,20 +112,14 @@ class UserService
      * @return array
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function updatePassword(array $data): array
+    public function updatePassword(array $data, User $user): array
     {
         /** Validation des données */
-        $validatedData =$this->userValidatorService->checkUpdatePassword($data, UserValidatorService::TOKEN_UPDATE_PSWD);
+        $validatedData = $this->userValidatorService->checkUpdatePassword($data, UserValidatorService::TOKEN_UPDATE_PSWD);
         if (count($validatedData['errors']) > 0) {
             return [
                 'errors' => $validatedData['errors']
             ];
-        }
-
-        /** Récupération de l'utilisateur */
-        $user = $this->security->getUser()->getUsername();
-        if ($this->security->isGranted(UserVoter::EDIT, User::class) && isset($validatedData['data']['email'])) {
-            $user = $this->userRepository->findByEmail($validatedData['data']['email']);
         }
 
         /** Modification de l'utilisateur et sauvegarde */
@@ -146,16 +139,8 @@ class UserService
      * @return array
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function removeUser(string $data): array
+    public function removeUser(User $user): array
     {
-        /** On récupére l'utilisateur */
-        $user = $this->userRepository->findById($data);
-        if ($user === null) {
-            return [
-                'errors' => [self::MSG_UNKNOWN_USER]
-            ];
-        }
-
         /** Suppression */
         $this->entityManager->remove($user);
         $this->entityManager->flush();

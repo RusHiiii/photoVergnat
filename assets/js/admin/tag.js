@@ -39,12 +39,8 @@ $('#tags-table tbody').on('click', '.alert-ajax', function (e) {
         showLoaderOnConfirm: true
     }, function () {
         $.ajax({
-            url : '/xhr/admin/tag/remove',
+            url : '/xhr/admin/tag/remove/' + id,
             type : 'DELETE',
-            data : {
-                'tag': id
-            },
-            dataType:'json',
             success : function (res) {
                 var message = 'Suppression terminée !';
                 if (res.errors.length > 0) {
@@ -95,11 +91,13 @@ $('body').on('submit', '#update-tag', function (e) {
 
     $.addSpinner('.update-tag');
 
+    var data = $('#update-tag').serializeObject();
+
     $.ajax({
-        url : '/xhr/admin/tag/update',
+        url : '/xhr/admin/tag/update/' + data['id'],
         type : 'POST',
         data : {
-            'tag': $('#update-tag').serializeObject()
+            'tag': data
         },
         dataType:'json',
         success : function (res) {

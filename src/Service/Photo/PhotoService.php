@@ -91,7 +91,7 @@ class PhotoService
      * @return array
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function updatePhoto(array $data, ?UploadedFile $file): array
+    public function updatePhoto(array $data, ?UploadedFile $file, Photo $photo): array
     {
         /** Validation des données */
         $validatedData = $this->photoValidatorService->checkUpdatePhoto($data, $file, PhotoValidatorService::TOKEN_UPDATE);
@@ -103,7 +103,6 @@ class PhotoService
         }
 
         /** MàJ de la photo et sauvegarde */
-        $photo = $this->photoRepository->findById($validatedData['data']['id']);
         $photo->setTitle($validatedData['data']['title']);
         $photo->setType($this->typeRepository->findById($validatedData['data']['format']));
         $photo->setFile($file);
@@ -125,18 +124,9 @@ class PhotoService
      * Suppression d'une photo
      * @param string $data
      * @return array
-     * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function removePhoto(string $data): array
+    public function removePhoto(Photo $photo): array
     {
-        /** On récupére la photo */
-        $photo = $this->photoRepository->findById($data);
-        if ($photo === null) {
-            return [
-                'errors' => [self::MSG_UNKNOWN_PHOTO]
-            ];
-        }
-
         /** Suppression */
         $this->entityManager->remove($photo);
         $this->entityManager->flush();

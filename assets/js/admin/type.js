@@ -3,6 +3,7 @@
 /** Initialisation de la modal */
 $('#types-table tbody').on('click', '.edit', function (e) {
     var id = $(this).data('id');
+
     $.ajax({
         url : '/xhr/admin/type/display/edit/' + id,
         type : 'GET',
@@ -39,12 +40,8 @@ $('#types-table tbody').on('click', '.alert-ajax', function (e) {
         showLoaderOnConfirm: true
     }, function () {
         $.ajax({
-            url : '/xhr/admin/type/remove',
+            url : '/xhr/admin/type/remove/'+ id,
             type : 'DELETE',
-            data : {
-                'type': id
-            },
-            dataType:'json',
             statusCode: {
                 403: function (res) {
                     swal('Action interdite !');
@@ -106,11 +103,13 @@ $('body').on('submit', '#update-type', function (e) {
 
     $.addSpinner('.update-type');
 
+    var data = $('#update-type').serializeObject();
+
     $.ajax({
-        url : '/xhr/admin/type/update',
+        url : '/xhr/admin/type/update/' + data['id'],
         type : 'POST',
         data : {
-            'type': $('#update-type').serializeObject()
+            'type': data
         },
         dataType:'json',
         success : function (res) {

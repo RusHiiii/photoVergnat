@@ -44,18 +44,9 @@ class TypeService
      * Suppression d'un type
      * @param string $data
      * @return array
-     * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function removeType(string $data): array
+    public function removeType(Type $type): array
     {
-        /** On récupére le type */
-        $type = $this->typeRepository->findById($data);
-        if ($type === null) {
-            return [
-                'errors' => [self::MSG_UNKNOWN_TYPE]
-            ];
-        }
-
         /** Suppression */
         $this->entityManager->remove($type);
         $this->entityManager->flush();
@@ -99,9 +90,8 @@ class TypeService
      * MàJ d'un type
      * @param array $data
      * @return array
-     * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function updateType(array $data): array
+    public function updateType(array $data, Type $type): array
     {
         /** Validation des données */
         $validatedData = $this->typeValidatorService->checkType($data, TypeValidatorService::TOKEN_UPDATE);
@@ -113,7 +103,6 @@ class TypeService
         }
 
         /** MàJ de l'utilisateur et sauvegarde */
-        $type = $this->typeRepository->findById($validatedData['data']['id']);
         $type->setTitle($validatedData['data']['title']);
 
         /** Sauvegarde */

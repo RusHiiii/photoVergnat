@@ -60,10 +60,12 @@ $('body').on('submit', '#update-photo', function (e) {
 
     $.addSpinner('.update-photo');
 
+    var data = new FormData(this);
+
     $.ajax({
-        url : '/xhr/admin/photo/update',
+        url : '/xhr/admin/photo/update/' + data.get('id'),
         type : 'POST',
-        data : new FormData(this),
+        data : data,
         dataType:'json',
         contentType: false,
         cache: false,
@@ -97,12 +99,8 @@ $('#photos-table tbody').on('click', '.alert-ajax', function (e) {
         showLoaderOnConfirm: true
     }, function () {
         $.ajax({
-            url : '/xhr/admin/photo/remove',
+            url : '/xhr/admin/photo/remove/' + id,
             type : 'DELETE',
-            data : {
-                'photo': id
-            },
-            dataType:'json',
             success : function (res) {
                 var message = 'Suppression terminée !';
                 if (res.errors.length > 0) {

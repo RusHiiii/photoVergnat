@@ -57,18 +57,9 @@ class CategoryService
      * Suppression de la catégorie
      * @param string $data
      * @return array
-     * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function removeCategory(string $data): array
+    public function removeCategory(Category $category): array
     {
-        /** On récupére la categorie */
-        $category = $this->categoryRepository->findById($data);
-        if ($category === null) {
-            return [
-                'errors' => [self::MSG_UNKNOWN_CATEGORY]
-            ];
-        }
-
         /** Suppression */
         $this->entityManager->remove($category);
         $this->entityManager->flush();
@@ -127,9 +118,8 @@ class CategoryService
      * MàJ d'une catégorie
      * @param array $data
      * @return array
-     * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function updateCategory(array $data): array
+    public function updateCategory(array $data, Category $category): array
     {
         /** Validation des données */
         $validatedData = $this->categoryValidatorService->checkCategory($data, CategoryValidatorService::TOKEN_UPDATE);
@@ -141,7 +131,6 @@ class CategoryService
         }
 
         /** MàJ de la category et sauvegarde */
-        $category = $this->categoryRepository->findById($validatedData['data']['id']);
         $category->setTitle($validatedData['data']['title']);
         $category->setDescription($validatedData['data']['description']);
         $category->setCity($validatedData['data']['city']);

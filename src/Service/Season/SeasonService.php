@@ -44,18 +44,9 @@ class SeasonService
      * Suppression d'une saison
      * @param string $data
      * @return array
-     * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function removeSeason(string $data): array
+    public function removeSeason(Season $season): array
     {
-        /** On récupére la saison */
-        $season = $this->seasonRepository->findById($data);
-        if ($season === null) {
-            return [
-                'errors' => [self::MSG_UNKNOWN_SEASON]
-            ];
-        }
-
         /** Suppression */
         $this->entityManager->remove($season);
         $this->entityManager->flush();
@@ -101,7 +92,7 @@ class SeasonService
      * @return array
      * @throws \Exception
      */
-    public function updateSeason(array $data): array
+    public function updateSeason(array $data, Season $season): array
     {
         /** Validation des données */
         $validatedData = $this->seasonValidatorService->checkSeason($data, SeasonValidatorService::TOKEN_UPDATE);
@@ -113,7 +104,6 @@ class SeasonService
         }
 
         /** MàJ de la saison et sauvegarde */
-        $season = $this->seasonRepository->findById($validatedData['data']['id']);
         $season->setTitle($validatedData['data']['title']);
 
         /** Sauvegarde */

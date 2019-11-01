@@ -46,6 +46,7 @@
                             <div class="form-group">
                                 <div class="col-sm-12 submit">
                                     <input type="hidden" name="token" value="{{ csrf_token('update-user') }}"/>
+                                    <input type="hidden" name="id" value="{{ user.id }}"/>
                                     <button type="submit" class="btn alime-btn btn-2 mt-15 edit-user">Mettre à jours</button>
                                 </div>
                             </div>
@@ -71,6 +72,7 @@
                             <div class="form-group">
                                 <div class="col-sm-12 submit">
                                     <input type="hidden" name="token" value="{{ csrf_token('update-password') }}"/>
+                                    <input type="hidden" name="id" value="{{ user.id }}"/>
                                     <button type="submit" class="btn alime-btn btn-2 mt-15 edit-password">Valider</button>
                                 </div>
                             </div>

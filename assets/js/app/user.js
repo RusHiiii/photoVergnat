@@ -6,11 +6,13 @@ $('#update-user').on('submit', function (event) {
 
     $.addSpinner('.edit-user');
 
+    var data = $('#update-user').serializeObject();
+
     $.ajax({
-        url : '/xhr/app/user/edit-user',
+        url : '/xhr/app/user/edit-user/',
         type : 'POST',
         data : {
-            'user': $('#update-user').serializeObject()
+            'user': data
         },
         dataType:'json',
         success : function (res) {
@@ -26,11 +28,13 @@ $('#update-password').on('submit', function (event) {
 
     $.addSpinner('.edit-password');
 
+    var data = $('#update-password').serializeObject();
+
     $.ajax({
-        url : '/xhr/app/user/edit-password',
+        url : '/xhr/app/user/edit-password/' + data['id'],
         type : 'POST',
         data : {
-            'user': $('#update-password').serializeObject()
+            'user': data
         },
         dataType:'json',
         success : function (res) {

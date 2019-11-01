@@ -13,6 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class XhrController extends AbstractController
 {
@@ -24,7 +26,7 @@ class XhrController extends AbstractController
         Request $request,
         Season $season
     ) {
-        $this->denyAccessUnlessGranted(SeasonVoter::VIEW, Season::class);
+        $this->denyAccessUnlessGranted(SeasonVoter::VIEW, $season);
 
         return $this->render('season/xhr/edit.html.twig', [
             'season' => $season,
@@ -32,29 +34,17 @@ class XhrController extends AbstractController
     }
 
     /**
-     * Création d'une saison
-     * @Route("/xhr/admin/season/display/create/", condition="request.isXmlHttpRequest()")
-     */
-    public function displayModalCreate(
-        Request $request
-    ) {
-        $this->denyAccessUnlessGranted(SeasonVoter::VIEW, Season::class);
-
-        return $this->render('season/xhr/create.html.twig', []);
-    }
-
-    /**
      * Suppression d'une saison
-     * @Route("/xhr/admin/season/remove", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/season/remove/{id}", condition="request.isXmlHttpRequest()")
      */
     public function removeSeason(
         Request $request,
-        SeasonService $seasonService
+        SeasonService $seasonService,
+        Season $season
     ) {
-        $this->denyAccessUnlessGranted(SeasonVoter::REMOVE, Season::class);
+        $this->denyAccessUnlessGranted(SeasonVoter::REMOVE, $season);
 
-        $data = $request->request->all();
-        $resultRemove = $seasonService->removeSeason($data['season']);
+        $resultRemove = $seasonService->removeSeason($season);
 
         return new JsonResponse([
             'errors' => $resultRemove['errors']
@@ -62,15 +52,34 @@ class XhrController extends AbstractController
     }
 
     /**
+     * MàJ d'une saison
+     * @Route("/xhr/admin/season/update/{id}", condition="request.isXmlHttpRequest()")
+     */
+    public function updateSeason(
+        Request $request,
+        SeasonService $seasonService,
+        Season $season
+    ) {
+        $this->denyAccessUnlessGranted(SeasonVoter::EDIT, $season);
+
+        $data = $request->request->all();
+        $resultUpdate = $seasonService->updateSeason($data['season'], $season);
+
+        return new JsonResponse([
+            'errors' => $resultUpdate['errors'],
+            'season' => $resultUpdate['season']
+        ]);
+    }
+
+    /**
      * Création d'une saison
      * @Route("/xhr/admin/season/create", condition="request.isXmlHttpRequest()")
+     * @Security("is_granted('ROLE_AUTHOR')")
      */
     public function createSeason(
         Request $request,
         SeasonService $seasonService
     ) {
-        $this->denyAccessUnlessGranted(SeasonVoter::CREATE, Season::class);
-
         $data = $request->request->all();
         $resultCreate = $seasonService->createSeason($data['season']);
 
@@ -81,21 +90,13 @@ class XhrController extends AbstractController
     }
 
     /**
-     * MàJ d'une saison
-     * @Route("/xhr/admin/season/update", condition="request.isXmlHttpRequest()")
+     * Création d'une saison
+     * @Route("/xhr/admin/season/display/create/", condition="request.isXmlHttpRequest()")
+     * @Security("is_granted('ROLE_AUTHOR')")
      */
-    public function updateSeason(
-        Request $request,
-        SeasonService $seasonService
+    public function displayModalCreate(
+        Request $request
     ) {
-        $this->denyAccessUnlessGranted(SeasonVoter::EDIT, Season::class);
-
-        $data = $request->request->all();
-        $resultUpdate = $seasonService->updateSeason($data['season']);
-
-        return new JsonResponse([
-            'errors' => $resultUpdate['errors'],
-            'season' => $resultUpdate['season']
-        ]);
+        return $this->render('season/xhr/create.html.twig', []);
     }
 }

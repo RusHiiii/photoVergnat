@@ -17,7 +17,7 @@ class UserVoter extends Voter
 {
     const REMOVE = 'remove';
     const EDIT = 'edit';
-    const CREATE = 'create';
+    const EDIT_PSWD = 'edit-pswd';
     const VIEW = 'view';
 
     private $security;
@@ -29,11 +29,11 @@ class UserVoter extends Voter
 
     protected function supports($attribute, $subject)
     {
-        if (!in_array($attribute, [self::REMOVE, self::EDIT, self::CREATE, self::VIEW])) {
+        if (!in_array($attribute, [self::REMOVE, self::EDIT, self::VIEW, self::EDIT_PSWD])) {
             return false;
         }
 
-        if ($subject !== User::class) {
+        if (!$subject instanceof User) {
             return false;
         }
 
@@ -51,10 +51,10 @@ class UserVoter extends Voter
         switch ($attribute) {
             case self::EDIT:
             case self::VIEW:
-                return $this->canEdit($user);
-            case self::CREATE:
+            case self::EDIT_PSWD:
+                return $this->canEdit($user, $subject);
             case self::REMOVE:
-                return $this->canCreateOrRemove($user);
+                return $this->canRemove($user);
         }
 
         throw new \LogicException('This code should not be reached!');
@@ -65,8 +65,12 @@ class UserVoter extends Voter
      * @param User $user
      * @return bool
      */
-    private function canEdit(User $user)
+    private function canEdit(User $user, User $subject)
     {
+        if ($user === $subject) {
+            return true;
+        }
+
         if ($this->security->isGranted('ROLE_AUTHOR')) {
             return true;
         }
@@ -79,7 +83,7 @@ class UserVoter extends Voter
      * @param User $user
      * @return bool
      */
-    private function canCreateOrRemove(User $user)
+    private function canRemove(User $user)
     {
         if ($this->security->isGranted('ROLE_ADMIN')) {
             return true;

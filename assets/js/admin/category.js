@@ -40,12 +40,8 @@ $('#categories-table tbody').on('click', '.alert-ajax', function (e) {
         showLoaderOnConfirm: true
     }, function () {
         $.ajax({
-            url : '/xhr/admin/category/remove',
+            url : '/xhr/admin/category/remove/' + id,
             type : 'DELETE',
-            data : {
-                'category': id
-            },
-            dataType:'json',
             success : function (res) {
                 var message = 'Suppression terminée !';
                 if (res.errors.length > 0) {
@@ -78,7 +74,7 @@ $('body').on('submit', '#update-category', function (e) {
     }
 
     $.ajax({
-        url : '/xhr/admin/category/update',
+        url : '/xhr/admin/category/update/' + data['id'],
         type : 'POST',
         data : {
             'category': data

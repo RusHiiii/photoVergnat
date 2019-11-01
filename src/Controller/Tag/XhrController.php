@@ -11,40 +11,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class XhrController extends AbstractController
 {
     /**
-     * Création d'un tag
-     * @Route("/xhr/admin/tag/create", condition="request.isXmlHttpRequest()")
-     */
-    public function createTag(
-        Request $request,
-        TagService $tagService
-    ) {
-        $this->denyAccessUnlessGranted(TagVoter::CREATE, Tag::class);
-
-        $data = $request->request->all();
-        $resultCreate = $tagService->createTag($data['tag']);
-
-        return new JsonResponse([
-            'errors' => $resultCreate['errors'],
-            'tag' => $resultCreate['tag']
-        ]);
-    }
-
-    /**
      * MàJ d'un tag
-     * @Route("/xhr/admin/tag/update", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/tag/update/{id}", condition="request.isXmlHttpRequest()")
      */
     public function updateTag(
         Request $request,
-        TagService $tagService
+        TagService $tagService,
+        Tag $tag
     ) {
-        $this->denyAccessUnlessGranted(TagVoter::EDIT, Tag::class);
+        $this->denyAccessUnlessGranted(TagVoter::EDIT, $tag);
 
         $data = $request->request->all();
-        $resultUpdate = $tagService->updateTag($data['tag']);
+        $resultUpdate = $tagService->updateTag($data['tag'], $tag);
 
         return new JsonResponse([
             'errors' => $resultUpdate['errors'],
@@ -54,16 +38,16 @@ class XhrController extends AbstractController
 
     /**
      * Suppression d'un tag
-     * @Route("/xhr/admin/tag/remove", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/tag/remove/{id}", condition="request.isXmlHttpRequest()")
      */
     public function removeTag(
         Request $request,
-        TagService $tagService
+        TagService $tagService,
+        Tag $tag
     ) {
-        $this->denyAccessUnlessGranted(TagVoter::REMOVE, Tag::class);
+        $this->denyAccessUnlessGranted(TagVoter::REMOVE, $tag);
 
-        $data = $request->request->all();
-        $resultRemove = $tagService->removeTag($data['tag']);
+        $resultRemove = $tagService->removeTag($tag);
 
         return new JsonResponse([
             'errors' => $resultRemove['errors']
@@ -78,7 +62,7 @@ class XhrController extends AbstractController
         Request $request,
         Tag $tag
     ) {
-        $this->denyAccessUnlessGranted(TagVoter::VIEW, Tag::class);
+        $this->denyAccessUnlessGranted(TagVoter::VIEW, $tag);
 
         return $this->render('tag/xhr/edit.html.twig', [
             'tag' => $tag,
@@ -88,12 +72,29 @@ class XhrController extends AbstractController
     /**
      * Edtion d'un mot de passe
      * @Route("/xhr/admin/tag/display/create/", condition="request.isXmlHttpRequest()")
+     * @Security("is_granted('ROLE_AUTHOR')")
      */
     public function displayModalCreate(
         Request $request
     ) {
-        $this->denyAccessUnlessGranted(TagVoter::VIEW, Tag::class);
-
         return $this->render('tag/xhr/create.html.twig', []);
+    }
+
+    /**
+     * Création d'un tag
+     * @Route("/xhr/admin/tag/create", condition="request.isXmlHttpRequest()")
+     * @Security("is_granted('ROLE_AUTHOR')")
+     */
+    public function createTag(
+        Request $request,
+        TagService $tagService
+    ) {
+        $data = $request->request->all();
+        $resultCreate = $tagService->createTag($data['tag']);
+
+        return new JsonResponse([
+            'errors' => $resultCreate['errors'],
+            'tag' => $resultCreate['tag']
+        ]);
     }
 }
