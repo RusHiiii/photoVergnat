@@ -6,8 +6,8 @@ use App\Controller\Security\Voter\TagVoter;
 use App\Entity\WebApp\Tag;
 use App\Entity\WebApp\User;
 use App\Service\Tools\Error\Factory\ErrorFactory;
-use App\Service\WebApp\Tag\Exceptions\InvalidDataException;
-use App\Service\WebApp\Tag\Exceptions\NotFoundException;
+use App\Service\WebApp\Tag\Exceptions\TagInvalidDataException;
+use App\Service\WebApp\Tag\Exceptions\TagNotFoundException;
 use App\Service\WebApp\Tag\TagService;
 use App\Service\WebApp\User\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -46,12 +46,12 @@ class XhrController extends AbstractController
 
         try {
             $resultUpdate = $tagService->updateTag($data['tag'], $tag);
-        } catch (InvalidDataException $e) {
+        } catch (TagInvalidDataException $e) {
             return new JsonResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
-        } catch (NotFoundException $e) {
+        } catch (TagNotFoundException $e) {
             return new JsonResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404
@@ -93,7 +93,7 @@ class XhrController extends AbstractController
 
         try {
             $resultCreate = $tagService->createTag($data['tag']);
-        } catch (InvalidDataException $e) {
+        } catch (TagInvalidDataException $e) {
             return new JsonResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400

@@ -15,6 +15,8 @@ use App\Repository\WebApp\Photo\Doctrine\PhotoRepository;
 use App\Repository\WebApp\Season\Doctrine\SeasonRepository;
 use App\Repository\WebApp\Tag\Doctrine\TagRepository;
 use App\Repository\WebApp\Type\Doctrine\TypeRepository;
+use App\Service\WebApp\Category\Assembler\CategoryAssembler;
+use App\Service\WebApp\Category\Exceptions\CategoryInvalidDataException;
 use App\Service\WebApp\Category\Validator\CategoryValidator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -23,12 +25,9 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class CategoryService
 {
-    const MSG_UNKNOWN_CATEGORY = 'Categorie inexistante !';
-
+    private $categoryAssembler;
     private $entityManager;
-    private $security;
     private $categoryValidatorService;
-    private $serialize;
     private $tagRepository;
     private $categoryRepository;
     private $seasonRepository;
@@ -36,127 +35,91 @@ class CategoryService
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        Security $security,
         TagRepository $tagRepository,
         CategoryValidator $categoryValidatorService,
-        SerializerInterface $serializer,
         CategoryRepository $categoryRepository,
         SeasonRepository $seasonRepository,
-        PhotoRepository $photoRepository
+        PhotoRepository $photoRepository,
+        CategoryAssembler $categoryAssembler
     ) {
         $this->entityManager = $entityManager;
-        $this->security = $security;
         $this->categoryValidatorService = $categoryValidatorService;
-        $this->serialize = $serializer;
         $this->tagRepository = $tagRepository;
         $this->categoryRepository = $categoryRepository;
         $this->seasonRepository = $seasonRepository;
         $this->photoRepository = $photoRepository;
+        $this->categoryAssembler = $categoryAssembler;
     }
 
     /**
      * Suppression de la catégorie
-     * @param string $data
-     * @return array
+     * @param Category $category
+     * @return bool
      */
-    public function removeCategory(Category $category): array
+    public function removeCategory(Category $category): bool
     {
         /** Suppression */
         $this->entityManager->remove($category);
         $this->entityManager->flush();
 
-        return [
-            'errors' => []
-        ];
+        return true;
     }
 
     /**
      * Création d'un catégorie
      * @param array $data
-     * @return array
+     * @return Category
+     * @throws \App\Service\WebApp\Photo\Exceptions\PhotoNotFoundException
+     * @throws \App\Service\WebApp\Season\Exceptions\SeasonNotFoundException
+     * @throws \App\Service\WebApp\Tag\Exceptions\TagNotFoundException
      * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws CategoryInvalidDataException
      */
-    public function createCategory(array $data): array
+    public function createCategory(array $data): Category
     {
         /** Validation des données */
         $validatedData = $this->categoryValidatorService->checkCategory($data, CategoryValidator::TOKEN_CREATE);
         if (count($validatedData['errors']) > 0) {
-            return [
-                'errors' => $validatedData['errors'],
-                'category' => []
-            ];
+            throw new CategoryInvalidDataException($validatedData['errors'], CategoryInvalidDataException::CATEGORY_INVALID_DATA_MESSAGE);
         }
 
         /** Insertion de la category et sauvegarde */
-        $category = new Category();
-        $category->setTitle($validatedData['data']['title']);
-        $category->setDescription($validatedData['data']['description']);
-        $category->setCity($validatedData['data']['city']);
-        $category->setActive($validatedData['data']['active']);
-        $category->setLatitude($validatedData['data']['lat']);
-        $category->setLongitude($validatedData['data']['lng']);
-        $category->setSeason($this->seasonRepository->findById($validatedData['data']['season']));
-
-        foreach ($validatedData['data']['tags'] as $tag) {
-            $category->addTag($this->tagRepository->findById($tag));
-        }
-
-        foreach ($validatedData['data']['photos'] as $photo) {
-            $category->addPhoto($this->photoRepository->findById($photo));
-        }
+        $category = $this->categoryAssembler->create($validatedData['data']);
 
         /** Sauvegarde */
         $this->entityManager->persist($category);
         $this->entityManager->flush();
 
-        return [
-            'errors' => [],
-            'category' => $this->serialize->serialize($category, 'json', ['groups' => ['default', 'category']])
-        ];
+        return $category;
     }
 
     /**
      * MàJ d'une catégorie
      * @param array $data
-     * @return array
+     * @param Category $category
+     * @return Category
+     * @throws CategoryInvalidDataException
+     * @throws Exceptions\CategoryNotFoundException
+     * @throws \App\Service\WebApp\Photo\Exceptions\PhotoNotFoundException
+     * @throws \App\Service\WebApp\Season\Exceptions\SeasonNotFoundException
+     * @throws \App\Service\WebApp\Tag\Exceptions\TagNotFoundException
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function updateCategory(array $data, Category $category): array
+    public function updateCategory(array $data, Category $category): Category
     {
         /** Validation des données */
         $validatedData = $this->categoryValidatorService->checkCategory($data, CategoryValidator::TOKEN_UPDATE);
         if (count($validatedData['errors']) > 0) {
-            return [
-                'errors' => $validatedData['errors'],
-                'category' => []
-            ];
+            throw new CategoryInvalidDataException($validatedData['errors'], CategoryInvalidDataException::CATEGORY_INVALID_DATA_MESSAGE);
         }
 
         /** MàJ de la category et sauvegarde */
-        $category->setTitle($validatedData['data']['title']);
-        $category->setDescription($validatedData['data']['description']);
-        $category->setCity($validatedData['data']['city']);
-        $category->setActive($validatedData['data']['active']);
-        $category->setLatitude($validatedData['data']['lat']);
-        $category->setLongitude($validatedData['data']['lng']);
-        $category->setSeason($this->seasonRepository->findById($validatedData['data']['season']));
-
-        $category->resetTags();
-        foreach ($validatedData['data']['tags'] as $tag) {
-            $category->addTag($this->tagRepository->findById($tag));
-        }
-
-        $category->resetPhoto();
-        foreach ($validatedData['data']['photos'] as $photo) {
-            $category->addPhoto($this->photoRepository->findById($photo));
-        }
+        $category = $this->categoryAssembler->edit($category, $validatedData['data']);
 
         /** Sauvegarde */
         $this->entityManager->flush();
 
-        return [
-            'errors' => [],
-            'category' => $this->serialize->serialize($category, 'json', ['groups' => ['default', 'category']])
-        ];
+        return $category;
     }
 
     /**

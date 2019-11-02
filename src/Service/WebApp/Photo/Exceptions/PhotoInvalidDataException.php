@@ -6,12 +6,14 @@
  * Time: 18:09
  */
 
-namespace App\Service\WebApp\Tag\Exceptions;
+namespace App\Service\WebApp\Photo\Exceptions;
 
 use Throwable;
 
-class NotFoundException extends \Exception
+class PhotoInvalidDataException extends \Exception
 {
+    const PHOTO_INVALID_DATA_MESSAGE = 'Invalid photo data';
+
     private $context;
 
     public function __construct(array $context = [], string $message = "", int $code = 0, Throwable $previous = null)

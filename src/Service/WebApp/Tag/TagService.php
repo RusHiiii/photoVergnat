@@ -11,7 +11,7 @@ namespace App\Service\WebApp\Tag;
 use App\Entity\WebApp\Tag;
 use App\Repository\WebApp\Tag\Doctrine\TagRepository;
 use App\Service\WebApp\Tag\Assembler\TagAssembler;
-use App\Service\WebApp\Tag\Exceptions\InvalidDataException;
+use App\Service\WebApp\Tag\Exceptions\TagInvalidDataException;
 use App\Service\WebApp\Tag\Validator\TagValidator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Security;
@@ -19,9 +19,6 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class TagService
 {
-    const INVALID_UPDATE = 'Données de mise à jour du tag invalide';
-    const INVALID_CREATE = 'Données de création du tag invalide';
-
     private $entityManager;
     private $tagValidatorService;
     private $tagRepository;
@@ -57,14 +54,14 @@ class TagService
      * Création d'un tag
      * @param array $data
      * @return Tag
-     * @throws InvalidDataException
+     * @throws TagInvalidDataException
      */
     public function createTag(array $data): Tag
     {
         /** Validation des données */
         $validatedData = $this->tagValidatorService->checkTag($data, TagValidator::TOKEN_CREATE);
         if (count($validatedData['errors']) > 0) {
-            throw new InvalidDataException($validatedData['errors'], self::INVALID_CREATE);
+            throw new TagInvalidDataException($validatedData['errors'], TagInvalidDataException::TAG_INVALID_DATA_MESSAGE);
         }
 
         /** Insertion du tag et sauvegarde */
@@ -82,15 +79,15 @@ class TagService
      * @param array $data
      * @param Tag $tag
      * @return Tag
-     * @throws Exceptions\NotFoundException
-     * @throws InvalidDataException
+     * @throws Exceptions\TagNotFoundException
+     * @throws TagInvalidDataException
      */
     public function updateTag(array $data, Tag $tag): Tag
     {
         /** Validation des données */
         $validatedData = $this->tagValidatorService->checkTag($data, TagValidator::TOKEN_UPDATE);
         if (count($validatedData['errors']) > 0) {
-            throw new InvalidDataException($validatedData['errors'], self::INVALID_UPDATE);
+            throw new TagInvalidDataException($validatedData['errors'], TagInvalidDataException::TAG_INVALID_DATA_MESSAGE);
         }
 
         /** MàJ de l'utilisateur et sauvegarde */

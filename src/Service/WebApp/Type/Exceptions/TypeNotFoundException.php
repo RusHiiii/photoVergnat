@@ -10,8 +10,10 @@ namespace App\Service\WebApp\Type\Exceptions;
 
 use Throwable;
 
-class NotFoundException extends \Exception
+class TypeNotFoundException extends \Exception
 {
+    const TYPE_NOT_FOUND_MESSAGE = 'Type not found';
+
     private $context;
 
     public function __construct(array $context = [], string $message = "", int $code = 0, Throwable $previous = null)

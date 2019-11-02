@@ -6,12 +6,14 @@
  * Time: 18:09
  */
 
-namespace App\Service\WebApp\Type\Exceptions;
+namespace App\Service\WebApp\Tag\Exceptions;
 
 use Throwable;
 
-class InvalidDataException extends \Exception
+class TagNotFoundException extends \Exception
 {
+    const TAG_NOT_FOUND_MESSAGE = 'Tag not found';
+
     private $context;
 
     public function __construct(array $context = [], string $message = "", int $code = 0, Throwable $previous = null)

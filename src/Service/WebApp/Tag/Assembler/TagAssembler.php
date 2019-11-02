@@ -10,7 +10,7 @@ namespace App\Service\WebApp\Tag\Assembler;
 
 use App\Entity\WebApp\Tag;
 use App\Repository\WebApp\Tag\Doctrine\TagRepository;
-use App\Service\WebApp\Tag\Exceptions\NotFoundException;
+use App\Service\WebApp\Tag\Exceptions\TagNotFoundException;
 
 class TagAssembler
 {
@@ -42,12 +42,12 @@ class TagAssembler
      * @param Tag $type
      * @param array $data
      * @return Tag
-     * @throws NotFoundException
+     * @throws TagNotFoundException
      */
     public function edit(Tag $type, array $data)
     {
         if ($type === null) {
-            throw new NotFoundException([], 'Tag not found');
+            throw new TagNotFoundException(['Tag inexistant'], TagNotFoundException::TAG_NOT_FOUND_MESSAGE);
         }
 
         $type->setTitle($data['title']);

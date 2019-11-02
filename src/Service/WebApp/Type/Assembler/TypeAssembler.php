@@ -10,7 +10,7 @@ namespace App\Service\WebApp\Type\Assembler;
 
 use App\Entity\WebApp\Type;
 use App\Repository\WebApp\Type\Doctrine\TypeRepository;
-use App\Service\WebApp\Type\Exceptions\NotFoundException;
+use App\Service\WebApp\Type\Exceptions\TypeNotFoundException;
 
 class TypeAssembler
 {
@@ -40,12 +40,12 @@ class TypeAssembler
      * @param Type $type
      * @param array $data
      * @return Type
-     * @throws NotFoundException
+     * @throws TypeNotFoundException
      */
     public function edit(Type $type, array $data)
     {
         if ($type === null) {
-            throw new NotFoundException([], 'Type not found');
+            throw new TypeNotFoundException(['Type inexistant'], TypeNotFoundException::TYPE_NOT_FOUND_MESSAGE);
         }
 
         $type->setTitle($data['title']);

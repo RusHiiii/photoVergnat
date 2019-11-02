@@ -10,8 +10,10 @@ namespace App\Service\WebApp\Tag\Exceptions;
 
 use Throwable;
 
-class InvalidDataException extends \Exception
+class TagInvalidDataException extends \Exception
 {
+    const TAG_INVALID_DATA_MESSAGE = 'Invalid data tag';
+
     private $context;
 
     public function __construct(array $context = [], string $message = "", int $code = 0, Throwable $previous = null)

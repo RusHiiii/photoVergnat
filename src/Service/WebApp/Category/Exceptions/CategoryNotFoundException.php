@@ -6,12 +6,14 @@
  * Time: 18:09
  */
 
-namespace App\Service\WebApp\Season\Exceptions;
+namespace App\Service\WebApp\Category\Exceptions;
 
 use Throwable;
 
-class InvalidDataException extends \Exception
+class CategoryNotFoundException extends \Exception
 {
+    const CATEGORY_NOT_FOUND_MESSAGE = 'Category not found';
+
     private $context;
 
     public function __construct(array $context = [], string $message = "", int $code = 0, Throwable $previous = null)

@@ -7,8 +7,8 @@ use App\Entity\WebApp\Season;
 use App\Entity\WebApp\Tag;
 use App\Entity\WebApp\User;
 use App\Service\Tools\Error\Factory\ErrorFactory;
-use App\Service\WebApp\Season\Exceptions\InvalidDataException;
-use App\Service\WebApp\Season\Exceptions\NotFoundException;
+use App\Service\WebApp\Season\Exceptions\SeasonInvalidDataException;
+use App\Service\WebApp\Season\Exceptions\SeasonNotFoundException;
 use App\Service\WebApp\Season\SeasonService;
 use App\Service\WebApp\Tag\TagService;
 use App\Service\WebApp\User\UserService;
@@ -64,12 +64,12 @@ class XhrController extends AbstractController
 
         try {
             $resultUpdate = $seasonService->updateSeason($data['season'], $season);
-        } catch (InvalidDataException $e) {
+        } catch (SeasonInvalidDataException $e) {
             return new JsonResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
-        } catch (NotFoundException $e) {
+        } catch (SeasonNotFoundException $e) {
             return new JsonResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404
@@ -95,7 +95,7 @@ class XhrController extends AbstractController
 
         try {
             $resultCreate = $seasonService->createSeason($data['season']);
-        } catch (InvalidDataException $e) {
+        } catch (SeasonInvalidDataException $e) {
             return new JsonResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400

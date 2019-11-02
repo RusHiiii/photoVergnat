@@ -11,7 +11,7 @@ namespace App\Service\WebApp\Season\Assembler;
 
 use App\Entity\WebApp\Season;
 use App\Repository\WebApp\Season\Doctrine\SeasonRepository;
-use App\Service\WebApp\Season\Exceptions\NotFoundException;
+use App\Service\WebApp\Season\Exceptions\SeasonNotFoundException;
 
 class SeasonAssembler
 {
@@ -42,12 +42,12 @@ class SeasonAssembler
      * @param Season $season
      * @param array $data
      * @return Season
-     * @throws NotFoundException
+     * @throws SeasonNotFoundException
      */
     public function edit(Season $season, array $data)
     {
         if ($season === null) {
-            throw new NotFoundException([], 'Season not found');
+            throw new SeasonNotFoundException(['Saison inexistant'], SeasonNotFoundException::SEASON_NOT_FOUND);
         }
 
         $season->setTitle($data['title']);

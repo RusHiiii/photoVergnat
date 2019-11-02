@@ -6,12 +6,14 @@
  * Time: 18:09
  */
 
-namespace App\Service\WebApp\Season\Exceptions;
+namespace App\Service\WebApp\Type\Exceptions;
 
 use Throwable;
 
-class NotFoundException extends \Exception
+class TypeInvalidDataException extends \Exception
 {
+    const TYPE_INVALID_DATA_MESSAGE = 'Invalid data type';
+
     private $context;
 
     public function __construct(array $context = [], string $message = "", int $code = 0, Throwable $previous = null)
