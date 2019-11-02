@@ -60,8 +60,9 @@ class XhrController extends AbstractController
     ) {
         $this->denyAccessUnlessGranted(TypeVoter::EDIT, $type);
 
+        $data = $request->request->all();
+
         try {
-            $data = $request->request->all();
             $resultUpdate = $typeService->updateType($data['type'], $type);
         } catch (NotFoundException $e) {
             return new JsonResponse(
@@ -90,8 +91,9 @@ class XhrController extends AbstractController
         Request $request,
         TypeService $typeService
     ) {
+        $data = $request->request->all();
+
         try {
-            $data = $request->request->all();
             $resultCreate = $typeService->createType($data['type']);
         } catch (InvalidDataException $e) {
             return new JsonResponse(

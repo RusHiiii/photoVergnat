@@ -98,8 +98,8 @@ $('body').on('submit', '#update-type', function (e) {
     var data = $('#update-type').serializeObject();
 
     $.ajax({
-        url : `/xhr/admin/type/update/${data['id']}`,
-        type : 'POST',
+        url : `/xhr/admin/type/update/${data.id}`,
+        type : 'PATCH',
         data : {
             'type': data
         },

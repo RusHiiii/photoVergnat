@@ -25,20 +25,17 @@ class TypeService
     const INVALID_CREATE = 'Données de création du type invalide';
 
     private $entityManager;
-    private $security;
     private $typeRepository;
     private $typeValidatorService;
     private $assembler;
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        Security $security,
         TypeRepository $typeRepository,
         TypeValidator $typeValidatorService,
         TypeAssembler $assembler
     ) {
         $this->entityManager = $entityManager;
-        $this->security = $security;
         $this->typeRepository = $typeRepository;
         $this->typeValidatorService = $typeValidatorService;
         $this->assembler = $assembler;

@@ -5,6 +5,9 @@ namespace App\Controller\Tag;
 use App\Controller\Security\Voter\TagVoter;
 use App\Entity\WebApp\Tag;
 use App\Entity\WebApp\User;
+use App\Service\Tools\Error\Factory\ErrorFactory;
+use App\Service\WebApp\Tag\Exceptions\InvalidDataException;
+use App\Service\WebApp\Tag\Exceptions\NotFoundException;
 use App\Service\WebApp\Tag\TagService;
 use App\Service\WebApp\User\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,9 +16,21 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class XhrController extends AbstractController
 {
+    private $serializer;
+    private $errorFactory;
+
+    public function __construct(
+        SerializerInterface $serializer,
+        ErrorFactory $errorFactory
+    ) {
+        $this->serializer = $serializer;
+        $this->errorFactory = $errorFactory;
+    }
+
     /**
      * MàJ d'un tag
      * @Route("/xhr/admin/tag/update/{id}", condition="request.isXmlHttpRequest()")
@@ -28,12 +43,25 @@ class XhrController extends AbstractController
         $this->denyAccessUnlessGranted(TagVoter::EDIT, $tag);
 
         $data = $request->request->all();
-        $resultUpdate = $tagService->updateTag($data['tag'], $tag);
 
-        return new JsonResponse([
-            'errors' => $resultUpdate['errors'],
-            'tag' => $resultUpdate['tag']
-        ]);
+        try {
+            $resultUpdate = $tagService->updateTag($data['tag'], $tag);
+        } catch (InvalidDataException $e) {
+            return new JsonResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                400
+            );
+        } catch (NotFoundException $e) {
+            return new JsonResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                404
+            );
+        }
+
+        return new JsonResponse(
+            $this->serializer->serialize($resultUpdate, 'json', ['groups' => ['default', 'tag']]),
+            200
+        );
     }
 
     /**
@@ -47,11 +75,35 @@ class XhrController extends AbstractController
     ) {
         $this->denyAccessUnlessGranted(TagVoter::REMOVE, $tag);
 
-        $resultRemove = $tagService->removeTag($tag);
+        $tagService->removeTag($tag);
 
-        return new JsonResponse([
-            'errors' => $resultRemove['errors']
-        ]);
+        return new JsonResponse([], 200);
+    }
+
+    /**
+     * Création d'un tag
+     * @Route("/xhr/admin/tag/create", condition="request.isXmlHttpRequest()")
+     * @Security("is_granted('ROLE_AUTHOR')")
+     */
+    public function createTag(
+        Request $request,
+        TagService $tagService
+    ) {
+        $data = $request->request->all();
+
+        try {
+            $resultCreate = $tagService->createTag($data['tag']);
+        } catch (InvalidDataException $e) {
+            return new JsonResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                400
+            );
+        }
+
+        return new JsonResponse(
+            $this->serializer->serialize($resultCreate, 'json', ['groups' => ['default', 'tag']]),
+            200
+        );
     }
 
     /**
@@ -78,23 +130,5 @@ class XhrController extends AbstractController
         Request $request
     ) {
         return $this->render('tag/xhr/create.html.twig', []);
-    }
-
-    /**
-     * Création d'un tag
-     * @Route("/xhr/admin/tag/create", condition="request.isXmlHttpRequest()")
-     * @Security("is_granted('ROLE_AUTHOR')")
-     */
-    public function createTag(
-        Request $request,
-        TagService $tagService
-    ) {
-        $data = $request->request->all();
-        $resultCreate = $tagService->createTag($data['tag']);
-
-        return new JsonResponse([
-            'errors' => $resultCreate['errors'],
-            'tag' => $resultCreate['tag']
-        ]);
     }
 }

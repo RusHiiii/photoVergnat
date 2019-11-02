@@ -10,6 +10,8 @@ namespace App\Service\WebApp\Tag;
 
 use App\Entity\WebApp\Tag;
 use App\Repository\WebApp\Tag\Doctrine\TagRepository;
+use App\Service\WebApp\Tag\Assembler\TagAssembler;
+use App\Service\WebApp\Tag\Exceptions\InvalidDataException;
 use App\Service\WebApp\Tag\Validator\TagValidator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Security;
@@ -17,33 +19,30 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class TagService
 {
-    const MSG_UNKNOWN_TAG = 'Tag inexistant !';
+    const INVALID_UPDATE = 'Données de mise à jour du tag invalide';
+    const INVALID_CREATE = 'Données de création du tag invalide';
 
     private $entityManager;
-    private $security;
     private $tagValidatorService;
-    private $serialize;
     private $tagRepository;
+    private $tagAssembler;
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        Security $security,
         TagRepository $tagRepository,
         TagValidator $tagValidatorService,
-        SerializerInterface $serializer
+        TagAssembler $tagAssembler
     ) {
         $this->entityManager = $entityManager;
-        $this->security = $security;
         $this->tagValidatorService = $tagValidatorService;
-        $this->serialize = $serializer;
         $this->tagRepository = $tagRepository;
+        $this->tagAssembler = $tagAssembler;
     }
 
     /**
      * Suppression du tag
-     * @param string $data
+     * @param Tag $tag
      * @return array
-     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function removeTag(Tag $tag): array
     {
@@ -59,62 +58,55 @@ class TagService
     /**
      * Création d'un tag
      * @param array $data
-     * @return array
+     * @return Tag
+     * @throws InvalidDataException
      */
-    public function createTag(array $data): array
+    public function createTag(array $data): Tag
     {
         /** Validation des données */
         $validatedData = $this->tagValidatorService->checkTag($data, TagValidator::TOKEN_CREATE);
         if (count($validatedData['errors']) > 0) {
-            return [
-                'errors' => $validatedData['errors'],
-                'tag' => []
-            ];
+            throw new InvalidDataException($validatedData['errors'], self::INVALID_CREATE);
         }
 
         /** Insertion du tag et sauvegarde */
-        $tag = new Tag();
-        $tag->setTitle($validatedData['data']['title']);
-        $tag->setType($validatedData['data']['type']);
+        $tag = $this->tagAssembler->create($validatedData['data']);
 
         /** Sauvegarde */
         $this->entityManager->persist($tag);
         $this->entityManager->flush();
 
-        return [
+        return $tag;
+
+        /*return [
             'errors' => [],
             'tag' => $this->serialize->serialize($tag, 'json', ['groups' => ['default', 'tag']])
-        ];
+        ];*/
     }
 
     /**
      * MàJ d'un tag
      * @param array $data
-     * @return array
-     * @throws \Exception
+     * @param Tag $tag
+     * @return Tag
+     * @throws Exceptions\NotFoundException
+     * @throws InvalidDataException
      */
-    public function updateTag(array $data, Tag $tag): array
+    public function updateTag(array $data, Tag $tag): Tag
     {
         /** Validation des données */
         $validatedData = $this->tagValidatorService->checkTag($data, TagValidator::TOKEN_UPDATE);
         if (count($validatedData['errors']) > 0) {
-            return [
-                'errors' => $validatedData['errors'],
-                'tag' => []
-            ];
+            throw new InvalidDataException($validatedData['errors'], self::INVALID_UPDATE);
         }
 
         /** MàJ de l'utilisateur et sauvegarde */
-        $tag->setTitle($validatedData['data']['title']);
-        $tag->setType($validatedData['data']['type']);
+        $tag = $this->tagAssembler->edit($tag, $validatedData['data']);
 
         /** Sauvegarde */
         $this->entityManager->flush();
 
-        return [
-            'errors' => [],
-            'tag' => $this->serialize->serialize($tag, 'json', ['groups' => ['default', 'tag']])
-        ];
+        return $tag;
     }
 
     /**
