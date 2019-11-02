@@ -8,7 +8,6 @@
 
 namespace App\Repository\WebApp\Comment;
 
-
 interface CommentRepositoryInterface
 {
     public function findByLast(int $nb = 5);

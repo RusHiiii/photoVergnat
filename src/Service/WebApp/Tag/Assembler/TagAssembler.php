@@ -9,7 +9,6 @@
 namespace App\Service\WebApp\Tag\Assembler;
 
 use App\Entity\WebApp\Tag;
-use App\Entity\WebApp\Type;
 use App\Repository\WebApp\Tag\Doctrine\TagRepository;
 use App\Service\WebApp\Tag\Exceptions\NotFoundException;
 

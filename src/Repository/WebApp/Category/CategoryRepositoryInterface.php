@@ -8,7 +8,6 @@
 
 namespace App\Repository\WebApp\Category;
 
-
 interface CategoryRepositoryInterface
 {
     public function findById($value);

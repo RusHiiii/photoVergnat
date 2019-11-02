@@ -12,6 +12,8 @@ use App\Entity\WebApp\Season;
 use App\Entity\WebApp\Tag;
 use App\Repository\WebApp\Season\Doctrine\SeasonRepository;
 use App\Repository\WebApp\Tag\Doctrine\TagRepository;
+use App\Service\WebApp\Season\Assembler\SeasonAssembler;
+use App\Service\WebApp\Season\Exceptions\InvalidDataException;
 use App\Service\WebApp\Season\Validator\SeasonValidator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Security;
@@ -19,100 +21,86 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class SeasonService
 {
-    const MSG_UNKNOWN_SEASON = 'Saison inexistant !';
+    const INVALID_UPDATE = 'Données de mise à jour de la saison invalide';
+    const INVALID_CREATE = 'Données de création de la saison invalide';
 
     private $entityManager;
-    private $security;
     private $seasonValidatorService;
-    private $serialize;
     private $seasonRepository;
+    private $seasonAssembler;
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        Security $security,
         SeasonRepository $seasonRepository,
         SeasonValidator $tagValidatorService,
-        SerializerInterface $serializer
+        SeasonAssembler $seasonAssembler
     ) {
         $this->entityManager = $entityManager;
-        $this->security = $security;
         $this->seasonValidatorService = $tagValidatorService;
-        $this->serialize = $serializer;
         $this->seasonRepository = $seasonRepository;
+        $this->seasonAssembler = $seasonAssembler;
     }
 
     /**
      * Suppression d'une saison
-     * @param string $data
-     * @return array
+     * @param Season $season
+     * @return bool
      */
-    public function removeSeason(Season $season): array
+    public function removeSeason(Season $season): bool
     {
         /** Suppression */
         $this->entityManager->remove($season);
         $this->entityManager->flush();
 
-        return [
-            'errors' => []
-        ];
+        return true;
     }
 
     /**
      * Création d'une saison
      * @param array $data
-     * @return array
+     * @return Season
+     * @throws InvalidDataException
      */
-    public function createSeason(array $data): array
+    public function createSeason(array $data): Season
     {
         /** Validation des données */
         $validatedData = $this->seasonValidatorService->checkSeason($data, SeasonValidator::TOKEN_CREATE);
         if (count($validatedData['errors']) > 0) {
-            return [
-                'errors' => $validatedData['errors'],
-                'season' => []
-            ];
+            throw new InvalidDataException($validatedData['errors'], self::INVALID_CREATE);
         }
 
         /** Insertion de la saison et sauvegarde */
-        $season = new Season();
-        $season->setTitle($validatedData['data']['title']);
+        $season = $this->seasonAssembler->create($validatedData['data']);
 
         /** Sauvegarde */
         $this->entityManager->persist($season);
         $this->entityManager->flush();
 
-        return [
-            'errors' => [],
-            'season' => $this->serialize->serialize($season, 'json', ['groups' => ['default', 'season']])
-        ];
+        return $season;
     }
 
     /**
      * MàJ d'une saison
      * @param array $data
-     * @return array
-     * @throws \Exception
+     * @param Season $season
+     * @return Season
+     * @throws Exceptions\NotFoundException
+     * @throws InvalidDataException
      */
-    public function updateSeason(array $data, Season $season): array
+    public function updateSeason(array $data, Season $season): Season
     {
         /** Validation des données */
         $validatedData = $this->seasonValidatorService->checkSeason($data, SeasonValidator::TOKEN_UPDATE);
         if (count($validatedData['errors']) > 0) {
-            return [
-                'errors' => $validatedData['errors'],
-                'season' => []
-            ];
+            throw new InvalidDataException($validatedData['errors'], self::INVALID_UPDATE);
         }
 
         /** MàJ de la saison et sauvegarde */
-        $season->setTitle($validatedData['data']['title']);
+        $season = $this->seasonAssembler->edit($season, $validatedData['data']);
 
         /** Sauvegarde */
         $this->entityManager->flush();
 
-        return [
-            'errors' => [],
-            'season' => $this->serialize->serialize($season, 'json', ['groups' => ['default', 'season']])
-        ];
+        return $season;
     }
 }

@@ -8,7 +8,6 @@
 
 namespace App\Repository\WebApp\Photo;
 
-
 use App\Entity\WebApp\Category;
 
 interface PhotoRepositoryInterface

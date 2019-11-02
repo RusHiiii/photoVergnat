@@ -8,7 +8,6 @@
 
 namespace App\Repository\WebApp\Type;
 
-
 interface TypeRepositoryInterface
 {
     public function findById(int $id);

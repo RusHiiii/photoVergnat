@@ -6,7 +6,7 @@
  * Time: 18:09
  */
 
-namespace App\Service\WebApp\Type\Exceptions;
+namespace App\Service\WebApp\Season\Exceptions;
 
 use Throwable;
 

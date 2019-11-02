@@ -8,7 +8,6 @@
 
 namespace App\Repository\WebApp\User;
 
-
 interface UserRepositoryInterface
 {
     public function findByEmail(string $email);

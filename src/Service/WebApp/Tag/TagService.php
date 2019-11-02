@@ -42,17 +42,15 @@ class TagService
     /**
      * Suppression du tag
      * @param Tag $tag
-     * @return array
+     * @return bool
      */
-    public function removeTag(Tag $tag): array
+    public function removeTag(Tag $tag): bool
     {
         /** Suppression */
         $this->entityManager->remove($tag);
         $this->entityManager->flush();
 
-        return [
-            'errors' => []
-        ];
+        return true;
     }
 
     /**
@@ -77,11 +75,6 @@ class TagService
         $this->entityManager->flush();
 
         return $tag;
-
-        /*return [
-            'errors' => [],
-            'tag' => $this->serialize->serialize($tag, 'json', ['groups' => ['default', 'tag']])
-        ];*/
     }
 
     /**

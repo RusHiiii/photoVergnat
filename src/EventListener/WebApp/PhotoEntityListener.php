@@ -112,8 +112,9 @@ class PhotoEntityListener
      * Récupération de la photo
      * @param Photo $photo
      */
-    private function getExifData(Photo $photo){
-        $data = exif_read_data($this->uploader->getTargetDirectory() . $photo->getFile(),0, true);
+    private function getExifData(Photo $photo)
+    {
+        $data = exif_read_data($this->uploader->getTargetDirectory() . $photo->getFile(), 0, true);
 
         $information = 'NC';
         if (isset($data['COMPUTED']['ApertureFNumber'])) {

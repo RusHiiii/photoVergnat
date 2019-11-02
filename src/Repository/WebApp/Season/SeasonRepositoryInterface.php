@@ -8,7 +8,6 @@
 
 namespace App\Repository\WebApp\Season;
 
-
 interface SeasonRepositoryInterface
 {
     public function findById(int $id);
