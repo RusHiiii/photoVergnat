@@ -10,6 +10,8 @@ namespace App\Service\WebApp\Comment;
 
 use App\Entity\WebApp\Comment;
 use App\Repository\WebApp\Category\Doctrine\CategoryRepository;
+use App\Service\WebApp\Comment\Assembler\CommentAssembler;
+use App\Service\WebApp\Comment\Exceptions\CommentInvalidDataException;
 use App\Service\WebApp\Comment\Validator\CommentValidator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Security;
@@ -17,56 +19,46 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class CommentService
 {
-    const MSG_UNKNOWN_MESSAGE = 'Message inexistant !';
-
     private $entityManager;
     private $categoryRepository;
     private $messageValidatorService;
-    private $serialize;
+    private $commentAssembler;
 
     public function __construct(
         EntityManagerInterface $entityManager,
         CommentValidator $messageValidatorService,
         CategoryRepository $categoryRepository,
-        SerializerInterface $serializer
+        CommentAssembler $commentAssembler
     ) {
         $this->entityManager = $entityManager;
         $this->categoryRepository = $categoryRepository;
         $this->messageValidatorService = $messageValidatorService;
-        $this->serialize = $serializer;
+        $this->commentAssembler = $commentAssembler;
     }
 
     /**
      * Création d'un commentaire
      * @param array $data
-     * @return array
+     * @return Comment
+     * @throws CommentInvalidDataException
+     * @throws \App\Service\WebApp\Category\Exceptions\CategoryNotFoundException
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function createComment(array $data): array
+    public function createComment(array $data): Comment
     {
         /** Validation des données */
         $validatedData = $this->messageValidatorService->checkComment($data, CommentValidator::TOKEN_CREATE);
         if (count($validatedData['errors']) > 0) {
-            return [
-                'errors' => $validatedData['errors'],
-                'comment' => []
-            ];
+            throw new CommentInvalidDataException($validatedData['errors'], CommentInvalidDataException::COMMENT_INVALID_DATA_MESSAGE);
         }
 
         /** Insertion du commentaire et sauvegarde */
-        $comment = new Comment();
-        $comment->setEmail($validatedData['data']['email']);
-        $comment->setName($validatedData['data']['name']);
-        $comment->setCategory($this->categoryRepository->findById($validatedData['data']['category']));
-        $comment->setMessage($validatedData['data']['message']);
+        $comment = $this->commentAssembler->create($validatedData['data']);
 
         /** Sauvegarde */
         $this->entityManager->persist($comment);
         $this->entityManager->flush();
 
-        return [
-            'errors' => [],
-            'comment' => $this->serialize->serialize($comment, 'json', ['groups' => ['default']])
-        ];
+        return $comment;
     }
 }

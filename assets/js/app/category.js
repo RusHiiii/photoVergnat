@@ -14,12 +14,13 @@ $('#create-comment').on('submit', function (event) {
         },
         dataType:'json',
         success : function (res) {
-            $.removeSpinner('.create-comment', 'Envoyer');
-            $.showErrors(res['errors'], '#alert-create');
-
-            if (res['errors'].length === 0) {
-                addComment(JSON.parse(res['comment']));
-            }
+            addComment(JSON.parse(res));
+        },
+        error: function (res) {
+            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-create');
+        },
+        complete: function () {
+            $.removeSpinner('.create-comment', 'Valider');
         }
     });
 });

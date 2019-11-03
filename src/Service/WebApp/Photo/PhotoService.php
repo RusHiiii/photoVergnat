@@ -12,6 +12,8 @@ use App\Entity\WebApp\Photo;
 use App\Repository\WebApp\Photo\Doctrine\PhotoRepository;
 use App\Repository\WebApp\Tag\Doctrine\TagRepository;
 use App\Repository\WebApp\Type\Doctrine\TypeRepository;
+use App\Service\WebApp\Photo\Assembler\PhotoAssembler;
+use App\Service\WebApp\Photo\Exceptions\PhotoInvalidDataException;
 use App\Service\WebApp\Photo\Validator\PhotoValidator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -20,121 +22,98 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class PhotoService
 {
-    const MSG_UNKNOWN_PHOTO = 'Photo inexistante !';
-
     private $entityManager;
-    private $security;
     private $photoValidatorService;
-    private $serialize;
     private $tagRepository;
     private $typeRepository;
     private $photoRepository;
+    private $photoAssembler;
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        Security $security,
         TagRepository $tagRepository,
         PhotoValidator $photoValidatorService,
-        SerializerInterface $serializer,
         TypeRepository $typeRepository,
-        PhotoRepository $photoRepository
+        PhotoRepository $photoRepository,
+        PhotoAssembler $photoAssembler
     ) {
         $this->entityManager = $entityManager;
-        $this->security = $security;
         $this->photoValidatorService = $photoValidatorService;
-        $this->serialize = $serializer;
         $this->tagRepository = $tagRepository;
         $this->typeRepository = $typeRepository;
         $this->photoRepository = $photoRepository;
+        $this->photoAssembler = $photoAssembler;
+    }
+
+    /**
+     * Suppression d'une photo
+     * @param Photo $photo
+     * @return bool
+     */
+    public function removePhoto(Photo $photo): bool
+    {
+        /** Suppression */
+        $this->entityManager->remove($photo);
+        $this->entityManager->flush();
+
+        return true;
     }
 
     /**
      * Création de photo
      * @param array $data
      * @param UploadedFile|null $file
-     * @return array
+     * @return Photo
+     * @throws PhotoInvalidDataException
+     * @throws \App\Service\WebApp\Tag\Exceptions\TagNotFoundException
+     * @throws \App\Service\WebApp\Type\Exceptions\TypeNotFoundException
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function createPhoto(array $data, ?UploadedFile $file): array
+    public function createPhoto(array $data, ?UploadedFile $file): Photo
     {
         /** Validation des données */
         $validatedData = $this->photoValidatorService->checkCreatePhoto($data, $file, PhotoValidator::TOKEN_CREATE);
         if (count($validatedData['errors']) > 0) {
-            return [
-                'errors' => $validatedData['errors'],
-                'photo' => []
-            ];
+            throw new PhotoInvalidDataException($validatedData['errors'], PhotoInvalidDataException::PHOTO_INVALID_DATA_MESSAGE);
         }
 
         /** Insertion de la photo et sauvegarde */
-        $photo = new Photo();
-        $photo->setTitle($validatedData['data']['title']);
-        $photo->setType($this->typeRepository->findById($validatedData['data']['format']));
-        $photo->setFile($file);
-        foreach ($validatedData['data']['tags'] as $tag) {
-            $photo->addTag($this->tagRepository->findById($tag));
-        }
+        $photo = $this->photoAssembler->create($validatedData['data'], $file);
 
         /** Sauvegarde */
         $this->entityManager->persist($photo);
         $this->entityManager->flush();
 
-        return [
-            'errors' => [],
-            'photo' => $this->serialize->serialize($photo, 'json', ['groups' => ['default', 'photo']])
-        ];
+        return $photo;
     }
 
     /**
-     * MàJ d'une photo
+     * Edition d'une photo
      * @param array $data
      * @param UploadedFile|null $file
-     * @return array
+     * @param Photo $photo
+     * @return Photo
+     * @throws Exceptions\PhotoNotFoundException
+     * @throws PhotoInvalidDataException
+     * @throws \App\Service\WebApp\Tag\Exceptions\TagNotFoundException
+     * @throws \App\Service\WebApp\Type\Exceptions\TypeNotFoundException
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function updatePhoto(array $data, ?UploadedFile $file, Photo $photo): array
+    public function updatePhoto(array $data, ?UploadedFile $file, Photo $photo): Photo
     {
         /** Validation des données */
         $validatedData = $this->photoValidatorService->checkUpdatePhoto($data, $file, PhotoValidator::TOKEN_UPDATE);
         if (count($validatedData['errors']) > 0) {
-            return [
-                'errors' => $validatedData['errors'],
-                'photo' => []
-            ];
+            throw new PhotoInvalidDataException($validatedData['errors'], PhotoInvalidDataException::PHOTO_INVALID_DATA_MESSAGE);
         }
 
         /** MàJ de la photo et sauvegarde */
-        $photo->setTitle($validatedData['data']['title']);
-        $photo->setType($this->typeRepository->findById($validatedData['data']['format']));
-        $photo->setFile($file);
-        $photo->resetTags();
-        foreach ($validatedData['data']['tags'] as $tag) {
-            $photo->addTag($this->tagRepository->findById($tag));
-        }
+        $photo = $this->photoAssembler->edit($photo, $validatedData['data'], $file);
 
         /** Sauvegarde */
         $this->entityManager->flush();
 
-        return [
-            'errors' => [],
-            'photo' => $this->serialize->serialize($photo, 'json', ['groups' => ['default', 'photo']])
-        ];
-    }
-
-    /**
-     * Suppression d'une photo
-     * @param string $data
-     * @return array
-     */
-    public function removePhoto(Photo $photo): array
-    {
-        /** Suppression */
-        $this->entityManager->remove($photo);
-        $this->entityManager->flush();
-
-        return [
-            'errors' => []
-        ];
+        return $photo;
     }
 
     /**
