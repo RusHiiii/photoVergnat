@@ -20,6 +20,7 @@ Encore
     .addEntry('app/app', './assets/js/app/entrypoint.js')
 
     .addEntry('admin/admin', './assets/js/admin/entrypoint.js')
+    .addEntry('admin/statistics', './assets/js/admin/statistics.js')
 
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app

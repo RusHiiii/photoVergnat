@@ -5,6 +5,7 @@ namespace App\Controller\Information;
 use App\Service\Tools\Error\Factory\ErrorFactory;
 use App\Service\WebApp\Information\Exceptions\InformationInvalidDataException;
 use App\Service\WebApp\Information\InformationService;
+use App\Service\WebApp\Statistic\StatisticService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,5 +45,19 @@ class XhrController extends AbstractController
         }
 
         return new JsonResponse([], 200);
+    }
+
+    /**
+     * Envoie d'un message
+     * @Route("/xhr/admin/statistics/photos", condition="request.isXmlHttpRequest()")
+     */
+    public function getStatisticsPhotos(
+        Request $request,
+        StatisticService $statisticService
+    ) {
+        return new JsonResponse(
+            $statisticService->getNumberPhotoByMonth(),
+            200
+        );
     }
 }

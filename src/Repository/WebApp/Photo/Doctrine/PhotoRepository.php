@@ -89,4 +89,21 @@ class PhotoRepository extends ServiceEntityRepository implements PhotoRepository
             ->getQuery()
             ->getResult();
     }
+
+    /**
+     * Compte le nombre d'occurence
+     * @param $date
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function countByMonth(\DateTime $date)
+    {
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(p.id)')
+            ->where('p.created BETWEEN :begin AND :end')
+            ->setParameter('begin', $date->format('Y-m-d'))
+            ->setParameter('end', $date->format('Y-m-t'))
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

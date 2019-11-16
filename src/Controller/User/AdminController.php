@@ -3,6 +3,7 @@
 namespace App\Controller\User;
 
 use App\Repository\WebApp\User\Doctrine\UserRepository;
+use App\Service\WebApp\Statistic\StatisticService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,5 +22,16 @@ class AdminController extends AbstractController
         return $this->render('user/admin/index.html.twig', [
             'users' => $users,
         ]);
+    }
+
+    /**
+     * @Route("/test", name="admin_users")
+     */
+    public function zeferf(
+        Request $request,
+        UserRepository $userRepository,
+        StatisticService $statisticService
+    ) {
+        dd($statisticService->getNumberPhotoByMonth());
     }
 }

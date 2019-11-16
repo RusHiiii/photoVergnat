@@ -22,5 +22,32 @@
         </div>
     {% endfor %}
 </div>
+<div class="col-xl-4 col-md-12">
+    <div class="card">
+        <div class="card-block bg-c-blue">
+            <div id="cpt-photo" style="height: 230px"></div>
+        </div>
+        <div class="card-footer">
+            <h6 class="text-muted m-b-30 m-t-15">Nombre de photo ajoutée les 5 derniers mois</h6>
+            <div class="row text-center">
+                <div class="col-6 b-r-default">
+                    <h6 class="text-muted m-b-10">Mois en cours</h6>
+                    <h4 class="m-b-0 f-w-600 current-month"></h4>
+                </div>
+                <div class="col-6">
+                    <h6 class="text-muted m-b-10">Total</h6>
+                    <h4 class="m-b-0 f-w-600 ">{{ items.photos.items | length }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('build/admin/statistics.js') }}"></script>
+    <script src="{{ asset('adminity/assets/pages/widget/amchart/amcharts.js') }}"></script>
+    <script src="{{ asset('adminity/assets/pages/widget/amchart/serial.js') }}"></script>
+    <script src="{{ asset('adminity/assets/pages/widget/amchart/light.js') }}"></script>
+{% endblock %}
+
 {% endblock %}
 
