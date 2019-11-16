@@ -33,7 +33,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/categorie/photo/{slug}_{id}", name="app_category_photo")
+     * @Route("/categorie/{slug}_{id}/photo", name="app_category_photo")
      */
     public function gallery(
         Request $request,

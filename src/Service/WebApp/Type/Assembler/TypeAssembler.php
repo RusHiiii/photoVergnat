@@ -11,6 +11,7 @@ namespace App\Service\WebApp\Type\Assembler;
 use App\Entity\WebApp\Type;
 use App\Repository\WebApp\Type\Doctrine\TypeRepository;
 use App\Service\WebApp\Type\Exceptions\TypeNotFoundException;
+use App\Service\WebApp\Type\Exceptions\UserNotFoundException;
 
 class TypeAssembler
 {

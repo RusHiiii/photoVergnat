@@ -66,7 +66,7 @@ class PhotoService
      * @return Photo
      * @throws PhotoInvalidDataException
      * @throws \App\Service\WebApp\Tag\Exceptions\TagNotFoundException
-     * @throws \App\Service\WebApp\Type\Exceptions\TypeNotFoundException
+     * @throws \App\Service\WebApp\Type\Exceptions\UserNotFoundException
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function createPhoto(array $data, ?UploadedFile $file): Photo
@@ -96,7 +96,7 @@ class PhotoService
      * @throws Exceptions\PhotoNotFoundException
      * @throws PhotoInvalidDataException
      * @throws \App\Service\WebApp\Tag\Exceptions\TagNotFoundException
-     * @throws \App\Service\WebApp\Type\Exceptions\TypeNotFoundException
+     * @throws \App\Service\WebApp\Type\Exceptions\UserNotFoundException
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function updatePhoto(array $data, ?UploadedFile $file, Photo $photo): Photo

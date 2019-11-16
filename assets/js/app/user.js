@@ -15,9 +15,14 @@ $('#update-user').on('submit', function (event) {
             'user': data
         },
         dataType:'json',
-        success : function (res) {
-            $.removeSpinner('.edit-user', 'Mettre a jours');
-            $.showErrors(res['errors'], '#alert-edit');
+        success : function () {
+            $.showSuccess('Profil édité !', '#success-edit');
+        },
+        error: function (res) {
+            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-edit');
+        },
+        complete: function () {
+            $.removeSpinner('.edit-user', 'Valider');
         }
     });
 });
@@ -31,15 +36,20 @@ $('#update-password').on('submit', function (event) {
     var data = $('#update-password').serializeObject();
 
     $.ajax({
-        url : '/xhr/app/user/edit-password/' + data['id'],
+        url : `/xhr/app/user/edit-password/${data.id}`,
         type : 'POST',
         data : {
             'user': data
         },
         dataType:'json',
-        success : function (res) {
+        success : function () {
+            $.showSuccess('Mot de passe édité !', '#success-password');
+        },
+        error: function (res) {
+            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-password');
+        },
+        complete: function () {
             $.removeSpinner('.edit-password', 'Valider');
-            $.showErrors(res['errors'], '#alert-password');
         }
     });
 });

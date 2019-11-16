@@ -81,7 +81,7 @@ class TypeService
      * @param array $data
      * @param Type $type
      * @return array
-     * @throws Exceptions\TypeNotFoundException
+     * @throws Exceptions\UserNotFoundException
      * @throws TypeInvalidDataException
      */
     public function updateType(array $data, Type $type): Type

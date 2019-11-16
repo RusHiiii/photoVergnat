@@ -21,7 +21,7 @@ use App\Service\WebApp\Category\Exceptions\CategoryNotFoundException;
 use App\Service\WebApp\Photo\Exceptions\PhotoNotFoundException;
 use App\Service\WebApp\Season\Exceptions\SeasonNotFoundException;
 use App\Service\WebApp\Tag\Exceptions\TagNotFoundException;
-use App\Service\WebApp\Type\Exceptions\TypeNotFoundException;
+use App\Service\WebApp\Type\Exceptions\UserNotFoundException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class PhotoAssembler
@@ -43,7 +43,7 @@ class PhotoAssembler
      * @param UploadedFile $file
      * @return Photo
      * @throws TagNotFoundException
-     * @throws TypeNotFoundException
+     * @throws UserNotFoundException
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function create(array $data, UploadedFile $file)
@@ -54,7 +54,7 @@ class PhotoAssembler
 
         $type = $this->typeRepository->findById($data['format']);
         if ($type === null) {
-            throw new TypeNotFoundException(['Type inexistant'], TypeNotFoundException::TYPE_NOT_FOUND_MESSAGE);
+            throw new UserNotFoundException(['Type inexistant'], UserNotFoundException::TYPE_NOT_FOUND_MESSAGE);
         }
         $photo->setType($type);
 
@@ -77,7 +77,7 @@ class PhotoAssembler
      * @return Photo
      * @throws PhotoNotFoundException
      * @throws TagNotFoundException
-     * @throws TypeNotFoundException
+     * @throws UserNotFoundException
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function edit(Photo $photo, array $data, ?UploadedFile $file)
@@ -91,7 +91,7 @@ class PhotoAssembler
 
         $type = $this->typeRepository->findById($data['format']);
         if ($type === null) {
-            throw new TypeNotFoundException(['Type inexistant'], TypeNotFoundException::TYPE_NOT_FOUND_MESSAGE);
+            throw new UserNotFoundException(['Type inexistant'], UserNotFoundException::TYPE_NOT_FOUND_MESSAGE);
         }
         $photo->setType($type);
 

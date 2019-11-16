@@ -13,13 +13,14 @@ $('#send-mail').on('submit', function (event) {
             'mail': $('#send-mail').serializeObject()
         },
         dataType:'json',
-        success : function (res) {
-            $.removeSpinner('.send-mail', 'Envoyer');
-            $.showErrors(res['errors'], '#alert-send');
-
-            if (res['errors'].length === 0) {
-                $.showSuccess('Email envoyé !', '#alert-success');
-            }
+        success : function () {
+            $.showSuccess('Email envoyé !', '#alert-success');
+        },
+        error: function (res) {
+            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-send');
+        },
+        complete: function () {
+            $.removeSpinner('.send-mail', 'Valider');
         }
     });
 });

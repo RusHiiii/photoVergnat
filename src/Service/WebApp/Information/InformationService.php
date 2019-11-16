@@ -8,14 +8,10 @@
 
 namespace App\Service\WebApp\Information;
 
-use App\Entity\WebApp\Comment;
-use App\Repository\WebApp\Category\Doctrine\CategoryRepository;
 use App\Repository\WebApp\User\Doctrine\UserRepository;
 use App\Service\Tools\NotificationService;
+use App\Service\WebApp\Information\Exceptions\InformationInvalidDataException;
 use App\Service\WebApp\Information\Validator\InformationValidator;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Serializer\SerializerInterface;
 use Twig\Environment;
 
 class InformationService
@@ -40,19 +36,18 @@ class InformationService
     /**
      * Envoie du mail de contact
      * @param array $data
-     * @return array
+     * @return bool
+     * @throws InformationInvalidDataException
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function sendContactMail(array $data): array
+    public function sendContactMail(array $data): bool
     {
         /** Validation de la données */
         $validatedData = $this->infoValidatorService->checkContact($data, InformationValidator::TOKEN_SEND_MAIL);
         if (count($validatedData['errors']) > 0) {
-            return [
-                'errors' => $validatedData['errors']
-            ];
+            throw new InformationInvalidDataException($validatedData['errors'], InformationInvalidDataException::COMMENT_INVALID_DATA_MESSAGE);
         }
 
         /** Récupération des users */
@@ -62,8 +57,6 @@ class InformationService
         $data = $this->twig->render('elements/shared/app/email/contact.html.twig', ['data' => $validatedData['data']]);
         $this->notificationService->sendEmail($users, NotificationService::MSG_SUBJECT_CONTACT, $data);
 
-        return [
-            'errors' => []
-        ];
+        return true;
     }
 }
