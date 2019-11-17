@@ -59,4 +59,37 @@ class CategoryRepository extends ServiceEntityRepository implements CategoryRepo
             ->getResult()
             ;
     }
+
+    /**
+     * Compte le nombre d'occurence en ligne
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function countByActive(int $active)
+    {
+        return $this->createQueryBuilder('c')
+            ->select('COUNT(c.id)')
+            ->where('c.active = :active')
+            ->setParameter('active', $active)
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
+
+    /**
+     * Récupère les plus populaires
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findCategoriesByPopularity()
+    {
+        return $this->createQueryBuilder('c')
+            ->leftJoin('c.comments', 'cc')
+            ->orderBy('COUNT(cc.id)', 'DESC')
+            ->groupBy('cc.category')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

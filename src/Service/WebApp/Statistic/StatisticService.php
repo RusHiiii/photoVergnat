@@ -77,32 +77,6 @@ class StatisticService
     }
 
     /**
-     * Statistique sur le nombre de photo
-     * @return array
-     * @throws \Exception
-     */
-    public function getNumberPhotoByMonth()
-    {
-        $statistics = [];
-        $end = new \DateTime();
-
-        $begin = new \DateTime('first day of this month');
-        $begin = $begin->modify( '-4 month' );
-
-        $interval = new \DateInterval('P1M');
-        $daterange = new \DatePeriod($begin, $interval ,$end);
-
-        foreach($daterange as $date){
-            $statistics[] = [
-                'month' => $date->format('M'),
-                'count' => $this->photoRepository->countByMonth($date)
-            ];
-        }
-
-        return $statistics;
-    }
-
-    /**
      * Récupération des items
      * @return array
      */
@@ -131,5 +105,13 @@ class StatisticService
         ];
 
         return $data;
+    }
+
+    public function getStatisticsData()
+    {
+        return [
+            'photo' => $this->photoService->getNumberPhotoByMonth(),
+            'category' => $this->categoryService->getCategoriesOnline()
+        ];
     }
 }

@@ -49,14 +49,14 @@ class XhrController extends AbstractController
 
     /**
      * Envoie d'un message
-     * @Route("/xhr/admin/statistics/photos", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/statistics", condition="request.isXmlHttpRequest()")
      */
     public function getStatisticsPhotos(
         Request $request,
         StatisticService $statisticService
     ) {
         return new JsonResponse(
-            $statisticService->getNumberPhotoByMonth(),
+            $statisticService->getStatisticsData(),
             200
         );
     }

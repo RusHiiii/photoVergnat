@@ -5,3 +5,4 @@ require('../tools.js');
 require('./user.js');
 require('./category.js');
 require('./information.js');
+require('./main.js');

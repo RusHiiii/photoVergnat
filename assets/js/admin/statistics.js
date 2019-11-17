@@ -10,30 +10,19 @@ $(document).ready(function () {
 function initGraphPhotoNumber()
 {
     $.ajax({
-        url : '/xhr/admin/statistics/photos',
+        url : '/xhr/admin/statistics',
         type : 'GET',
         success : function (res) {
-            $('.current-month').text(res[4].count);
-            makeBarChart(res);
-
-
-
-
-
-
-
-
-
-
-
-
-
+            makePhotoChart(res.photo);
+            makeCategoryChart(res.category);
         }
     });
 }
 
-function makeBarChart(data)
+function makePhotoChart(data)
 {
+    $('.current-month').text(data[4].count);
+
     var chart = AmCharts.makeChart("cpt-photo", {
         "type": "serial",
         "hideCredits": true,
@@ -71,6 +60,40 @@ function makeBarChart(data)
             "fontSize": 12,
             "color": '#fff',
             "tickLength": 0
+        }
+    });
+}
+
+function makeCategoryChart(data)
+{
+    $('.category-offline').text(data[0]);
+    $('.category-online').text(data[1]);
+
+    var ctx = document.getElementById("article-online").getContext("2d");
+    window.myDoughnut = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: data,
+                backgroundColor: ["#fe5d70", "#01a9ac"],
+                label: 'Dataset 1'
+            }],
+            labels: ["Hors ligne", "En ligne"]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            legend: {
+                position: 'bottom',
+            },
+            title: {
+                display: true,
+                text: "",
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
         }
     });
 }

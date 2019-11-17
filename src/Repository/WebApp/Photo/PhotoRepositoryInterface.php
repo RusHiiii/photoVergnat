@@ -21,4 +21,6 @@ interface PhotoRepositoryInterface
     public function findByUsed(string $type);
 
     public function findByLast(int $nb);
+
+    public function countByMonth(\DateTime $date);
 }

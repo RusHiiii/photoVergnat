@@ -15,4 +15,6 @@ interface CategoryRepositoryInterface
     public function findByActive(string $value);
 
     public function findByLast(int $nb);
+
+    public function countByActive(int $active);
 }

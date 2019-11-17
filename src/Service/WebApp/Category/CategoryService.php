@@ -161,4 +161,30 @@ class CategoryService
 
         return $data;
     }
+
+    /**
+     * Statistique
+     * @return array
+     * @throws \Exception
+     */
+    public function getCategoriesOnline()
+    {
+        $statistics = [];
+
+        foreach ([0, 1] as $active) {
+            $statistics[] = $this->categoryRepository->countByActive($active);
+        }
+
+        return $statistics;
+    }
+
+    /**
+     * Statistique sur la popularité
+     * @return array
+     * @throws \Exception
+     */
+    public function getCategoriesPopularity()
+    {
+        return $this->categoryRepository->findCategoriesByPopularity();
+    }
 }

@@ -62,7 +62,7 @@ $('body').on('submit', '#update-photo', function (e) {
 
     $.ajax({
         url : `/xhr/admin/photo/update/${data.get('id')}`,
-        type : 'PATCH',
+        type : 'POST',
         data : data,
         dataType:'json',
         contentType: false,
