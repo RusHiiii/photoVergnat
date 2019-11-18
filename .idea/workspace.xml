@@ -4,22 +4,12 @@
     <list default="true" id="6d0ad162-b511-4cf7-bc8e-e12bdd55a0fa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/admin/admin.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/admin/admin.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/admin/photo.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/admin/photo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/admin/statistics.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/admin/statistics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app/entrypoint.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app/entrypoint.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Information/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Information/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Information/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Information/XhrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/WebApp/Category/CategoryRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/WebApp/Category/CategoryRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/WebApp/Category/Doctrine/CategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/WebApp/Category/Doctrine/CategoryRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/WebApp/Photo/PhotoRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/WebApp/Photo/PhotoRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Serializer/CircularReferenceHandler.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Category/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Category/CategoryService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Statistic/StatisticService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Statistic/StatisticService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/elements/layout/app/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/elements/layout/app/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/admin/entrypoint.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/admin/entrypoint.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Comment/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Comment/XhrController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/User/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/User/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Comment/CommentService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Comment/CommentService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/elements/shared/admin/menu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/elements/shared/admin/menu.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/information/admin/statistics.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/information/admin/statistics.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/main/admin/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/admin/index.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,19 +57,91 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/information/admin/statistics.html.twig">
+        <entry file="file://$PROJECT_DIR$/assets/js/admin/comment.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="80" column="34" selection-start-line="80" selection-start-column="34" selection-end-line="80" selection-end-column="34" />
+            <state relative-caret-position="357">
+              <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/Comment/XhrController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="42" column="41" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
+              <folding>
+                <element signature="e#42#89#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/Security/Voter/CommentVoter.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="269">
+              <caret line="72" column="21" lean-forward="true" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
+              <folding>
+                <element signature="e#129#159#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/assets/css/admin/admin.scss">
+        <entry file="file://$PROJECT_DIR$/src/Controller/Main/AppController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="57" column="1" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
+            <state relative-caret-position="289">
+              <caret line="21" column="15" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/elements/shared/admin/nav.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-527" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/elements/shared/admin/menu.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/User/AdminController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/comment/admin/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="422">
+              <caret line="90" column="40" lean-forward="true" selection-start-line="90" selection-start-column="40" selection-end-line="90" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/packages/validator.yaml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Comment/CommentService.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="43" column="33" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -162,17 +224,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Controller/Season/XhrController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Category/XhrController.php" />
-        <option value="$PROJECT_DIR$/assets/js/admin/category.js" />
-        <option value="$PROJECT_DIR$/src/Service/WebApp/Photo/Assembler/CategoryAssembler.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Photo/XhrController.php" />
         <option value="$PROJECT_DIR$/src/Service/WebApp/Photo/Assembler/PhotoAssembler.php" />
         <option value="$PROJECT_DIR$/src/Service/WebApp/Comment/Exceptions/CategoryInvalidDataException.php" />
         <option value="$PROJECT_DIR$/src/Service/WebApp/Comment/Exceptions/CategoryNotFoundException.php" />
         <option value="$PROJECT_DIR$/src/Service/WebApp/Comment/Exceptions/CommentInvalidDataException.php" />
-        <option value="$PROJECT_DIR$/src/Service/WebApp/Comment/CommentService.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Comment/XhrController.php" />
         <option value="$PROJECT_DIR$/assets/js/app/category.js" />
         <option value="$PROJECT_DIR$/src/Service/WebApp/Comment/Assembler/CommentAssembler.php" />
         <option value="$PROJECT_DIR$/templates/elements/shared/app/nav.html.twig" />
@@ -191,9 +246,7 @@
         <option value="$PROJECT_DIR$/templates/user/app/index.html.twig" />
         <option value="$PROJECT_DIR$/assets/css/app/app.scss" />
         <option value="$PROJECT_DIR$/assets/js/app/user.js" />
-        <option value="$PROJECT_DIR$/src/Controller/User/AdminController.php" />
         <option value="$PROJECT_DIR$/src/Repository/WebApp/Photo/Doctrine/PhotoRepository.php" />
-        <option value="$PROJECT_DIR$/assets/js/admin/entrypoint.js" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/templates/elements/layout/admin/base.html.twig" />
         <option value="$PROJECT_DIR$/templates/main/admin/index.html.twig" />
@@ -211,8 +264,17 @@
         <option value="$PROJECT_DIR$/assets/js/app/entrypoint.js" />
         <option value="$PROJECT_DIR$/templates/elements/layout/app/base.html.twig" />
         <option value="$PROJECT_DIR$/assets/js/app/main.js" />
+        <option value="$PROJECT_DIR$/src/Controller/Comment/AdminController.php" />
         <option value="$PROJECT_DIR$/templates/information/admin/statistics.html.twig" />
         <option value="$PROJECT_DIR$/assets/css/admin/admin.scss" />
+        <option value="$PROJECT_DIR$/assets/js/admin/entrypoint.js" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/Comment/CommentService.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Comment/XhrController.php" />
+        <option value="$PROJECT_DIR$/assets/js/admin/comment.js" />
+        <option value="$PROJECT_DIR$/src/Controller/Security/Voter/CommentVoter.php" />
+        <option value="$PROJECT_DIR$/templates/elements/shared/admin/menu.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/User/AdminController.php" />
+        <option value="$PROJECT_DIR$/templates/comment/admin/index.html.twig" />
       </list>
     </option>
   </component>
@@ -343,7 +405,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="645" />
-    <option name="y" value="-9" />
+    <option name="y" value="-10" />
     <option name="width" value="960" />
     <option name="height" value="1035" />
   </component>
@@ -364,126 +426,7 @@
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-              <item name="Category" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-              <item name="Information" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-              <item name="Photo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-              <item name="Security" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-              <item name="Security" type="462c0819:PsiDirectoryNode" />
-              <item name="Voter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-              <item name="User" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Repository" type="462c0819:PsiDirectoryNode" />
-              <item name="WebApp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Repository" type="462c0819:PsiDirectoryNode" />
-              <item name="WebApp" type="462c0819:PsiDirectoryNode" />
-              <item name="Category" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Repository" type="462c0819:PsiDirectoryNode" />
-              <item name="WebApp" type="462c0819:PsiDirectoryNode" />
-              <item name="Category" type="462c0819:PsiDirectoryNode" />
-              <item name="Doctrine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Repository" type="462c0819:PsiDirectoryNode" />
-              <item name="WebApp" type="462c0819:PsiDirectoryNode" />
-              <item name="Photo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Repository" type="462c0819:PsiDirectoryNode" />
-              <item name="WebApp" type="462c0819:PsiDirectoryNode" />
-              <item name="Photo" type="462c0819:PsiDirectoryNode" />
-              <item name="Doctrine" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
@@ -522,14 +465,7 @@
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="information" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="information" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="security" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -550,19 +486,19 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\assets\js\app" />
-      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\assets\js\admin" />
-      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\src\Service\WebApp\User" />
-      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\src\Service\WebApp\User\Exceptions" />
-      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\src\Service\WebApp\Information\Exceptions" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\src\Service\Tools\Validator" />
       <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\src\Entity\WebApp" />
       <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\src\EventListener\WebApp" />
       <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\src\Service\WebApp\User\Validator" />
       <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\src\Service\WebApp\Type\Validator" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\src\Controller\Security\Voter" />
+      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\assets\js\admin" />
+      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\templates\comment" />
+      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\src\Controller\Comment" />
+      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\assets\js\app" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -660,16 +596,17 @@
       <workItem from="1573244371876" duration="1580000" />
       <workItem from="1573912974042" duration="8405000" />
       <workItem from="1573996359648" duration="7571000" />
+      <workItem from="1574107118786" duration="1187000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="306802000" />
+    <option name="totallyTimeSpent" value="307989000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4957627" visible="true" weight="0.23959732" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4957627" visible="true" weight="0.24295302" />
       <window_info id="Structure" order="1" sideWeight="0.5042373" side_tool="true" weight="0.19261745" />
       <window_info id="Favorites" order="2" sideWeight="0.50141245" side_tool="true" weight="0.25302014" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -688,7 +625,7 @@
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.12550336" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.12550336" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -705,95 +642,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Type/Exceptions/TypeNotFoundException.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Type/Exceptions/TypeInvalidDataException.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/security-core/Encoder/UserPasswordEncoderInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Type/Assembler/TypeAssembler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Security/Voter/UserVoter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="44" column="13" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Type/TypeService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/User/AppController.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Category/XhrController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/User/Assembler/UserAssembler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
-          <folding>
-            <element signature="e#133#160#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/User/UserService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="63" column="40" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/User/XhrController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/admin/type.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="80" column="12" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/admin/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="148" column="9" selection-start-line="142" selection-start-column="9" selection-end-line="148" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/information/app/contact.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/user/app/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -822,13 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/User/AdminController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/admin/category.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -854,13 +695,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/admin/entrypoint.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/yarn.lock">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -876,11 +710,6 @@
         <state relative-caret-position="85">
           <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="12" selection-end-column="7" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/services.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1074" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/packages/framework.yaml">
@@ -1026,24 +855,135 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php">
+    <entry file="file://$PROJECT_DIR$/src/Controller/Comment/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="147" column="20" selection-start-line="147" selection-start-column="20" selection-end-line="147" selection-end-column="20" />
+        <state relative-caret-position="238">
+          <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/information/admin/statistics.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="80" column="34" selection-start-line="80" selection-start-column="34" selection-end-line="80" selection-end-column="34" />
+        <state relative-caret-position="221">
+          <caret line="52" column="52" selection-start-line="52" selection-start-column="52" selection-end-line="52" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://5d181e68-e88a-490f-ada9-769646650ec5/schema/photovergnat/table/comments">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/admin/admin.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="57" column="1" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
+        <state relative-caret-position="357">
+          <caret line="225" column="1" selection-start-line="225" selection-start-column="1" selection-end-line="225" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Category/XhrController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="51" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="47" column="4" lean-forward="true" selection-start-line="47" selection-start-column="4" selection-end-line="59" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/admin/entrypoint.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/services.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="71" column="4" selection-start-line="71" selection-start-column="4" selection-end-line="76" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/validator.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Comment/CommentService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="43" column="33" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Comment/XhrController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="42" column="41" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
+          <folding>
+            <element signature="e#42#89#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/admin/comment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/elements/shared/admin/nav.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-527" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/elements/shared/admin/menu.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/User/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/security/login.html.twig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/comment/admin/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="90" column="40" lean-forward="true" selection-start-line="90" selection-start-column="40" selection-end-line="90" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Security/Voter/CommentVoter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="72" column="21" lean-forward="true" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
+          <folding>
+            <element signature="e#129#159#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Main/AppController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="21" column="15" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="15" />
         </state>
       </provider>
     </entry>

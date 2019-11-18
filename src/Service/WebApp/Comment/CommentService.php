@@ -37,6 +37,20 @@ class CommentService
     }
 
     /**
+     * Suppression d'un commentaire
+     * @param Comment $comment
+     * @return bool
+     */
+    public function removeComment(Comment $comment): bool
+    {
+        /** Suppression */
+        $this->entityManager->remove($comment);
+        $this->entityManager->flush();
+
+        return true;
+    }
+
+    /**
      * Création d'un commentaire
      * @param array $data
      * @return Comment

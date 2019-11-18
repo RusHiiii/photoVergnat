@@ -23,15 +23,4 @@ class AdminController extends AbstractController
             'users' => $users,
         ]);
     }
-
-    /**
-     * @Route("/test", name="admin_users")
-     */
-    public function zeferf(
-        Request $request,
-        UserRepository $userRepository,
-        StatisticService $statisticService
-    ) {
-        dd($statisticService->getNumberPhotoByMonth());
-    }
 }
