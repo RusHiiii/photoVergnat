@@ -40,8 +40,7 @@ class TypeService
 
     /**
      * Suppression d'un type
-     * @param string $data
-     * @return array
+     * @return bool
      */
     public function removeType(Type $type): bool
     {
@@ -55,7 +54,7 @@ class TypeService
     /**
      * Création d'un type
      * @param array $data
-     * @return array
+     * @return Type
      * @throws TypeInvalidDataException
      */
     public function createType(array $data): Type
@@ -80,8 +79,8 @@ class TypeService
      * MàJ d'un type
      * @param array $data
      * @param Type $type
-     * @return array
-     * @throws Exceptions\UserNotFoundException
+     * @return Type
+     * @throws Exceptions\TypeNotFoundException
      * @throws TypeInvalidDataException
      */
     public function updateType(array $data, Type $type): Type

@@ -45,7 +45,7 @@ class ExtensionsService extends AbstractExtension
     /**
      * Récupération image à la une
      * @param Category $category
-     * @return |null
+     * @return string|null
      */
     public function getMainPhotoUrl(Category $category, string $format)
     {
@@ -71,7 +71,7 @@ class ExtensionsService extends AbstractExtension
 
     /**
      * Génère les classes
-     * @param $photos
+     * @param mixed $photos
      * @return array
      */
     public function getAllClassName($photos)

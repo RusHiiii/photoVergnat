@@ -80,7 +80,7 @@ class PhotoEntityListener
 
     /**
      * Upload du fichier
-     * @param $entity
+     * @param mixed $entity
      * @throws \Exception
      */
     private function uploadFile($entity)

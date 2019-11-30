@@ -75,4 +75,30 @@ class CommentService
 
         return $comment;
     }
+
+    /**
+     * Edition d'un commentaire
+     * @param array $data
+     * @param Comment $comment
+     * @return Comment
+     * @throws CommentInvalidDataException
+     * @throws \App\Service\WebApp\Category\Exceptions\CategoryNotFoundException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function updateComment(array $data, Comment $comment): Comment
+    {
+        /** Validation des données */
+        $validatedData = $this->messageValidatorService->checkComment($data, CommentValidator::TOKEN_UPDATE);
+        if (count($validatedData['errors']) > 0) {
+            throw new CommentInvalidDataException($validatedData['errors'], CommentInvalidDataException::COMMENT_INVALID_DATA_MESSAGE);
+        }
+
+        /** MàJ de la saison et sauvegarde */
+        $season = $this->commentAssembler->edit($comment, $validatedData['data']);
+
+        /** Sauvegarde */
+        $this->entityManager->flush();
+
+        return $season;
+    }
 }

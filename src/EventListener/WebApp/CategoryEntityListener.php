@@ -38,7 +38,7 @@ class CategoryEntityListener
 
     /**
      * MàJ d'une categorie
-     * @param LifecycleEventArgs $args
+     * @param PreUpdateEventArgs $args
      * @throws \Exception
      */
     public function preUpdate(PreUpdateEventArgs $args)

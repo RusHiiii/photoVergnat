@@ -70,7 +70,7 @@ $('body').on('submit', '#update-category', function (e) {
 
     $.ajax({
         url : `/xhr/admin/category/update/${data.id}`,
-        type : 'POST',
+        type : 'PATCH',
         data : {
             'category': data
         },

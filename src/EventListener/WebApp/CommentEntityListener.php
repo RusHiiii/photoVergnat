@@ -10,7 +10,7 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
 class CommentEntityListener
 {
     /**
-     * Insertion d'une saison
+     * Insertion d'un commentaire
      * @param LifecycleEventArgs $args
      * @throws \Exception
      */
@@ -27,8 +27,8 @@ class CommentEntityListener
     }
 
     /**
-     * MàJ d'une saison
-     * @param LifecycleEventArgs $args
+     * MàJ d'un commentaire
+     * @param PreUpdateEventArgs $args
      * @throws \Exception
      */
     public function preUpdate(PreUpdateEventArgs $args)

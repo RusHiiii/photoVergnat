@@ -53,7 +53,7 @@ class PhotoVoter extends Voter
             case self::EDIT:
             case self::VIEW:
             case self::REMOVE:
-                return $this->canCreateOrRemoveOrEdit($user);
+                return $this->canRemoveOrEdit($user);
         }
 
         throw new \LogicException('This code should not be reached!');
@@ -64,7 +64,7 @@ class PhotoVoter extends Voter
      * @param User $user
      * @return bool
      */
-    private function canCreateOrRemoveOrEdit(User $user)
+    private function canRemoveOrEdit(User $user)
     {
         if ($this->security->isGranted('ROLE_AUTHOR')) {
             return true;

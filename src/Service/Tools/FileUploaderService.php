@@ -23,7 +23,7 @@ class FileUploaderService
     /**
      * Upload du fichier
      * @param UploadedFile $file
-     * @return string
+     * @return array
      * @throws \Exception
      */
     public function upload(UploadedFile $file): array

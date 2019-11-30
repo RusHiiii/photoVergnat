@@ -46,7 +46,7 @@ class SeasonAssembler
      */
     public function edit(Season $season, array $data)
     {
-        if ($season === null) {
+        if ($season == null) {
             throw new SeasonNotFoundException(['Saison inexistant'], SeasonNotFoundException::SEASON_NOT_FOUND);
         }
 

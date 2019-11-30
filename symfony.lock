@@ -135,8 +135,17 @@
     "imagine/imagine": {
         "version": "v0.7.1"
     },
+    "infection/infection": {
+        "version": "0.15.0"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
+    },
+    "jean85/pretty-package-versions": {
+        "version": "1.2"
+    },
+    "justinrainbow/json-schema": {
+        "version": "5.2.9"
     },
     "knplabs/knp-menu": {
         "version": "2.6.0"
@@ -155,6 +164,46 @@
     },
     "monolog/monolog": {
         "version": "1.24.0"
+    },
+    "myclabs/deep-copy": {
+        "version": "1.9.3"
+    },
+    "nelmio/alice": {
+        "version": "3.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.2",
+            "ref": "0b9900ece737bec7752e4155c0164639dd9b0cb0"
+        },
+        "files": [
+            "./config/packages/dev/nelmio_alice.yaml",
+            "./config/packages/test/nelmio_alice.yaml"
+        ]
+    },
+    "nette/bootstrap": {
+        "version": "v3.0.1"
+    },
+    "nette/di": {
+        "version": "v3.0.1"
+    },
+    "nette/finder": {
+        "version": "v2.5.1"
+    },
+    "nette/neon": {
+        "version": "v3.0.0"
+    },
+    "nette/php-generator": {
+        "version": "v3.3.1"
+    },
+    "nette/robot-loader": {
+        "version": "v3.2.0"
+    },
+    "nette/schema": {
+        "version": "v1.0.1"
+    },
+    "nette/utils": {
+        "version": "v3.0.2"
     },
     "nikic/php-parser": {
         "version": "v4.2.2"
@@ -177,6 +226,18 @@
     "phpdocumentor/type-resolver": {
         "version": "0.4.0"
     },
+    "phpstan/phpdoc-parser": {
+        "version": "0.3.5"
+    },
+    "phpstan/phpstan": {
+        "version": "0.11.12"
+    },
+    "phpstan/phpstan-symfony": {
+        "version": "0.11.6"
+    },
+    "pimple/pimple": {
+        "version": "v3.2.3"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
@@ -188,6 +249,21 @@
     },
     "psr/log": {
         "version": "1.1.0"
+    },
+    "sebastian/comparator": {
+        "version": "3.0.2"
+    },
+    "sebastian/diff": {
+        "version": "3.0.2"
+    },
+    "sebastian/exporter": {
+        "version": "3.1.2"
+    },
+    "sebastian/recursion-context": {
+        "version": "3.0.0"
+    },
+    "seld/jsonlint": {
+        "version": "1.7.2"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
@@ -592,6 +668,18 @@
     "symfony/yaml": {
         "version": "v4.3.2"
     },
+    "thecodingmachine/safe": {
+        "version": "v0.1.16"
+    },
+    "theofidry/alice-data-fixtures": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "fe5a50faf580eb58f08ada2abe8afbd2d4941e05"
+        }
+    },
     "twig/extensions": {
         "version": "1.0",
         "recipe": {
@@ -609,6 +697,9 @@
     },
     "webmozart/assert": {
         "version": "1.4.0"
+    },
+    "webmozart/path-util": {
+        "version": "2.3.0"
     },
     "zendframework/zend-code": {
         "version": "3.3.1"

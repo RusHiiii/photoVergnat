@@ -46,7 +46,7 @@ class TagAssembler
      */
     public function edit(Tag $type, array $data)
     {
-        if ($type === null) {
+        if ($type == null) {
             throw new TagNotFoundException(['Tag inexistant'], TagNotFoundException::TAG_NOT_FOUND_MESSAGE);
         }
 

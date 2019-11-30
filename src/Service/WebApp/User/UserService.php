@@ -121,7 +121,7 @@ class UserService
 
     /**
      * Suppression d'un utilisateur
-     * @param string $data
+     * @param User $user
      * @return array
      * @throws \Doctrine\ORM\NonUniqueResultException
      */

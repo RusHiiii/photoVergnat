@@ -33,7 +33,7 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
 
     /**
      * Récupération d'un utilisateur
-     * @param string $id
+     * @param int $id
      * @return mixed
      * @throws \Doctrine\ORM\NonUniqueResultException
      */

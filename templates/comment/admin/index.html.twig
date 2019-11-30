@@ -69,7 +69,9 @@
                                     <td>{{ comment.created | date('Y-m-d H:i:s') }}</td>
                                     <td class="action">
                                         <button type="button" class="btn btn-warning waves-effect edit" data-id="{{ comment.id }}" data-toggle="modal"><i class="icofont icofont-edit-alt"></i></button>
-                                        <button type="button" class="btn btn-danger alert-ajax m-b-10 delete" data-id="{{ comment.id }}"><i class="icofont icofont-bin"></i></button>
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <button type="button" class="btn btn-danger alert-ajax m-b-10 delete" data-id="{{ comment.id }}"><i class="icofont icofont-bin"></i></button>
+                                        {% endif %}
                                     </td>
                                 </tr>
                                 {% endfor %}

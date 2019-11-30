@@ -34,7 +34,7 @@ class NotificationService
      * Envoie du mail
      * @param array $users
      * @param string $subject
-     * @param $message
+     * @param mixed $message
      * @return array
      */
     public function sendEmail(array $users, string $subject, $message): array
@@ -56,7 +56,8 @@ class NotificationService
         $this->mailer->send($message);
 
         return [
-            'msg' => self::MSG_EMAIL_SEND
+            'msg' => self::MSG_EMAIL_SEND,
+            'to' => $mails
         ];
     }
 

@@ -1,0 +1,9 @@
+App\Entity\WebApp\User:
+  user1:
+    firstname: 'florent'
+    lastname: 'damiens'
+    email: 'damiens.florent@orange.fr'
+    password: 'test'
+    roles: '[ROLE_USER]'
+    created: '<date_create()>'
+    updated: '<date_create()>'

@@ -87,7 +87,7 @@ class DataValidatorService implements DataValidatorInterface
 
     /**
      * Validation du champs non null
-     * @param $value
+     * @param mixed $value
      * @param string $key
      * @return bool
      */
@@ -144,7 +144,7 @@ class DataValidatorService implements DataValidatorInterface
     {
         $image = new Assert\Image();
         $image->mimeTypesMessage = self::MSG_ERROR_IMAGE;
-        $image->maxSize = '30M';
+        $image->maxSize = 30;
 
         $errors = $this->validator->validate(
             $file,

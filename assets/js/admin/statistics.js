@@ -1,13 +1,13 @@
 /****************** LISTENER **********************/
 
 $(document).ready(function () {
-    initGraphPhotoNumber();
+    initGraph();
 });
 
 /****************** FONCTION **********************/
 
 /** Initialise le graph */
-function initGraphPhotoNumber()
+function initGraph()
 {
     $.ajax({
         url : '/xhr/admin/statistics',

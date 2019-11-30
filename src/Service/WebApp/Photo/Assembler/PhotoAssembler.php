@@ -21,6 +21,7 @@ use App\Service\WebApp\Category\Exceptions\CategoryNotFoundException;
 use App\Service\WebApp\Photo\Exceptions\PhotoNotFoundException;
 use App\Service\WebApp\Season\Exceptions\SeasonNotFoundException;
 use App\Service\WebApp\Tag\Exceptions\TagNotFoundException;
+use App\Service\WebApp\Type\Exceptions\TypeNotFoundException;
 use App\Service\WebApp\Type\Exceptions\UserNotFoundException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -43,7 +44,7 @@ class PhotoAssembler
      * @param UploadedFile $file
      * @return Photo
      * @throws TagNotFoundException
-     * @throws UserNotFoundException
+     * @throws TypeNotFoundException
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function create(array $data, UploadedFile $file)
@@ -53,14 +54,14 @@ class PhotoAssembler
         $photo->setFile($file);
 
         $type = $this->typeRepository->findById($data['format']);
-        if ($type === null) {
-            throw new UserNotFoundException(['Type inexistant'], UserNotFoundException::TYPE_NOT_FOUND_MESSAGE);
+        if ($type == null) {
+            throw new TypeNotFoundException(['Type inexistant'], TypeNotFoundException::TYPE_NOT_FOUND_MESSAGE);
         }
         $photo->setType($type);
 
         foreach ($data['tags'] as $tag) {
             $tag = $this->tagRepository->findById($tag);
-            if ($tag === null) {
+            if ($tag == null) {
                 throw new TagNotFoundException(['Tag inexistant'], TagNotFoundException::TAG_NOT_FOUND_MESSAGE);
             }
             $photo->addTag($tag);
@@ -77,12 +78,12 @@ class PhotoAssembler
      * @return Photo
      * @throws PhotoNotFoundException
      * @throws TagNotFoundException
-     * @throws UserNotFoundException
+     * @throws TypeNotFoundException
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function edit(Photo $photo, array $data, ?UploadedFile $file)
     {
-        if ($photo === null) {
+        if ($photo == null) {
             throw new PhotoNotFoundException(['Photo inexistante'], PhotoNotFoundException::PHOTO_NOT_FOUND_MESSAGE);
         }
 
@@ -90,15 +91,15 @@ class PhotoAssembler
         $photo->setFile($file);
 
         $type = $this->typeRepository->findById($data['format']);
-        if ($type === null) {
-            throw new UserNotFoundException(['Type inexistant'], UserNotFoundException::TYPE_NOT_FOUND_MESSAGE);
+        if ($type == null) {
+            throw new TypeNotFoundException(['Type inexistant'], TypeNotFoundException::TYPE_NOT_FOUND_MESSAGE);
         }
         $photo->setType($type);
 
         $photo->resetTags();
         foreach ($data['tags'] as $tag) {
             $tag = $this->tagRepository->findById($tag);
-            if ($tag === null) {
+            if ($tag == null) {
                 throw new TagNotFoundException(['Tag inexistant'], TagNotFoundException::TAG_NOT_FOUND_MESSAGE);
             }
             $photo->addTag($tag);

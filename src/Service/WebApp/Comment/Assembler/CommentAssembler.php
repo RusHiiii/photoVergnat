@@ -45,4 +45,27 @@ class CommentAssembler
 
         return $comment;
     }
+
+    /**
+     * Edition d'un commentaire
+     * @param Comment $comment
+     * @param array $data
+     * @return Comment
+     * @throws CategoryNotFoundException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function edit(Comment $comment, array $data)
+    {
+        $comment->setEmail($data['email']);
+        $comment->setName($data['name']);
+        $comment->setMessage($data['message']);
+
+        $category = $this->categoryRepository->findById($data['category']);
+        if ($category == null) {
+            throw new CategoryNotFoundException(['Article inexistant'], CategoryNotFoundException::CATEGORY_NOT_FOUND_MESSAGE);
+        }
+        $comment->setCategory($category);
+
+        return $comment;
+    }
 }

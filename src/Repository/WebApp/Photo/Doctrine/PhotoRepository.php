@@ -17,7 +17,7 @@ class PhotoRepository extends ServiceEntityRepository implements PhotoRepository
 
     /**
      * Récupération par ID
-     * @param $value
+     * @param mixed $value
      * @return Photo|null
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
@@ -92,7 +92,7 @@ class PhotoRepository extends ServiceEntityRepository implements PhotoRepository
 
     /**
      * Compte le nombre d'occurence
-     * @param $date
+     * @param \DateTime $date
      * @return mixed
      * @throws \Doctrine\ORM\NonUniqueResultException
      */

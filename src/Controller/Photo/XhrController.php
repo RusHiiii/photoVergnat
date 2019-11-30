@@ -15,7 +15,8 @@ use App\Service\WebApp\Photo\Exceptions\PhotoNotFoundException;
 use App\Service\WebApp\Photo\PhotoService;
 use App\Service\WebApp\Tag\Exceptions\TagNotFoundException;
 use App\Service\WebApp\Tag\TagService;
-use App\Service\WebApp\Type\Exceptions\UserNotFoundException;
+use App\Service\WebApp\Type\Exceptions\TypeNotFoundException;
+use App\Service\WebApp\User\Exceptions\UserNotFoundException;
 use App\Service\WebApp\User\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -75,7 +76,7 @@ class XhrController extends AbstractController
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
-        } catch (TagNotFoundException | UserNotFoundException | PhotoNotFoundException $e) {
+        } catch (TagNotFoundException | TypeNotFoundException | PhotoNotFoundException $e) {
             return new JsonResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404
@@ -107,7 +108,7 @@ class XhrController extends AbstractController
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
-        } catch (TagNotFoundException | UserNotFoundException $e) {
+        } catch (TagNotFoundException | TypeNotFoundException $e) {
             return new JsonResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404

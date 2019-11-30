@@ -45,7 +45,7 @@ class TypeAssembler
      */
     public function edit(Type $type, array $data)
     {
-        if ($type === null) {
+        if ($type == null) {
             throw new TypeNotFoundException(['Type inexistant'], TypeNotFoundException::TYPE_NOT_FOUND_MESSAGE);
         }
 

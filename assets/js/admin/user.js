@@ -36,11 +36,6 @@ $('.user .add').on('click', function (e) {
         success : function (res) {
             $('#large-Modal').html(res);
             $('#large-Modal').modal();
-        },
-        statusCode: {
-            403: function () {
-                swal('Action interdite !');
-            },
         }
     });
 });
@@ -60,11 +55,6 @@ $('body').on('submit', '#update-password', function (e) {
             'user': data
         },
         dataType:'json',
-        statusCode: {
-            403: function () {
-                swal('Action interdite !');
-            },
-        },
         success : function () {
             $('#large-Modal').modal('hide');
         },
@@ -90,16 +80,11 @@ $('body').on('submit', '#update-user', function (e) {
 
     $.ajax({
         url : `/xhr/admin/user/update/${data.id}`,
-        type : 'POST',
+        type : 'PATCH',
         data : {
             'user': data
         },
         dataType:'json',
-        statusCode: {
-            403: function () {
-                swal('Action interdite !');
-            },
-        },
         success : function (res) {
             updateRow(JSON.parse(res));
             $('#large-Modal').modal('hide');
@@ -131,12 +116,6 @@ $('body').on('submit', '#create-user', function (e) {
             'user': data
         },
         dataType:'json',
-        statusCode: {
-            403: function (response) {
-                swal('Action interdite !');
-                $('#large-Modal').modal('hide');
-            },
-        },
         success : function (res) {
             addRow(JSON.parse(res));
             $('#large-Modal').modal('hide');
@@ -167,11 +146,6 @@ $('#users-table tbody').on('click', '.alert-ajax', function (e) {
             url : `/xhr/admin/user/remove/${id}`,
             type : 'DELETE',
             dataType:'json',
-            statusCode: {
-                403: function () {
-                    swal('Action interdite !');
-                },
-            },
             success : function () {
                 table
                     .row($(`#user_${id}`))

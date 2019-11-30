@@ -42,11 +42,6 @@ $('#types-table tbody').on('click', '.alert-ajax', function (e) {
         $.ajax({
             url : `/xhr/admin/type/remove/${id}`,
             type : 'DELETE',
-            statusCode: {
-                403: function () {
-                    swal('Action interdite !');
-                },
-            },
             success : function () {
                 table
                     .row($(`#type_${id}`))
@@ -71,11 +66,6 @@ $('body').on('submit', '#create-type', function (e) {
             'type': $('#create-type').serializeObject()
         },
         dataType:'json',
-        statusCode: {
-            403: function () {
-                swal('Action interdite !');
-            },
-        },
         success : function (res) {
             addRow(JSON.parse(res));
             $('#large-Modal').modal('hide');

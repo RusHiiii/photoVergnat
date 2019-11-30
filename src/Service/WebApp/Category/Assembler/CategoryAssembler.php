@@ -93,7 +93,7 @@ class CategoryAssembler
      */
     public function edit(Category $category, array $data)
     {
-        if ($category === null) {
+        if ($category == null) {
             throw new CategoryNotFoundException(['Catégorie inexistante'], CategoryNotFoundException::CATEGORY_NOT_FOUND_MESSAGE);
         }
 

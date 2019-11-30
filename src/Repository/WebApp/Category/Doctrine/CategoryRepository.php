@@ -16,7 +16,7 @@ class CategoryRepository extends ServiceEntityRepository implements CategoryRepo
 
     /**
      * Récupération de la catégorie
-     * @param $value
+     * @param mixed $value
      * @return Category|null
      * @throws \Doctrine\ORM\NonUniqueResultException
      */

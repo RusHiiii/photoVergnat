@@ -27,7 +27,7 @@ class SeasonEntityListener
 
     /**
      * MàJ d'une saison
-     * @param LifecycleEventArgs $args
+     * @param PreUpdateEventArgs $args
      * @throws \Exception
      */
     public function preUpdate(PreUpdateEventArgs $args)

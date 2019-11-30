@@ -41,11 +41,6 @@ $('#seasons-table tbody').on('click', '.alert-ajax', function (e) {
         $.ajax({
             url : `/xhr/admin/season/remove/${id}`,
             type : 'DELETE',
-            statusCode: {
-                403: function () {
-                    swal('Action interdite !');
-                },
-            },
             success : function () {
                 table
                     .row($(`#season_${id}`))
@@ -70,11 +65,6 @@ $('body').on('submit', '#create-season', function (e) {
             'season': $('#create-season').serializeObject()
         },
         dataType:'json',
-        statusCode: {
-            403: function () {
-                swal('Action interdite !');
-            },
-        },
         success : function (res) {
             addRow(JSON.parse(res));
             $('#large-Modal').modal('hide');
@@ -98,7 +88,7 @@ $('body').on('submit', '#update-season', function (e) {
 
     $.ajax({
         url : `/xhr/admin/season/update/${data.id}`,
-        type : 'POST',
+        type : 'PATCH',
         data : {
             'season': data
         },

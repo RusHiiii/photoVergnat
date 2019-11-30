@@ -54,7 +54,7 @@ class TypeVoter extends Voter
             case self::VIEW:
                 return $this->canEdit($user);
             case self::REMOVE:
-                return $this->canCreateOrRemove($user);
+                return $this->canRemove($user);
         }
 
         throw new \LogicException('This code should not be reached!');
@@ -65,7 +65,7 @@ class TypeVoter extends Voter
      * @param User $user
      * @return bool
      */
-    private function canCreateOrRemove(User $user)
+    private function canRemove(User $user)
     {
         if ($this->security->isGranted('ROLE_ADMIN')) {
             return true;

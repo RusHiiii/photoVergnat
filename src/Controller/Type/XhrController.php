@@ -9,6 +9,7 @@ use App\Entity\WebApp\User;
 use App\Service\Tools\Error\Factory\ErrorFactory;
 use App\Service\WebApp\Tag\TagService;
 use App\Service\WebApp\Type\Exceptions\TypeInvalidDataException;
+use App\Service\WebApp\Type\Exceptions\TypeNotFoundException;
 use App\Service\WebApp\Type\Exceptions\UserNotFoundException;
 use App\Service\WebApp\Type\TypeService;
 use App\Service\WebApp\User\UserService;
@@ -64,7 +65,7 @@ class XhrController extends AbstractController
 
         try {
             $resultUpdate = $typeService->updateType($data['type'], $type);
-        } catch (UserNotFoundException $e) {
+        } catch (TypeNotFoundException $e) {
             return new JsonResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404

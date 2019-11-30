@@ -52,7 +52,7 @@ class UserAssembler
      */
     public function edit(User $user, array $data)
     {
-        if ($user === null) {
+        if ($user == null) {
             throw new UserNotFoundException(['User inexistant'], UserNotFoundException::USER_NOT_FOUND_MESSAGE);
         }
 
@@ -80,7 +80,7 @@ class UserAssembler
      */
     public function editPassword(User $user, string $password)
     {
-        if ($user === null) {
+        if ($user == null) {
             throw new UserNotFoundException(['User inexistant'], UserNotFoundException::USER_NOT_FOUND_MESSAGE);
         }
 

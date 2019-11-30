@@ -20,6 +20,7 @@ use Symfony\Component\Security\Core\Security;
 class CommentValidator
 {
     const TOKEN_CREATE = 'create-comment';
+    const TOKEN_UPDATE = 'update-comment';
 
     private $validatorService;
     private $toolsService;
