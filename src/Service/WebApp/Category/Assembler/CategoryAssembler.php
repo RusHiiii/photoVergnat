@@ -19,21 +19,25 @@ use App\Service\WebApp\Category\Exceptions\CategoryNotFoundException;
 use App\Service\WebApp\Photo\Exceptions\PhotoNotFoundException;
 use App\Service\WebApp\Season\Exceptions\SeasonNotFoundException;
 use App\Service\WebApp\Tag\Exceptions\TagNotFoundException;
+use Symfony\Component\Security\Core\Security;
 
 class CategoryAssembler
 {
     private $seasonRepository;
     private $tagRepository;
     private $photoRepository;
+    private $security;
 
     public function __construct(
         SeasonRepository $seasonRepository,
         TagRepository $tagRepository,
-        PhotoRepository $photoRepository
+        PhotoRepository $photoRepository,
+        Security $security
     ) {
         $this->tagRepository = $tagRepository;
         $this->seasonRepository = $seasonRepository;
         $this->photoRepository = $photoRepository;
+        $this->security = $security;
     }
 
     /**
@@ -49,11 +53,12 @@ class CategoryAssembler
     {
         $category = new Category();
         $category->setTitle($data['title']);
-        $category->setDescription($data['data']['description']);
-        $category->setCity($data['data']['city']);
-        $category->setActive($data['data']['active']);
-        $category->setLatitude($data['data']['lat']);
-        $category->setLongitude($data['data']['lng']);
+        $category->setDescription($data['description']);
+        $category->setCity($data['city']);
+        $category->setActive($data['active']);
+        $category->setLatitude($data['lat']);
+        $category->setLongitude($data['lng']);
+        $category->setUser($this->security->getUser());
 
         $season = $this->seasonRepository->findById($data['season']);
         if ($season === null) {

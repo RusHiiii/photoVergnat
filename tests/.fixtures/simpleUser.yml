@@ -1,5 +1,5 @@
 App\Entity\WebApp\User:
-  user1:
+  user_1:
     firstname: 'florent'
     lastname: 'damiens'
     email: 'damiens.florent@orange.fr'

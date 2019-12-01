@@ -62,13 +62,13 @@ class Category
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\WebApp\Photo", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="App\Entity\WebApp\Photo", mappedBy="category", orphanRemoval=true)
      * @Groups({"category"})
      */
     private $photos;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\WebApp\Tag", inversedBy="categories")
+     * @ORM\ManyToMany(targetEntity="App\Entity\WebApp\Tag", inversedBy="categories", orphanRemoval=true)
      * @ORM\JoinTable(name="categories_tags")
      * @Groups({"category"})
      */

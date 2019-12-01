@@ -25,11 +25,11 @@ class NotificationServiceTest extends KernelTestCase
 
     public function testSendMail()
     {
-        $entities = $this->loader->load(['tests/.fixtures/user.yml']);
+        $entities = $this->loader->load(['tests/.fixtures/simpleUser.yml']);
 
         $NotificationService = $this->getContainer()->get(NotificationService::class);
 
-        $result = $NotificationService->sendEmail([$entities['user1']], 'subject', 'message');
+        $result = $NotificationService->sendEmail([$entities['user_1']], 'subject', 'message');
         $this->assertCount(2, $result);
         $this->assertEquals('Email envoyé !', $result['msg']);
         $this->assertCount(1, $result['to']);

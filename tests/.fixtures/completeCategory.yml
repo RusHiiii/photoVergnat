@@ -1,0 +1,64 @@
+App\Entity\WebApp\Type:
+  type_1:
+    title: 'Paysage'
+    created: '<date_create()>'
+    updated: '<date_create()>'
+
+App\Entity\WebApp\User:
+  user_1:
+    firstname: 'florent'
+    lastname: 'damiens'
+    email: 'damiens.florent@orange.fr'
+    password: 'test'
+    roles: '[ROLE_USER]'
+    created: '<date_create()>'
+    updated: '<date_create()>'
+
+App\Entity\WebApp\Tag:
+  tag_1:
+    title: 'Urbain'
+    created: '<date_create()>'
+    updated: '<date_create()>'
+    type: 'type'
+  tag_2:
+    title: 'Torrent'
+    created: '<date_create()>'
+    updated: '<date_create()>'
+    type: 'type'
+
+App\Entity\WebApp\Season:
+  season_1:
+    title: 'été'
+    created: '<date_create()>'
+    updated: '<date_create()>'
+
+App\Entity\WebApp\Category:
+  category_1:
+    title: 'Puy Pariou'
+    user: '@user_1'
+    season: '@season_1'
+    created: '<date_create()>'
+    updated: '<date_create()>'
+    city: 'zerfzefz'
+    longitude: '25.0325'
+    latitude: '25.1247'
+    description: 'dezdezde'
+    photos: '[@photo_1, @photo_2]'
+    active: '0'
+
+App\Entity\WebApp\Photo:
+  photo_1:
+    type: '@type_1'
+    tags: '[@tag_1]'
+    title: 'infrv'
+    created: '<date_create()>'
+    updated: '<date_create()>'
+    file: '1a844e6f9a651453654c7f39cd352fc89.jpeg'
+  photo_2:
+    type: '@type_1'
+    tags: '[@tag_2]'
+    title: 'infrv'
+    created: '<date_create()>'
+    updated: '<date_create()>'
+    file: '1a844e6f9a651453654c7f39cd352fc89.jpeg'
+

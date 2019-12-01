@@ -33,7 +33,6 @@ class CategoryEntityListener
 
         $entity->setCreated(new \DateTime('now'));
         $entity->setUpdated(new \DateTime('now'));
-        $entity->setUser($this->security->getUser());
     }
 
     /**
