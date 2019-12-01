@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d0ad162-b511-4cf7-bc8e-e12bdd55a0fa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.php_cs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.php_cs.dist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.phpcs-cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpcs.xml.dist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/WebApp/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/WebApp/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventListener/WebApp/CategoryEntityListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/WebApp/CategoryEntityListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Category/Assembler/CategoryAssembler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Category/Assembler/CategoryAssembler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/.fixtures/user.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/.fixtures/simpleUser.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/Tools/NotificationServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Tools/NotificationServiceTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/Twig/ExtensionsServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Twig/ExtensionsServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services_test.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services_test.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,23 +51,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/infection.json.dist">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="136">
-                <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-              </first_editor>
-              <second_editor />
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -160,7 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php" />
         <option value="$PROJECT_DIR$/src/Controller/Photo/XhrController.php" />
         <option value="$PROJECT_DIR$/src/Service/WebApp/User/Assembler/UserAssembler.php" />
         <option value="$PROJECT_DIR$/src/Service/WebApp/Type/TypeService.php" />
@@ -208,9 +185,10 @@
         <option value="$PROJECT_DIR$/tests/.fixtures/completeCategory.yml" />
         <option value="$PROJECT_DIR$/tests/Unit/Tools/NotificationServiceTest.php" />
         <option value="$PROJECT_DIR$/config/services.yaml" />
-        <option value="$PROJECT_DIR$/config/services_test.yaml" />
         <option value="$PROJECT_DIR$/tests/Unit/Twig/ExtensionsServiceTest.php" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/config/services_test.yaml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -386,6 +364,11 @@
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -398,6 +381,12 @@
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name=".fixtures" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -532,12 +521,12 @@
       <workItem from="1574107118786" duration="1187000" />
       <workItem from="1575060343144" duration="4500000" />
       <workItem from="1575118621278" duration="15293000" />
-      <workItem from="1575207869560" duration="18483000" />
+      <workItem from="1575207869560" duration="18680000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="346265000" />
+    <option name="totallyTimeSpent" value="346462000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
@@ -579,7 +568,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/infection.log" />
     <entry file="file://$PROJECT_DIR$/var/coverage/coverage-xml/index.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -835,20 +823,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/services_test.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="64" selection-start-line="6" selection-start-column="64" selection-end-line="6" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/.fixtures/completeCategory.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Category/Assembler/CategoryAssembler.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-799">
@@ -894,6 +868,27 @@
             <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/.fixtures/completeCategory.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/services_test.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="65" selection-start-line="6" selection-start-column="65" selection-end-line="6" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
         </state>
       </provider>
     </entry>
