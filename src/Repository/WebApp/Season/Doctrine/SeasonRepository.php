@@ -29,4 +29,20 @@ class SeasonRepository extends ServiceEntityRepository implements SeasonReposito
             ->getOneOrNullResult()
             ;
     }
+
+    /**
+     * Récupération par le titre
+     * @param string $name
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findByName(string $name)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.title = :title')
+            ->setParameter('title', $name)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
 }

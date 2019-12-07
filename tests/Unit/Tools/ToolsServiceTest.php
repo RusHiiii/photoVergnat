@@ -9,13 +9,22 @@
 namespace App\Tests\Unit\Tools;
 
 use App\Service\Tools\ToolsService;
+use App\Tests\TestCase;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @group unit
  */
-class ToolsServiceTest extends KernelTestCase
+class ToolsServiceTest extends TestCase
 {
+    protected $toolsService;
+
+    protected function setUp()
+    {
+        parent::setUp();
+        $this->toolsService = self::$container->get(ToolsService::class);
+    }
+
     public function testTrimData()
     {
         $data = [
@@ -23,25 +32,21 @@ class ToolsServiceTest extends KernelTestCase
             'id' => '5'
         ];
 
-        $ToolsService = $this->getContainer()->get(ToolsService::class);
+        $data = $this->toolsService->trimData($data);
 
-        $data = $ToolsService->trimData($data);
         $this->assertEquals('je suis un test', $data['message']);
         $this->assertEquals('5', $data['id']);
     }
 
     public function testSlugify()
     {
-        $ToolsService = $this->getContainer()->get(ToolsService::class);
+        $data = $this->toolsService->slugify('zíefzefèá ');
 
-        $data = $ToolsService->slugify('zíefzefèá ');
         $this->assertEquals('zefzef-', $data);
     }
 
     public function testCompareByUpdated()
     {
-        $ToolsService = $this->getContainer()->get(ToolsService::class);
-
         $begin = [
             'updated' => new \DateTime('now')
         ];
@@ -50,15 +55,8 @@ class ToolsServiceTest extends KernelTestCase
             'updated' => new \DateTime('2001-01-01')
         ];
 
-        $result = $ToolsService->compareByUpdated($begin, $end);
+        $result = $this->toolsService->compareByUpdated($begin, $end);
+
         $this->assertFalse($result);
-    }
-
-    private function getContainer()
-    {
-        self::bootKernel();
-        $container = self::$container;
-
-        return $container;
     }
 }

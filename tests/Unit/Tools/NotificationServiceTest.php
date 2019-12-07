@@ -9,37 +9,29 @@
 namespace App\Tests\Unit\Tools;
 
 use App\Service\Tools\NotificationService;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use App\Tests\TestCase;
 
 /**
  * @group unit
  */
-class NotificationServiceTest extends KernelTestCase
+class NotificationServiceTest extends TestCase
 {
-    private $loader;
+    protected $notificationService;
 
     protected function setUp()
     {
-        $this->loader = $this->getContainer()->get('fidry_alice_data_fixtures.loader.doctrine');
+        parent::setUp();
+        $this->notificationService = self::$container->get(NotificationService::class);
     }
 
     public function testSendMail()
     {
-        $entities = $this->loader->load(['tests/.fixtures/simpleUser.yml']);
+        $entities = $this->load('tests/.fixtures/simpleUser.yml');
 
-        $NotificationService = $this->getContainer()->get(NotificationService::class);
+        $result = $this->notificationService->sendEmail([$entities['user_1']], 'subject', 'message');
 
-        $result = $NotificationService->sendEmail([$entities['user_1']], 'subject', 'message');
         $this->assertCount(2, $result);
         $this->assertEquals('Email envoyé !', $result['msg']);
         $this->assertCount(1, $result['to']);
-    }
-
-    private function getContainer()
-    {
-        self::bootKernel();
-        $container = self::$container;
-
-        return $container;
     }
 }

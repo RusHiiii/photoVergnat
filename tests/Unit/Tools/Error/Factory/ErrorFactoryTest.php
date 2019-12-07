@@ -11,31 +11,29 @@ namespace App\Tests\Unit\Tools\Error\Factory;
 use App\Entity\Error\GenericError;
 use App\Service\Tools\Error\Factory\ErrorFactory;
 use App\Service\WebApp\Comment\Exceptions\CommentInvalidDataException;
+use App\Tests\TestCase;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @group unit
  */
-class ErrorFactoryTest extends KernelTestCase
+class ErrorFactoryTest extends TestCase
 {
+    protected $errorFactory;
+
+    protected function setUp()
+    {
+        parent::setUp();
+        $this->errorFactory = self::$container->get(ErrorFactory::class);
+    }
+
     public function testCreate()
     {
-         $ErrorFactory = $this->getContainer()->get(ErrorFactory::class);
-
-         $result = $ErrorFactory->create(new CommentInvalidDataException([], 'erreur'));
+         $result = $this->errorFactory->create(new CommentInvalidDataException([], 'erreur'));
 
          $this->assertInstanceOf(GenericError::class, $result);
-
          $this->assertEquals('erreur', $result->getMessage());
          $this->assertEquals('CommentInvalidDataException', $result->getType());
          $this->assertCount(0, $result->getContext());
-    }
-
-    private function getContainer()
-    {
-        self::bootKernel();
-        $container = self::$container;
-
-        return $container;
     }
 }

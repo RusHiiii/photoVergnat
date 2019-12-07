@@ -34,4 +34,4 @@ Pour lancer PHPUnit:
 `bin/phpunit --group=XXX [--filter=functionName]`
 
 Pour lancer Infection:
-`vendor\bin\infection --threads=4 --coverage=coverage-xml`
+`vendor\bin\infection --threads=4 --coverage=var/coverage`

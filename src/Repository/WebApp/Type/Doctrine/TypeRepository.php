@@ -29,4 +29,20 @@ class TypeRepository extends ServiceEntityRepository implements TypeRepositoryIn
             ->getOneOrNullResult()
             ;
     }
+
+    /**
+     * Récupération par le nom
+     * @param string $name
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findByName(string $name)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.title = :title')
+            ->setParameter('title', $name)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
 }

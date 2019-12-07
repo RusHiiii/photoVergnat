@@ -1,0 +1,5 @@
+App\Entity\WebApp\Type:
+  type_1:
+    title: 'Paysage'
+    created: '<date_create()>'
+    updated: '<date_create()>'

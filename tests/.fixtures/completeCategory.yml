@@ -46,6 +46,15 @@ App\Entity\WebApp\Category:
     photos: '[@photo_1, @photo_2]'
     active: '0'
 
+App\Entity\WebApp\Comment:
+  comment_1:
+    name: 'RusHii'
+    message: 'ceci est un message'
+    email: 'contact@gmail.com'
+    created: '<date_create()>'
+    updated: '<date_create()>'
+    category: '@category_1'
+
 App\Entity\WebApp\Photo:
   photo_1:
     type: '@type_1'

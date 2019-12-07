@@ -46,6 +46,21 @@ class TagRepository extends ServiceEntityRepository implements TagRepositoryInte
     }
 
     /**
+     * Récupération par nom
+     * @param string $type
+     * @return mixed
+     */
+    public function findByName(string $name)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.title = :title')
+            ->setParameter('title', $name)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
      * Récupération des derniers tags
      * @return mixed
      */

@@ -1,0 +1,12 @@
+App\Entity\WebApp\Tag:
+  tag_1:
+    title: 'Paysage'
+    type: 'type'
+    created: '<date_create()>'
+    updated: '<date_create()>'
+
+  tag_2:
+    title: 'Urbain'
+    type: 'type'
+    created: '<date_create()>'
+    updated: '<date_create()>'
