@@ -96,7 +96,7 @@ class XhrController extends AbstractController
         $data = $request->request->all();
 
         try {
-            $resultCreate = $categoryService->createCategory($data['category']);
+            $resultCreate = $categoryService->createCategory($data['category'], $this->getUser());
         } catch (CategoryInvalidDataException $e) {
             return new JsonResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),

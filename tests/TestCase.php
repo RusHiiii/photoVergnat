@@ -28,18 +28,35 @@ class TestCase extends KernelTestCase
         $this->csrfToken =  self::$container->get('security.csrf.token_manager');
     }
 
-    protected function load($files)
+    protected function loadFile($files)
     {
         $fixtureToLoad = $files;
         if (!is_array($files)) {
             $fixtureToLoad = [$files];
         }
 
+        imagejpeg(imagecreatetruecolor(100, 100), 'tests/.fixtures/images/uploads/test_photovergnat_1.jpeg');
+        imagejpeg(imagecreatetruecolor(100, 100), 'tests/.fixtures/images/uploads/test_photovergnat_2.jpeg');
+
         return $this->loader->load($fixtureToLoad);
+    }
+
+    protected function loadImage()
+    {
+        $file = tempnam(sys_get_temp_dir(), 'test');
+        imagejpeg(imagecreatetruecolor(100, 100), $file);
+
+        return $file;
     }
 
     protected function getCsrfToken()
     {
         return $this->csrfToken;
+    }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+        array_map( 'unlink', array_filter((array) glob("tests/.fixtures/images/uploads/*")));
     }
 }

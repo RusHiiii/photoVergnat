@@ -32,7 +32,7 @@ class SeasonServiceTest extends TestCase
 
     public function testRemoveSeason()
     {
-        $fixtures = $this->load('tests/.fixtures/simpleSeason.yml');
+        $fixtures = $this->loadFile('tests/.fixtures/simpleSeason.yml');
 
         $result = $this->seasonService->removeSeason($fixtures['season_1']);
 
@@ -77,7 +77,7 @@ class SeasonServiceTest extends TestCase
 
     public function testUpdateSeason()
     {
-        $fixtures = $this->load('tests/.fixtures/simpleSeason.yml');
+        $fixtures = $this->loadFile('tests/.fixtures/simpleSeason.yml');
 
         $season = [
             'title' => 'HiverEdit',
@@ -93,7 +93,7 @@ class SeasonServiceTest extends TestCase
 
     public function testUpdateSeasonWithBadTitle()
     {
-        $fixtures = $this->load('tests/.fixtures/simpleSeason.yml');
+        $fixtures = $this->loadFile('tests/.fixtures/simpleSeason.yml');
 
         $season = [
             'title' => '',

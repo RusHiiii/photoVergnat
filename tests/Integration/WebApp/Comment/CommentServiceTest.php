@@ -9,13 +9,9 @@
 namespace App\Tests\Integration\WebApp\Comment;
 
 use App\Entity\WebApp\Comment;
-use App\Entity\WebApp\Season;
 use App\Repository\WebApp\Comment\Doctrine\CommentRepository;
-use App\Repository\WebApp\Season\Doctrine\SeasonRepository;
 use App\Service\WebApp\Comment\CommentService;
 use App\Service\WebApp\Comment\Exceptions\CommentInvalidDataException;
-use App\Service\WebApp\Season\Exceptions\SeasonInvalidDataException;
-use App\Service\WebApp\Season\SeasonService;
 use App\Tests\TestCase;
 
 /**
@@ -36,7 +32,7 @@ class CommentServiceTest extends TestCase
 
     public function testRemoveComment()
     {
-        $fixtures = $this->load('tests/.fixtures/completeCategory.yml');
+        $fixtures = $this->loadFile('tests/.fixtures/completeCategory.yml');
 
         $result = $this->commentService->removeComment($fixtures['comment_1']);
 
@@ -72,7 +68,7 @@ class CommentServiceTest extends TestCase
         $this->commentService->createComment($data);
     }
 
-    public function testCreateCommenta()
+    public function testCreateComment()
     {
         $data = [
             'name' => 'RusHii',
@@ -92,7 +88,7 @@ class CommentServiceTest extends TestCase
 
     public function testUpdateComment()
     {
-        $fixtures = $this->load('tests/.fixtures/completeCategory.yml');
+        $fixtures = $this->loadFile('tests/.fixtures/completeCategory.yml');
 
         $data = [
             'name' => 'edit',
@@ -111,7 +107,7 @@ class CommentServiceTest extends TestCase
 
     public function testUpdateCommentWithBadData()
     {
-        $fixtures = $this->load('tests/.fixtures/completeCategory.yml');
+        $fixtures = $this->loadFile('tests/.fixtures/completeCategory.yml');
 
         $data = [
             'name' => '',

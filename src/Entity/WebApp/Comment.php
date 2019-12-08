@@ -39,7 +39,7 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\WebApp\Category", inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @Groups({"comment"})
      */
     private $category;

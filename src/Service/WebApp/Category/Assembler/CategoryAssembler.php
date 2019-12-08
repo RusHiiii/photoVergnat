@@ -10,6 +10,7 @@ namespace App\Service\WebApp\Category\Assembler;
 
 use App\Entity\WebApp\Category;
 use App\Entity\WebApp\Type;
+use App\Entity\WebApp\User;
 use App\Repository\WebApp\Category\Doctrine\CategoryRepository;
 use App\Repository\WebApp\Photo\Doctrine\PhotoRepository;
 use App\Repository\WebApp\Season\Doctrine\SeasonRepository;
@@ -49,7 +50,7 @@ class CategoryAssembler
      * @throws TagNotFoundException
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function create(array $data)
+    public function create(array $data, User $user)
     {
         $category = new Category();
         $category->setTitle($data['title']);
@@ -58,7 +59,7 @@ class CategoryAssembler
         $category->setActive($data['active']);
         $category->setLatitude($data['lat']);
         $category->setLongitude($data['lng']);
-        $category->setUser($this->security->getUser());
+        $category->setUser($user);
 
         $season = $this->seasonRepository->findById($data['season']);
         if ($season === null) {

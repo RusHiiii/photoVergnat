@@ -26,7 +26,7 @@ class StatisticServiceTest extends TestCase
 
     public function testGetLastUpdate()
     {
-        $this->load(['tests/.fixtures/simpleTag.yml', 'tests/.fixtures/completeCategory.yml']);
+        $this->loadFile(['tests/.fixtures/simpleTag.yml', 'tests/.fixtures/completeCategory.yml']);
 
         $result = $this->statisticService->getLastUpdate();
 
@@ -35,7 +35,7 @@ class StatisticServiceTest extends TestCase
 
     public function testGetItems()
     {
-        $this->load(['tests/.fixtures/simpleTag.yml', 'tests/.fixtures/completeCategory.yml']);
+        $this->loadFile(['tests/.fixtures/simpleTag.yml', 'tests/.fixtures/completeCategory.yml']);
 
         $result = $this->statisticService->getItems();
 
@@ -47,7 +47,7 @@ class StatisticServiceTest extends TestCase
 
     public function testGetStatisticsData()
     {
-        $this->load('tests/.fixtures/completeCategory.yml');
+        $this->loadFile('tests/.fixtures/completeCategory.yml');
 
         $result = $this->statisticService->getStatisticsData();
 

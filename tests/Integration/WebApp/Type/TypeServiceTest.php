@@ -36,7 +36,7 @@ class TypeServiceTest extends TestCase
 
     public function testRemoveType()
     {
-        $fixtures = $this->load('tests/.fixtures/simpleType.yml');
+        $fixtures = $this->loadFile('tests/.fixtures/simpleType.yml');
 
         $result = $this->typeService->removeType($fixtures['type_1']);
 
@@ -81,7 +81,7 @@ class TypeServiceTest extends TestCase
 
     public function testUpdateType()
     {
-        $fixtures = $this->load('tests/.fixtures/simpleType.yml');
+        $fixtures = $this->loadFile('tests/.fixtures/simpleType.yml');
 
         $type = [
             'title' => 'Panorama',
@@ -97,7 +97,7 @@ class TypeServiceTest extends TestCase
 
     public function testUpdateTypeWithBadTitle()
     {
-        $fixtures = $this->load('tests/.fixtures/simpleType.yml');
+        $fixtures = $this->loadFile('tests/.fixtures/simpleType.yml');
 
         $type = [
             'title' => '',

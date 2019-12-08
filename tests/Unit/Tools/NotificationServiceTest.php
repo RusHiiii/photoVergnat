@@ -26,7 +26,7 @@ class NotificationServiceTest extends TestCase
 
     public function testSendMail()
     {
-        $entities = $this->load('tests/.fixtures/simpleUser.yml');
+        $entities = $this->loadFile('tests/.fixtures/simpleUser.yml');
 
         $result = $this->notificationService->sendEmail([$entities['user_1']], 'subject', 'message');
 

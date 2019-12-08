@@ -144,7 +144,7 @@ class DataValidatorService implements DataValidatorInterface
     {
         $image = new Assert\Image();
         $image->mimeTypesMessage = self::MSG_ERROR_IMAGE;
-        $image->maxSize = 30;
+        $image->maxSize = '30M';
 
         $errors = $this->validator->validate(
             $file,

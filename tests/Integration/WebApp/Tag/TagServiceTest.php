@@ -36,7 +36,7 @@ class TagServiceTest extends TestCase
 
     public function testRemoveTag()
     {
-        $fixtures = $this->load('tests/.fixtures/simpleTag.yml');
+        $fixtures = $this->loadFile('tests/.fixtures/simpleTag.yml');
 
         $result = $this->tagService->removeTag($fixtures['tag_1']);
 
@@ -85,7 +85,7 @@ class TagServiceTest extends TestCase
 
     public function testUpdateTag()
     {
-        $fixtures = $this->load('tests/.fixtures/simpleTag.yml');
+        $fixtures = $this->loadFile('tests/.fixtures/simpleTag.yml');
 
         $tag = [
             'title' => 'tagupdate',
@@ -102,7 +102,7 @@ class TagServiceTest extends TestCase
 
     public function testUpdateSeasonWithBadTitle()
     {
-        $fixtures = $this->load('tests/.fixtures/simpleTag.yml');
+        $fixtures = $this->loadFile('tests/.fixtures/simpleTag.yml');
 
         $tag = [
             'title' => '',
@@ -116,7 +116,7 @@ class TagServiceTest extends TestCase
 
     public function testGetLastAction()
     {
-        $this->load('tests/.fixtures/simpleTag.yml');
+        $this->loadFile('tests/.fixtures/simpleTag.yml');
 
         $result = $this->tagService->getLastAction();
 

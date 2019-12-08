@@ -62,12 +62,12 @@ App\Entity\WebApp\Photo:
     title: 'infrv'
     created: '<date_create()>'
     updated: '<date_create()>'
-    file: '1a844e6f9a651453654c7f39cd352fc89.jpeg'
+    file: 'test_photovergnat_1.jpeg'
   photo_2:
     type: '@type_1'
     tags: '[@tag_2]'
     title: 'infrv'
     created: '<date_create()>'
     updated: '<date_create()>'
-    file: '1a844e6f9a651453654c7f39cd352fc89.jpeg'
+    file: 'test_photovergnat_2.jpeg'
 

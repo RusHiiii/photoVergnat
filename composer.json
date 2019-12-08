@@ -35,6 +35,7 @@
         "twig/extensions": "^1.5"
     },
     "require-dev": {
+        "ext-gd": "^7.2",
         "doctrine/doctrine-fixtures-bundle": "^3.2",
         "fzaninotto/faker": "^1.8",
         "infection/infection": "^0.15.0",

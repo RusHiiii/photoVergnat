@@ -57,7 +57,7 @@ class Category
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\WebApp\Comment", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="App\Entity\WebApp\Comment", mappedBy="category", cascade={"remove"})
      */
     private $comments;
 

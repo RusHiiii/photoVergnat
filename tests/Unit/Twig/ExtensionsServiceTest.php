@@ -33,7 +33,7 @@ class ExtensionsServiceTest extends TestCase
 
     public function testGetClassName()
     {
-        $entities = $this->load('tests/.fixtures/completeCategory.yml');
+        $entities = $this->loadFile('tests/.fixtures/completeCategory.yml');
 
         $result = $this->extensionsService->getClassName($entities['photo_1']);
 
@@ -43,7 +43,7 @@ class ExtensionsServiceTest extends TestCase
 
     public function testGetAllClassName()
     {
-        $entities = $this->load('tests/.fixtures/completeCategory.yml');
+        $entities = $this->loadFile('tests/.fixtures/completeCategory.yml');
 
         $result = $this->extensionsService->getAllClassName([$entities['photo_1'], $entities['photo_2']]);
 
@@ -54,16 +54,16 @@ class ExtensionsServiceTest extends TestCase
 
     public function testGetMainPhotoUrl()
     {
-        $entities = $this->load('tests/.fixtures/completeCategory.yml');
+        $entities = $this->loadFile('tests/.fixtures/completeCategory.yml');
 
         $result = $this->extensionsService->getMainPhotoUrl($entities['category_1'], 'Paysage');
 
-        $this->assertEquals('1a844e6f9a651453654c7f39cd352fc89.jpeg', $result);
+        $this->assertEquals('test_photovergnat_1.jpeg', $result);
     }
 
     public function testHasRole()
     {
-        $entities = $this->load('tests/.fixtures/simpleUser.yml');
+        $entities = $this->loadFile('tests/.fixtures/simpleUser.yml');
 
         $result = $this->extensionsService->hasRole($entities['user_1'], 'ROLE_USER');
 

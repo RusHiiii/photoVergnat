@@ -10,6 +10,7 @@ namespace App\Service\WebApp\Category;
 
 use App\Entity\WebApp\Category;
 use App\Entity\WebApp\Photo;
+use App\Entity\WebApp\User;
 use App\Repository\WebApp\Category\Doctrine\CategoryRepository;
 use App\Repository\WebApp\Photo\Doctrine\PhotoRepository;
 use App\Repository\WebApp\Season\Doctrine\SeasonRepository;
@@ -75,7 +76,7 @@ class CategoryService
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws CategoryInvalidDataException
      */
-    public function createCategory(array $data): Category
+    public function createCategory(array $data, User $user): Category
     {
         /** Validation des données */
         $validatedData = $this->categoryValidatorService->checkCategory($data, CategoryValidator::TOKEN_CREATE);
@@ -84,7 +85,7 @@ class CategoryService
         }
 
         /** Insertion de la category et sauvegarde */
-        $category = $this->categoryAssembler->create($validatedData['data']);
+        $category = $this->categoryAssembler->create($validatedData['data'], $user);
 
         /** Sauvegarde */
         $this->entityManager->persist($category);

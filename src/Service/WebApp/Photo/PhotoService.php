@@ -73,6 +73,7 @@ class PhotoService
     {
         /** Validation des données */
         $validatedData = $this->photoValidatorService->checkCreatePhoto($data, $file, PhotoValidator::TOKEN_CREATE);
+
         if (count($validatedData['errors']) > 0) {
             throw new PhotoInvalidDataException($validatedData['errors'], PhotoInvalidDataException::PHOTO_INVALID_DATA_MESSAGE);
         }

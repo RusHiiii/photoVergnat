@@ -40,7 +40,7 @@ class InformationServiceTest extends TestCase
 
     public function testSendContactMail()
     {
-        $this->load('tests/.fixtures/simpleUser.yml');
+        $this->loadFile('tests/.fixtures/simpleUser.yml');
 
         $templating = $this->createMock(Environment::class);
         $templating->expects($this->any())->method('render')->willReturn(true);
