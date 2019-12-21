@@ -59,6 +59,7 @@ class CategoryAssembler
         $category->setActive($data['active']);
         $category->setLatitude($data['lat']);
         $category->setLongitude($data['lng']);
+        $category->setMetaDescription($data['metaDescription']);
         $category->setUser($user);
 
         $season = $this->seasonRepository->findById($data['season']);
@@ -109,6 +110,7 @@ class CategoryAssembler
         $category->setActive($data['active']);
         $category->setLatitude($data['lat']);
         $category->setLongitude($data['lng']);
+        $category->setMetaDescription($data['metaDescription']);
 
         $season = $this->seasonRepository->findById($data['season']);
         if ($season === null) {

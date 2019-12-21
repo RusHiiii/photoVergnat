@@ -13,7 +13,7 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-post-area wow fadeInUpBig">
                         <a href="#" class="post-thumbnail">
-                            <img class="lazy" data-src="{{ ('/images/uploads/' ~ (category | getMainPhotoUrl('Portrait') )) | imagine_filter('thumbnail_category') }}">
+                            <img alt="{{ category.title }}" class="lazy" data-src="{{ ('/images/uploads/' ~ (category | getMainPhotoUrl('Portrait') )) | imagine_filter('thumbnail_category') }}">
                         </a>
                         <div class="tags-category">
                             {% for tag in category.tags %}

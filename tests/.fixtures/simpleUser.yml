@@ -7,3 +7,11 @@ App\Entity\WebApp\User:
     roles: '[ROLE_USER]'
     created: '<date_create()>'
     updated: '<date_create()>'
+  user_2:
+    firstname: 'florent'
+    lastname: 'damiens'
+    email: 'admin@orange.fr'
+    password: 'test'
+    roles: '[ROLE_USER]'
+    created: '<date_create()>'
+    updated: '<date_create()>'

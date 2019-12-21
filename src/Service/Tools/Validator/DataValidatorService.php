@@ -9,6 +9,7 @@
 namespace App\Service\Tools\Validator;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Security\Core\Role\RoleHierarchy;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -207,6 +208,7 @@ class DataValidatorService implements DataValidatorInterface
      */
     public function validateExist(array $data, string $key, string $value): bool
     {
+
         if (!isset($data[$key])) {
             $this->errors[] = sprintf(self::MSG_ERROR_EMPTY, $value);
             return false;

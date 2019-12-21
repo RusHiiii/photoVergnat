@@ -43,7 +43,7 @@ class ToolsService
     {
         $string = str_replace(' ', '-', $value);
 
-        return preg_replace('/[^A-Za-z0-9\-]/', '', $string);
+        return strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', $string));
     }
 
     /**

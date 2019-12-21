@@ -6,6 +6,9 @@
 parameters:
     photo_directory: '%kernel.project_dir%/tests/.fixtures/images/uploads/'
 
+fidry_alice_data_fixtures:
+    default_purge_mode: 'truncate'
+
 services:
     App\Service\Tools\FileUploaderService:
         arguments:

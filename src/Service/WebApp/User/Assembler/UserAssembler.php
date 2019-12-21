@@ -50,13 +50,16 @@ class UserAssembler
      * @return User
      * @throws UserNotFoundException
      */
-    public function edit(User $user, array $data)
+    public function editProfile(User $user, array $data)
     {
         if ($user == null) {
             throw new UserNotFoundException(['User inexistant'], UserNotFoundException::USER_NOT_FOUND_MESSAGE);
         }
 
-        $user->setEmail($data['email']);
+        if (!$this->userRepository->isEmailExist($data['email'])) {
+            $user->setEmail($data['email']);
+        }
+
         $user->setFirstname($data['firstname']);
         $user->setLastname($data['lastname']);
 
@@ -67,6 +70,23 @@ class UserAssembler
         if (isset($data['roles'])) {
             $user->setRoles($data['roles']);
         }
+
+        return $user;
+    }
+
+    /**
+     * Edition d'un user
+     * @param User $user
+     * @param array $data
+     * @return User
+     * @throws UserNotFoundException
+     */
+    public function editUser(User $user, array $data)
+    {
+        $user = $this->editProfile($user, $data);
+
+        $user->setCreated(new \DateTime($data['created']));
+        $user->setRoles($data['roles']);
 
         return $user;
     }

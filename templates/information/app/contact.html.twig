@@ -1,6 +1,9 @@
 {% extends 'elements/layout/app/base.html.twig' %}
 
 {% block title %}Photo'Vergnat - Contact{% endblock %}
+{% block description %}Formulaire de contact pour envoyer un message au développeur du site photovergnat.fr{% endblock %}
+{% block descriptionOpenGraph %}Formulaire de contact pour envoyer un message au développeur du site photovergnat.fr{% endblock %}
+{% block imageOpenGraph %}{{ app.request.getSchemeAndHttpHost() ~ asset('/theme/img/bg-img/2.jpg') }}{% endblock %}
 
 {% block body %}
     <!-- Breadcrumb Area Start -->

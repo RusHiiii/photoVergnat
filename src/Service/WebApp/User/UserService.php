@@ -51,7 +51,7 @@ class UserService
      * @throws Exceptions\UserNotFoundException
      * @throws UserInvalidDataException
      */
-    public function updateProfile(array $data): User
+    public function updateProfile(array $data, User $user): User
     {
         /** Validation des données */
         $validatedData = $this->userValidatorService->checkUpdateProfile($data, UserValidator::TOKEN_UPDATE_USER);
@@ -60,8 +60,7 @@ class UserService
         }
 
         /** Récupération de l'utilisateur */
-        $user = $this->security->getUser();
-        $user = $this->userAssembler->edit($user, $validatedData['data']);
+        $user = $this->userAssembler->editProfile($user, $validatedData['data']);
 
         /** Sauvegarde */
         $this->entityManager->flush();
@@ -86,7 +85,7 @@ class UserService
         }
 
         /** MàJ de l'utilisateur et sauvegarde */
-        $user = $this->userAssembler->edit($user, $validatedData['data']);
+        $user = $this->userAssembler->editUser($user, $validatedData['data']);
 
         /** Sauvegarde */
         $this->entityManager->flush();
@@ -122,18 +121,16 @@ class UserService
     /**
      * Suppression d'un utilisateur
      * @param User $user
-     * @return array
+     * @return bool
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function removeUser(User $user): array
+    public function removeUser(User $user): bool
     {
         /** Suppression */
         $this->entityManager->remove($user);
         $this->entityManager->flush();
 
-        return [
-            'errors' => []
-        ];
+        return true;
     }
 
     /**

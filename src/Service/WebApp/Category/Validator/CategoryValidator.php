@@ -50,6 +50,7 @@ class CategoryValidator
         $this->validatorService->validateNotBlank($data['city'], 'Ville');
         $this->validatorService->validateNotBlank($data['lat'], 'Latitude');
         $this->validatorService->validateNotBlank($data['lng'], 'Longitude');
+        $this->validatorService->validateNotBlank($data['metaDescription'], 'SEO');
         $this->validatorService->validateExist($data, 'season', 'Saison');
         $this->validatorService->validateExist($data, 'tags', 'Tags');
         $this->validatorService->validateExist($data, 'photos', 'Photos');

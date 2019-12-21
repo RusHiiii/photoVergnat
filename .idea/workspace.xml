@@ -3,27 +3,28 @@
   <component name="ChangeListManager">
     <list default="true" id="6d0ad162-b511-4cf7-bc8e-e12bdd55a0fa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services_test.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services_test.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Category/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Category/XhrController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/User/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/User/XhrController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/WebApp/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/WebApp/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/WebApp/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/WebApp/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/WebApp/User/Doctrine/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/WebApp/User/Doctrine/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/Tools/ToolsService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Tools/ToolsService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/Tools/Validator/DataValidatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Tools/Validator/DataValidatorService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Category/Assembler/CategoryAssembler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Category/Assembler/CategoryAssembler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Category/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Category/CategoryService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/.fixtures/completeCategory.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/.fixtures/completeCategory.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Integration/WebApp/Comment/CommentServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/WebApp/Comment/CommentServiceTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Integration/WebApp/Information/InformationServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/WebApp/Information/InformationServiceTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Integration/WebApp/Season/SeasonServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/WebApp/Season/SeasonServiceTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Integration/WebApp/Statistic/StatisticServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/WebApp/Statistic/StatisticServiceTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Integration/WebApp/Tag/TagServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/WebApp/Tag/TagServiceTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Integration/WebApp/Type/TypeServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/WebApp/Type/TypeServiceTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/Tools/FileUploaderServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Tools/FileUploaderServiceTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/Tools/NotificationServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Tools/NotificationServiceTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/Twig/ExtensionsServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Twig/ExtensionsServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Category/Validator/CategoryValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Category/Validator/CategoryValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/User/Assembler/UserAssembler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/User/Assembler/UserAssembler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/User/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/User/UserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/category/app/gallery.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/category/app/gallery.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/category/app/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/category/app/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/category/xhr/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/category/xhr/create.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/category/xhr/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/category/xhr/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/elements/layout/app/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/elements/layout/app/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/elements/shared/app/recent_categories.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/elements/shared/app/recent_categories.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/information/app/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/information/app/contact.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/information/app/information.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/information/app/information.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/app/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/app/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/app/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/app/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/.fixtures/simpleUser.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/.fixtures/simpleUser.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,32 +70,57 @@
     <favorites_list name="photovergnat" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Photo/PhotoServiceTest.php">
+        <entry file="file://$PROJECT_DIR$/.env.local">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-544">
-              <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+            <state relative-caret-position="68">
+              <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/TestCase.php">
+        <entry file="file://$PROJECT_DIR$/templates/information/app/information.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="43" column="32" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="32" />
+            <state relative-caret-position="516">
+              <caret line="32" column="321" selection-start-line="32" selection-start-column="321" selection-end-line="32" selection-end-column="321" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/category/app/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="22" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/packages/prod/monolog.yaml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/packages/prod/doctrine.yaml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>App\Service\WebApp\Comment\CommentValidatorService</find>
-      <find>InformationValidatorService</find>
-      <find>App\Service\WebApp\Information\InformationValidatorService</find>
       <find>App\Service\WebApp\Photo\PhotoValidatorService</find>
       <find>App\EventListener\CategoryEntityListener</find>
       <find>App\EventListener\CommentEntityListener</find>
@@ -122,6 +148,9 @@
       <find>================</find>
       <find>cascade</find>
       <find>onDelete</find>
+      <find>&lt;img</find>
+      <find>X-Robots-Tag</find>
+      <find>style.css.map</find>
     </findStrings>
     <replaceStrings>
       <replace>App\Service\WebApp\Tag\TagValidatorService</replace>
@@ -158,6 +187,8 @@
     <dirStrings>
       <dir>C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\src</dir>
       <dir>C:\Users\Flo\Desktop\symfonyPhoto\photovergnat</dir>
+      <dir>C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\templates\main</dir>
+      <dir>C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\templates</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -166,30 +197,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tests/Unit/Tools/Error/Factory/ErrorFactory.php" />
-        <option value="$PROJECT_DIR$/infection.json.dist" />
-        <option value="$PROJECT_DIR$/tests/.fixtures/categories.yml" />
-        <option value="$PROJECT_DIR$/tests/IntegrationTestCase.php" />
-        <option value="$PROJECT_DIR$/vendor/theofidry/alice-data-fixtures/src/Loader/FileResolverLoader.php" />
-        <option value="$PROJECT_DIR$/vendor/theofidry/alice-data-fixtures/src/Loader/PersisterLoader.php" />
-        <option value="$PROJECT_DIR$/tests/.fixtures/simpleUser.yml" />
-        <option value="$PROJECT_DIR$/src/Entity/WebApp/User.php" />
-        <option value="$PROJECT_DIR$/src/EventListener/WebApp/CategoryEntityListener.php" />
-        <option value="$PROJECT_DIR$/tests/Integration/Tools/NotificationServiceTest.php" />
-        <option value="$PROJECT_DIR$/tests/Integration/Twig/ExtensionsServiceTest.php" />
-        <option value="$PROJECT_DIR$/src/Service/Twig/ExtensionsService.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/tests/.fixtures/simpleSeason.yml" />
-        <option value="$PROJECT_DIR$/src/Service/WebApp/Season/SeasonService.php" />
-        <option value="$PROJECT_DIR$/config/services.yaml" />
-        <option value="$PROJECT_DIR$/src/Repository/WebApp/Season/Doctrine/SeasonRepository.php" />
-        <option value="$PROJECT_DIR$/tests/Integration/WebApp/Season/SeasonServiceTest.php" />
-        <option value="$PROJECT_DIR$/tests/.fixtures/simpleType.yml" />
-        <option value="$PROJECT_DIR$/src/Repository/WebApp/Type/Doctrine/TypeRepository.php" />
-        <option value="$PROJECT_DIR$/tests/Integration/WebApp/Type/TypeServiceTest.php" />
-        <option value="$PROJECT_DIR$/tests/Unit/Tools/ToolsServiceTest.php" />
-        <option value="$PROJECT_DIR$/tests/Unit/Tools/NotificationServiceTest.php" />
-        <option value="$PROJECT_DIR$/tests/Unit/Tools/Validator/DataValidatorServiceTest.php" />
         <option value="$PROJECT_DIR$/tests/Unit/Tools/Error/Factory/ErrorFactoryTest.php" />
         <option value="$PROJECT_DIR$/tests/.fixtures/simpleTag.yml" />
         <option value="$PROJECT_DIR$/src/Repository/WebApp/Tag/Doctrine/TagRepository.php" />
@@ -199,24 +206,48 @@
         <option value="$PROJECT_DIR$/src/Service/WebApp/Comment/CommentService.php" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/src/Service/Tools/Validator/DataValidatorService.php" />
         <option value="$PROJECT_DIR$/src/Service/Tools/FileUploaderService.php" />
-        <option value="$PROJECT_DIR$/config/services_test.yaml" />
         <option value="$PROJECT_DIR$/tests/Integration/WebApp/Comment/CommentServiceTest.php" />
         <option value="$PROJECT_DIR$/src/EventListener/WebApp/PhotoEntityListener.php" />
         <option value="$PROJECT_DIR$/src/Service/WebApp/Photo/Assembler/PhotoAssembler.php" />
         <option value="$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php" />
         <option value="$PROJECT_DIR$/tests/.fixtures/completeCategory.yml" />
         <option value="$PROJECT_DIR$/tests/Unit/Twig/ExtensionsServiceTest.php" />
-        <option value="$PROJECT_DIR$/tests/TestCase.php" />
         <option value="$PROJECT_DIR$/tests/Unit/Tools/FileUploaderServiceTest.php" />
         <option value="$PROJECT_DIR$/tests/Integration/WebApp/Photo/PhotoServiceTest.php" />
-        <option value="$PROJECT_DIR$/src/Entity/WebApp/Category.php" />
         <option value="$PROJECT_DIR$/src/Entity/WebApp/Comment.php" />
-        <option value="$PROJECT_DIR$/src/Service/WebApp/Category/Assembler/CategoryAssembler.php" />
         <option value="$PROJECT_DIR$/src/Controller/Category/XhrController.php" />
         <option value="$PROJECT_DIR$/src/Service/WebApp/Category/CategoryService.php" />
         <option value="$PROJECT_DIR$/tests/Integration/WebApp/Category/CategoryServiceTest.php" />
+        <option value="$PROJECT_DIR$/src/Controller/User/XhrController.php" />
+        <option value="$PROJECT_DIR$/tests/.fixtures/simpleUser.yml" />
+        <option value="$PROJECT_DIR$/src/Repository/WebApp/User/Doctrine/UserRepository.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/User/Assembler/UserAssembler.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/User/Validator/UserValidator.php" />
+        <option value="$PROJECT_DIR$/src/Service/Tools/Validator/DataValidatorService.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/User/UserService.php" />
+        <option value="$PROJECT_DIR$/tests/Integration/WebApp/User/UserServiceTest.php" />
+        <option value="$PROJECT_DIR$/tests/TestCase.php" />
+        <option value="$PROJECT_DIR$/public/robots.txt" />
+        <option value="$PROJECT_DIR$/src/Entity/WebApp/Category.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/Category/Validator/CategoryValidator.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/Category/Assembler/CategoryAssembler.php" />
+        <option value="$PROJECT_DIR$/templates/category/xhr/edit.html.twig" />
+        <option value="$PROJECT_DIR$/templates/category/xhr/create.html.twig" />
+        <option value="$PROJECT_DIR$/templates/information/app/contact.html.twig" />
+        <option value="$PROJECT_DIR$/templates/user/app/index.html.twig" />
+        <option value="$PROJECT_DIR$/templates/main/app/index.html.twig" />
+        <option value="$PROJECT_DIR$/templates/elements/shared/app/recent_categories.html.twig" />
+        <option value="$PROJECT_DIR$/templates/category/app/gallery.html.twig" />
+        <option value="$PROJECT_DIR$/src/Service/Tools/ToolsService.php" />
+        <option value="$PROJECT_DIR$/templates/elements/layout/app/base.html.twig" />
+        <option value="$PROJECT_DIR$/config/services.yaml" />
+        <option value="$PROJECT_DIR$/config/services_test.yaml" />
+        <option value="$PROJECT_DIR$/config/routes/dev/framework.yaml" />
+        <option value="$PROJECT_DIR$/.env.local" />
+        <option value="$PROJECT_DIR$/templates/category/app/index.html.twig" />
+        <option value="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error.html.twig" />
+        <option value="$PROJECT_DIR$/templates/information/app/information.html.twig" />
       </list>
     </option>
   </component>
@@ -371,8 +402,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="705" />
-    <option name="y" value="-20" />
+    <option name="x" value="377" />
+    <option name="y" value="-23" />
     <option name="width" value="960" />
     <option name="height" value="1035" />
   </component>
@@ -382,7 +413,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -398,135 +428,117 @@
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="packages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="packages" type="462c0819:PsiDirectoryNode" />
+              <item name="dev" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-              <item name="Category" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="packages" type="462c0819:PsiDirectoryNode" />
+              <item name="prod" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Entity" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Entity" type="462c0819:PsiDirectoryNode" />
-              <item name="WebApp" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="dev" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="EventListener" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="EventListener" type="462c0819:PsiDirectoryNode" />
-              <item name="WebApp" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Service" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Service" type="462c0819:PsiDirectoryNode" />
-              <item name="Tools" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="bundles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Service" type="462c0819:PsiDirectoryNode" />
-              <item name="WebApp" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="bundles" type="462c0819:PsiDirectoryNode" />
+              <item name="TwigBundle" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Service" type="462c0819:PsiDirectoryNode" />
-              <item name="WebApp" type="462c0819:PsiDirectoryNode" />
-              <item name="Category" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="bundles" type="462c0819:PsiDirectoryNode" />
+              <item name="TwigBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Exception" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="category" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name=".fixtures" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="category" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name=".fixtures" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="information" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="Integration" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="information" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="Integration" type="462c0819:PsiDirectoryNode" />
-              <item name="WebApp" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="Integration" type="462c0819:PsiDirectoryNode" />
-              <item name="WebApp" type="462c0819:PsiDirectoryNode" />
-              <item name="Photo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="Unit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="var" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="var" type="462c0819:PsiDirectoryNode" />
-              <item name="log" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -534,7 +546,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="database.data.extractors.current.id" value="Tab-separated (TSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -543,11 +555,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\templates\bundles\TwigBundle\Exception" />
+      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\config\routes\dev" />
+      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\tests\Integration\WebApp\User" />
       <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\tests\Integration\WebApp\Category" />
       <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\tests\.fixtures\images\uploads" />
-      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\tests\Integration\WebApp\Photo" />
-      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\tests\Integration\WebApp\Comment" />
-      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\tests\Integration\WebApp\Information" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\tests\.fixtures\images\uploads" />
@@ -666,7 +678,9 @@
       <workItem from="1575118621278" duration="15293000" />
       <workItem from="1575207869560" duration="18748000" />
       <workItem from="1575724846665" duration="15843000" />
-      <workItem from="1575811498733" duration="13950000" />
+      <workItem from="1575811498733" duration="15540000" />
+      <workItem from="1575836609822" duration="2209000" />
+      <workItem from="1576933680024" duration="13100000" />
     </task>
     <servers />
   </component>
@@ -676,13 +690,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="376323000" />
+    <option name="totallyTimeSpent" value="393222000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4957627" visible="true" weight="0.252349" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4957627" visible="true" weight="0.21140939" />
       <window_info id="Structure" order="1" sideWeight="0.5042373" side_tool="true" weight="0.19261745" />
       <window_info id="Favorites" order="2" sideWeight="0.50141245" side_tool="true" weight="0.25302014" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -718,307 +732,68 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/packages/twig_extensions.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/assets.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/elements/layout/app/mail.html.twig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/validator.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Information/InformationService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="26" column="39" selection-start-line="24" selection-start-column="8" selection-end-line="26" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Tag/TagServiceTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="92" column="23" selection-start-line="92" selection-start-column="23" selection-end-line="92" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Information/InformationServiceTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Comment/Validator/CommentValidator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Comment/Assembler/CommentAssembler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Comment/CommentService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Repository/WebApp/Comment/Doctrine/CommentRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Season/SeasonServiceTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="91" column="5" selection-start-line="77" selection-start-column="4" selection-end-line="91" selection-end-column="5" />
-          <folding>
-            <element signature="e#135#164#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env.test">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env.local">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/var/log/dev.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/var/log/test.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="27659" column="38" selection-start-line="27659" selection-start-column="38" selection-end-line="27659" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/services.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/.fixtures/images/logo.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/.fixtures/images/187b845fa86a2cab5b1c98cd763f0d2c.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/http-foundation/File/UploadedFile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="74" column="27" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="37" column="25" lean-forward="true" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/validator/Validator/RecursiveValidator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="96" column="20" selection-start-line="96" selection-start-column="20" selection-end-line="96" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/validator/Constraints/Image.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-459">
-          <caret line="22" column="33" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/validator/Validator/TraceableValidator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="65" column="42" lean-forward="true" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/validator/Validator/ValidatorInterface.php">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/User/Validator/UserValidator.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+          <caret line="120" column="20" selection-start-line="120" selection-start-column="20" selection-end-line="120" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Photo/Validator/PhotoValidator.php">
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/security-core/Encoder/UserPasswordEncoderInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="51" column="38" selection-start-line="51" selection-start-column="38" selection-end-line="51" selection-end-column="38" />
+        <state relative-caret-position="391">
+          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/Tools/Validator/DataValidatorService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="144" column="36" selection-start-line="144" selection-start-column="36" selection-end-line="144" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/Tools/FileUploaderService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EventListener/WebApp/PhotoEntityListener.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Photo/Assembler/PhotoAssembler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="88" selection-start-line="88" selection-end-line="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/gd/gd.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="1096" column="9" selection-start-line="1096" selection-start-column="9" selection-end-line="1096" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/.fixtures/completeCategory.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="58" column="10" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Unit/Tools/ToolsServiceTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-360" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Unit/Twig/ExtensionsServiceTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="779">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Unit/Tools/FileUploaderServiceTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="e#120#162#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="148" column="41" selection-start-line="148" selection-start-column="20" selection-end-line="148" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/WebApp/Photo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/WebApp/Comment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="41" column="57" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/WebApp/Category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-374">
-          <caret line="62" selection-start-line="62" selection-end-line="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Category/Validator/CategoryValidator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="54" column="74" selection-start-line="46" selection-start-column="8" selection-end-line="54" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Category/Assembler/CategoryAssembler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="50" column="20" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Category/XhrController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="158" column="34" selection-start-line="158" selection-start-column="34" selection-end-line="158" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Category/AppController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="47" column="40" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Comment/CommentServiceTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="89" column="5" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
-          <folding>
-            <element signature="e#136#166#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Category/CategoryService.php">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/User/Assembler/UserAssembler.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="473">
-          <caret line="186" column="43" selection-start-line="186" selection-start-column="20" selection-end-line="186" selection-end-column="43" />
+          <caret line="106" column="83" selection-start-line="106" selection-start-column="51" selection-end-line="106" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/.fixtures/simpleUser.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="37" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Category/CategoryServiceTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="198" column="39" selection-start-line="198" selection-start-column="39" selection-end-line="198" selection-end-column="39" />
+        <state relative-caret-position="-2230">
+          <caret line="36" column="4" selection-start-line="36" selection-start-column="4" selection-end-line="44" selection-end-column="5" />
           <folding>
             <element signature="e#137#168#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/services_test.yaml">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/User/UserService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
+        <state relative-caret-position="218">
+          <caret line="163" column="33" selection-start-line="163" selection-start-column="20" selection-end-line="163" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/test/nelmio_alice.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/test/routing.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/User/UserServiceTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/TestCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="27" column="81" selection-start-line="27" selection-start-column="81" selection-end-line="27" selection-end-column="81" />
         </state>
       </provider>
     </entry>
@@ -1026,23 +801,228 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="542">
-            <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="57" />
+            <caret line="36" column="54" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="57" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Photo/PhotoServiceTest.php">
+    <entry file="file://$PROJECT_DIR$/templates/category/app/elements/breadcrumb.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-544">
-          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+        <state>
+          <caret column="164" selection-start-column="95" selection-end-column="164" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/TestCase.php">
+    <entry file="file://$PROJECT_DIR$/src/Entity/WebApp/Category.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="43" column="32" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="32" />
+        <state relative-caret-position="-2652">
+          <caret line="100" column="27" selection-start-line="100" selection-start-column="27" selection-end-line="100" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Category/Validator/CategoryValidator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="52" column="80" selection-start-line="52" selection-start-column="80" selection-end-line="52" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Category/CategoryService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="117" column="47" selection-start-line="117" selection-start-column="47" selection-end-line="117" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Category/Assembler/CategoryAssembler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="114" column="69" selection-start-line="114" selection-start-column="69" selection-end-line="114" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/category/xhr/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="132" column="20" selection-start-line="132" selection-start-column="20" selection-end-line="139" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/category/xhr/create.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="95" column="51" lean-forward="true" selection-start-line="95" selection-start-column="51" selection-end-line="95" selection-end-column="51" />
+          <folding>
+            <element signature="n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/category/app/gallery.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/static/message.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/static/messages.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/theme/img/bg-img/1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/theme/img/bg-img/3.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/theme/img/bg-img/2.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/user/app/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="95" selection-start-line="4" selection-start-column="95" selection-end-line="4" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Menu/MenuBuilder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="69" column="65" selection-start-line="69" selection-start-column="65" selection-end-line="69" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/Twig/ExtensionsService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="120" column="32" selection-start-line="120" selection-start-column="15" selection-end-line="120" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/Tools/ToolsService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/elements/layout/app/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/robots.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/services_test.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="49" lean-forward="true" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/information/app/contact.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="31" lean-forward="true" selection-end-line="76" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/main/app/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="48" column="14" selection-start-line="39" selection-start-column="4" selection-end-line="48" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes/dev/framework.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/services.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error403.html.twig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/dev/debug.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/prod/webpack_encore.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/cache.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/framework.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/twig.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/twig_extensions.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/prod/monolog.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error404.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/prod/doctrine.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/category/app/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="22" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env.local">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/information/app/information.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="32" column="321" selection-start-line="32" selection-start-column="321" selection-end-line="32" selection-end-column="321" />
         </state>
       </provider>
     </entry>

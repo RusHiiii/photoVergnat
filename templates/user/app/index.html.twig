@@ -1,6 +1,9 @@
 {% extends 'elements/layout/app/base.html.twig' %}
 
 {% block title %}Photo'Vergnat - Profil{% endblock %}
+{% block description %}Modifiez les paramètres de votre profil utilisateur sur le site{% endblock %}
+{% block descriptionOpenGraph %}Modifiez les paramètres de votre profil utilisateur sur le site{% endblock %}
+{% block imageOpenGraph %}{{ app.request.getSchemeAndHttpHost() ~ asset('/theme/img/bg-img/1.jpg') }}{% endblock %}
 
 {% block body %}
     <!-- Breadcrumb Area Start -->

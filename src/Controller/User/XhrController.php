@@ -40,7 +40,7 @@ class XhrController extends AbstractController
         $data = $request->request->all();
 
         try {
-            $resultEdit = $userService->updateProfile($data['user']);
+            $resultEdit = $userService->updateProfile($data['user'], $this->getUser());
         } catch (UserInvalidDataException $e) {
             return new JsonResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),

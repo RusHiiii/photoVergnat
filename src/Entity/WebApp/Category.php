@@ -96,6 +96,12 @@ class Category
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="text")
+     * @Groups({"default"})
+     */
+    private $metaDescription;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -326,6 +332,18 @@ class Category
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getMetaDescription(): ?string
+    {
+        return $this->metaDescription;
+    }
+
+    public function setMetaDescription(string $metaDescription): self
+    {
+        $this->metaDescription = $metaDescription;
 
         return $this;
     }

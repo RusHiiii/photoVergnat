@@ -6,9 +6,6 @@
 parameters:
     photo_directory: '%kernel.project_dir%/public/images/uploads/'
 
-fidry_alice_data_fixtures:
-    default_purge_mode: 'truncate'
-
 services:
     # default configuration for services in *this* file
     _defaults:

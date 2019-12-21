@@ -1,6 +1,9 @@
 {% extends 'elements/layout/app/base.html.twig' %}
 
 {% block title %}Photo'Vergnat - A propos{% endblock %}
+{% block description %}Retrouvez toutes les informations concernant l'appareil photo que j'utilise et mon parcours{% endblock %}
+{% block descriptionOpenGraph %}Retrouvez toutes les informations concernant l'appareil photo que j'utilise et mon parcours{% endblock %}
+{% block imageOpenGraph %}{{ app.request.getSchemeAndHttpHost() ~ asset('/theme/img/bg-img/3.jpg') }}{% endblock %}
 
 {% block body %}
     <!-- Breadcrumb Area Start -->
@@ -14,20 +17,20 @@
                     <div class="about-us-content">
                         <h3 class="wow fadeInUp" data-wow-delay="100ms">A propos de moi</h3>
                         <div class="line wow fadeInUp" data-wow-delay="200ms"></div>
-                        <p class="wow fadeInUp" data-wow-delay="300ms">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et do sunt explicabo. Nemo enim ipsam et dolore magnam aliquam quaerat voluptatem.</p>
-                        <p class="wow fadeInUp" data-wow-delay="400ms">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et do sunt explicabo. Nemo enim ipsam et dolore magnam aliquam quaerat voluptatem.</p>
+                        <p class="wow fadeInUp" data-wow-delay="300ms">Développeur de profession, je me suis lancé, un peu par hasard, dans la photo en 2018, avec un LUMIX FZ2000 pour commencer puis j'ai très rapidement acquis un CANON EOS 77D avec un 18-135 mm.</p>
+                        <p class="wow fadeInUp" data-wow-delay="400ms">Ne connaissant rien à la photo les débuts ont été un peu difficile ! Mais l'Auvergne est un terrain de jeu idéal quand on commence, les paysages sont nombreux et les possibilités infini dans cette région.</p>
                     </div>
                 </div>
                 <div class="col-12 col-lg-6 mb-30">
                     <div class="about-area wow fadeInUp" data-wow-delay="100ms">
-                        <img src="{{ '/theme/img/bg-img/3.jpg' | imagine_filter('standard') }}">
+                        <img alt="A propos" src="{{ '/theme/img/bg-img/3.jpg' | imagine_filter('standard') }}">
 
                     </div>
                 </div>
                 <div class="col-12 col-lg-12">
                     <div class="about-us-content">
-                        <p class="wow fadeInUp" data-wow-delay="300ms">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et do sunt explicabo. Nemo enim ipsam et dolore magnam aliquam quaerat voluptatem.</p>
-                        <p class="wow fadeInUp" data-wow-delay="400ms">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et do sunt explicabo. Nemo enim ipsam et dolore magnam aliquam quaerat voluptatem.</p>
+                        <p class="wow fadeInUp" data-wow-delay="300ms">Après avoir pris en main sont équipement (enfin) il est temps de partir à la découverte de la région: du lac Pavin au Puy Pariou en passant par la cascade de Nébouzat je suis jamais à cours d'idée pour explorer le Puy-de-Dôme et ses alentours !</p>
+                        <p class="wow fadeInUp" data-wow-delay="400ms">Il n'y a pas d'époque pour faire de la photo en Auvergne ! Au printemps on profite des nombreuses cascades (Nébouzat, Mont Dore...), en été de la voie lactée, en automne des lacs d'altitude (lac Pavin) et en hiver des stations de ski comme au Lioran.</p>
                     </div>
                 </div>
                 <a href="{{ path('app_contact') }}" class="btn alime-btn btn-2 mt-30 wow fadeInUp" data-wow-delay="500ms">Contactez-moi</a>
@@ -45,7 +48,7 @@
                             <i class="fa fa-camera" aria-hidden="true"></i>
                         </div>
                         <h4>Matériel</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut elit, sed do eiusmod te</p>
+                        <p>Un CANON EOS 77D avec 3 objectifs: EF-S 18-135 mm F/3,5-5,6 STM + EF 50mm F/1,8 STM + 14mm F/2.8 Samyang. Et un trepied en accessoire: K&F Concept TM2324</p>
                     </div>
                 </div>
 
@@ -55,7 +58,7 @@
                             <i class="fa fa-map" aria-hidden="true"></i>
                         </div>
                         <h4>Localisation</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut elit, sed do eiusmod te</p>
+                        <p>Habitant à Clermont-Ferrand je pars régulièrement faire des photos à travers le Puy-de-Dôme et en Savoie, pour faire des photos de paysage et de cascade.</p>
                     </div>
                 </div>
 
@@ -65,7 +68,7 @@
                             <i class="fa fa-mortar-board" aria-hidden="true"></i>
                         </div>
                         <h4>Expérience</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur isicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut elit, sed do eiusmod te</p>
+                        <p>J'ai découvert la photo par hasard grâce à un ami avec qui je pars régulierement faire des photos de cascade et de la voie lactée dans le Puy-de-Dôme.</p>
                     </div>
                 </div>
             </div>

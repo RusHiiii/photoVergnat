@@ -32,6 +32,22 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
     }
 
     /**
+     * Check si le user existe
+     * @param string $email
+     * @return bool
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function isEmailExist(string $email)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.email = :email')
+            ->setParameter('email', $email)
+            ->getQuery()
+            ->getOneOrNullResult() == null ? false : true
+            ;
+    }
+
+    /**
      * Récupération d'un utilisateur
      * @param int $id
      * @return mixed

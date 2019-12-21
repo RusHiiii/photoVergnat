@@ -1,6 +1,9 @@
 {% extends 'elements/layout/app/base.html.twig' %}
 
 {% block title %}Photo'Vergnat - {{ category.title }}{% endblock %}
+{% block description %}{{ category.metaDescription }}{% endblock %}
+{% block descriptionOpenGraph %}{{ category.metaDescription }}{% endblock %}
+{% block imageOpenGraph %}{{ ('/images/uploads/' ~ (category | getMainPhotoUrl('Paysage'))) | imagine_filter('thumbnail') }}{% endblock %}
 
 {% block body %}
     <!-- Breadcrumb Area Start -->
@@ -16,7 +19,7 @@
 
                         <div class="text-center">
                             <a href="{{ path('app_category_photo', {'id': category.id, 'slug': category.title | slugify() }) }}">
-                                <button type="submit" class="btn alime-btn btn-2 mb-15">Voir la gallerie</button>
+                                <button class="btn alime-btn btn-2 mb-15">Voir la gallerie</button>
                             </a>
                         </div>
 
@@ -82,7 +85,7 @@
                                 <li class="single_comment_area">
                                     <div class="comment-content d-flex">
                                         <div class="comment-author">
-                                            <img src="/theme/img/bg-img/Person.jpg">
+                                            <img alt="Utilisateur" src="/theme/img/bg-img/Person.jpg">
                                         </div>
                                         <div class="comment-meta">
                                             <a href="#" class="post-date">{{ comment.created | localizeddate('none', 'none', null, null, 'MMMM Y') | capitalize }}</a>
