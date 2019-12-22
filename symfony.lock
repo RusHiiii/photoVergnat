@@ -1,9 +1,49 @@
 {
+    "behat/behat": {
+        "version": "v3.5.0"
+    },
+    "behat/gherkin": {
+        "version": "v4.6.0"
+    },
+    "behat/mink": {
+        "version": "1.7.x-dev"
+    },
+    "behat/mink-browserkit-driver": {
+        "version": "1.3.3"
+    },
+    "behat/mink-extension": {
+        "version": "2.3.1"
+    },
+    "behat/symfony2-extension": {
+        "version": "2.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.1",
+            "ref": "158be9d4b4c2127d9ec741c97e3cb1b6610b5294"
+        },
+        "files": [
+            "./behat.yml.dist",
+            "./config/bootstrap.php",
+            "./features/bootstrap/FeatureContext.php",
+            "./features/bootstrap/bootstrap.php",
+            "./features/demo.feature"
+        ]
+    },
+    "behat/transliterator": {
+        "version": "v1.2.0"
+    },
     "composer/semver": {
         "version": "1.5.0"
     },
     "composer/xdebug-handler": {
         "version": "1.3.3"
+    },
+    "container-interop/container-interop": {
+        "version": "1.2.0"
+    },
+    "dmore/chrome-mink-driver": {
+        "version": "2.7.0"
     },
     "doctrine/annotations": {
         "version": "1.0",
@@ -303,6 +343,9 @@
     },
     "symfony/cache-contracts": {
         "version": "v1.1.5"
+    },
+    "symfony/class-loader": {
+        "version": "v3.4.36"
     },
     "symfony/config": {
         "version": "v4.3.2"
@@ -667,6 +710,9 @@
     },
     "symfony/yaml": {
         "version": "v4.3.2"
+    },
+    "textalk/websocket": {
+        "version": "1.2.0"
     },
     "thecodingmachine/safe": {
         "version": "v0.1.16"

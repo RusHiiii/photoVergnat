@@ -45,6 +45,7 @@ App\Entity\WebApp\Category:
     description: 'dezdezde'
     photos: '[@photo_1, @photo_2]'
     active: '0'
+    metaDescription: 'rrrr'
 
 App\Entity\WebApp\Comment:
   comment_1:
