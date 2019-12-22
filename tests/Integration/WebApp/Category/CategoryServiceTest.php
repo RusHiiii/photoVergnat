@@ -57,7 +57,8 @@ class CategoryServiceTest extends TestCase
             'season' => '1',
             'tags' => '[1]',
             'photos' => '[1]',
-            'token' => 'badToken'
+            'token' => 'badToken',
+            'metaDescription' => 'test'
         ];
 
         $this->expectException(CategoryInvalidDataException::class);
@@ -77,7 +78,8 @@ class CategoryServiceTest extends TestCase
             'season' => '1',
             'tags' => '[1]',
             'photos' => '[1]',
-            'token' => 'badToken'
+            'token' => 'badToken',
+            'metaDescription' => 'test'
         ];
 
         $this->expectException(CategoryInvalidDataException::class);
@@ -98,6 +100,7 @@ class CategoryServiceTest extends TestCase
             'tags' => [1],
             'photos' => [1],
             'active' => true,
+            'metaDescription' => 'test',
             'token' => $this->getCsrfToken()->getToken('create-category')->getValue()
         ];
 
@@ -127,7 +130,8 @@ class CategoryServiceTest extends TestCase
             'tags' => [1],
             'photos' => [1],
             'active' => true,
-            'token' => $this->getCsrfToken()->getToken('update-category')->getValue()
+            'token' => $this->getCsrfToken()->getToken('update-category')->getValue(),
+            'metaDescription' => 'test'
         ];
 
         $result = $this->categoryService->updateCategory($data, $fixture['category_1']);
@@ -156,7 +160,8 @@ class CategoryServiceTest extends TestCase
             'tags' => [1],
             'photos' => [1],
             'active' => true,
-            'token' => $this->getCsrfToken()->getToken('update-category')->getValue()
+            'token' => $this->getCsrfToken()->getToken('update-category')->getValue(),
+            'metaDescription' => 'test'
         ];
 
         $this->expectException(CategoryInvalidDataException::class);
