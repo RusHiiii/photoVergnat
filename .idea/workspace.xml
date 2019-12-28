@@ -2,8 +2,69 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d0ad162-b511-4cf7-bc8e-e12bdd55a0fa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/features/bootstrap/RequestContext.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/photovergnat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/photovergnat.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/features/app.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/app.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/bootstrap/FeatureContext.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Category/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Category/XhrController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Comment/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Comment/XhrController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Photo/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Photo/XhrController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Season/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Season/XhrController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Tag/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Tag/XhrController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Type/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Type/XhrController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/User/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/User/XhrController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/WebApp/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/WebApp/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/Tools/Validator/DataValidatorInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Tools/Validator/DataValidatorInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/Tools/Validator/DataValidatorService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Tools/Validator/DataValidatorService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Category/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Category/CategoryService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Category/Validator/CategoryValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Category/Validator/CategoryValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Comment/CommentService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Comment/CommentService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Comment/Validator/CommentValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Comment/Validator/CommentValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Information/InformationService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Information/InformationService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Information/Validator/InformationValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Information/Validator/InformationValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Photo/Validator/PhotoValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Photo/Validator/PhotoValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Season/SeasonService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Season/SeasonService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Season/Validator/SeasonValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Season/Validator/SeasonValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Tag/TagService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Tag/TagService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Tag/Validator/TagValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Tag/Validator/TagValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Type/TypeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Type/TypeService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/Type/Validator/TypeValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/Type/Validator/TypeValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/User/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/User/UserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/WebApp/User/Validator/UserValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebApp/User/Validator/UserValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/category/app/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/category/app/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/category/xhr/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/category/xhr/create.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/category/xhr/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/category/xhr/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/comment/xhr/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/comment/xhr/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/photo/xhr/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/photo/xhr/create.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/photo/xhr/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/photo/xhr/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/season/xhr/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/season/xhr/create.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/season/xhr/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/season/xhr/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tag/xhr/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/tag/xhr/create.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/type/xhr/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/type/xhr/create.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/type/xhr/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/type/xhr/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/app/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/app/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/xhr/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/xhr/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/xhr/password.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/xhr/password.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/.fixtures/completeCategory.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/.fixtures/completeCategory.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Integration/WebApp/Category/CategoryServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/WebApp/Category/CategoryServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Integration/WebApp/Comment/CommentServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/WebApp/Comment/CommentServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Integration/WebApp/Information/InformationServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/WebApp/Information/InformationServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Integration/WebApp/Photo/PhotoServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/WebApp/Photo/PhotoServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Integration/WebApp/Season/SeasonServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/WebApp/Season/SeasonServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Integration/WebApp/Tag/TagServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/WebApp/Tag/TagServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Integration/WebApp/Type/TypeServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/WebApp/Type/TypeServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Integration/WebApp/User/UserServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Integration/WebApp/User/UserServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/Tools/Validator/DataValidatorServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Tools/Validator/DataValidatorServiceTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,80 +111,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/behat.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/app.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Category/CategoryServiceTest.php">
+        <entry file="file://$PROJECT_DIR$/features/season.feature">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-156">
-              <caret line="163" column="39" selection-start-line="163" selection-start-column="39" selection-end-line="163" selection-end-column="39" />
+            <state relative-caret-position="-65">
+              <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/bootstrap/bootstrap.php">
+        <entry file="file://$PROJECT_DIR$/src/Controller/Season/XhrController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+            <state relative-caret-position="337">
+              <caret line="112" column="28" selection-start-line="112" selection-start-column="28" selection-end-line="112" selection-end-column="28" />
+              <folding>
+                <element signature="e#41#87#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/bootstrap/FeatureContext.php">
+        <entry file="file://$PROJECT_DIR$/features/bootstrap/RequestContext.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="541">
-              <caret line="52" column="8" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="8" />
+            <state relative-caret-position="244">
+              <caret line="53" column="106" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="106" />
               <folding>
                 <element signature="e#7#39#0#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/TestCase.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
-              <folding>
-                <element signature="e#109#144#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Photo/PhotoServiceTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="146" column="62" selection-start-line="146" selection-start-column="24" selection-end-line="146" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/symfony/framework-bundle/Test/KernelTestCase.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-266">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -132,10 +148,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>App\Entity\Type</find>
-      <find>App\Entity\User</find>
-      <find>App\Service\Tools\DataValidatorService</find>
-      <find>MSG_UNKNOWN_TYPE</find>
       <find>alert</find>
       <find>{% block javascript %}</find>
       <find>arm</find>
@@ -162,6 +174,10 @@
       <find>webmozart</find>
       <find>.env.test</find>
       <find>createClient</find>
+      <find>ROLE_ADMIN</find>
+      <find>validateCsrfToken(</find>
+      <find>csrf_token</find>
+      <find>CASCADE</find>
     </findStrings>
     <replaceStrings>
       <replace>App\Service\WebApp\Tag\TagValidatorService</replace>
@@ -208,57 +224,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Service/WebApp/Photo/Assembler/PhotoAssembler.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/Comment/Validator/CommentValidator.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/Information/InformationService.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/Information/Validator/InformationValidator.php" />
         <option value="$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php" />
-        <option value="$PROJECT_DIR$/tests/Unit/Twig/ExtensionsServiceTest.php" />
-        <option value="$PROJECT_DIR$/tests/Unit/Tools/FileUploaderServiceTest.php" />
-        <option value="$PROJECT_DIR$/tests/Integration/WebApp/Photo/PhotoServiceTest.php" />
-        <option value="$PROJECT_DIR$/src/Entity/WebApp/Comment.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Category/XhrController.php" />
-        <option value="$PROJECT_DIR$/src/Service/WebApp/Category/CategoryService.php" />
-        <option value="$PROJECT_DIR$/src/Controller/User/XhrController.php" />
-        <option value="$PROJECT_DIR$/tests/.fixtures/simpleUser.yml" />
-        <option value="$PROJECT_DIR$/src/Repository/WebApp/User/Doctrine/UserRepository.php" />
-        <option value="$PROJECT_DIR$/src/Service/WebApp/User/Assembler/UserAssembler.php" />
-        <option value="$PROJECT_DIR$/src/Service/WebApp/User/Validator/UserValidator.php" />
-        <option value="$PROJECT_DIR$/src/Service/Tools/Validator/DataValidatorService.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/Photo/Validator/PhotoValidator.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/Season/SeasonService.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/Season/Validator/SeasonValidator.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/Tag/TagService.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/Tag/Validator/TagValidator.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/Type/TypeService.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/Type/Validator/TypeValidator.php" />
         <option value="$PROJECT_DIR$/src/Service/WebApp/User/UserService.php" />
-        <option value="$PROJECT_DIR$/tests/Integration/WebApp/User/UserServiceTest.php" />
-        <option value="$PROJECT_DIR$/tests/TestCase.php" />
-        <option value="$PROJECT_DIR$/public/robots.txt" />
-        <option value="$PROJECT_DIR$/src/Entity/WebApp/Category.php" />
-        <option value="$PROJECT_DIR$/src/Service/WebApp/Category/Validator/CategoryValidator.php" />
-        <option value="$PROJECT_DIR$/src/Service/WebApp/Category/Assembler/CategoryAssembler.php" />
-        <option value="$PROJECT_DIR$/templates/category/xhr/edit.html.twig" />
-        <option value="$PROJECT_DIR$/templates/category/xhr/create.html.twig" />
-        <option value="$PROJECT_DIR$/templates/information/app/contact.html.twig" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/User/Validator/UserValidator.php" />
+        <option value="$PROJECT_DIR$/templates/user/xhr/password.html.twig" />
+        <option value="$PROJECT_DIR$/templates/user/xhr/edit.html.twig" />
+        <option value="$PROJECT_DIR$/templates/tag/xhr/create.html.twig" />
+        <option value="$PROJECT_DIR$/templates/type/xhr/create.html.twig" />
+        <option value="$PROJECT_DIR$/templates/type/xhr/edit.html.twig" />
         <option value="$PROJECT_DIR$/templates/user/app/index.html.twig" />
-        <option value="$PROJECT_DIR$/templates/main/app/index.html.twig" />
-        <option value="$PROJECT_DIR$/templates/elements/shared/app/recent_categories.html.twig" />
-        <option value="$PROJECT_DIR$/templates/category/app/gallery.html.twig" />
-        <option value="$PROJECT_DIR$/src/Service/Tools/ToolsService.php" />
-        <option value="$PROJECT_DIR$/templates/elements/layout/app/base.html.twig" />
-        <option value="$PROJECT_DIR$/config/services.yaml" />
-        <option value="$PROJECT_DIR$/config/services_test.yaml" />
-        <option value="$PROJECT_DIR$/config/routes/dev/framework.yaml" />
-        <option value="$PROJECT_DIR$/.env.local" />
+        <option value="$PROJECT_DIR$/templates/season/xhr/create.html.twig" />
+        <option value="$PROJECT_DIR$/templates/comment/xhr/edit.html.twig" />
+        <option value="$PROJECT_DIR$/templates/season/xhr/edit.html.twig" />
+        <option value="$PROJECT_DIR$/templates/category/xhr/create.html.twig" />
+        <option value="$PROJECT_DIR$/templates/category/xhr/edit.html.twig" />
+        <option value="$PROJECT_DIR$/templates/photo/xhr/edit.html.twig" />
+        <option value="$PROJECT_DIR$/templates/photo/xhr/create.html.twig" />
         <option value="$PROJECT_DIR$/templates/category/app/index.html.twig" />
-        <option value="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error.html.twig" />
-        <option value="$PROJECT_DIR$/templates/information/app/information.html.twig" />
-        <option value="$PROJECT_DIR$/tests/Functionnal/main.feature" />
-        <option value="$PROJECT_DIR$/tests/Functionnal/bootstrap/FeatureContext.php" />
-        <option value="$PROJECT_DIR$/config/behat.yaml" />
-        <option value="$PROJECT_DIR$/behat.yml.dist" />
-        <option value="$PROJECT_DIR$/behat.yaml" />
-        <option value="$PROJECT_DIR$/features/demo.feature" />
-        <option value="$PROJECT_DIR$/tests/.fixtures/completeCategory.yml" />
-        <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/config/bootstrap.php" />
-        <option value="$PROJECT_DIR$/vendor/symfony/dotenv/Dotenv.php" />
-        <option value="$PROJECT_DIR$/behat.yml" />
         <option value="$PROJECT_DIR$/features/bootstrap/FeatureContext.php" />
-        <option value="$PROJECT_DIR$/features/app.feature" />
         <option value="$PROJECT_DIR$/tests/Integration/WebApp/Category/CategoryServiceTest.php" />
+        <option value="$PROJECT_DIR$/tests/TestCase.php" />
+        <option value="$PROJECT_DIR$/tests/Integration/WebApp/Comment/CommentServiceTest.php" />
+        <option value="$PROJECT_DIR$/tests/Integration/WebApp/Information/InformationServiceTest.php" />
+        <option value="$PROJECT_DIR$/tests/Integration/WebApp/Photo/PhotoServiceTest.php" />
+        <option value="$PROJECT_DIR$/tests/Integration/WebApp/Season/SeasonServiceTest.php" />
+        <option value="$PROJECT_DIR$/tests/Integration/WebApp/Tag/TagServiceTest.php" />
+        <option value="$PROJECT_DIR$/tests/Integration/WebApp/Type/TypeServiceTest.php" />
+        <option value="$PROJECT_DIR$/tests/Integration/WebApp/User/UserServiceTest.php" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/features/bootstrap/FixtureContext.php" />
+        <option value="$PROJECT_DIR$/behat.yml" />
+        <option value="$PROJECT_DIR$/features/app.feature" />
+        <option value="$PROJECT_DIR$/features/bootstrap/RequestContext.php" />
+        <option value="$PROJECT_DIR$/src/Entity/WebApp/Category.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Category/XhrController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Comment/XhrController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Photo/XhrController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Tag/XhrController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Type/XhrController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/User/XhrController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Season/XhrController.php" />
+        <option value="$PROJECT_DIR$/features/season.feature" />
       </list>
     </option>
   </component>
@@ -421,11 +437,19 @@
       <path value="$PROJECT_DIR$/vendor/behat/mink" />
       <path value="$PROJECT_DIR$/vendor/textalk/websocket" />
       <path value="$PROJECT_DIR$/vendor/dmore/chrome-mink-driver" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/vendor/beberlei/assert" />
+      <path value="$PROJECT_DIR$/vendor/imbo/behat-api-extension" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="713" />
-    <option name="y" value="-9" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="456" />
+    <option name="y" value="-17" />
     <option name="width" value="960" />
     <option name="height" value="1035" />
   </component>
@@ -435,6 +459,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -445,12 +470,20 @@
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
@@ -466,34 +499,47 @@
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+              <item name="Season" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="Integration" type="462c0819:PsiDirectoryNode" />
+              <item name=".fixtures" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="Integration" type="462c0819:PsiDirectoryNode" />
-              <item name="WebApp" type="462c0819:PsiDirectoryNode" />
+              <item name="var" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
               <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="Integration" type="462c0819:PsiDirectoryNode" />
-              <item name="WebApp" type="462c0819:PsiDirectoryNode" />
-              <item name="Category" type="462c0819:PsiDirectoryNode" />
+              <item name="var" type="462c0819:PsiDirectoryNode" />
+              <item name="log" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -506,22 +552,22 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat" />
-      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\config" />
-      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\templates\bundles\TwigBundle\Exception" />
-      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\config\routes\dev" />
-      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\tests\Integration\WebApp\User" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat" />
       <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\tests\Functionnal\web" />
       <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\tests\Functionnal" />
       <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\tests\.fixtures\images\uploads" />
       <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\tests\.fixtures\images\static" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\features" />
+      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\features\bootstrap" />
+      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat" />
+      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\config" />
+      <recent name="C:\Users\Flo\Desktop\symfonyPhoto\photovergnat\templates\bundles\TwigBundle\Exception" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -639,7 +685,8 @@
       <workItem from="1576947307968" duration="327000" />
       <workItem from="1577019875616" duration="6507000" />
       <workItem from="1577026500976" duration="576000" />
-      <workItem from="1577027097527" duration="11537000" />
+      <workItem from="1577027097527" duration="11947000" />
+      <workItem from="1577538068694" duration="12352000" />
     </task>
     <servers />
   </component>
@@ -649,14 +696,14 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="412512000" />
+    <option name="totallyTimeSpent" value="425274000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="840" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49435028" visible="true" weight="0.22281879" />
-      <window_info id="Structure" order="1" sideWeight="0.50564975" side_tool="true" weight="0.22281879" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49293786" visible="true" weight="0.2261745" />
+      <window_info id="Structure" order="1" sideWeight="0.50706214" side_tool="true" weight="0.2261745" />
       <window_info id="Favorites" order="2" sideWeight="0.50141245" side_tool="true" weight="0.25302014" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32909605" />
@@ -691,314 +738,360 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/var/log/infection.log">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Comment/Validator/CommentValidator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4658">
-          <caret line="274" selection-start-line="274" selection-end-line="274" />
+        <state relative-caret-position="136">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/category/app/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="22" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/prod/monolog.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/prod/doctrine.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/doctrine/persistence/lib/Doctrine/Common/Persistence/ObjectManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Functionnal/web/main.feature" />
-    <entry file="file://$PROJECT_DIR$/tests/Functionnal/bootstrap/FeatureContext.php" />
-    <entry file="file://$PROJECT_DIR$/vendor/behat/behat/src/Behat/Behat/Context/Context.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features/bootstrap/FeatureCnntext.php" />
-    <entry file="file://$PROJECT_DIR$/vendor/composer/autoload_real.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-181">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/behat.yaml" />
-    <entry file="file://$PROJECT_DIR$/templates/information/app/information.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="70" column="107" selection-start-line="70" selection-start-column="107" selection-end-line="70" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/theofidry/alice-data-fixtures/src/Loader/PersisterLoader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="48" column="23" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/autoload.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="68" selection-start-line="6" selection-start-column="68" selection-end-line="6" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features/app.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="55" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/behat.yml.dist">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Unit/Twig/ExtensionsServiceTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Comment/CommentServiceTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="32" column="37" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/.fixtures/completeCategory.yml">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Information/InformationService.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="47" column="27" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="27" />
+          <caret line="47" column="58" selection-start-line="47" selection-start-column="58" selection-end-line="47" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/.phpunit/phpunit-6.5/src/Framework/Assert/Functions.php">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Information/Validator/InformationValidator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1785" />
+        <state relative-caret-position="153">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/behat/behat/src/Behat/Testwork/Call/Exception/FatalThrowableError.php">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204" />
+        <state relative-caret-position="388">
+          <caret line="105" column="60" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/intl/DateFormatter/DateFormat/YearTransformer.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/.phpunit/phpunit-6.5/src/Util/Test.php">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Photo/Validator/PhotoValidator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-612">
-          <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
+        <state relative-caret-position="136">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/.phpunit/phpunit-6.5/src/Framework/TestCase.php">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Season/SeasonService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="99" column="35" selection-start-line="99" selection-start-column="35" selection-end-line="99" selection-end-column="35" />
+        <state relative-caret-position="320">
+          <caret line="89" column="60" selection-start-line="89" selection-start-column="60" selection-end-line="89" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/.phpunit/phpunit-6.5/src/Framework/Assert.php">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Season/Validator/SeasonValidator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="530" column="27" selection-start-line="530" selection-start-column="27" selection-end-line="530" selection-end-column="27" />
+        <state relative-caret-position="136">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composer.lock">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Statistic/StatisticService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="2228" column="33" selection-start-line="2228" selection-start-column="17" selection-end-line="2228" selection-end-column="33" />
-        </state>
+        <state relative-caret-position="-1108" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/.phpunit/phpunit-6.5/vendor/webmozart/assert/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/.phpunit/phpunit-6.5/vendor/webmozart/assert/src/Assert.php">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Tag/TagService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="496" column="27" selection-start-line="496" selection-start-column="27" selection-end-line="496" selection-end-column="27" />
+        <state relative-caret-position="425">
+          <caret line="61" column="56" lean-forward="true" selection-start-line="61" selection-start-column="56" selection-end-line="61" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="406">
-            <caret line="28" column="10" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/phpunit">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env.test">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Tag/Validator/TagValidator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        <state relative-caret-position="136">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/.phpunit/phpunit-6.5/bin/simple-phpunit">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phpunit.xml.dist">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Type/TypeService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="15" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="15" />
+        <state relative-caret-position="320">
+          <caret line="88" column="57" selection-start-line="88" selection-start-column="57" selection-end-line="88" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env.local">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Type/Validator/TypeValidator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        <state relative-caret-position="136">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env.test.local">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/User/UserService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+        <state relative-caret-position="252">
+          <caret line="144" column="58" selection-start-line="144" selection-start-column="58" selection-end-line="144" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/bootstrap.php">
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/User/Validator/UserValidator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+        <state relative-caret-position="422">
+          <caret line="124" column="55" lean-forward="true" selection-start-line="124" selection-start-column="55" selection-end-line="124" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/dotenv/Dotenv.php">
+    <entry file="file://$PROJECT_DIR$/templates/category/xhr/edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="100" column="9" selection-start-line="100" selection-start-column="9" selection-end-line="100" selection-end-column="9" />
+        <state relative-caret-position="306">
+          <caret line="147" column="10" lean-forward="true" selection-start-line="147" selection-start-column="10" selection-end-line="147" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
+    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Category/CategoryServiceTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="43" column="15" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/http-kernel/HttpKernelInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/http-foundation/Request.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="308" column="27" selection-start-line="308" selection-start-column="27" selection-end-line="308" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/framework-bundle/Test/KernelTestCase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-266">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/theofidry/alice-data-fixtures/src/Loader/SimpleLoader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+          <caret line="23" column="35" lean-forward="true" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/TestCase.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
+        <state relative-caret-position="82">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="e#109#144#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Comment/CommentServiceTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="830">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Information/InformationServiceTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Photo/PhotoServiceTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="146" column="62" selection-start-line="146" selection-start-column="24" selection-end-line="146" selection-end-column="62" />
+        <state relative-caret-position="167">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Season/SeasonServiceTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Statistic/StatisticServiceTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-292" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Tag/TagServiceTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Type/TypeServiceTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/User/UserServiceTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="156" selection-start-line="156" selection-end-line="156" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="340">
+            <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/bootstrap/FixtureContext.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/behat.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+        <state relative-caret-position="102">
+          <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/bootstrap/bootstrap.php">
+    <entry file="file://$PROJECT_DIR$/src/Controller/Category/AppController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="e#707#717#1#PHP" expanded="true" />
+            <element signature="e#1271#1281#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/WebApp/Season.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/var/log/test.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="76203" column="555" selection-start-line="76203" selection-start-column="555" selection-end-line="76203" selection-end-column="555" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/WebApp/Category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="48" column="28" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/app.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/.fixtures/completeCategory.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Category/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Security/Voter/UserVoter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-867" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Security/Voter/SeasonVoter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-765" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Season/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/sensio/framework-extra-bundle/Configuration/Method.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/routing/Annotation/Route.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1099">
+          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Category/XhrController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="39" column="108" selection-start-line="39" selection-start-column="108" selection-end-line="39" selection-end-column="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Comment/XhrController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="34" column="107" selection-start-line="34" selection-start-column="107" selection-end-line="34" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Information/XhrController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Photo/XhrController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="43" column="105" selection-start-line="43" selection-start-column="105" selection-end-line="43" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Tag/XhrController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="68" column="103" selection-start-line="68" selection-start-column="103" selection-end-line="68" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Type/XhrController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="38" column="104" selection-start-line="38" selection-start-column="104" selection-end-line="38" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/User/XhrController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+          <caret line="96" column="104" selection-start-line="96" selection-start-column="104" selection-end-line="96" selection-end-column="104" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/bootstrap/FeatureContext.php">
+    <entry file="file://$PROJECT_DIR$/assets/js/admin/season.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="52" column="8" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="8" />
+        <state relative-caret-position="153">
+          <caret line="90" column="21" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/bootstrap/RequestContext.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="53" column="106" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="106" />
           <folding>
             <element signature="e#7#39#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/app.feature">
+    <entry file="file://$PROJECT_DIR$/src/Controller/Season/XhrController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+        <state relative-caret-position="337">
+          <caret line="112" column="28" selection-start-line="112" selection-start-column="28" selection-end-line="112" selection-end-column="28" />
+          <folding>
+            <element signature="e#41#87#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Category/CategoryServiceTest.php">
+    <entry file="file://$PROJECT_DIR$/features/season.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-156">
-          <caret line="163" column="39" selection-start-line="163" selection-start-column="39" selection-end-line="163" selection-end-column="39" />
+        <state relative-caret-position="-65">
+          <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
         </state>
       </provider>
     </entry>

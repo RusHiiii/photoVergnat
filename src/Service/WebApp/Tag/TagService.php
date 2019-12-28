@@ -59,7 +59,7 @@ class TagService
     public function createTag(array $data): Tag
     {
         /** Validation des données */
-        $validatedData = $this->tagValidatorService->checkTag($data, TagValidator::TOKEN_CREATE);
+        $validatedData = $this->tagValidatorService->checkTag($data);
         if (count($validatedData['errors']) > 0) {
             throw new TagInvalidDataException($validatedData['errors'], TagInvalidDataException::TAG_INVALID_DATA_MESSAGE);
         }
@@ -85,7 +85,7 @@ class TagService
     public function updateTag(array $data, Tag $tag): Tag
     {
         /** Validation des données */
-        $validatedData = $this->tagValidatorService->checkTag($data, TagValidator::TOKEN_UPDATE);
+        $validatedData = $this->tagValidatorService->checkTag($data);
         if (count($validatedData['errors']) > 0) {
             throw new TagInvalidDataException($validatedData['errors'], TagInvalidDataException::TAG_INVALID_DATA_MESSAGE);
         }

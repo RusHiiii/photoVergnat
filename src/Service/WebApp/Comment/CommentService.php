@@ -61,7 +61,7 @@ class CommentService
     public function createComment(array $data): Comment
     {
         /** Validation des données */
-        $validatedData = $this->messageValidatorService->checkComment($data, CommentValidator::TOKEN_CREATE);
+        $validatedData = $this->messageValidatorService->checkComment($data);
         if (count($validatedData['errors']) > 0) {
             throw new CommentInvalidDataException($validatedData['errors'], CommentInvalidDataException::COMMENT_INVALID_DATA_MESSAGE);
         }
@@ -88,7 +88,7 @@ class CommentService
     public function updateComment(array $data, Comment $comment): Comment
     {
         /** Validation des données */
-        $validatedData = $this->messageValidatorService->checkComment($data, CommentValidator::TOKEN_UPDATE);
+        $validatedData = $this->messageValidatorService->checkComment($data);
         if (count($validatedData['errors']) > 0) {
             throw new CommentInvalidDataException($validatedData['errors'], CommentInvalidDataException::COMMENT_INVALID_DATA_MESSAGE);
         }

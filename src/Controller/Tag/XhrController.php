@@ -66,7 +66,7 @@ class XhrController extends AbstractController
 
     /**
      * Suppression d'un tag
-     * @Route("/xhr/admin/tag/remove/{id}", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/tag/remove/{id}", condition="request.isXmlHttpRequest()", methods={"DELETE"})
      */
     public function removeTag(
         Request $request,

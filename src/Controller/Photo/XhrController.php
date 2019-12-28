@@ -41,7 +41,7 @@ class XhrController extends AbstractController
 
     /**
      * Suppression d'une photo
-     * @Route("/xhr/admin/photo/remove/{id}", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/photo/remove/{id}", condition="request.isXmlHttpRequest()", methods={"DELETE"})
      */
     public function removePhoto(
         Request $request,

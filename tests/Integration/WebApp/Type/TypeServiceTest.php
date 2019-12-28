@@ -44,22 +44,10 @@ class TypeServiceTest extends TestCase
         $this->assertCount(0, $this->typeRepository->findAll());
     }
 
-    public function testCreateTypeWithBadToken()
-    {
-        $type = [
-            'title' => 'Paysage',
-            'token' => 'badToken'
-        ];
-
-        $this->expectException(TypeInvalidDataException::class);
-        $this->typeService->createType($type);
-    }
-
     public function testCreateSeasonWithBadTitle()
     {
         $type = [
             'title' => '',
-            'token' => $this->getCsrfToken()->getToken('create-type')->getValue()
         ];
 
         $this->expectException(TypeInvalidDataException::class);
@@ -70,7 +58,6 @@ class TypeServiceTest extends TestCase
     {
         $type = [
             'title' => 'Panorama',
-            'token' => $this->getCsrfToken()->getToken('create-type')->getValue()
         ];
 
         $result = $this->typeService->createType($type);
@@ -85,7 +72,6 @@ class TypeServiceTest extends TestCase
 
         $type = [
             'title' => 'Panorama',
-            'token' => $this->getCsrfToken()->getToken('update-type')->getValue()
         ];
 
         $result = $this->typeService->updateType($type, $fixtures['type_1']);
@@ -101,7 +87,6 @@ class TypeServiceTest extends TestCase
 
         $type = [
             'title' => '',
-            'token' => $this->getCsrfToken()->getToken('update-type')->getValue()
         ];
 
         $this->expectException(TypeInvalidDataException::class);

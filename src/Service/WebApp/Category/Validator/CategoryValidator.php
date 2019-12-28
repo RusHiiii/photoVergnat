@@ -19,9 +19,6 @@ use Symfony\Component\Security\Core\Security;
 
 class CategoryValidator
 {
-    const TOKEN_UPDATE = 'update-category';
-    const TOKEN_CREATE = 'create-category';
-
     private $validatorService;
     private $toolsService;
 
@@ -38,13 +35,12 @@ class CategoryValidator
      * @param array $data
      * @return array
      */
-    public function checkCategory(array $data, string $token): array
+    public function checkCategory(array $data): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateNotBlank($data['title'], 'Titre');
         $this->validatorService->validateNotBlank($data['description'], 'Description');
         $this->validatorService->validateNotBlank($data['city'], 'Ville');

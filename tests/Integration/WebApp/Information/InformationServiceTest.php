@@ -52,7 +52,6 @@ class InformationServiceTest extends TestCase
             'choice' => '1',
             'message' => 'message',
             'email' => 'contact@gmail.com',
-            'token' => $this->getCsrfToken()->getToken('send-mail')->getValue()
         ];
 
         $result = $informationService->sendContactMail($data);

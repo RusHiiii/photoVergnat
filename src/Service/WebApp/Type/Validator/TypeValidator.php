@@ -18,9 +18,6 @@ use Symfony\Component\Security\Core\Security;
 
 class TypeValidator
 {
-    const TOKEN_CREATE = 'create-type';
-    const TOKEN_UPDATE = 'update-type';
-
     private $validatorService;
     private $toolsService;
 
@@ -37,13 +34,12 @@ class TypeValidator
      * @param array $data
      * @return array
      */
-    public function checkType(array $data, string $token): array
+    public function checkType(array $data): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateNotBlank($data['title'], 'Titre');
 
         /** Récupération des erreurs */

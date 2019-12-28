@@ -40,22 +40,10 @@ class SeasonServiceTest extends TestCase
         $this->assertCount(0, $this->seasonRepository->findAll());
     }
 
-    public function testCreateSeasonWithBadToken()
-    {
-        $season = [
-            'title' => 'Hiver',
-            'token' => 'badToken'
-        ];
-
-        $this->expectException(SeasonInvalidDataException::class);
-        $this->seasonService->createSeason($season);
-    }
-
     public function testCreateSeasonWithBadTitle()
     {
         $season = [
             'title' => '',
-            'token' => $this->getCsrfToken()->getToken('create-season')->getValue()
         ];
 
         $this->expectException(SeasonInvalidDataException::class);
@@ -66,7 +54,6 @@ class SeasonServiceTest extends TestCase
     {
         $season = [
             'title' => 'Hiver',
-            'token' => $this->getCsrfToken()->getToken('create-season')->getValue()
         ];
 
         $result = $this->seasonService->createSeason($season);
@@ -81,7 +68,6 @@ class SeasonServiceTest extends TestCase
 
         $season = [
             'title' => 'HiverEdit',
-            'token' => $this->getCsrfToken()->getToken('update-season')->getValue()
         ];
 
         $result = $this->seasonService->updateSeason($season, $fixtures['season_1']);
@@ -97,7 +83,6 @@ class SeasonServiceTest extends TestCase
 
         $season = [
             'title' => '',
-            'token' => $this->getCsrfToken()->getToken('update-season')->getValue()
         ];
 
         $this->expectException(SeasonInvalidDataException::class);

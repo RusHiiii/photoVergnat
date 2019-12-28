@@ -40,20 +40,6 @@ class CommentServiceTest extends TestCase
         $this->assertCount(0, $this->commentRepository->findAll());
     }
 
-    public function testCreateCommentWithBadToken()
-    {
-        $data = [
-            'name' => 'RusHii',
-            'message' => 'frrefrefre',
-            'email' => 'contact@gmail.com',
-            'category' => '1',
-            'token' => 'badToken'
-        ];
-
-        $this->expectException(CommentInvalidDataException::class);
-        $this->commentService->createComment($data);
-    }
-
     public function testCreateCommentWithBadData()
     {
         $data = [
@@ -61,7 +47,6 @@ class CommentServiceTest extends TestCase
             'message' => '',
             'email' => 'contact@gmail.com',
             'category' => '1',
-            'token' => $this->getCsrfToken()->getToken('create-comment')->getValue()
         ];
 
         $this->expectException(CommentInvalidDataException::class);
@@ -75,7 +60,6 @@ class CommentServiceTest extends TestCase
             'message' => 'frrefrefre',
             'email' => 'contact@gmail.com',
             'category' => '1',
-            'token' => $this->getCsrfToken()->getToken('create-comment')->getValue()
         ];
 
         $result = $this->commentService->createComment($data);
@@ -95,7 +79,6 @@ class CommentServiceTest extends TestCase
             'message' => 'frrefrefre',
             'email' => 'contact@gmail.com',
             'category' => '1',
-            'token' => $this->getCsrfToken()->getToken('update-comment')->getValue()
         ];
 
         $result = $this->commentService->updateComment($data, $fixtures['comment_1']);
@@ -114,7 +97,6 @@ class CommentServiceTest extends TestCase
             'message' => 'frrefrefre',
             'email' => 'contact@gmail.com',
             'category' => '1',
-            'token' => $this->getCsrfToken()->getToken('update-comment')->getValue()
         ];
 
         $this->expectException(CommentInvalidDataException::class);

@@ -12,6 +12,7 @@ use App\Service\WebApp\Season\Exceptions\SeasonNotFoundException;
 use App\Service\WebApp\Season\SeasonService;
 use App\Service\WebApp\Tag\TagService;
 use App\Service\WebApp\User\UserService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,7 +36,7 @@ class XhrController extends AbstractController
 
     /**
      * Suppression d'une saison
-     * @Route("/xhr/admin/season/remove/{id}", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/season/remove/{id}", condition="request.isXmlHttpRequest()", methods={"DELETE"})
      */
     public function removeSeason(
         Request $request,
@@ -51,7 +52,7 @@ class XhrController extends AbstractController
 
     /**
      * MàJ d'une saison
-     * @Route("/xhr/admin/season/update/{id}", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/season/update/{id}", condition="request.isXmlHttpRequest()", methods={"PATCH"})
      */
     public function updateSeason(
         Request $request,
@@ -84,7 +85,7 @@ class XhrController extends AbstractController
 
     /**
      * Création d'une saison
-     * @Route("/xhr/admin/season/create", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/season/create", condition="request.isXmlHttpRequest()", methods={"POST"})
      * @Security("is_granted('ROLE_AUTHOR')")
      */
     public function createSeason(

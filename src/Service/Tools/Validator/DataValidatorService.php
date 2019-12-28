@@ -185,22 +185,6 @@ class DataValidatorService implements DataValidatorInterface
     }
 
     /**
-     * Validation du token
-     * @param string $token
-     * @param string $key
-     * @return bool
-     */
-    public function validateCsrfToken(string $token, string $key): bool
-    {
-        if (!$this->token->isTokenValid(new CsrfToken($key, $token))) {
-            $this->errors[] = self::MSG_ERROR_TOKEN;
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
      * Validation array not empty
      * @param array $data
      * @param string $key

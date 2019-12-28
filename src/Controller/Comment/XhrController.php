@@ -32,7 +32,7 @@ class XhrController extends AbstractController
 
     /**
      * Suppression d'un commentaire
-     * @Route("/xhr/admin/comment/remove/{id}", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/comment/remove/{id}", condition="request.isXmlHttpRequest()", methods={"DELETE"})
      */
     public function removeCategory(
         Request $request,

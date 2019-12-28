@@ -18,9 +18,6 @@ use Symfony\Component\Security\Core\Security;
 
 class SeasonValidator
 {
-    const TOKEN_UPDATE = 'update-season';
-    const TOKEN_CREATE = 'create-season';
-
     private $validatorService;
     private $toolsService;
 
@@ -37,13 +34,12 @@ class SeasonValidator
      * @param array $data
      * @return array
      */
-    public function checkSeason(array $data, string $token): array
+    public function checkSeason(array $data): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateNotBlank($data['title'], 'Titre');
 
         /** Récupération des erreurs */

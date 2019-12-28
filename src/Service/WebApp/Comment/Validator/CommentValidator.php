@@ -19,9 +19,6 @@ use Symfony\Component\Security\Core\Security;
 
 class CommentValidator
 {
-    const TOKEN_CREATE = 'create-comment';
-    const TOKEN_UPDATE = 'update-comment';
-
     private $validatorService;
     private $toolsService;
 
@@ -39,13 +36,12 @@ class CommentValidator
      * @param string $token
      * @return array
      */
-    public function checkComment(array $data, string $token): array
+    public function checkComment(array $data): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateNotBlank($data['name'], 'Nom');
         $this->validatorService->validateNotBlank($data['message'], 'Message');
         $this->validatorService->validateEmail($data['email'], 'Email');

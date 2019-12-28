@@ -44,27 +44,6 @@ class CategoryServiceTest extends TestCase
         $this->assertCount(0, $this->categoryRepository->findAll());
     }
 
-    public function testCreateCategoryWithBadToken()
-    {
-        $fixture = $this->loadFile('tests/.fixtures/simpleUser.yml');
-
-        $data = [
-            'title' => 'test category',
-            'description' => 'description',
-            'city' => 'Clermont',
-            'lat' => '10.0325',
-            'lng' => '10.0325',
-            'season' => '1',
-            'tags' => '[1]',
-            'photos' => '[1]',
-            'token' => 'badToken',
-            'metaDescription' => 'test'
-        ];
-
-        $this->expectException(CategoryInvalidDataException::class);
-        $this->categoryService->createCategory($data, $fixture['user_1']);
-    }
-
     public function testCreateCategoryWithBadData()
     {
         $fixture = $this->loadFile('tests/.fixtures/simpleUser.yml');
@@ -78,7 +57,6 @@ class CategoryServiceTest extends TestCase
             'season' => '1',
             'tags' => '[1]',
             'photos' => '[1]',
-            'token' => 'badToken',
             'metaDescription' => 'test'
         ];
 
@@ -101,7 +79,6 @@ class CategoryServiceTest extends TestCase
             'photos' => [1],
             'active' => true,
             'metaDescription' => 'test',
-            'token' => $this->getCsrfToken()->getToken('create-category')->getValue()
         ];
 
         $result = $this->categoryService->createCategory($data, $fixture['user_1']);
@@ -130,7 +107,6 @@ class CategoryServiceTest extends TestCase
             'tags' => [1],
             'photos' => [1],
             'active' => true,
-            'token' => $this->getCsrfToken()->getToken('update-category')->getValue(),
             'metaDescription' => 'test'
         ];
 
@@ -160,7 +136,6 @@ class CategoryServiceTest extends TestCase
             'tags' => [1],
             'photos' => [1],
             'active' => true,
-            'token' => $this->getCsrfToken()->getToken('update-category')->getValue(),
             'metaDescription' => 'test'
         ];
 

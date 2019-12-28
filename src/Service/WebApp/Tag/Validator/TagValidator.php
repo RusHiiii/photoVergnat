@@ -18,9 +18,6 @@ use Symfony\Component\Security\Core\Security;
 
 class TagValidator
 {
-    const TOKEN_CREATE = 'create-tag';
-    const TOKEN_UPDATE = 'update-tag';
-
     private $validatorService;
     private $toolsService;
 
@@ -37,13 +34,12 @@ class TagValidator
      * @param array $data
      * @return array
      */
-    public function checkTag(array $data, string $token): array
+    public function checkTag(array $data): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateNotBlank($data['title'], 'Titre');
         $this->validatorService->validateNotBlank($data['type'], 'Type');
 

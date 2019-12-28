@@ -18,10 +18,6 @@ use Symfony\Component\Security\Core\Security;
 
 class UserValidator
 {
-    const TOKEN_UPDATE_USER = 'update-user';
-    const TOKEN_UPDATE_PSWD = 'update-password';
-    const TOKEN_CREATE_USER = 'create-user';
-
     private $validatorService;
     private $toolsService;
 
@@ -38,13 +34,12 @@ class UserValidator
      * @param array $data
      * @return array
      */
-    public function checkUpdateProfile(array $data, string $token): array
+    public function checkUpdateProfile(array $data): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateEmail($data['email'], 'mail');
         $this->validatorService->validateNotBlank($data['lastname'], 'nom');
         $this->validatorService->validateNotBlank($data['firstname'], 'prénom');
@@ -63,13 +58,12 @@ class UserValidator
      * @param array $data
      * @return array
      */
-    public function checkCreateUser(array $data, string $token): array
+    public function checkCreateUser(array $data): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateEmail($data['email'], 'mail');
         $this->validatorService->validateNotBlank($data['lastname'], 'nom');
         $this->validatorService->validateNotBlank($data['firstname'], 'prénom');
@@ -91,13 +85,12 @@ class UserValidator
      * @param array $data
      * @return array
      */
-    public function checkUpdateUser(array $data, string $token): array
+    public function checkUpdateUser(array $data): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateEmail($data['email'], 'mail');
         $this->validatorService->validateNotBlank($data['lastname'], 'nom');
         $this->validatorService->validateNotBlank($data['firstname'], 'prénom');
@@ -118,13 +111,12 @@ class UserValidator
      * @param array $data
      * @return array
      */
-    public function checkUpdatePassword(array $data, string $token): array
+    public function checkUpdatePassword(array $data): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateNotBlank($data['password_first'], 'mot de passe');
         $this->validatorService->validateEqualTo($data['password_first'], $data['password_second'], 'mot de passe');
         $this->validatorService->validateRegex($data['password_first'], 'mot de passe');

@@ -37,7 +37,7 @@ class XhrController extends AbstractController
 
     /**
      * Suppression d'une catégorie
-     * @Route("/xhr/admin/category/remove/{id}", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/category/remove/{id}", condition="request.isXmlHttpRequest()", methods={"DELETE"})
      */
     public function removeCategory(
         Request $request,

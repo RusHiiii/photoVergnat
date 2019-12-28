@@ -17,15 +17,12 @@ class TestCase extends KernelTestCase
 {
     protected $loader;
 
-    protected $csrfToken;
-
     protected function setUp()
     {
         parent::setUp();
         self::bootKernel();
 
         $this->loader =  self::$container->get('fidry_alice_data_fixtures.loader.doctrine');
-        $this->csrfToken =  self::$container->get('security.csrf.token_manager');
     }
 
     protected function loadFile($files)
@@ -47,11 +44,6 @@ class TestCase extends KernelTestCase
         imagejpeg(imagecreatetruecolor(100, 100), $file);
 
         return $file;
-    }
-
-    protected function getCsrfToken()
-    {
-        return $this->csrfToken;
     }
 
     protected function tearDown()

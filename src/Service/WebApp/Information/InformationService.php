@@ -45,7 +45,7 @@ class InformationService
     public function sendContactMail(array $data): bool
     {
         /** Validation de la données */
-        $validatedData = $this->infoValidatorService->checkContact($data, InformationValidator::TOKEN_SEND_MAIL);
+        $validatedData = $this->infoValidatorService->checkContact($data);
         if (count($validatedData['errors']) > 0) {
             throw new InformationInvalidDataException($validatedData['errors'], InformationInvalidDataException::COMMENT_INVALID_DATA_MESSAGE);
         }

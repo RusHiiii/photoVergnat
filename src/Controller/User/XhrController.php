@@ -94,7 +94,7 @@ class XhrController extends AbstractController
 
     /**
      * Suppression d'un utilisateur
-     * @Route("/xhr/admin/user/remove/{id}", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/user/remove/{id}", condition="request.isXmlHttpRequest()", methods={"DELETE"})
      */
     public function removeUser(
         Request $request,

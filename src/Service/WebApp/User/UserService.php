@@ -54,7 +54,7 @@ class UserService
     public function updateProfile(array $data, User $user): User
     {
         /** Validation des données */
-        $validatedData = $this->userValidatorService->checkUpdateProfile($data, UserValidator::TOKEN_UPDATE_USER);
+        $validatedData = $this->userValidatorService->checkUpdateProfile($data);
         if (count($validatedData['errors']) > 0) {
             throw new UserInvalidDataException($validatedData['errors'], UserInvalidDataException::USER_INVALID_DATA_MESSAGE);
         }
@@ -79,7 +79,7 @@ class UserService
     public function updateUser(array $data, User $user): User
     {
         /** Validation des données */
-        $validatedData = $this->userValidatorService->checkUpdateUser($data, UserValidator::TOKEN_UPDATE_USER);
+        $validatedData = $this->userValidatorService->checkUpdateUser($data);
         if (count($validatedData['errors']) > 0) {
             throw new UserInvalidDataException($validatedData['errors'], UserInvalidDataException::USER_INVALID_DATA_MESSAGE);
         }
@@ -104,7 +104,7 @@ class UserService
     public function updatePassword(array $data, User $user): User
     {
         /** Validation des données */
-        $validatedData = $this->userValidatorService->checkUpdatePassword($data, UserValidator::TOKEN_UPDATE_PSWD);
+        $validatedData = $this->userValidatorService->checkUpdatePassword($data);
         if (count($validatedData['errors']) > 0) {
             throw new UserInvalidDataException($validatedData['errors'], UserInvalidDataException::USER_INVALID_DATA_MESSAGE);
         }
@@ -142,7 +142,7 @@ class UserService
     public function createUser(array $data): User
     {
         /** Validation des données */
-        $validatedData = $this->userValidatorService->checkCreateUser($data, UserValidator::TOKEN_CREATE_USER);
+        $validatedData = $this->userValidatorService->checkCreateUser($data);
         if (count($validatedData['errors']) > 0) {
             throw new UserInvalidDataException($validatedData['errors'], UserInvalidDataException::USER_INVALID_DATA_MESSAGE);
         }

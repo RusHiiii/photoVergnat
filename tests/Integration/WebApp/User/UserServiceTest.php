@@ -38,21 +38,6 @@ class UserServiceTest extends TestCase
         $this->encodedPassword = self::$container->get(UserPasswordEncoderInterface::class);
     }
 
-    public function testUpdateProfileWithBadToken()
-    {
-        $fixtures = $this->loadFile('tests/.fixtures/simpleUser.yml');
-
-        $data = [
-            'email' => 'test@test.com',
-            'lastname' => 'damiens',
-            'firstname' => 'florent',
-            'token' => 'badToken'
-        ];
-
-        $this->expectException(UserInvalidDataException::class);
-        $this->userService->updateProfile($data, $fixtures['user_1']);
-    }
-
     public function testUpdateProfile()
     {
         $fixtures = $this->loadFile('tests/.fixtures/simpleUser.yml');
@@ -61,7 +46,6 @@ class UserServiceTest extends TestCase
             'email' => 'test@test.com',
             'lastname' => 'damiens',
             'firstname' => 'florent',
-            'token' => $this->getCsrfToken()->getToken('update-user')->getValue()
         ];
 
         $result = $this->userService->updateProfile($data, $fixtures['user_1']);
@@ -79,7 +63,6 @@ class UserServiceTest extends TestCase
             'email' => 'admin@orange.fr',
             'lastname' => 'damiens',
             'firstname' => 'florent',
-            'token' => $this->getCsrfToken()->getToken('update-user')->getValue()
         ];
 
         $result = $this->userService->updateProfile($data, $fixtures['user_1']);
@@ -87,23 +70,6 @@ class UserServiceTest extends TestCase
         $this->assertEquals('damiens.florent@orange.fr', $result->getEmail());
         $this->assertEquals('damiens', $result->getLastname());
         $this->assertEquals('florent', $result->getFirstname());
-    }
-
-    public function testUpdateUserWithBadToken()
-    {
-        $fixtures = $this->loadFile('tests/.fixtures/simpleUser.yml');
-
-        $data = [
-            'email' => 'admin@orange.fr',
-            'lastname' => 'damiens',
-            'firstname' => 'florent',
-            'roles' => ['ROLE_USER'],
-            'created' => '2001-03-10 17:16:18',
-            'token' => 'badToken'
-        ];
-
-        $this->expectException(UserInvalidDataException::class);
-        $this->userService->updateUser($data, $fixtures['user_1']);
     }
 
     public function testUpdateUser()
@@ -116,7 +82,6 @@ class UserServiceTest extends TestCase
             'firstname' => 'florent',
             'roles' => ['ROLE_USER', 'ROLE_AUTHOR'],
             'created' => '2001-03-10 17:16:18',
-            'token' => $this->getCsrfToken()->getToken('update-user')->getValue()
         ];
 
         $result = $this->userService->updateUser($data, $fixtures['user_1']);
@@ -138,7 +103,6 @@ class UserServiceTest extends TestCase
             'firstname' => 'florent',
             'roles' => ['ROLE_USER', 'ROLE_AUTHOR'],
             'created' => '2001-03-10 17:16:18',
-            'token' => $this->getCsrfToken()->getToken('update-user')->getValue()
         ];
 
         $this->expectException(UserInvalidDataException::class);
@@ -152,7 +116,6 @@ class UserServiceTest extends TestCase
         $data = [
             'password_first' => 'first',
             'password_second' => 'first',
-            'token' => $this->getCsrfToken()->getToken('update-password')->getValue()
         ];
 
         $this->expectException(UserInvalidDataException::class);
@@ -166,7 +129,6 @@ class UserServiceTest extends TestCase
         $data = [
             'password_first' => 'first125*/',
             'password_second' => 'first125*/',
-            'token' => $this->getCsrfToken()->getToken('update-password')->getValue()
         ];
 
         $result = $this->userService->updatePassword($data, $fixtures['user_1']);
@@ -192,7 +154,6 @@ class UserServiceTest extends TestCase
             'roles' => ['ROLE_USER', 'ROLE_AUTHOR'],
             'password_first' => 'first125*/',
             'password_second' => 'first125*/',
-            'token' => $this->getCsrfToken()->getToken('create-user')->getValue()
         ];
 
         $result = $this->userService->createUser($data);

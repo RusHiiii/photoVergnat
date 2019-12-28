@@ -19,8 +19,6 @@ use Symfony\Component\Security\Core\Security;
 
 class InformationValidator
 {
-    const TOKEN_SEND_MAIL = 'send-mail';
-
     private $validatorService;
     private $toolsService;
 
@@ -38,13 +36,12 @@ class InformationValidator
      * @param string $token
      * @return array
      */
-    public function checkContact(array $data, string $token): array
+    public function checkContact(array $data): array
     {
         /** Trim les données */
         $data = $this->toolsService->trimData($data);
 
         /** Validation des données */
-        $this->validatorService->validateCsrfToken($data['token'], $token);
         $this->validatorService->validateNotBlank($data['subject'], 'Sujet');
         $this->validatorService->validateExist($data, 'choice', 'Sujet');
         $this->validatorService->validateNotBlank($data['message'], 'Message');

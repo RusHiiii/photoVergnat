@@ -61,7 +61,7 @@ class SeasonService
     public function createSeason(array $data): Season
     {
         /** Validation des données */
-        $validatedData = $this->seasonValidatorService->checkSeason($data, SeasonValidator::TOKEN_CREATE);
+        $validatedData = $this->seasonValidatorService->checkSeason($data);
         if (count($validatedData['errors']) > 0) {
             throw new SeasonInvalidDataException($validatedData['errors'], SeasonInvalidDataException::SEASON_INVALID_DATA_MESSAGE);
         }
@@ -87,7 +87,7 @@ class SeasonService
     public function updateSeason(array $data, Season $season): Season
     {
         /** Validation des données */
-        $validatedData = $this->seasonValidatorService->checkSeason($data, SeasonValidator::TOKEN_UPDATE);
+        $validatedData = $this->seasonValidatorService->checkSeason($data);
         if (count($validatedData['errors']) > 0) {
             throw new SeasonInvalidDataException($validatedData['errors'], SeasonInvalidDataException::SEASON_INVALID_DATA_MESSAGE);
         }

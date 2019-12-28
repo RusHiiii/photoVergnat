@@ -1,4 +1,7 @@
 {
+    "beberlei/assert": {
+        "version": "v2.9.9"
+    },
     "behat/behat": {
         "version": "v3.5.0"
     },
@@ -157,6 +160,9 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "firebase/php-jwt": {
+        "version": "v5.0.0"
+    },
     "friendsofphp/php-cs-fixer": {
         "version": "2.2",
         "recipe": {
@@ -172,8 +178,20 @@
     "fzaninotto/faker": {
         "version": "v1.8.0"
     },
+    "guzzlehttp/guzzle": {
+        "version": "6.5.2"
+    },
+    "guzzlehttp/promises": {
+        "version": "v1.3.1"
+    },
+    "guzzlehttp/psr7": {
+        "version": "1.6.1"
+    },
     "imagine/imagine": {
         "version": "v0.7.1"
+    },
+    "imbo/behat-api-extension": {
+        "version": "v2.2.1"
     },
     "infection/infection": {
         "version": "0.15.0"
@@ -284,11 +302,17 @@
     "psr/container": {
         "version": "1.0.0"
     },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/link": {
         "version": "1.0.0"
     },
     "psr/log": {
         "version": "1.1.0"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
     },
     "sebastian/comparator": {
         "version": "3.0.2"

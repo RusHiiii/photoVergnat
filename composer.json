@@ -12,6 +12,7 @@
         "sensio/framework-extra-bundle": "^5.1",
         "squizlabs/php_codesniffer": "*",
         "symfony/asset": "4.3.*",
+        "symfony/browser-kit": "4.3.*",
         "symfony/console": "4.3.*",
         "symfony/css-selector": "4.3.*",
         "symfony/dotenv": "4.3.*",
@@ -54,7 +55,8 @@
         "symfony/profiler-pack": "*",
         "symfony/test-pack": "*",
         "symfony/web-server-bundle": "4.3.*",
-        "theofidry/alice-data-fixtures": "^1.1"
+        "theofidry/alice-data-fixtures": "^1.1",
+        "imbo/behat-api-extension": "^2.1"
     },
     "config": {
         "preferred-install": {

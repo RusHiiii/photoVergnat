@@ -10,7 +10,7 @@ App\Entity\WebApp\User:
     lastname: 'damiens'
     email: 'damiens.florent@orange.fr'
     password: 'test'
-    roles: '[ROLE_USER]'
+    roles: '[ROLE_USER, ROLE_ADMIN]'
     created: '<date_create()>'
     updated: '<date_create()>'
 

@@ -45,7 +45,7 @@ class Category
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\WebApp\Season", inversedBy="categories")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @Groups({"category"})
      */
     private $season;

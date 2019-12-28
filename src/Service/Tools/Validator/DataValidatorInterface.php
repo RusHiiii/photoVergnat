@@ -24,7 +24,5 @@ interface DataValidatorInterface
 
     public function validateRegex(string $value, string $key);
 
-    public function validateCsrfToken(string $token, string $key);
-
     public function validateExist(array $data, string $key, string $value);
 }

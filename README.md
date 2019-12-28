@@ -35,3 +35,6 @@ Pour lancer PHPUnit:
 
 Pour lancer Infection:
 `vendor\bin\infection --threads=4 --coverage=var/coverage`
+
+Pour lancer Behat:
+`bin/behat --format=progress [--name=scenario]`

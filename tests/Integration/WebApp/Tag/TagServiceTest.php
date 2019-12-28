@@ -44,24 +44,11 @@ class TagServiceTest extends TestCase
         $this->assertCount(1, $this->tagRepository->findAll());
     }
 
-    public function testCreateTagWithBadToken()
-    {
-        $tag = [
-            'title' => 'test',
-            'type' => 'type',
-            'token' => 'badToken'
-        ];
-
-        $this->expectException(TagInvalidDataException::class);
-        $this->tagService->createTag($tag);
-    }
-
     public function testCreateTagWithBadTitle()
     {
         $tag = [
             'title' => '',
             'type' => 'type',
-            'token' => $this->getCsrfToken()->getToken('create-tag')->getValue()
         ];
 
         $this->expectException(TagInvalidDataException::class);
@@ -73,7 +60,6 @@ class TagServiceTest extends TestCase
         $tag = [
             'title' => 'tag',
             'type' => 'type',
-            'token' => $this->getCsrfToken()->getToken('create-tag')->getValue()
         ];
 
         $result = $this->tagService->createTag($tag);
@@ -90,7 +76,6 @@ class TagServiceTest extends TestCase
         $tag = [
             'title' => 'tagupdate',
             'type' => 'type',
-            'token' => $this->getCsrfToken()->getToken('update-tag')->getValue()
         ];
 
         $result = $this->tagService->updateTag($tag, $fixtures['tag_1']);
@@ -107,7 +92,6 @@ class TagServiceTest extends TestCase
         $tag = [
             'title' => '',
             'type' => 'type',
-            'token' => $this->getCsrfToken()->getToken('update-tag')->getValue()
         ];
 
         $this->expectException(TagInvalidDataException::class);

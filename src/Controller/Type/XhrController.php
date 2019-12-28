@@ -36,7 +36,7 @@ class XhrController extends AbstractController
 
     /**
      * Suppression d'un type
-     * @Route("/xhr/admin/type/remove/{id}", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/type/remove/{id}", condition="request.isXmlHttpRequest()", methods={"DELETE"})
      */
     public function removeType(
         Request $request,

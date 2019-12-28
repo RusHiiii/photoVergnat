@@ -95,18 +95,6 @@ class DataValidatorServiceTest extends TestCase
         $this->assertEquals('Le champs « Mot de passe » n\'a pas le bon pattern', $errors[0]);
     }
 
-    public function testCsrfToken()
-    {
-        $result = $this->dataValidatorService->validateCsrfToken('token', 'Token');
-
-        $this->assertFalse($result);
-
-        $errors = $this->dataValidatorService->getErrors();
-
-        $this->assertCount(1, $errors);
-        $this->assertEquals('Token invalide', $errors[0]);
-    }
-
     public function testValidateExist()
     {
         $result = $this->dataValidatorService->validateExist([], 'key', 'Tags');

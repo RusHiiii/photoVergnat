@@ -79,7 +79,7 @@ class CategoryService
     public function createCategory(array $data, User $user): Category
     {
         /** Validation des données */
-        $validatedData = $this->categoryValidatorService->checkCategory($data, CategoryValidator::TOKEN_CREATE);
+        $validatedData = $this->categoryValidatorService->checkCategory($data);
         if (count($validatedData['errors']) > 0) {
             throw new CategoryInvalidDataException($validatedData['errors'], CategoryInvalidDataException::CATEGORY_INVALID_DATA_MESSAGE);
         }
@@ -109,7 +109,7 @@ class CategoryService
     public function updateCategory(array $data, Category $category): Category
     {
         /** Validation des données */
-        $validatedData = $this->categoryValidatorService->checkCategory($data, CategoryValidator::TOKEN_UPDATE);
+        $validatedData = $this->categoryValidatorService->checkCategory($data);
         if (count($validatedData['errors']) > 0) {
             throw new CategoryInvalidDataException($validatedData['errors'], CategoryInvalidDataException::CATEGORY_INVALID_DATA_MESSAGE);
         }

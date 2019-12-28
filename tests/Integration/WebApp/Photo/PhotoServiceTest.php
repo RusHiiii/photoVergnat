@@ -52,21 +52,6 @@ class PhotoServiceTest extends TestCase
         $this->assertCount(1, $this->photoRepository->findAll());
     }
 
-    public function testCreatePhotoWithBadToken()
-    {
-        $image = new UploadedFile($this->loadImage(),'image.jpeg','image/jpeg',null,true);
-
-        $data = [
-            'format' => '1',
-            'tags' => ['1'],
-            'title' => 'Puy Pariou',
-            'token' => 'badToken'
-        ];
-
-        $this->expectException(PhotoInvalidDataException::class);
-        $this->photoService->createPhoto($data, $image);
-    }
-
     public function testCreatePhoto()
     {
         $image = new UploadedFile($this->loadImage(),'image.jpeg','image/jpeg',null,true);
@@ -75,7 +60,6 @@ class PhotoServiceTest extends TestCase
             'format' => '1',
             'tags' => ['1'],
             'title' => 'Puy Pariou',
-            'token' => $this->getCsrfToken()->getToken('create-photo')->getValue()
         ];
 
         $result = $this->photoService->createPhoto($data, $image);
@@ -92,7 +76,6 @@ class PhotoServiceTest extends TestCase
             'format' => '1',
             'tags' => ['1'],
             'title' => 'Puy Pariou Edit',
-            'token' => $this->getCsrfToken()->getToken('update-photo')->getValue()
         ];
 
         $result = $this->photoService->updatePhoto($data, $image, $fixtures['photo_1']);
@@ -109,7 +92,6 @@ class PhotoServiceTest extends TestCase
             'format' => '1',
             'tags' => ['1'],
             'title' => 'Puy Pariou Edit',
-            'token' => $this->getCsrfToken()->getToken('update-photo')->getValue()
         ];
 
         $result = $this->photoService->updatePhoto($data, null, $fixtures['photo_1']);
@@ -126,7 +108,6 @@ class PhotoServiceTest extends TestCase
             'format' => '10',
             'tags' => ['1'],
             'title' => 'Puy Pariou Edit',
-            'token' => $this->getCsrfToken()->getToken('update-photo')->getValue()
         ];
 
         $this->expectException(TypeNotFoundException::class);
