@@ -62,7 +62,8 @@ class RequestContext implements Context
             $path,
             $data
         );
-        $this->response = $this->client->getResponse();
+        $this->response
+            = $this->client->getResponse();
     }
 
     /**
@@ -116,34 +117,12 @@ class RequestContext implements Context
     }
 
     /**
-     * @Then Object :object in namespace :namespace with attribute :attribute equal :value should exist in database
+     * @Then the content should have the following content
      */
-    public function objectInNamespaceWithAttributeEqualShouldExistInDatabase($object, $namespace, $attribute, $value)
+    public function theContentShouldBe(PyStringNode $payload = null)
     {
-        $entity = $this->kernel->getContainer()->get('doctrine')
-            ->getRepository("App\Entity\\$namespace\\$object")
-            ->findOneBy(
-                [
-                    $attribute => $value
-                ]
-            );
+        $dataContent = json_decode($payload->getRaw(), true);
 
-        Assert::notNull($entity);
-    }
-
-    /**
-     * @Then Object :object in namespace :namespace with attribute :attribute equal :value shouldn't exist in database
-     */
-    public function objectInNamespaceWithAttributeEqualShouldntExistInDatabase($object, $namespace, $attribute, $value)
-    {
-        $entity = $this->kernel->getContainer()->get('doctrine')
-            ->getRepository("App\Entity\\$namespace\\$object")
-            ->findOneBy(
-                [
-                    $attribute => $value
-                ]
-            );
-
-        Assert::null($entity);
+        Assert::eq($dataContent, json_decode($this->response->getContent(), true));
     }
 }

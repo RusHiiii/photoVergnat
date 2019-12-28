@@ -19,13 +19,3 @@ Feature: Test the main app
     When I make an HttpRequest to path "/admin" with the method "GET"
     Then the status code should be "200"
     And the content type should be "text/html"
-
-  Scenario: I request the contact page
-    When I make an HttpRequest to path "/contact" with the method "GET"
-    Then the status code should be "200"
-    And the content type should be "text/html"
-
-  Scenario: I request the about page
-    When I make an HttpRequest to path "/a-propos" with the method "GET"
-    Then the status code should be "200"
-    And the content type should be "text/html"

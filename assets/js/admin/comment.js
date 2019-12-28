@@ -43,7 +43,7 @@ $('body').on('submit', '#create-comment', function (e) {
             $('#large-Modal').modal('hide');
         },
         error: function (res) {
-            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-create');
+            $.showErrors(res.responseJSON.context, '#alert-create');
         },
         complete: function () {
             $.removeSpinner('.create-comment', 'Valider');
@@ -67,11 +67,11 @@ $('body').on('submit', '#update-comment', function (e) {
         },
         dataType:'json',
         success : function (res) {
-            updateRow(JSON.parse(res));
+            updateRow(res);
             $('#large-Modal').modal('hide');
         },
         error: function (res) {
-            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-update');
+            $.showErrors(res.responseJSON.context, '#alert-update');
         },
         complete: function () {
             $.removeSpinner('.update-comment', 'Valider');

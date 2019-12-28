@@ -4,6 +4,7 @@ namespace App\Controller\Photo;
 
 use App\Controller\Security\Voter\PhotoVoter;
 use App\Controller\Security\Voter\TagVoter;
+use App\Entity\Core\SerializedResponse;
 use App\Entity\WebApp\Photo;
 use App\Entity\WebApp\Tag;
 use App\Entity\WebApp\User;
@@ -72,18 +73,18 @@ class XhrController extends AbstractController
         try {
             $resultUpdate = $photoService->updatePhoto($data, $file, $photo);
         } catch (PhotoInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         } catch (TagNotFoundException | TypeNotFoundException | PhotoNotFoundException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultUpdate, 'json', ['groups' => ['default', 'photo']]),
             200
         );
@@ -104,18 +105,18 @@ class XhrController extends AbstractController
         try {
             $resultCreate = $photoService->createPhoto($data, $file);
         } catch (PhotoInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         } catch (TagNotFoundException | TypeNotFoundException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultCreate, 'json', ['groups' => ['default', 'photo']]),
             200
         );

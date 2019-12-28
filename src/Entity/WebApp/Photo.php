@@ -36,7 +36,7 @@ class Photo
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\WebApp\Type", inversedBy="photos")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @Groups({"photo"})
      */
     private $type;

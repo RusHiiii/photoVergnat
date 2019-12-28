@@ -3,6 +3,7 @@
 namespace App\Controller\Season;
 
 use App\Controller\Security\Voter\SeasonVoter;
+use App\Entity\Core\SerializedResponse;
 use App\Entity\WebApp\Season;
 use App\Entity\WebApp\Tag;
 use App\Entity\WebApp\User;
@@ -66,18 +67,18 @@ class XhrController extends AbstractController
         try {
             $resultUpdate = $seasonService->updateSeason($data['season'], $season);
         } catch (SeasonInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         } catch (SeasonNotFoundException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultUpdate, 'json', ['groups' => ['default', 'season']]),
             200
         );
@@ -97,13 +98,13 @@ class XhrController extends AbstractController
         try {
             $resultCreate = $seasonService->createSeason($data['season']);
         } catch (SeasonInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultCreate, 'json', ['groups' => ['default', 'season']]),
             200
         );

@@ -40,11 +40,11 @@ $('body').on('submit', '#create-photo', function (e) {
         cache: false,
         processData:false,
         success : function (res) {
-            addRow(JSON.parse(res));
+            addRow(res);
             $('#large-Modal').modal('hide');
         },
         error: function (res) {
-            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-create');
+            $.showErrors(res.responseJSON.context, '#alert-create');
         },
         complete: function () {
             $.removeSpinner('.create-photo', 'Valider');
@@ -69,11 +69,11 @@ $('body').on('submit', '#update-photo', function (e) {
         cache: false,
         processData:false,
         success : function (res) {
-            updateRow(JSON.parse(res));
+            updateRow(res);
             $('#large-Modal').modal('hide');
         },
         error: function (res) {
-            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-update');
+            $.showErrors(res.responseJSON.context, '#alert-update');
         },
         complete: function () {
             $.removeSpinner('.update-photo', 'Valider');

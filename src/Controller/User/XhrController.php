@@ -3,6 +3,7 @@
 namespace App\Controller\User;
 
 use App\Controller\Security\Voter\UserVoter;
+use App\Entity\Core\SerializedResponse;
 use App\Entity\WebApp\User;
 use App\Service\Tools\Error\Factory\ErrorFactory;
 use App\Service\WebApp\User\Exceptions\UserInvalidDataException;
@@ -42,18 +43,18 @@ class XhrController extends AbstractController
         try {
             $resultEdit = $userService->updateProfile($data['user'], $this->getUser());
         } catch (UserInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         } catch (UserNotFoundException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultEdit, 'json', ['groups' => ['default']]),
             200
         );
@@ -75,18 +76,18 @@ class XhrController extends AbstractController
         try {
             $resultEdit = $userService->updatePassword($data['user'], $user);
         } catch (UserInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         } catch (UserNotFoundException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultEdit, 'json', ['groups' => ['default']]),
             200
         );
@@ -124,18 +125,18 @@ class XhrController extends AbstractController
         try {
             $resultUpdate = $userService->updateUser($data['user'], $user);
         } catch (UserInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         } catch (UserNotFoundException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultUpdate, 'json', ['groups' => ['default']]),
             200
         );
@@ -155,13 +156,13 @@ class XhrController extends AbstractController
         try {
             $resultCreate = $userService->createUser($data['user']);
         } catch (UserInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultCreate, 'json', ['groups' => ['default']]),
             200
         );

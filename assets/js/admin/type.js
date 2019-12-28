@@ -67,11 +67,11 @@ $('body').on('submit', '#create-type', function (e) {
         },
         dataType:'json',
         success : function (res) {
-            addRow(JSON.parse(res));
+            addRow(res);
             $('#large-Modal').modal('hide');
         },
         error: function (res) {
-            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-create');
+            $.showErrors(res.responseJSON.context, '#alert-create');
         },
         complete: function () {
             $.removeSpinner('.create-type', 'Valider');
@@ -95,11 +95,11 @@ $('body').on('submit', '#update-type', function (e) {
         },
         dataType:'json',
         success : function (res) {
-            updateRow(JSON.parse(res));
+            updateRow(res);
             $('#large-Modal').modal('hide');
         },
         error: function (res) {
-            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-update');
+            $.showErrors(res.responseJSON.context, '#alert-update');
         },
         complete: function () {
             $.removeSpinner('.update-type', 'Valider');

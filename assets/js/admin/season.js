@@ -66,11 +66,11 @@ $('body').on('submit', '#create-season', function (e) {
         },
         dataType:'json',
         success : function (res) {
-            addRow(JSON.parse(res));
+            addRow(res);
             $('#large-Modal').modal('hide');
         },
         error: function (res) {
-            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-create');
+            $.showErrors(res.responseJSON.context, '#alert-create');
         },
         complete: function () {
             $.removeSpinner('.create-season', 'Valider');
@@ -94,11 +94,11 @@ $('body').on('submit', '#update-season', function (e) {
         },
         dataType:'json',
         success : function (res) {
-            updateRow(JSON.parse(res));
+            updateRow(res);
             $('#large-Modal').modal('hide');
         },
         error: function (res) {
-            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-update');
+            $.showErrors(res.responseJSON.context, '#alert-update');
         },
         complete: function () {
             $.removeSpinner('.update-season', 'Valider');

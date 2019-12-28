@@ -21,7 +21,6 @@ class DataValidatorService implements DataValidatorInterface
     const MSG_ERROR_EMAIL = 'Le champs « %s » est invalide';
     const MSG_ERROR_BLANK = 'Le champs « %s » est vide';
     const MSG_ERROR_NULL = 'Le champs « %s » est obligatoire';
-    const MSG_ERROR_TOKEN = 'Token invalide';
     const MSG_ERROR_EQUAL = 'Les champs « %s » ne sont pas identique';
     const MSG_ERROR_REGEX = 'Le champs « %s » n\'a pas le bon pattern';
     const MSG_ERROR_EMPTY = 'Le champs « %s » ne peux pas être vide';

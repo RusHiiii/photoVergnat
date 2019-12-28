@@ -3,6 +3,7 @@
 namespace App\Controller\Category;
 
 use App\Controller\Security\Voter\CategoryVoter;
+use App\Entity\Core\SerializedResponse;
 use App\Entity\WebApp\Category;
 use App\Repository\WebApp\Photo\Doctrine\PhotoRepository;
 use App\Repository\WebApp\Season\Doctrine\SeasonRepository;
@@ -67,18 +68,18 @@ class XhrController extends AbstractController
         try {
             $resultUpdate = $categoryService->updateCategory($data['category'], $category);
         } catch (CategoryInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         } catch (CategoryNotFoundException | PhotoNotFoundException | SeasonNotFoundException | TagNotFoundException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultUpdate, 'json', ['groups' => ['default', 'category']]),
             200
         );
@@ -98,18 +99,18 @@ class XhrController extends AbstractController
         try {
             $resultCreate = $categoryService->createCategory($data['category'], $this->getUser());
         } catch (CategoryInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         } catch (PhotoNotFoundException | SeasonNotFoundException | TagNotFoundException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultCreate, 'json', ['groups' => ['default', 'category']]),
             200
         );

@@ -19,7 +19,7 @@ $('#update-user').on('submit', function (event) {
             $.showSuccess('Profil édité !', '#success-edit');
         },
         error: function (res) {
-            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-edit');
+            $.showErrors(res.responseJSON.context, '#alert-edit');
         },
         complete: function () {
             $.removeSpinner('.edit-user', 'Valider');
@@ -46,7 +46,7 @@ $('#update-password').on('submit', function (event) {
             $.showSuccess('Mot de passe édité !', '#success-password');
         },
         error: function (res) {
-            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-password');
+            $.showErrors(res.responseJSON.context, '#alert-password');
         },
         complete: function () {
             $.removeSpinner('.edit-password', 'Valider');

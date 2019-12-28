@@ -3,6 +3,7 @@
 namespace App\Controller\Type;
 
 use App\Controller\Security\Voter\TypeVoter;
+use App\Entity\Core\SerializedResponse;
 use App\Entity\WebApp\Tag;
 use App\Entity\WebApp\Type;
 use App\Entity\WebApp\User;
@@ -52,7 +53,7 @@ class XhrController extends AbstractController
 
     /**
      * MàJ d'un type
-     * @Route("/xhr/admin/type/update/{id}", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/type/update/{id}", condition="request.isXmlHttpRequest()", methods={"PATCH"})
      */
     public function updateType(
         Request $request,
@@ -66,18 +67,18 @@ class XhrController extends AbstractController
         try {
             $resultUpdate = $typeService->updateType($data['type'], $type);
         } catch (TypeNotFoundException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404
             );
         } catch (TypeInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultUpdate, 'json'),
             200
         );
@@ -85,7 +86,7 @@ class XhrController extends AbstractController
 
     /**
      * Création d'un type
-     * @Route("/xhr/admin/type/create", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/type/create", condition="request.isXmlHttpRequest()", methods={"POST"})
      * @Security("is_granted('ROLE_ADMIN')")
      */
     public function createType(
@@ -97,13 +98,13 @@ class XhrController extends AbstractController
         try {
             $resultCreate = $typeService->createType($data['type']);
         } catch (TypeInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultCreate, 'json'),
             200
         );

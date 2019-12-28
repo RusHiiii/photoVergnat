@@ -14,10 +14,10 @@ $('#create-comment').on('submit', function (event) {
         },
         dataType:'json',
         success : function (res) {
-            addComment(JSON.parse(res));
+            addComment(res);
         },
         error: function (res) {
-            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-create');
+            $.showErrors(res.responseJSON.context, '#alert-create');
         },
         complete: function () {
             $.removeSpinner('.create-comment', 'Valider');

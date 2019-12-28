@@ -3,6 +3,7 @@
 namespace App\Controller\Tag;
 
 use App\Controller\Security\Voter\TagVoter;
+use App\Entity\Core\SerializedResponse;
 use App\Entity\WebApp\Tag;
 use App\Entity\WebApp\User;
 use App\Service\Tools\Error\Factory\ErrorFactory;
@@ -47,18 +48,18 @@ class XhrController extends AbstractController
         try {
             $resultUpdate = $tagService->updateTag($data['tag'], $tag);
         } catch (TagInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         } catch (TagNotFoundException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultUpdate, 'json', ['groups' => ['default', 'tag']]),
             200
         );
@@ -94,13 +95,13 @@ class XhrController extends AbstractController
         try {
             $resultCreate = $tagService->createTag($data['tag']);
         } catch (TagInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultCreate, 'json', ['groups' => ['default', 'tag']]),
             200
         );

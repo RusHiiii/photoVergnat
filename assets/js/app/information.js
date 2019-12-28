@@ -17,7 +17,7 @@ $('#send-mail').on('submit', function (event) {
             $.showSuccess('Email envoyé !', '#alert-success');
         },
         error: function (res) {
-            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-send');
+            $.showErrors(res.responseJSON.context, '#alert-send');
         },
         complete: function () {
             $.removeSpinner('.send-mail', 'Valider');

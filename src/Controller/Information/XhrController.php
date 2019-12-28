@@ -2,10 +2,12 @@
 
 namespace App\Controller\Information;
 
+use App\Entity\Core\SerializedResponse;
 use App\Service\Tools\Error\Factory\ErrorFactory;
 use App\Service\WebApp\Information\Exceptions\InformationInvalidDataException;
 use App\Service\WebApp\Information\InformationService;
 use App\Service\WebApp\Statistic\StatisticService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,7 +29,7 @@ class XhrController extends AbstractController
 
     /**
      * Envoie d'un message
-     * @Route("/xhr/app/information/contact/send", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/app/information/contact/send", condition="request.isXmlHttpRequest()", methods={"POST"})
      */
     public function sendContact(
         Request $request,
@@ -38,9 +40,9 @@ class XhrController extends AbstractController
         try {
             $informationService->sendContactMail($data['mail']);
         } catch (InformationInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
-                404
+                400
             );
         }
 
@@ -50,6 +52,7 @@ class XhrController extends AbstractController
     /**
      * Envoie d'un message
      * @Route("/xhr/admin/statistics", condition="request.isXmlHttpRequest()")
+     * @Security("is_granted('ROLE_AUTHOR')")
      */
     public function getStatisticsPhotos(
         Request $request,

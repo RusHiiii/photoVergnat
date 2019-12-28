@@ -3,6 +3,7 @@
 namespace App\Controller\Comment;
 
 use App\Controller\Security\Voter\CommentVoter;
+use App\Entity\Core\SerializedResponse;
 use App\Entity\WebApp\Comment;
 use App\Repository\WebApp\Category\Doctrine\CategoryRepository;
 use App\Service\Tools\Error\Factory\ErrorFactory;
@@ -59,18 +60,18 @@ class XhrController extends AbstractController
         try {
             $resultCreate = $commentService->createComment($data['comment']);
         } catch (CommentInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         } catch (CategoryNotFoundException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultCreate, 'json', ['groups' => ['default', 'comment']]),
             200
         );
@@ -92,18 +93,18 @@ class XhrController extends AbstractController
         try {
             $resultUpdate = $commentService->updateComment($data['comment'], $comment);
         } catch (CommentInvalidDataException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 400
             );
         } catch (CategoryNotFoundException $e) {
-            return new JsonResponse(
+            return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
                 404
             );
         }
 
-        return new JsonResponse(
+        return new SerializedResponse(
             $this->serializer->serialize($resultUpdate, 'json', ['groups' => ['default', 'comment']]),
             200
         );

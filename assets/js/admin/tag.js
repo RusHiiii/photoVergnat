@@ -66,11 +66,11 @@ $('body').on('submit', '#create-tag', function (e) {
         },
         dataType:'json',
         success : function (res) {
-            addRow(JSON.parse(res));
+            addRow(res);
             $('#large-Modal').modal('hide');
         },
         error: function (res) {
-            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-create');
+            $.showErrors(res.responseJSON.context, '#alert-create');
         },
         complete: function () {
             $.removeSpinner('.create-tag', 'Valider');
@@ -95,10 +95,10 @@ $('body').on('submit', '#update-tag', function (e) {
         dataType:'json',
         success : function (res) {
             $('#large-Modal').modal('hide');
-            updateRow(JSON.parse(res));
+            updateRow(res);
         },
         error: function (res) {
-            $.showErrors(JSON.parse(res.responseJSON).context, '#alert-update');
+            $.showErrors(res.responseJSON.context, '#alert-update');
         },
         complete: function () {
             $.removeSpinner('.update-tag', 'Valider');

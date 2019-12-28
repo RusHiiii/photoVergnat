@@ -39,4 +39,36 @@ class FixtureContext implements Context
 
         $loader->load([$fixtureFile]);
     }
+
+    /**
+     * @Then Object :object in namespace :namespace with attribute :attribute equal :value should exist in database
+     */
+    public function objectInNamespaceWithAttributeEqualShouldExistInDatabase($object, $namespace, $attribute, $value)
+    {
+        $entity = $this->kernel->getContainer()->get('doctrine')
+            ->getRepository("App\Entity\\$namespace\\$object")
+            ->findOneBy(
+                [
+                    $attribute => $value
+                ]
+            );
+
+        Assert::notNull($entity);
+    }
+
+    /**
+     * @Then Object :object in namespace :namespace with attribute :attribute equal :value shouldn't exist in database
+     */
+    public function objectInNamespaceWithAttributeEqualShouldntExistInDatabase($object, $namespace, $attribute, $value)
+    {
+        $entity = $this->kernel->getContainer()->get('doctrine')
+            ->getRepository("App\Entity\\$namespace\\$object")
+            ->findOneBy(
+                [
+                    $attribute => $value
+                ]
+            );
+
+        Assert::null($entity);
+    }
 }
