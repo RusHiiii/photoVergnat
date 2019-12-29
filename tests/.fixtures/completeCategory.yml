@@ -44,7 +44,7 @@ App\Entity\WebApp\Category:
     latitude: '25.1247'
     description: 'dezdezde'
     photos: '[@photo_1, @photo_2]'
-    active: '0'
+    active: '1'
     metaDescription: 'rrrr'
 
 App\Entity\WebApp\Comment:

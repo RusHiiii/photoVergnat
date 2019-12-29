@@ -1,4 +1,4 @@
-# Projet Symfony - Photo'Vergant
+# Projet Symfony - Photo'Vergnat
 Damiens Florent - 2019
 
 # Présentation du projet

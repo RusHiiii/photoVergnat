@@ -32,7 +32,7 @@ class XhrController extends AbstractController
 
     /**
      * Edtion d'un utilisateur
-     * @Route("/xhr/app/user/edit-user/", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/app/user/edit-user/", condition="request.isXmlHttpRequest()", methods={"PATCH"})
      */
     public function updateProfile(
         Request $request,
@@ -62,7 +62,7 @@ class XhrController extends AbstractController
 
     /**
      * Edtion d'un mot de passe
-     * @Route("/xhr/app/user/edit-password/{id}", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/app/user/edit-password/{id}", condition="request.isXmlHttpRequest()", methods={"PATCH"})
      */
     public function updatePassword(
         Request $request,
@@ -111,7 +111,7 @@ class XhrController extends AbstractController
 
     /**
      * MàJ d'un utilisateur
-     * @Route("/xhr/admin/user/update/{id}", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/user/update/{id}", condition="request.isXmlHttpRequest()", methods={"PATCH"})
      */
     public function updateUser(
         Request $request,
@@ -144,7 +144,7 @@ class XhrController extends AbstractController
 
     /**
      * Création d'un utilisateur
-     * @Route("/xhr/admin/user/create", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/user/create", condition="request.isXmlHttpRequest()", methods={"POST"})
      * @Security("is_granted('ROLE_ADMIN')")
      */
     public function createUser(

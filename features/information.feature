@@ -50,8 +50,8 @@ Feature: Test the information
           }
        ],
        "category":[
-          "1",
-          "0"
+          "0",
+          "1"
        ]
     }
     """

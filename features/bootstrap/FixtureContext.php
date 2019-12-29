@@ -6,11 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Webmozart\Assert\Assert;
-use App\Entity\WebApp\User;
-use Symfony\Bundle\FrameworkBundle\KernelBrowser;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\BrowserKit\Cookie;
-use Behat\Gherkin\Node\PyStringNode;
+use Behat\Gherkin\Node\TableNode;
 
 class FixtureContext implements Context
 {
@@ -70,5 +66,29 @@ class FixtureContext implements Context
             );
 
         Assert::null($entity);
+    }
+
+    /**
+     * @Then Object :object in namespace :namespace with the following data shouldn't exist in database
+     */
+    public function objectInNamespaceWithFollowingDataShouldntExistInDatabase($object, $namespace, TableNode $tableNode = null)
+    {
+        $entity = $this->kernel->getContainer()->get('doctrine')
+            ->getRepository("App\Entity\\$namespace\\$object")
+            ->findOneBy(array_column($tableNode->getHash(), 'value', 'attribute'));
+
+        Assert::null($entity);
+    }
+
+    /**
+     * @Then Object :object in namespace :namespace with the following data should exist in database
+     */
+    public function objectInNamespaceWithFollowingDataShouldExistInDatabase($object, $namespace, TableNode $tableNode = null)
+    {
+        $entity = $this->kernel->getContainer()->get('doctrine')
+            ->getRepository("App\Entity\\$namespace\\$object")
+            ->findOneBy(array_column($tableNode->getHash(), 'value', 'attribute'));
+
+        Assert::notNull($entity);
     }
 }

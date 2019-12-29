@@ -50,7 +50,7 @@ $('body').on('submit', '#update-password', function (e) {
 
     $.ajax({
         url : `/xhr/app/user/edit-password/${data.id}`,
-        type : 'POST',
+        type : 'PATCH',
         data : {
             'user': data
         },

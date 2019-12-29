@@ -34,7 +34,7 @@ class XhrController extends AbstractController
 
     /**
      * MàJ d'un tag
-     * @Route("/xhr/admin/tag/update/{id}", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/tag/update/{id}", condition="request.isXmlHttpRequest()", methods={"PATCH"})
      */
     public function updateTag(
         Request $request,
@@ -83,7 +83,7 @@ class XhrController extends AbstractController
 
     /**
      * Création d'un tag
-     * @Route("/xhr/admin/tag/create", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/tag/create", condition="request.isXmlHttpRequest()", methods={"POST"})
      * @Security("is_granted('ROLE_AUTHOR')")
      */
     public function createTag(

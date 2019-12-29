@@ -10,7 +10,7 @@ $('#update-user').on('submit', function (event) {
 
     $.ajax({
         url : '/xhr/app/user/edit-user/',
-        type : 'POST',
+        type : 'PATCH',
         data : {
             'user': data
         },
@@ -37,7 +37,7 @@ $('#update-password').on('submit', function (event) {
 
     $.ajax({
         url : `/xhr/app/user/edit-password/${data.id}`,
-        type : 'POST',
+        type : 'PATCH',
         data : {
             'user': data
         },

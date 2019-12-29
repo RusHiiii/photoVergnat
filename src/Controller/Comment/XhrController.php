@@ -49,7 +49,7 @@ class XhrController extends AbstractController
 
     /**
      * Création d'un commentaire
-     * @Route("/xhr/app/comment/create", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/app/comment/create", condition="request.isXmlHttpRequest()", methods={"POST"})
      */
     public function createComment(
         Request $request,
@@ -79,9 +79,9 @@ class XhrController extends AbstractController
 
     /**
      * MàJ d'un commentaire
-     * @Route("/xhr/admin/comment/update/{id}", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/comment/update/{id}", condition="request.isXmlHttpRequest()", methods={"PATCH"})
      */
-    public function updateCategory(
+    public function updateComment(
         Request $request,
         CommentService $commentService,
         Comment $comment
@@ -100,7 +100,7 @@ class XhrController extends AbstractController
         } catch (CategoryNotFoundException $e) {
             return new SerializedResponse(
                 $this->serializer->serialize($this->errorFactory->create($e), 'json'),
-                404
+                400
             );
         }
 
