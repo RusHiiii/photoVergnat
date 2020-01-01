@@ -37,8 +37,8 @@ App\Entity\WebApp\Category:
     title: 'Puy Pariou'
     user: '@user_1'
     season: '@season_1'
-    created: '<date_create()>'
-    updated: '<date_create()>'
+    created: "<dateTimeBetween('2019-12-10', '2019-12-31')>"
+    updated: "<dateTimeBetween('2019-12-10', '2019-12-31')>"
     city: 'zerfzefz'
     longitude: '25.0325'
     latitude: '25.1247'

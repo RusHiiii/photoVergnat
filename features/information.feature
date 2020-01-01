@@ -18,44 +18,6 @@ Feature: Test the information
     Then the status code should be "200"
     And the content type should be "text/html"
 
-  Scenario: I request the admin statistics data
-    Given I load the fixture "completeCategory"
-    And I am logged with the user "damiens.florent@orange.fr"
-    When I make an XmlHttpRequest to path "/xhr/admin/statistics" with the method "GET"
-    Then the status code should be "200"
-    And the content type should be "application/json"
-    And the content should have the following content
-    """
-    {
-       "photo":[
-          {
-             "month":"Aug",
-             "count":"0"
-          },
-          {
-             "month":"Sep",
-             "count":"0"
-          },
-          {
-             "month":"Oct",
-             "count":"0"
-          },
-          {
-             "month":"Nov",
-             "count":"0"
-          },
-          {
-             "month":"Dec",
-             "count":"2"
-          }
-       ],
-       "category":[
-          "0",
-          "1"
-       ]
-    }
-    """
-
   Scenario: I request the send contact message
     When I make an XmlHttpRequest to path "/xhr/app/information/contact/send" with the method "POST" and with the following payload
     """

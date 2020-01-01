@@ -149,7 +149,7 @@ class PhotoService
     public function getNumberPhotoByMonth()
     {
         $statistics = [];
-        $end = new \DateTime();
+        $end = new \DateTime('last day of this month');
 
         $begin = new \DateTime('first day of this month');
         $begin = $begin->modify( '-4 month' );

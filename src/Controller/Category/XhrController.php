@@ -53,8 +53,8 @@ class XhrController extends AbstractController
     }
 
     /**
-     * MàJ d'une catégorie
-     * @Route("/xhr/admin/category/update/{id}", condition="request.isXmlHttpRequest()")
+     * MàJ d'une catégorie/xhr/admin/category/update/
+     * @Route("/xhr/admin/category/update/{id}", condition="request.isXmlHttpRequest()", methods={"PATCH"})
      */
     public function updateCategory(
         Request $request,
@@ -87,7 +87,7 @@ class XhrController extends AbstractController
 
     /**
      * Création d'une categorie
-     * @Route("/xhr/admin/category/create", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/category/create", condition="request.isXmlHttpRequest()", methods={"POST"})
      * @Security("is_granted('ROLE_AUTHOR')")
      */
     public function createCategory(
