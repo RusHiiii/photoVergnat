@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d0ad162-b511-4cf7-bc8e-e12bdd55a0fa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bootstrap.php" afterDir="false" />
-    </list>
+    <list default="true" id="6d0ad162-b511-4cf7-bc8e-e12bdd55a0fa" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,8 +103,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/bootstrap.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="15" lean-forward="true" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+            <state relative-caret-position="391">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -652,7 +650,7 @@
       <workItem from="1577624073317" duration="8899000" />
       <workItem from="1577637496399" duration="630000" />
       <workItem from="1577896496387" duration="3139000" />
-      <workItem from="1578141834741" duration="5714000" />
+      <workItem from="1578141834741" duration="5758000" />
     </task>
     <servers />
   </component>
@@ -662,7 +660,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="451899000" />
+    <option name="totallyTimeSpent" value="451943000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
@@ -1044,8 +1042,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="15" lean-forward="true" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+        <state relative-caret-position="391">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
