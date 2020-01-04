@@ -8,8 +8,8 @@
 
 namespace App\Controller\Security\Voter;
 
-use App\Entity\Tag;
-use App\Entity\User;
+use App\Entity\WebApp\Tag;
+use App\Entity\WebApp\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\Security;
@@ -18,7 +18,6 @@ class TagVoter extends Voter
 {
     const REMOVE = 'remove';
     const EDIT = 'edit';
-    const CREATE = 'create';
     const VIEW = 'view';
 
     private $security;
@@ -30,11 +29,11 @@ class TagVoter extends Voter
 
     protected function supports($attribute, $subject)
     {
-        if (!in_array($attribute, [self::REMOVE, self::EDIT, self::CREATE, self::VIEW])) {
+        if (!in_array($attribute, [self::REMOVE, self::EDIT, self::VIEW])) {
             return false;
         }
 
-        if ($subject !== Tag::class) {
+        if (!$subject instanceof Tag) {
             return false;
         }
 
@@ -52,9 +51,8 @@ class TagVoter extends Voter
         switch ($attribute) {
             case self::EDIT:
             case self::VIEW:
-            case self::CREATE:
             case self::REMOVE:
-                return $this->canCreateOrRemoveOrEdit($user);
+                return $this->canRemoveOrEdit($user);
         }
 
         throw new \LogicException('This code should not be reached!');
@@ -65,7 +63,7 @@ class TagVoter extends Voter
      * @param User $user
      * @return bool
      */
-    private function canCreateOrRemoveOrEdit(User $user)
+    private function canRemoveOrEdit(User $user)
     {
         if ($this->security->isGranted('ROLE_AUTHOR')) {
             return true;

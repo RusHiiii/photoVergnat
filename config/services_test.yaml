@@ -1,0 +1,15 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    photo_directory: '%kernel.project_dir%/tests/.fixtures/images/uploads/'
+
+fidry_alice_data_fixtures:
+    default_purge_mode: 'truncate'
+
+services:
+    App\Service\Tools\FileUploaderService:
+        arguments:
+            $targetDirectory: '%photo_directory%'

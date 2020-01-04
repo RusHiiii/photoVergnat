@@ -1,26 +1,13 @@
 {% extends 'elements/layout/app/base.html.twig' %}
 
 {% block title %}Photo'Vergnat - Profil{% endblock %}
+{% block description %}Modifiez les paramètres de votre profil utilisateur sur le site{% endblock %}
+{% block descriptionOpenGraph %}Modifiez les paramètres de votre profil utilisateur sur le site{% endblock %}
+{% block imageOpenGraph %}{{ app.request.getSchemeAndHttpHost() ~ asset('/theme/img/bg-img/1.jpg') }}{% endblock %}
 
 {% block body %}
     <!-- Breadcrumb Area Start -->
-    <section class="breadcrumb-area bg-img bg-overlay jarallax breadcrumb-image">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="breadcrumb-content text-center">
-                        <h2 class="page-title">Mon profil</h2>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb justify-content-center">
-                                <li class="breadcrumb-item"><a href="{{ path('app_home') }}"><i class="icon_house_alt"></i> Accueil</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Profil</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    {{ include('elements/shared/app/breadcrumb.html.twig', { 'title': 'Mon profil', 'page':'Compte' }) }}
 
     <section class="section-padding-80">
         <div class="container">
@@ -40,6 +27,7 @@
                         <h3 class="wow fadeInUp" data-wow-delay="100ms">Mes informations</h3>
                         <div class="line wow fadeInUp" data-wow-delay="200ms"></div>
                         <div class="alert alert-danger" role="alert" id="alert-edit"></div>
+                        <div class="alert alert-success" role="alert" id="success-edit"></div>
                         <form action="#" method="POST" class="form-horizontal connexion" id="update-user">
                             <div class="form-group mb-40">
                                 <label class="col-sm-3 control-label">Email</label>
@@ -61,7 +49,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12 submit">
-                                    <input type="hidden" name="token" value="{{ csrf_token('update-user') }}"/>
+                                    <input type="hidden" name="id" value="{{ user.id }}"/>
                                     <button type="submit" class="btn alime-btn btn-2 mt-15 edit-user">Mettre à jours</button>
                                 </div>
                             </div>
@@ -71,6 +59,7 @@
                         <h3 class="wow fadeInUp" data-wow-delay="100ms">Sécurité</h3>
                         <div class="line wow fadeInUp" data-wow-delay="200ms"></div>
                         <div class="alert alert-danger" role="alert" id="alert-password"></div>
+                        <div class="alert alert-success" role="alert" id="success-password"></div>
                         <form action="#" method="POST" class="form-horizontal connexion" id="update-password">
                             <div class="form-group mb-40">
                                 <label class="col-sm-3 control-label">Mot de passe</label>
@@ -86,7 +75,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12 submit">
-                                    <input type="hidden" name="token" value="{{ csrf_token('update-password') }}"/>
+                                    <input type="hidden" name="id" value="{{ user.id }}"/>
                                     <button type="submit" class="btn alime-btn btn-2 mt-15 edit-password">Valider</button>
                                 </div>
                             </div>

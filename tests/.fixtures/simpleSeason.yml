@@ -1,0 +1,5 @@
+App\Entity\WebApp\Season:
+  season_1:
+    title: 'Hiver'
+    created: '<date_create()>'
+    updated: '<date_create()>'

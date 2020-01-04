@@ -9,3 +9,4 @@ require('./season.js');
 require('./type.js');
 require('./photo.js');
 require('./category.js');
+require('./comment.js');

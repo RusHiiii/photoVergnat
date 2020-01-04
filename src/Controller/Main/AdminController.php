@@ -2,11 +2,14 @@
 
 namespace App\Controller\Main;
 
-use App\Entity\User;
-use App\Repository\CategoryRepository;
-use App\Repository\PhotoRepository;
-use App\Repository\TagRepository;
-use App\Repository\UserRepository;
+use App\Entity\WebApp\User;
+use App\Repository\WebApp\Category\Doctrine\CategoryRepository;
+use App\Repository\WebApp\Comment\Doctrine\CommentRepository;
+use App\Repository\WebApp\Photo\Doctrine\PhotoRepository;
+use App\Repository\Statistic\StatisticRepository;
+use App\Repository\WebApp\Tag\Doctrine\TagRepository;
+use App\Repository\WebApp\User\Doctrine\UserRepository;
+use App\Service\WebApp\Statistic\StatisticService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,21 +21,17 @@ class AdminController extends AbstractController
      */
     public function index(
         Request $request,
-        UserRepository $userRepository,
-        TagRepository $tagRepository,
-        PhotoRepository $photoRepository,
-        CategoryRepository $categoryRepository
+        CommentRepository $commentRepository,
+        StatisticService $statisticService
     ) {
-        $users = $userRepository->findAll();
-        $tags = $tagRepository->findAll();
-        $photos = $photoRepository->findAll();
-        $categories = $categoryRepository->findAll();
+        $items = $statisticService->getItems();
+        $comments = $commentRepository->findByLast(4);
+        $lastActions = $statisticService->getLastUpdate();
 
         return $this->render('main/admin/index.html.twig', [
-            'users' => $users,
-            'tags' => $tags,
-            'photos' => $photos,
-            'categories' => $categories
+            'items' => $items,
+            'comments' => $comments,
+            'lastActions' => $lastActions
         ]);
     }
 }

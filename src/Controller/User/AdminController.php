@@ -2,7 +2,8 @@
 
 namespace App\Controller\User;
 
-use App\Repository\UserRepository;
+use App\Repository\WebApp\User\Doctrine\UserRepository;
+use App\Service\WebApp\Statistic\StatisticService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;

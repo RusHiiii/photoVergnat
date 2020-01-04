@@ -3,8 +3,9 @@
 /** Initialisation de la modal */
 $('#types-table tbody').on('click', '.edit', function (e) {
     var id = $(this).data('id');
+
     $.ajax({
-        url : '/xhr/admin/type/display/edit/' + id,
+        url : `/xhr/admin/type/display/edit/${id}`,
         type : 'GET',
         success : function (res) {
             $('#large-Modal').html(res);
@@ -32,35 +33,21 @@ $('#types-table tbody').on('click', '.alert-ajax', function (e) {
 
     swal({
         title: "Suppression",
-        text: "Suppression de « "+ $("#type_" + id).children('.title').text() +" »",
+        text: "Suppression de « " + $(`#type_${id}`).children('.title').text() + " »",
         type: "warning",
         showCancelButton: true,
         closeOnConfirm: false,
         showLoaderOnConfirm: true
     }, function () {
         $.ajax({
-            url : '/xhr/admin/type/remove',
+            url : `/xhr/admin/type/remove/${id}`,
             type : 'DELETE',
-            data : {
-                'type': id
-            },
-            dataType:'json',
-            statusCode: {
-                403: function (res) {
-                    swal('Action interdite !');
-                },
-            },
-            success : function (res) {
-                var message = 'Suppression terminée !';
-                if (res.errors.length > 0) {
-                    message = res.errors[0];
-                } else {
-                    table
-                        .row($("#type_" + id))
-                        .remove()
-                        .draw();
-                }
-                swal(message);
+            success : function () {
+                table
+                    .row($(`#type_${id}`))
+                    .remove()
+                    .draw();
+                swal('Suppression terminée !');
             }
         });
     });
@@ -79,23 +66,15 @@ $('body').on('submit', '#create-type', function (e) {
             'type': $('#create-type').serializeObject()
         },
         dataType:'json',
-        statusCode: {
-            403: function (res) {
-                swal('Action interdite !');
-                $('#large-Modal').modal('hide');
-            },
-        },
         success : function (res) {
-            $.removeSpinner('.create-type', 'Valider');
-            $.showErrors(res['errors'], '#alert-create');
-
-            if (res['errors'].length === 0) {
-                addRow(JSON.parse(res['type']));
-            }
+            addRow(res);
+            $('#large-Modal').modal('hide');
         },
         error: function (res) {
+            $.showErrors(res.responseJSON.context, '#alert-create');
+        },
+        complete: function () {
             $.removeSpinner('.create-type', 'Valider');
-            $.showErrors(['Oops an errors occured :('], '#alert-create');
         }
     });
 });
@@ -106,25 +85,24 @@ $('body').on('submit', '#update-type', function (e) {
 
     $.addSpinner('.update-type');
 
+    var data = $('#update-type').serializeObject();
+
     $.ajax({
-        url : '/xhr/admin/type/update',
-        type : 'POST',
+        url : `/xhr/admin/type/update/${data.id}`,
+        type : 'PATCH',
         data : {
-            'type': $('#update-type').serializeObject()
+            'type': data
         },
         dataType:'json',
         success : function (res) {
-            console.log(res);
-            $.removeSpinner('.update-type', 'Valider');
-            $.showErrors(res['errors'], '#alert-update');
-
-            if (res['errors'].length === 0) {
-                updateRow(JSON.parse(res['type']));
-            }
+            updateRow(res);
+            $('#large-Modal').modal('hide');
         },
         error: function (res) {
+            $.showErrors(res.responseJSON.context, '#alert-update');
+        },
+        complete: function () {
             $.removeSpinner('.update-type', 'Valider');
-            $.showErrors(['Oops an errors occured :('], '#alert-update');
         }
     });
 });
@@ -148,7 +126,7 @@ function addRow(type)
         .draw(false)
         .nodes()
         .to$()
-        .attr('id', 'type_' + type.id);
+        .attr('id', `type_${type.id}`);
 
     table.row(row).column(1).nodes().to$().addClass('title');
 }

@@ -1,0 +1,109 @@
+{% extends 'elements/layout/admin/base.html.twig' %}
+
+{% block title %}Photo'Vergnat - Administration{% endblock %}
+
+{% block body %}
+<div class="row card-statistics">
+    {% for key, item in items %}
+        <div class="col-xl-3 col-md-6">
+            <div class="card">
+                <div class="card-block">
+                    <div class="row align-items-center m-l-0">
+                        <div class="col-auto">
+                            <i class="feather icon-{{ item.icon }} f-30 {{ key }}-text"></i>
+                        </div>
+                        <div class="col-auto">
+                            <h6 class="text-muted m-b-10">{{ key | trans }}</h6>
+                            <h2 class="m-b-0">{{ item.items | length }}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<div class="row">
+    <div class="col-xl-4 col-md-12">
+        <div class="card table-card card-stat">
+            <div class="card-header">
+                <h5>Top des articles</h5>
+            </div>
+            <div class="card-block">
+                <div class="table-responsive">
+                    <table class="table table-hover table-borderless">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Article</th>
+                            <th>Commentaires</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for article in articles %}
+                            <tr>
+                                <td><img src="{{ ('/images/uploads/' ~ (article | getMainPhotoUrl('Paysage') )) | imagine_filter('admin_thumbnail') }}" class="img-fluid img-30"></td>
+                                <td>{{ article.title }}</td>
+                                <td>{{ article.comments | length }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center">
+                    <a href="{{ path('admin_comments') }}" class="b-b-primary text-primary">Voir les commentaires</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-6">
+        <div class="card card-stat">
+            <div class="card-header">
+                <h5>Article en ligne</h5>
+            </div>
+            <div class="card-block">
+                <canvas id="article-online" height="227"></canvas>
+            </div>
+            <div class="card-footer">
+                <div class="row text-center b-t-default">
+                    <div class="col-6 b-r-default m-t-15">
+                        <h6 class="text-muted m-b-10">En ligne</h6>
+                        <h4 class="m-b-0 f-w-600 category-online"></h4>
+                    </div>
+                    <div class="col-6">
+                        <h6 class="text-muted m-b-10 m-t-15">Hors ligne</h6>
+                        <h4 class="m-b-0 f-w-600 category-offline"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-12">
+        <div class="card card-stat">
+            <div class="card-block bg-c-blue">
+                <div id="cpt-photo" style="height: 230px"></div>
+            </div>
+            <div class="card-footer">
+                <h6 class="text-muted m-b-30 m-t-15">Nombre de photo ajoutée les 5 derniers mois</h6>
+                <div class="row text-center">
+                    <div class="col-6 b-r-default">
+                        <h6 class="text-muted m-b-10">Mois en cours</h6>
+                        <h4 class="m-b-0 f-w-600 current-month"></h4>
+                    </div>
+                    <div class="col-6">
+                        <h6 class="text-muted m-b-10">Total</h6>
+                        <h4 class="m-b-0 f-w-600 ">{{ items.photos.items | length }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('build/admin/statistics.js') }}"></script>
+    <script src="{{ asset('adminity/assets/pages/widget/amchart/amcharts.js') }}"></script>
+    <script src="{{ asset('adminity/assets/pages/widget/amchart/serial.js') }}"></script>
+    <script src="{{ asset('adminity/assets/pages/widget/amchart/light.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminity/bower_components/chart.js/js/Chart.js') }}"></script>
+{% endblock %}
+{% endblock %}
+

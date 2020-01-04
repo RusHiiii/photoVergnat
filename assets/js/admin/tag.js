@@ -4,7 +4,7 @@
 $('#tags-table tbody').on('click', '.edit', function (e) {
     var id = $(this).data('id');
     $.ajax({
-        url : '/xhr/admin/tag/display/edit/' + id,
+        url : `/xhr/admin/tag/display/edit/${id}`,
         type : 'GET',
         success : function (res) {
             $('#large-Modal').html(res);
@@ -32,30 +32,21 @@ $('#tags-table tbody').on('click', '.alert-ajax', function (e) {
 
     swal({
         title: "Suppression",
-        text: "Suppression de « "+ $("#tag_" + id).children('.title').text() +" »",
+        text: "Suppression de « " + $(`#tag_${id}`).children('.title').text() + " »",
         type: "warning",
         showCancelButton: true,
         closeOnConfirm: false,
         showLoaderOnConfirm: true
     }, function () {
         $.ajax({
-            url : '/xhr/admin/tag/remove',
+            url : `/xhr/admin/tag/remove/${id}`,
             type : 'DELETE',
-            data : {
-                'tag': id
-            },
-            dataType:'json',
-            success : function (res) {
-                var message = 'Suppression terminée !';
-                if (res.errors.length > 0) {
-                    message = res.errors[0];
-                } else {
-                    table
-                        .row($("#tag_" + id))
-                        .remove()
-                        .draw();
-                }
-                swal(message);
+            success : function () {
+                table
+                    .row($(`#tag_${id}`))
+                    .remove()
+                    .draw();
+                swal('Suppression terminée !');
             }
         });
     });
@@ -75,16 +66,14 @@ $('body').on('submit', '#create-tag', function (e) {
         },
         dataType:'json',
         success : function (res) {
-            $.removeSpinner('.create-tag', 'Valider');
-            $.showErrors(res['errors'], '#alert-create');
-
-            if (res['errors'].length === 0) {
-                addRow(JSON.parse(res['tag']));
-            }
+            addRow(res);
+            $('#large-Modal').modal('hide');
         },
         error: function (res) {
+            $.showErrors(res.responseJSON.context, '#alert-create');
+        },
+        complete: function () {
             $.removeSpinner('.create-tag', 'Valider');
-            $.showErrors(['Oops an errors occured :('], '#alert-create');
         }
     });
 });
@@ -95,25 +84,24 @@ $('body').on('submit', '#update-tag', function (e) {
 
     $.addSpinner('.update-tag');
 
+    var data = $('#update-tag').serializeObject();
+
     $.ajax({
-        url : '/xhr/admin/tag/update',
-        type : 'POST',
+        url : `/xhr/admin/tag/update/${data.id}`,
+        type : 'PATCH',
         data : {
-            'tag': $('#update-tag').serializeObject()
+            'tag': data
         },
         dataType:'json',
         success : function (res) {
-            console.log(res);
-            $.removeSpinner('.update-tag', 'Valider');
-            $.showErrors(res['errors'], '#alert-update');
-
-            if (res['errors'].length === 0) {
-                updateRow(JSON.parse(res['tag']));
-            }
+            $('#large-Modal').modal('hide');
+            updateRow(res);
         },
         error: function (res) {
+            $.showErrors(res.responseJSON.context, '#alert-update');
+        },
+        complete: function () {
             $.removeSpinner('.update-tag', 'Valider');
-            $.showErrors(['Oops an errors occured :('], '#alert-update');
         }
     });
 });
@@ -138,7 +126,7 @@ function addRow(tag)
         .draw(false)
         .nodes()
         .to$()
-        .attr('id', 'tag_' + tag.id);
+        .attr('id', `tag_${tag.id}`);
 
     table.row(row).column(1).nodes().to$().addClass('title');
 }
@@ -150,7 +138,7 @@ function updateRow(tag)
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 
     var table = $('#tags-table').DataTable();
-    table.row('#tag_' + tag.id).data([
+    table.row(`#tag_${tag.id}`).data([
         tag.id,
         tag.title,
         formatted_date,

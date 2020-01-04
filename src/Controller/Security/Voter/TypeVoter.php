@@ -8,9 +8,9 @@
 
 namespace App\Controller\Security\Voter;
 
-use App\Entity\Tag;
-use App\Entity\Type;
-use App\Entity\User;
+use App\Entity\WebApp\Tag;
+use App\Entity\WebApp\Type;
+use App\Entity\WebApp\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\Security;
@@ -19,7 +19,6 @@ class TypeVoter extends Voter
 {
     const REMOVE = 'remove';
     const EDIT = 'edit';
-    const CREATE = 'create';
     const VIEW = 'view';
 
     private $security;
@@ -31,11 +30,11 @@ class TypeVoter extends Voter
 
     protected function supports($attribute, $subject)
     {
-        if (!in_array($attribute, [self::REMOVE, self::EDIT, self::CREATE, self::VIEW])) {
+        if (!in_array($attribute, [self::REMOVE, self::EDIT, self::VIEW])) {
             return false;
         }
 
-        if ($subject !== Type::class) {
+        if (!$subject instanceof Type) {
             return false;
         }
 
@@ -54,9 +53,8 @@ class TypeVoter extends Voter
             case self::EDIT:
             case self::VIEW:
                 return $this->canEdit($user);
-            case self::CREATE:
             case self::REMOVE:
-                return $this->canCreateOrRemove($user);
+                return $this->canRemove($user);
         }
 
         throw new \LogicException('This code should not be reached!');
@@ -67,7 +65,7 @@ class TypeVoter extends Voter
      * @param User $user
      * @return bool
      */
-    private function canCreateOrRemove(User $user)
+    private function canRemove(User $user)
     {
         if ($this->security->isGranted('ROLE_ADMIN')) {
             return true;

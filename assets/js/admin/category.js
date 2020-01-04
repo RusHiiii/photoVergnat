@@ -16,7 +16,7 @@ $('.category .add').on('click', function (e) {
 $('#categories-table tbody').on('click', '.edit', function (e) {
     var id = $(this).data('id');
     $.ajax({
-        url : '/xhr/admin/category/display/edit/' + id,
+        url : `/xhr/admin/category/display/edit/${id}`,
         type : 'GET',
         success : function (res) {
             $('#large-Modal').html(res);
@@ -33,30 +33,21 @@ $('#categories-table tbody').on('click', '.alert-ajax', function (e) {
 
     swal({
         title: "Suppression",
-        text: "Suppression de « "+ $("#category_" + id).children('.title').text() +" »",
+        text: "Suppression de « " + $(`#category_${id}`).children('.title').text() + " »",
         type: "warning",
         showCancelButton: true,
         closeOnConfirm: false,
         showLoaderOnConfirm: true
     }, function () {
         $.ajax({
-            url : '/xhr/admin/category/remove',
+            url : `/xhr/admin/category/remove/${id}`,
             type : 'DELETE',
-            data : {
-                'category': id
-            },
-            dataType:'json',
-            success : function (res) {
-                var message = 'Suppression terminée !';
-                if (res.errors.length > 0) {
-                    message = res.errors[0];
-                } else {
-                    table
-                        .row($("#category_" + id))
-                        .remove()
-                        .draw();
-                }
-                swal(message);
+            success : function () {
+                table
+                    .row($("#category_" + id))
+                    .remove()
+                    .draw();
+                swal('Suppression terminée !');
             }
         });
     });
@@ -69,32 +60,30 @@ $('body').on('submit', '#update-category', function (e) {
     $.addSpinner('.update-category');
 
     var data = $('#update-category').serializeObject();
-    if (!$.isArray(data['tags'])) {
-        data['tags'] = [data['tags']];
+    if (!$.isArray(data.tags)) {
+        data.tags = [data.tags];
     }
 
-    if (!$.isArray(data['photos'])) {
-        data['photos'] = [data['photos']];
+    if (!$.isArray(data.photos)) {
+        data.photos = [data.photos];
     }
 
     $.ajax({
-        url : '/xhr/admin/category/update',
-        type : 'POST',
+        url : `/xhr/admin/category/update/${data.id}`,
+        type : 'PATCH',
         data : {
             'category': data
         },
         dataType:'json',
         success : function (res) {
-            $.removeSpinner('.update-category', 'Valider');
-            $.showErrors(res['errors'], '#alert-update');
-
-            if (res['errors'].length === 0) {
-                updateRow(JSON.parse(res['category']));
-            }
+            updateRow(res);
+            $('#large-Modal').modal('hide');
         },
         error: function (res) {
+            $.showErrors(res.responseJSON.context, '#alert-update');
+        },
+        complete: function () {
             $.removeSpinner('.update-category', 'Valider');
-            $.showErrors(['Oops an errors occured :('], '#alert-update');
         }
     });
 });
@@ -106,12 +95,12 @@ $('body').on('submit', '#create-category', function (e) {
     $.addSpinner('.create-category');
 
     var data = $('#create-category').serializeObject();
-    if (!$.isArray(data['tags'])) {
-        data['tags'] = [data['tags']];
+    if (!$.isArray(data.tags)) {
+        data.tags = [data.tags];
     }
 
-    if (!$.isArray(data['photos'])) {
-        data['photos'] = [data['photos']];
+    if (!$.isArray(data.photos)) {
+        data.photos = [data.photos];
     }
 
     $.ajax({
@@ -121,16 +110,14 @@ $('body').on('submit', '#create-category', function (e) {
             'category': data
         },
         success : function (res) {
-            $.removeSpinner('.create-category', 'Valider');
-            $.showErrors(res['errors'], '#alert-create');
-
-            if (res['errors'].length === 0) {
-                addRow(JSON.parse(res['category']));
-            }
+            addRow(res);
+            $('#large-Modal').modal('hide');
         },
         error: function (res) {
-            $.removeSpinner('.create-category', 'Valider');
-            $.showErrors(['Oops an errors occured :('], '#alert-create');
+            $.showErrors(res.responseJSON.context, '#alert-create');
+        },
+        complete: function () {
+            $.removeSpinner('.update-category', 'Valider');
         }
     });
 });
@@ -158,7 +145,7 @@ function addRow(category)
         .draw(false)
         .nodes()
         .to$()
-        .attr('id', 'category_' + category.id);
+        .attr('id', `category_${category.id}`);
 
     table.row(row).column(1).nodes().to$().addClass('title');
 }
@@ -170,7 +157,7 @@ function updateRow(category)
     let formatted_date = current_datetime.getFullYear() + "-" + (("0" + (current_datetime.getMonth() + 1)).slice(-2)) + "-" + ("0" + current_datetime.getDate()).slice(-2) + " " + ("0" + current_datetime.getHours()).slice(-2) + ":" + ("0" + current_datetime.getMinutes()).slice(-2) + ":" + ("0" + current_datetime.getSeconds()).slice(-2);
 
     var table = $('#categories-table').DataTable();
-    table.row('#category_' + category.id).data([
+    table.row(`#category_${category.id}`).data([
         category.id,
         category.title,
         formatted_date,

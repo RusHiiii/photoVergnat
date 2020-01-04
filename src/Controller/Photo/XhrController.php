@@ -4,32 +4,134 @@ namespace App\Controller\Photo;
 
 use App\Controller\Security\Voter\PhotoVoter;
 use App\Controller\Security\Voter\TagVoter;
-use App\Entity\Photo;
-use App\Entity\Tag;
-use App\Entity\User;
-use App\Repository\TagRepository;
-use App\Repository\TypeRepository;
-use App\Service\Photo\PhotoService;
-use App\Service\Tag\TagService;
-use App\Service\User\UserService;
+use App\Entity\Core\SerializedResponse;
+use App\Entity\WebApp\Photo;
+use App\Entity\WebApp\Tag;
+use App\Entity\WebApp\User;
+use App\Repository\WebApp\Tag\Doctrine\TagRepository;
+use App\Repository\WebApp\Type\Doctrine\TypeRepository;
+use App\Service\Tools\Error\Factory\ErrorFactory;
+use App\Service\WebApp\Photo\Exceptions\PhotoInvalidDataException;
+use App\Service\WebApp\Photo\Exceptions\PhotoNotFoundException;
+use App\Service\WebApp\Photo\PhotoService;
+use App\Service\WebApp\Tag\Exceptions\TagNotFoundException;
+use App\Service\WebApp\Tag\TagService;
+use App\Service\WebApp\Type\Exceptions\TypeNotFoundException;
+use App\Service\WebApp\User\Exceptions\UserNotFoundException;
+use App\Service\WebApp\User\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class XhrController extends AbstractController
 {
+    private $serializer;
+    private $errorFactory;
+
+    public function __construct(
+        SerializerInterface $serializer,
+        ErrorFactory $errorFactory
+    ) {
+        $this->serializer = $serializer;
+        $this->errorFactory = $errorFactory;
+    }
+
+    /**
+     * Suppression d'une photo
+     * @Route("/xhr/admin/photo/remove/{id}", condition="request.isXmlHttpRequest()", methods={"DELETE"})
+     */
+    public function removePhoto(
+        Request $request,
+        PhotoService $photoService,
+        Photo $photo
+    ) {
+        $this->denyAccessUnlessGranted(PhotoVoter::REMOVE, $photo);
+
+        $photoService->removePhoto($photo);
+
+        return new JsonResponse([], 200);
+    }
+
+    /**
+     * Edition d'une photo
+     * @Route("/xhr/admin/photo/update/{id}", condition="request.isXmlHttpRequest()", methods={"PATCH"})
+     */
+    public function updatePhoto(
+        Request $request,
+        PhotoService $photoService,
+        Photo $photo
+    ) {
+        $this->denyAccessUnlessGranted(PhotoVoter::EDIT, $photo);
+
+        $data = $request->request->all();
+        $file = $request->files->get('file');
+
+        try {
+            $resultUpdate = $photoService->updatePhoto($data, $file, $photo);
+        } catch (PhotoInvalidDataException $e) {
+            return new SerializedResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                400
+            );
+        } catch (TagNotFoundException | TypeNotFoundException | PhotoNotFoundException $e) {
+            return new SerializedResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                404
+            );
+        }
+
+        return new SerializedResponse(
+            $this->serializer->serialize($resultUpdate, 'json', ['groups' => ['default', 'photo']]),
+            200
+        );
+    }
+
+    /**
+     * Création d'une photo
+     * @Route("/xhr/admin/photo/create", condition="request.isXmlHttpRequest()", methods={"POST"})
+     * @Security("is_granted('ROLE_AUTHOR')")
+     */
+    public function createPhoto(
+        Request $request,
+        PhotoService $photoService
+    ) {
+        $data = $request->request->all();
+        $file = $request->files->get('file');
+
+        try {
+            $resultCreate = $photoService->createPhoto($data, $file);
+        } catch (PhotoInvalidDataException $e) {
+            return new SerializedResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                400
+            );
+        } catch (TagNotFoundException | TypeNotFoundException $e) {
+            return new SerializedResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                404
+            );
+        }
+
+        return new SerializedResponse(
+            $this->serializer->serialize($resultCreate, 'json', ['groups' => ['default', 'photo']]),
+            200
+        );
+    }
+
     /**
      * Création d'une photo
      * @Route("/xhr/admin/photo/display/create/", condition="request.isXmlHttpRequest()")
+     * @Security("is_granted('ROLE_AUTHOR')")
      */
     public function displayModalCreate(
         Request $request,
         TagRepository $tagRepository,
         TypeRepository $typeRepository
     ) {
-        $this->denyAccessUnlessGranted(PhotoVoter::VIEW, Photo::class);
-
         $tags = $tagRepository->findByType('photo');
         $formats = $typeRepository->findAll();
 
@@ -49,7 +151,7 @@ class XhrController extends AbstractController
         TypeRepository $typeRepository,
         Photo $photo
     ) {
-        $this->denyAccessUnlessGranted(PhotoVoter::EDIT, Photo::class);
+        $this->denyAccessUnlessGranted(PhotoVoter::EDIT, $photo);
 
         $tags = $tagRepository->findByType('photo');
         $formats = $typeRepository->findAll();
@@ -58,64 +160,6 @@ class XhrController extends AbstractController
             'tags' => $tags,
             'formats' => $formats,
             'photo' => $photo
-        ]);
-    }
-
-    /**
-     * Création d'une photo
-     * @Route("/xhr/admin/photo/create", condition="request.isXmlHttpRequest()")
-     */
-    public function createPhoto(
-        Request $request,
-        PhotoService $photoService
-    ) {
-        $this->denyAccessUnlessGranted(PhotoVoter::CREATE, Photo::class);
-
-        $data = $request->request->all();
-        $file = $request->files->get('file');
-        $resultCreate = $photoService->createPhoto($data, $file);
-
-        return new JsonResponse([
-            'errors' => $resultCreate['errors'],
-            'photo' => $resultCreate['photo']
-        ]);
-    }
-
-    /**
-     * Edition d'une photo
-     * @Route("/xhr/admin/photo/update", condition="request.isXmlHttpRequest()")
-     */
-    public function updateSeason(
-        Request $request,
-        PhotoService $photoService
-    ) {
-        $this->denyAccessUnlessGranted(PhotoVoter::EDIT, Photo::class);
-
-        $data = $request->request->all();
-        $file = $request->files->get('file');
-        $resultUpdate = $photoService->updatePhoto($data, $file);
-
-        return new JsonResponse([
-            'errors' => $resultUpdate['errors'],
-            'photo' => $resultUpdate['photo']
-        ]);
-    }
-
-    /**
-     * Suppression d'une photo
-     * @Route("/xhr/admin/photo/remove", condition="request.isXmlHttpRequest()")
-     */
-    public function removePhoto(
-        Request $request,
-        PhotoService $photoService
-    ) {
-        $this->denyAccessUnlessGranted(PhotoVoter::REMOVE, Photo::class);
-
-        $data = $request->request->all();
-        $resultRemove = $photoService->removePhoto($data['photo']);
-
-        return new JsonResponse([
-            'errors' => $resultRemove['errors']
         ]);
     }
 }

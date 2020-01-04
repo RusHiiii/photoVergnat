@@ -2,8 +2,8 @@
 
 namespace App\Controller\Main;
 
-use App\Repository\CategoryRepository;
-use App\Repository\PhotoRepository;
+use App\Repository\WebApp\Category\Doctrine\CategoryRepository;
+use App\Repository\WebApp\Photo\Doctrine\PhotoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;

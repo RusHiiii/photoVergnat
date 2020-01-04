@@ -1,6 +1,9 @@
 {% extends 'elements/layout/app/base.html.twig' %}
 
 {% block title %}Photo'Vergnat - Photo en Auvergne Rhône-Alpes{% endblock %}
+{% block description %}Partez à la découverte de la région Auvergne Rhône-Alpes au travers de ma collection de photo !{% endblock %}
+{% block descriptionOpenGraph %}Partez à la découverte de la région Auvergne Rhône-Alpes au travers de ma collection de photo !{% endblock %}
+{% block imageOpenGraph %}{{ app.request.getSchemeAndHttpHost() ~ asset('/theme/img/bg-img/1.jpg') }}{% endblock %}
 
 {% block body %}
     <!-- Welcome Area Start -->
@@ -34,7 +37,7 @@
         </div>
     </section>
 
-    <section class="section-padding-80">
+    <section class="section-padding-80 homepage">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -45,31 +48,8 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="row">
-                {% for category in categories %}
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="single-post-area wow fadeInUpBig">
-                            <a href="#" class="post-thumbnail">
-                                <img class="lazy" data-src="{{ ('/images/uploads/' ~ (category | getMainPhotoUrl('Portrait') )) | imagine_filter('thumbnail_category') }}">
-                            </a>
-                            <div class="tags-category">
-                                {% for tag in category.tags %}
-                                    <a href="#" class="btn post-catagory">{{ tag.title }}</a>
-                                {% endfor %}
-                            </div>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <a href="#">{{ category.created | localizeddate('none', 'none', null, null, 'MMMM Y') | capitalize }}</a>
-                                    <a href="#">{{ category.photos | length }} photos</a>
-                                </div>
-                                <a href="#" class="post-title">{{ category.title }}</a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
+        <!-- Related News Area Start -->
+        {{ include('elements/shared/app/recent_categories.html.twig', { 'categories': categories }) }}
     </section>
 
     <div class="alime-portfolio-area clearfix">
@@ -101,7 +81,7 @@
                 {% for photo in photos | shuffle() %}
                     <div class="col-12 col-sm-6 col-lg-3 single_gallery_item {{ photo | getClassName() | join(' ') }} mb-30 wow fadeInUp" data-wow-delay="300ms">
                         <div class="single-portfolio-content">
-                            <img class="img-thumb" src="{{ ('/images/uploads/' ~ photo.file) | imagine_filter('thumbnail') }}">
+                            <img alt="{{ photo.title }}" class="img-thumb" src="{{ ('/images/uploads/' ~ photo.file) | imagine_filter('thumbnail') }}">
                             <div class="hover-content">
                                 <a data-title="{{ photo.information }}" href="{{ ('/images/uploads/' ~ photo.file) | imagine_filter('big') }}" class="portfolio-img">+</a>
                             </div>

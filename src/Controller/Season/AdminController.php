@@ -2,7 +2,7 @@
 
 namespace App\Controller\Season;
 
-use App\Repository\SeasonRepository;
+use App\Repository\WebApp\Season\Doctrine\SeasonRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;

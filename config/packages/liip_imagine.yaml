@@ -3,7 +3,7 @@ liip_imagine:
   driver: "gd"
   # This is where all the filters sets are located
   filter_sets:
-    admin:
+    admin_gallery:
       quality: 70
       filters:
         watermark:
@@ -11,13 +11,35 @@ liip_imagine:
           size: 0.2
           position: bottomright
 
-    thumbnail_category:
+    admin_thumbnail:
+      quality: 70
+      filters:
+        thumbnail: { size: [1200, 1200], mode: outbound }
+
+    gallery_portrait:
+      quality: 80
       filters:
         thumbnail: { size: [1200, 1000], mode: inset }
+
+    gallery_panoramique:
+      filters:
+        thumbnail: { size: [3000, 1000], mode: outbound }
+
+    gallery_landscape:
+      quality: 80
+      filters:
+        thumbnail: { size: [1200, 800], mode: outbound }
 
     thumbnail:
       filters:
         thumbnail: { size: [1200, 800], mode: outbound }
+
+    thumbnail_category:
+      filters:
+        thumbnail: { size: [1200, 1000], mode: inset }
+
+    standard:
+      quality: 80
 
     big:
       quality: 60

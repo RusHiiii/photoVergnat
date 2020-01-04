@@ -1,0 +1,77 @@
+{% extends 'elements/layout/app/base.html.twig' %}
+
+{% block title %}Photo'Vergnat - Contact{% endblock %}
+{% block description %}Formulaire de contact pour envoyer un message au développeur du site photovergnat.fr{% endblock %}
+{% block descriptionOpenGraph %}Formulaire de contact pour envoyer un message au développeur du site photovergnat.fr{% endblock %}
+{% block imageOpenGraph %}{{ app.request.getSchemeAndHttpHost() ~ asset('/theme/img/bg-img/2.jpg') }}{% endblock %}
+
+{% block body %}
+    <!-- Breadcrumb Area Start -->
+    {{ include('elements/shared/app/breadcrumb.html.twig', { 'title': 'Contact', 'page':'Contact' }) }}
+
+    <!-- Contact Area Start -->
+    <div class="contact-area section-padding-80-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="contact-info mb-30">
+                        <p>Développeur</p>
+                        <a href="#">Florent Damiens</a>
+                    </div>
+                    <div class="contact-info mb-30">
+                        <p>Email</p>
+                        <a href="mailto:contact[at]photovergnat.fr">contact[at]photovergnat.fr</a>
+                    </div>
+                    <div class="contact-info mb-30">
+                        <p>Localisation</p>
+                        <a href="#">Auvergne, France</a>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-9 contact-content">
+                    <div class="col-12 col-lg-8 header mb-80">
+                        <h2 class="contact-title">Formulaire de contact</h2>
+                        <div class="line"></div>
+                    </div>
+
+                    <div class="alime-contact-form mt-50">
+                        <div class="alert alert-danger" role="alert" id="alert-send"></div>
+                        <div class="alert alert-success" role="alert" id="alert-success"></div>
+                        <form method="POST" class="form-horizontal" id="send-mail">
+                            <div class="row">
+                                <div class="col-12 col-md-7">
+                                    <select class="form-control" name="choice">
+                                        <option selected>Information</option>
+                                        <option>Erreur</option>
+                                        <option>Autre</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-7">
+                                    <input data-validation="email" type="email" name="email" class="form-control mt-30" placeholder="Email">
+                                </div>
+                                <div class="col-12 col-md-7">
+                                    <input data-validation="length" data-validation-length="min3" type="text" name="subject" class="form-control mt-30" placeholder="Sujet">
+                                </div>
+                                <div class="col-12">
+                                    <textarea data-validation="length" data-validation-length="min3" name="message" class="form-control mt-30" placeholder="Messages"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <input type="hidden" name="token" value="{{ csrf_token('send-mail') }}"/>
+                                    <button type="submit" class="btn alime-btn btn-2 mt-15 send-mail">Envoyer</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        $.validate({
+            lang: 'fr',
+            borderColorOnError : '#ff001c',
+            scrollToTopOnError: false
+        });
+    </script>
+{% endblock %}

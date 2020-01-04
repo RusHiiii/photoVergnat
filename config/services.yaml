@@ -22,44 +22,55 @@ services:
         arguments:
             $targetDirectory: '%photo_directory%'
 
+    App\Service\Tools\NotificationService:
+        arguments:
+            $config:
+                user: '%env(MAILER_USER)%'
+
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    App\EventListener\UserEntityListener:
-        class: App\EventListener\UserEntityListener
+    App\EventListener\WebApp\UserEntityListener:
+        class: App\EventListener\WebApp\UserEntityListener
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
 
-    App\EventListener\TagEntityListener:
-        class: App\EventListener\TagEntityListener
+    App\EventListener\WebApp\TagEntityListener:
+        class: App\EventListener\WebApp\TagEntityListener
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
 
-    App\EventListener\SeasonEntityListener:
-        class: App\EventListener\SeasonEntityListener
+    App\EventListener\WebApp\SeasonEntityListener:
+        class: App\EventListener\WebApp\SeasonEntityListener
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
 
-    App\EventListener\TypeEntityListener:
-        class: App\EventListener\TypeEntityListener
+    App\EventListener\WebApp\TypeEntityListener:
+        class: App\EventListener\WebApp\TypeEntityListener
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
 
-    App\EventListener\CategoryEntityListener:
-        class: App\EventListener\CategoryEntityListener
+    App\EventListener\WebApp\CategoryEntityListener:
+        class: App\EventListener\WebApp\CategoryEntityListener
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
 
-    App\EventListener\PhotoEntityListener:
-        class: App\EventListener\PhotoEntityListener
+    App\EventListener\WebApp\CommentEntityListener:
+        class: App\EventListener\WebApp\CommentEntityListener
+        tags:
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: prePersist }
+
+    App\EventListener\WebApp\PhotoEntityListener:
+        class: App\EventListener\WebApp\PhotoEntityListener
         tags:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: prePersist }
@@ -78,3 +89,10 @@ services:
         class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
+
+    twig.extension.date:
+        class: Twig_Extensions_Extension_Date
+        arguments: ["@translator"]
+        tags:
+            - { name: twig.extension }
+

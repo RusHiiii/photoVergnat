@@ -7,10 +7,10 @@
  */
 namespace App\Service\Twig;
 
-use App\Entity\Category;
-use App\Entity\Photo;
-use App\Entity\Tag;
-use App\Entity\User;
+use App\Entity\WebApp\Category;
+use App\Entity\WebApp\Photo;
+use App\Entity\WebApp\Tag;
+use App\Entity\WebApp\User;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
@@ -45,7 +45,7 @@ class ExtensionsService extends AbstractExtension
     /**
      * Récupération image à la une
      * @param Category $category
-     * @return |null
+     * @return string|null
      */
     public function getMainPhotoUrl(Category $category, string $format)
     {
@@ -71,7 +71,7 @@ class ExtensionsService extends AbstractExtension
 
     /**
      * Génère les classes
-     * @param $photos
+     * @param mixed $photos
      * @return array
      */
     public function getAllClassName($photos)

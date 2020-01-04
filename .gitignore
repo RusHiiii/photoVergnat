@@ -1,4 +1,3 @@
-
 ###> symfony/framework-bundle ###
 /.env
 /.env.test
@@ -6,6 +5,7 @@
 /.env.local.php
 /.env.*.local
 /public/bundles/
+/tests/.fixtures/images
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
@@ -29,3 +29,7 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+###> behat/symfony2-extension ###
+behat.yml
+###< behat/symfony2-extension ###

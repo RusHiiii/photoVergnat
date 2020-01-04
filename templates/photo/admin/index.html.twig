@@ -67,7 +67,7 @@
                                 {% for photo in photos %}
                                 <tr id="photo_{{ photo.id }}">
                                     <td>{{ photo.id }}</td>
-                                    <td class="photo-screen"><img class="lazy" data-src="{{ ('/images/uploads/' ~ photo.file) | imagine_filter('admin') }}"></td>
+                                    <td class="photo-screen"><img class="lazy" data-src="{{ ('/images/uploads/' ~ photo.file) | imagine_filter('admin_gallery') }}"></td>
                                     <td class="title">{{ photo.title }}</td>
                                     <td>{{ photo.type.title }}</td>
                                     <td>{{ photo.tags | join('|') }}</td>

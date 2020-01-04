@@ -3,19 +3,124 @@
 namespace App\Controller\Season;
 
 use App\Controller\Security\Voter\SeasonVoter;
-use App\Entity\Season;
-use App\Entity\Tag;
-use App\Entity\User;
-use App\Service\Season\SeasonService;
-use App\Service\Tag\TagService;
-use App\Service\User\UserService;
+use App\Entity\Core\SerializedResponse;
+use App\Entity\WebApp\Season;
+use App\Entity\WebApp\Tag;
+use App\Entity\WebApp\User;
+use App\Service\Tools\Error\Factory\ErrorFactory;
+use App\Service\WebApp\Season\Exceptions\SeasonInvalidDataException;
+use App\Service\WebApp\Season\Exceptions\SeasonNotFoundException;
+use App\Service\WebApp\Season\SeasonService;
+use App\Service\WebApp\Tag\TagService;
+use App\Service\WebApp\User\UserService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class XhrController extends AbstractController
 {
+    private $serializer;
+    private $errorFactory;
+
+    public function __construct(
+        SerializerInterface $serializer,
+        ErrorFactory $errorFactory
+    ) {
+        $this->serializer = $serializer;
+        $this->errorFactory = $errorFactory;
+    }
+
+    /**
+     * Suppression d'une saison
+     * @Route("/xhr/admin/season/remove/{id}", condition="request.isXmlHttpRequest()", methods={"DELETE"})
+     */
+    public function removeSeason(
+        Request $request,
+        SeasonService $seasonService,
+        Season $season
+    ) {
+        $this->denyAccessUnlessGranted(SeasonVoter::REMOVE, $season);
+
+        $seasonService->removeSeason($season);
+
+        return new JsonResponse([], 200);
+    }
+
+    /**
+     * MàJ d'une saison
+     * @Route("/xhr/admin/season/update/{id}", condition="request.isXmlHttpRequest()", methods={"PATCH"})
+     */
+    public function updateSeason(
+        Request $request,
+        SeasonService $seasonService,
+        Season $season
+    ) {
+        $this->denyAccessUnlessGranted(SeasonVoter::EDIT, $season);
+
+        $data = $request->request->all();
+
+        try {
+            $resultUpdate = $seasonService->updateSeason($data['season'], $season);
+        } catch (SeasonInvalidDataException $e) {
+            return new SerializedResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                400
+            );
+        } catch (SeasonNotFoundException $e) {
+            return new SerializedResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                404
+            );
+        }
+
+        return new SerializedResponse(
+            $this->serializer->serialize($resultUpdate, 'json', ['groups' => ['default', 'season']]),
+            200
+        );
+    }
+
+    /**
+     * Création d'une saison
+     * @Route("/xhr/admin/season/create", condition="request.isXmlHttpRequest()", methods={"POST"})
+     * @Security("is_granted('ROLE_AUTHOR')")
+     */
+    public function createSeason(
+        Request $request,
+        SeasonService $seasonService
+    ) {
+        $data = $request->request->all();
+
+        try {
+            $resultCreate = $seasonService->createSeason($data['season']);
+        } catch (SeasonInvalidDataException $e) {
+            return new SerializedResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                400
+            );
+        }
+
+        return new SerializedResponse(
+            $this->serializer->serialize($resultCreate, 'json', ['groups' => ['default', 'season']]),
+            200
+        );
+    }
+
+    /**
+     * Création d'une saison
+     * @Route("/xhr/admin/season/display/create/", condition="request.isXmlHttpRequest()")
+     * @Security("is_granted('ROLE_AUTHOR')")
+     */
+    public function displayModalCreate(
+        Request $request
+    ) {
+        return $this->render('season/xhr/create.html.twig', []);
+    }
+
     /**
      * Edtion d'une saison
      * @Route("/xhr/admin/season/display/edit/{id}", condition="request.isXmlHttpRequest()")
@@ -24,78 +129,10 @@ class XhrController extends AbstractController
         Request $request,
         Season $season
     ) {
-        $this->denyAccessUnlessGranted(SeasonVoter::VIEW, Season::class);
+        $this->denyAccessUnlessGranted(SeasonVoter::VIEW, $season);
 
         return $this->render('season/xhr/edit.html.twig', [
             'season' => $season,
-        ]);
-    }
-
-    /**
-     * Création d'une saison
-     * @Route("/xhr/admin/season/display/create/", condition="request.isXmlHttpRequest()")
-     */
-    public function displayModalCreate(
-        Request $request
-    ) {
-        $this->denyAccessUnlessGranted(SeasonVoter::VIEW, Season::class);
-
-        return $this->render('season/xhr/create.html.twig', []);
-    }
-
-    /**
-     * Suppression d'une saison
-     * @Route("/xhr/admin/season/remove", condition="request.isXmlHttpRequest()")
-     */
-    public function removeSeason(
-        Request $request,
-        SeasonService $seasonService
-    ) {
-        $this->denyAccessUnlessGranted(SeasonVoter::REMOVE, Season::class);
-
-        $data = $request->request->all();
-        $resultRemove = $seasonService->removeSeason($data['season']);
-
-        return new JsonResponse([
-            'errors' => $resultRemove['errors']
-        ]);
-    }
-
-    /**
-     * Création d'une saison
-     * @Route("/xhr/admin/season/create", condition="request.isXmlHttpRequest()")
-     */
-    public function createSeason(
-        Request $request,
-        SeasonService $seasonService
-    ) {
-        $this->denyAccessUnlessGranted(SeasonVoter::CREATE, Season::class);
-
-        $data = $request->request->all();
-        $resultCreate = $seasonService->createSeason($data['season']);
-
-        return new JsonResponse([
-            'errors' => $resultCreate['errors'],
-            'season' => $resultCreate['season']
-        ]);
-    }
-
-    /**
-     * MàJ d'une saison
-     * @Route("/xhr/admin/season/update", condition="request.isXmlHttpRequest()")
-     */
-    public function updateSeason(
-        Request $request,
-        SeasonService $seasonService
-    ) {
-        $this->denyAccessUnlessGranted(SeasonVoter::EDIT, Season::class);
-
-        $data = $request->request->all();
-        $resultUpdate = $seasonService->updateSeason($data['season']);
-
-        return new JsonResponse([
-            'errors' => $resultUpdate['errors'],
-            'season' => $resultUpdate['season']
         ]);
     }
 }

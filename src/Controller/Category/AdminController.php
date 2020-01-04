@@ -2,8 +2,8 @@
 
 namespace App\Controller\Category;
 
-use App\Repository\CategoryRepository;
-use App\Repository\SeasonRepository;
+use App\Repository\WebApp\Category\Doctrine\CategoryRepository;
+use App\Repository\WebApp\Season\Doctrine\SeasonRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;

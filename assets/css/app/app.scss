@@ -49,6 +49,12 @@
   max-height: 422px;
 }
 
+.homepage{
+  .related-news-area .title{
+    display: none;
+  }
+}
+
 .password_profil {
   padding-left: 10px;
   list-style: none;
@@ -418,12 +424,57 @@ button.mfp-arrow {
     background-color: $background_color_1;
   }
 }
-#alert-edit {
+#alert-edit, #success-edit, #success-password {
   display: none;
+}
+
+.breadcrumb-image.mail {
+  height: 230px;
+
+  .breadcrumb-content{
+    margin-top: 0px;
+  }
+}
+
+#alert-create{
+  display:none;
 }
 #alert-password {
   display: none;
 }
+
+#alert-success{
+  display: none;
+}
+
+#alert-send{
+  display: none;
+}
+
+.alime-btn{
+  &:before {
+    border-top: 2px solid $orange !important;
+  }
+}
+
+.alime-btn:hover{
+  &:before {
+    border-top: 2px solid white !important;
+  }
+}
+
+.alime-btn:focus{
+  &:before {
+    border-top: 2px solid white !important;
+  }
+}
+
+.alime-btn{
+  &:before {
+    border-top: 2px solid $orange !important;
+  }
+}
+
 .loading {
   position: relative;
 }

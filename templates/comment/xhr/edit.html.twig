@@ -1,0 +1,74 @@
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Edition d'un commentaire</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <form method="POST" id="update-comment">
+            <div class="modal-body">
+                <div class="alert alert-danger" role="alert" id="alert-update"></div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Identifiant</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" value="{{ comment.id }}" name="id" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Pseudo</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" data-validation="length" data-validation-length="min3" placeholder="Pseudo" name="name" value="{{ comment.name }}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" data-validation="email" placeholder="Email" name="email" value="{{ comment.email }}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Catégorie</label>
+                    <div class="col-sm-10">
+                        <select class="form-control form-control-primary" name="category">
+                            {% for category in categories %}
+                                <option value="{{ category.id }}" {{ (comment.category.id == category.id) ? 'selected' }}>{{ category.title }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Création</label>
+                    <div class="col-sm-10">
+                        <input type="datetime-local" class="form-control" value="{{ comment.created | date('Y-m-d\\TH:i') }}" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Mise à jour</label>
+                    <div class="col-sm-10">
+                        <input type="datetime-local" class="form-control" value="{{ comment.updated | date('Y-m-d\\TH:i') }}" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Message</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="3" data-validation="length" data-validation-length="min3" placeholder="Message" name="message">{{ comment.message }}</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn btn-primary waves-effect waves-light update-comment">Valider</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% block javascripts %}
+    <script type="text/javascript">
+        $.validate({
+            lang: 'fr',
+            borderColorOnError : '#ff001c',
+            scrollToTopOnError: false
+        });
+    </script>
+{% endblock %}

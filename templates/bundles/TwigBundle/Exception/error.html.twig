@@ -1,0 +1,34 @@
+{% extends 'elements/layout/app/base.html.twig' %}
+
+{% block title %}Photo'Vergnat - Erreur{% endblock %}
+{% block description %}Partez à la découverte de la région Auvergne Rhône-Alpes !{% endblock %}
+{% block descriptionOpenGraph %}Partez à la découverte de la région Auvergne Rhône-Alpes !{% endblock %}
+
+{% block body %}
+    <!-- Breadcrumb Area Start -->
+    {{ include('elements/shared/app/breadcrumb.html.twig', { 'title': 'Erreur', 'page':'Erreur' }) }}
+
+    <section class="section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h2>Erreur {{ status_code }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <p class="margin-bottom-home">Une erreur {{ status_code }} a été detecté sur le site. Veuillez nous excuser pour la gêne occasionnée. Si l'erreur persiste veuillez contacter un administrateur via la page de contact.</p>
+
+                <div class="col-12 text-center">
+                    <a href="{{ path('app_home') }}">
+                        <button class="btn alime-btn btn-2 mb-15">Accueil</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

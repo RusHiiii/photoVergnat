@@ -3,101 +3,169 @@
 namespace App\Controller\User;
 
 use App\Controller\Security\Voter\UserVoter;
-use App\Entity\User;
-use App\Service\User\UserService;
+use App\Entity\Core\SerializedResponse;
+use App\Entity\WebApp\User;
+use App\Service\Tools\Error\Factory\ErrorFactory;
+use App\Service\WebApp\User\Exceptions\UserInvalidDataException;
+use App\Service\WebApp\User\Exceptions\UserNotFoundException;
+use App\Service\WebApp\User\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class XhrController extends AbstractController
 {
+    private $serializer;
+    private $errorFactory;
+
+    public function __construct(
+        SerializerInterface $serializer,
+        ErrorFactory $errorFactory
+    ) {
+        $this->serializer = $serializer;
+        $this->errorFactory = $errorFactory;
+    }
+
     /**
      * Edtion d'un utilisateur
-     * @Route("/xhr/app/user/edit-user", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/app/user/edit-user/", condition="request.isXmlHttpRequest()", methods={"PATCH"})
      */
     public function updateProfile(
         Request $request,
         UserService $userService
     ) {
         $data = $request->request->all();
-        $resultEdit = $userService->updateProfile($data['user']);
 
-        return new JsonResponse([
-            'errors' => $resultEdit['errors']
-        ]);
+        try {
+            $resultEdit = $userService->updateProfile($data['user'], $this->getUser());
+        } catch (UserInvalidDataException $e) {
+            return new SerializedResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                400
+            );
+        } catch (UserNotFoundException $e) {
+            return new SerializedResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                404
+            );
+        }
+
+        return new SerializedResponse(
+            $this->serializer->serialize($resultEdit, 'json', ['groups' => ['default']]),
+            200
+        );
     }
 
     /**
      * Edtion d'un mot de passe
-     * @Route("/xhr/app/user/edit-password", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/app/user/edit-password/{id}", condition="request.isXmlHttpRequest()", methods={"PATCH"})
      */
     public function updatePassword(
         Request $request,
-        UserService $userService
+        UserService $userService,
+        User $user
     ) {
-        $data = $request->request->all();
-        $resultEdit = $userService->updatePassword($data['user']);
+        $this->denyAccessUnlessGranted(UserVoter::EDIT_PSWD, $user);
 
-        return new JsonResponse([
-            'errors' => $resultEdit['errors']
-        ]);
+        $data = $request->request->all();
+
+        try {
+            $resultEdit = $userService->updatePassword($data['user'], $user);
+        } catch (UserInvalidDataException $e) {
+            return new SerializedResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                400
+            );
+        } catch (UserNotFoundException $e) {
+            return new SerializedResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                404
+            );
+        }
+
+        return new SerializedResponse(
+            $this->serializer->serialize($resultEdit, 'json', ['groups' => ['default']]),
+            200
+        );
     }
 
     /**
      * Suppression d'un utilisateur
-     * @Route("/xhr/admin/user/remove", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/user/remove/{id}", condition="request.isXmlHttpRequest()", methods={"DELETE"})
      */
     public function removeUser(
         Request $request,
-        UserService $userService
+        UserService $userService,
+        User $user
     ) {
-        $this->denyAccessUnlessGranted(UserVoter::REMOVE, User::class);
+        $this->denyAccessUnlessGranted(UserVoter::REMOVE, $user);
+
+        $userService->removeUser($user);
+
+        return new JsonResponse([], 200);
+    }
+
+    /**
+     * MàJ d'un utilisateur
+     * @Route("/xhr/admin/user/update/{id}", condition="request.isXmlHttpRequest()", methods={"PATCH"})
+     */
+    public function updateUser(
+        Request $request,
+        UserService $userService,
+        User $user
+    ) {
+        $this->denyAccessUnlessGranted(UserVoter::EDIT, $user);
 
         $data = $request->request->all();
-        $resultRemove = $userService->removeUser($data['user']);
 
-        return new JsonResponse([
-            'errors' => $resultRemove['errors']
-        ]);
+        try {
+            $resultUpdate = $userService->updateUser($data['user'], $user);
+        } catch (UserInvalidDataException $e) {
+            return new SerializedResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                400
+            );
+        } catch (UserNotFoundException $e) {
+            return new SerializedResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                404
+            );
+        }
+
+        return new SerializedResponse(
+            $this->serializer->serialize($resultUpdate, 'json', ['groups' => ['default']]),
+            200
+        );
     }
 
     /**
      * Création d'un utilisateur
-     * @Route("/xhr/admin/user/create", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/user/create", condition="request.isXmlHttpRequest()", methods={"POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function createUser(
         Request $request,
         UserService $userService
     ) {
-        $this->denyAccessUnlessGranted(UserVoter::CREATE, User::class);
-
         $data = $request->request->all();
-        $resultCreate = $userService->createUser($data['user']);
 
-        return new JsonResponse([
-            'errors' => $resultCreate['errors'],
-            'user' => $resultCreate['user']
-        ]);
-    }
+        try {
+            $resultCreate = $userService->createUser($data['user']);
+        } catch (UserInvalidDataException $e) {
+            return new SerializedResponse(
+                $this->serializer->serialize($this->errorFactory->create($e), 'json'),
+                400
+            );
+        }
 
-    /**
-     * MàJ d'un utilisateur
-     * @Route("/xhr/admin/user/update", condition="request.isXmlHttpRequest()")
-     */
-    public function updateUser(
-        Request $request,
-        UserService $userService
-    ) {
-        $this->denyAccessUnlessGranted(UserVoter::EDIT, User::class);
-
-        $data = $request->request->all();
-        $resultUpdate = $userService->updateUser($data['user']);
-
-        return new JsonResponse([
-            'errors' => $resultUpdate['errors'],
-            'user' => $resultUpdate['user']
-        ]);
+        return new SerializedResponse(
+            $this->serializer->serialize($resultCreate, 'json', ['groups' => ['default']]),
+            200
+        );
     }
 
     /**
@@ -108,7 +176,7 @@ class XhrController extends AbstractController
         Request $request,
         User $user
     ) {
-        $this->denyAccessUnlessGranted(UserVoter::VIEW, User::class);
+        $this->denyAccessUnlessGranted(UserVoter::VIEW, $user);
 
         return $this->render('user/xhr/edit.html.twig', [
             'user' => $user,
@@ -123,7 +191,7 @@ class XhrController extends AbstractController
         Request $request,
         User $user
     ) {
-        $this->denyAccessUnlessGranted(UserVoter::VIEW, User::class);
+        $this->denyAccessUnlessGranted(UserVoter::VIEW, $user);
 
         return $this->render('user/xhr/password.html.twig', [
             'user' => $user,
@@ -133,12 +201,11 @@ class XhrController extends AbstractController
     /**
      * Edtion d'un mot de passe
      * @Route("/xhr/admin/user/display/create/", condition="request.isXmlHttpRequest()")
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function displayModalCreate(
         Request $request
     ) {
-        $this->denyAccessUnlessGranted(UserVoter::VIEW, User::class);
-
         return $this->render('user/xhr/create.html.twig', []);
     }
 }
