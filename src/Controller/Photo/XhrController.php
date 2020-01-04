@@ -57,8 +57,8 @@ class XhrController extends AbstractController
     }
 
     /**
-     * Edition d'une photo
-     * @Route("/xhr/admin/photo/update/{id}", condition="request.isXmlHttpRequest()", methods={"PATCH"})
+     * Edition d'une photo/xhr/admin/photo/update/
+     * @Route("/xhr/admin/photo/update/{id}", condition="request.isXmlHttpRequest()", methods={"POST"})
      */
     public function updatePhoto(
         Request $request,

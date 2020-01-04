@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6d0ad162-b511-4cf7-bc8e-e12bdd55a0fa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controller/Main/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Main/AdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.conf-local-photovergnat.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/admin/photo.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/admin/photo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Photo/XhrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Photo/XhrController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,15 +53,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/Tag/XhrController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="48" column="44" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Tag/TagService.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1377">
@@ -89,7 +83,7 @@
         <entry file="file://$PROJECT_DIR$/templates/elements/layout/app/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="167">
-              <caret line="22" column="69" lean-forward="true" selection-start-line="22" selection-start-column="69" selection-end-line="22" selection-end-column="69" />
+              <caret line="22" column="69" selection-start-line="22" selection-start-column="69" selection-end-line="22" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -97,17 +91,53 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Photo/Validator/PhotoValidator.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="43" column="62" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="62" />
+            <state relative-caret-position="547">
+              <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="169">
+              <caret line="102" column="26" selection-start-line="102" selection-start-column="26" selection-end-line="102" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/Photo/XhrController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="237">
+              <caret line="59" column="50" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/js/admin/photo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="329">
+              <caret line="69" column="26" lean-forward="true" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/var/log/dev.log">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="479">
+              <caret line="46093" column="141" selection-start-line="46093" selection-start-column="141" selection-end-line="46093" selection-end-column="141" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/Main/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="49" column="28" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
+            <state relative-caret-position="422">
+              <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -144,8 +174,8 @@
       <find>cri</find>
       <find>critic</find>
       <find>testGetNumberPhotoByMonth</find>
-      <find>/xhr/admin/photo/update/</find>
       <find>UploadedFile</find>
+      <find>/xhr/admin/photo/update/</find>
     </findStrings>
     <replaceStrings>
       <replace>App\Service\WebApp\Tag\TagValidatorService</replace>
@@ -192,7 +222,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tests/Integration/WebApp/Tag/TagServiceTest.php" />
         <option value="$PROJECT_DIR$/tests/Integration/WebApp/Type/TypeServiceTest.php" />
         <option value="$PROJECT_DIR$/tests/Integration/WebApp/User/UserServiceTest.php" />
         <option value="$PROJECT_DIR$/behat.yml" />
@@ -227,13 +256,11 @@
         <option value="$PROJECT_DIR$/features/information.feature" />
         <option value="$PROJECT_DIR$/src/Controller/Category/XhrController.php" />
         <option value="$PROJECT_DIR$/features/category.feature" />
-        <option value="$PROJECT_DIR$/assets/js/admin/photo.js" />
         <option value="$PROJECT_DIR$/src/EventListener/WebApp/PhotoEntityListener.php" />
         <option value="$PROJECT_DIR$/features/bootstrap/FixtureContext.php" />
         <option value="$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php" />
         <option value="$PROJECT_DIR$/src/Service/Tools/Validator/DataValidatorService.php" />
         <option value="$PROJECT_DIR$/tests/Integration/WebApp/Photo/PhotoServiceTest.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Photo/XhrController.php" />
         <option value="$PROJECT_DIR$/features/photo.feature" />
         <option value="$PROJECT_DIR$/.env.local.prod" />
         <option value="$PROJECT_DIR$/config/bootstrap.php" />
@@ -243,6 +270,9 @@
         <option value="$PROJECT_DIR$/assets/js/admin/category.js" />
         <option value="$PROJECT_DIR$/templates/elements/layout/app/base.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/Main/AdminController.php" />
+        <option value="$PROJECT_DIR$/src/Service/WebApp/Photo/Validator/PhotoValidator.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Photo/XhrController.php" />
+        <option value="$PROJECT_DIR$/assets/js/admin/photo.js" />
       </list>
     </option>
   </component>
@@ -538,6 +568,17 @@
               <item name="layout" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
+              <item name="var" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photovergnat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photovergnat" type="462c0819:PsiDirectoryNode" />
+              <item name="var" type="462c0819:PsiDirectoryNode" />
+              <item name="log" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -694,7 +735,7 @@
       <workItem from="1577637496399" duration="630000" />
       <workItem from="1577896496387" duration="3139000" />
       <workItem from="1578141834741" duration="9239000" />
-      <workItem from="1578155628299" duration="1900000" />
+      <workItem from="1578155628299" duration="2664000" />
     </task>
     <servers />
   </component>
@@ -704,7 +745,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="457324000" />
+    <option name="totallyTimeSpent" value="458088000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
@@ -746,20 +787,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Controller/User/XhrController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="146" column="37" selection-start-line="146" selection-start-column="15" selection-end-line="146" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features/user.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="171" column="29" selection-start-line="171" selection-start-column="29" selection-end-line="171" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/Comment/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -938,13 +965,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="105" column="60" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Service/Tools/Validator/DataValidatorService.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -973,18 +993,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Photo/XhrController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="103" selection-start-line="103" selection-end-line="103" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.env.local.prod" />
-    <entry file="file://$PROJECT_DIR$/.env.local">
+    <entry file="file://$PROJECT_DIR$/.conf-local-photovergnat.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
@@ -1059,21 +1072,49 @@
     <entry file="file://$PROJECT_DIR$/templates/elements/layout/app/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
-          <caret line="22" column="69" lean-forward="true" selection-start-line="22" selection-start-column="69" selection-end-line="22" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Photo/Validator/PhotoValidator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="43" column="62" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="62" />
+          <caret line="22" column="69" selection-start-line="22" selection-start-column="69" selection-end-line="22" selection-end-column="69" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/Main/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="49" column="28" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
+        <state relative-caret-position="422">
+          <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/var/log/dev.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="46093" column="141" selection-start-line="46093" selection-start-column="141" selection-end-line="46093" selection-end-column="141" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Photo/Validator/PhotoValidator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/WebApp/Photo/PhotoService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="102" column="26" selection-start-line="102" selection-start-column="26" selection-end-line="102" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Photo/XhrController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="59" column="50" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/admin/photo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="69" column="26" lean-forward="true" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
         </state>
       </provider>
     </entry>
