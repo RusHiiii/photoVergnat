@@ -35,18 +35,4 @@ class AdminController extends AbstractController
             'lastActions' => $lastActions
         ]);
     }
-
-    /**
-     * @Route("/admin/phpinfo")
-     */
-    public function info(
-        Request $request
-    ) {
-        ob_start();
-        phpinfo();
-        $str = ob_get_contents();
-        ob_get_clean();
-
-        return new Response($str);
-    }
 }

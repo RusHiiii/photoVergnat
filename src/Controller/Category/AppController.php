@@ -21,7 +21,7 @@ class AppController extends AbstractController
         CategoryRepository $categoryRepository
     ) {
         if (!$category->getActive()) {
-            $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_home');
         }
 
         $categories = $categoryRepository->findByActive(true);
@@ -42,7 +42,7 @@ class AppController extends AbstractController
         CategoryService $categoryService
     ) {
         if (!$category->getActive()) {
-            $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_home');
         }
 
         $photos = $categoryService->filterPhotoByType($category->getPhotos());
