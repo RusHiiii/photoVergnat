@@ -51,6 +51,7 @@ class TagAssembler
         }
 
         $type->setTitle($data['title']);
+        $type->setType($data['type']);
 
         return $type;
     }
