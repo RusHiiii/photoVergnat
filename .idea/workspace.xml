@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d0ad162-b511-4cf7-bc8e-e12bdd55a0fa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/main/app/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/app/index.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="6d0ad162-b511-4cf7-bc8e-e12bdd55a0fa" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,87 +47,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/photo.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="133" column="17" selection-start-line="133" selection-start-column="17" selection-end-line="133" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/var/log/test.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-50725">
-              <caret line="112491" column="251" selection-start-line="112491" selection-start-column="155" selection-end-line="112491" selection-end-column="251" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/Photo/XhrController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="103" selection-start-line="103" selection-end-line="103" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/features/bootstrap/RequestContext.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="143" column="61" selection-start-line="143" selection-start-column="61" selection-end-line="143" selection-end-column="61" />
+            <state relative-caret-position="592">
+              <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
               <folding>
                 <element signature="e#7#39#0#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env.local">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/index.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/bootstrap.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/main/app/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="178" selection-start-line="30" selection-start-column="178" selection-end-line="30" selection-end-column="178" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/Integration/WebApp/Photo/PhotoServiceTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
             </state>
           </provider>
         </entry>
@@ -261,10 +186,10 @@
         <option value="$PROJECT_DIR$/tests/Integration/WebApp/Photo/PhotoServiceTest.php" />
         <option value="$PROJECT_DIR$/src/Controller/Photo/XhrController.php" />
         <option value="$PROJECT_DIR$/features/photo.feature" />
-        <option value="$PROJECT_DIR$/features/bootstrap/RequestContext.php" />
         <option value="$PROJECT_DIR$/.env.local.prod" />
         <option value="$PROJECT_DIR$/config/bootstrap.php" />
         <option value="$PROJECT_DIR$/templates/main/app/index.html.twig" />
+        <option value="$PROJECT_DIR$/features/bootstrap/RequestContext.php" />
       </list>
     </option>
   </component>
@@ -437,7 +362,7 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="455" />
     <option name="y" value="-20" />
     <option name="width" value="960" />
@@ -650,7 +575,7 @@
       <workItem from="1577624073317" duration="8899000" />
       <workItem from="1577637496399" duration="630000" />
       <workItem from="1577896496387" duration="3139000" />
-      <workItem from="1578141834741" duration="6928000" />
+      <workItem from="1578141834741" duration="7026000" />
     </task>
     <servers />
   </component>
@@ -660,7 +585,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="453113000" />
+    <option name="totallyTimeSpent" value="453211000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
@@ -1003,16 +928,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/bootstrap/RequestContext.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="143" column="61" selection-start-line="143" selection-start-column="61" selection-end-line="143" selection-end-column="61" />
-          <folding>
-            <element signature="e#7#39#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1044,6 +959,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="30" column="178" selection-start-line="30" selection-start-column="178" selection-end-line="30" selection-end-column="178" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/bootstrap/RequestContext.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
+          <folding>
+            <element signature="e#7#39#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
