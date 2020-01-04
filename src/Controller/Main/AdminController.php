@@ -12,6 +12,7 @@ use App\Repository\WebApp\User\Doctrine\UserRepository;
 use App\Service\WebApp\Statistic\StatisticService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
@@ -33,5 +34,19 @@ class AdminController extends AbstractController
             'comments' => $comments,
             'lastActions' => $lastActions
         ]);
+    }
+
+    /**
+     * @Route("/admin/phpinfo")
+     */
+    public function info(
+        Request $request
+    ) {
+        ob_start();
+        phpinfo();
+        $str = ob_get_contents();
+        ob_get_clean();
+
+        return new Response($str);
     }
 }
