@@ -17,6 +17,7 @@ if (is_array($env = @include dirname(__DIR__).'/.env.local.php')) {
     (new Dotenv(false))->loadEnv(dirname(__DIR__).'/.conf-local-photovergnat.env');
 }
 
+
 $_SERVER += $_ENV;
 $_SERVER['APP_ENV'] = $_ENV['APP_ENV'] = ($_SERVER['APP_ENV'] ?? $_ENV['APP_ENV'] ?? null) ?: 'dev';
 $_SERVER['APP_DEBUG'] = $_SERVER['APP_DEBUG'] ?? $_ENV['APP_DEBUG'] ?? 'prod' !== $_SERVER['APP_ENV'];
