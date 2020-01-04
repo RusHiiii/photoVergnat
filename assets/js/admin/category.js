@@ -117,7 +117,7 @@ $('body').on('submit', '#create-category', function (e) {
             $.showErrors(res.responseJSON.context, '#alert-create');
         },
         complete: function () {
-            $.removeSpinner('.update-category', 'Valider');
+            $.removeSpinner('.create-category', 'Valider');
         }
     });
 });
