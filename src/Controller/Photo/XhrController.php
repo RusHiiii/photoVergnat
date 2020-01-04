@@ -58,7 +58,7 @@ class XhrController extends AbstractController
 
     /**
      * Edition d'une photo
-     * @Route("/xhr/admin/photo/update/{id}", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/photo/update/{id}", condition="request.isXmlHttpRequest()", methods={"PATCH"})
      */
     public function updatePhoto(
         Request $request,
@@ -92,7 +92,7 @@ class XhrController extends AbstractController
 
     /**
      * Création d'une photo
-     * @Route("/xhr/admin/photo/create", condition="request.isXmlHttpRequest()")
+     * @Route("/xhr/admin/photo/create", condition="request.isXmlHttpRequest()", methods={"POST"})
      * @Security("is_granted('ROLE_AUTHOR')")
      */
     public function createPhoto(

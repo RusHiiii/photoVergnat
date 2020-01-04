@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\BrowserKit\Cookie;
 use Behat\Gherkin\Node\PyStringNode;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class RequestContext implements Context
 {
@@ -62,8 +63,27 @@ class RequestContext implements Context
             $path,
             $data
         );
-        $this->response
-            = $this->client->getResponse();
+        $this->response = $this->client->getResponse();
+    }
+
+    /**
+     * @When I make an XmlHttpRequest to path :path with the method :method and with the following payload and file attached
+     */
+    public function iXmlRequestTheUrlWithPayloadAndFileAttached(string $path, string $method, PyStringNode $payload = null)
+    {
+        $data =  $payload ? json_decode($payload->getRaw(), true) : null;
+
+        $image = new UploadedFile($this->loadImageTemporary(),'image.jpeg','image/jpeg');
+
+        $this->client->xmlHttpRequest(
+            $method,
+            $path,
+            $data,
+            [
+                'file' => $image
+            ]
+        );
+        $this->response = $this->client->getResponse();
     }
 
     /**
@@ -124,5 +144,13 @@ class RequestContext implements Context
         $dataContent = json_decode($payload->getRaw(), true);
 
         Assert::eq($dataContent, json_decode($this->response->getContent(), true));
+    }
+
+    private function loadImageTemporary()
+    {
+        $file = tempnam(sys_get_temp_dir(), 'test');
+        imagejpeg(imagecreatetruecolor(100, 100), $file);
+
+        return $file;
     }
 }

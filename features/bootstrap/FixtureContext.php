@@ -30,6 +30,8 @@ class FixtureContext implements Context
         $loader = $this->kernel->getContainer()->get('fidry_alice_data_fixtures.loader.doctrine');
         $fixtureFile = sprintf('tests/.fixtures/%s.yml', $fixtureName);
 
+        array_map( 'unlink', array_filter((array) glob("tests/.fixtures/images/uploads/*") ) );
+
         imagejpeg(imagecreatetruecolor(100, 100), 'tests/.fixtures/images/uploads/test_photovergnat_1.jpeg');
         imagejpeg(imagecreatetruecolor(100, 100), 'tests/.fixtures/images/uploads/test_photovergnat_2.jpeg');
 
@@ -81,8 +83,8 @@ class FixtureContext implements Context
     }
 
     /**
-     * @Then Object :object in namespace :namespace with the following data should exist in database
-     */
+ * @Then Object :object in namespace :namespace with the following data should exist in database
+ */
     public function objectInNamespaceWithFollowingDataShouldExistInDatabase($object, $namespace, TableNode $tableNode = null)
     {
         $entity = $this->kernel->getContainer()->get('doctrine')
@@ -90,5 +92,13 @@ class FixtureContext implements Context
             ->findOneBy(array_column($tableNode->getHash(), 'value', 'attribute'));
 
         Assert::notNull($entity);
+    }
+
+    /**
+     * @Then File :name in folder :folder shouldn't exist
+     */
+    public function fileInFolderShouldntExist($name, $folder)
+    {
+        Assert::false(file_exists("tests/.fixtures/images/$folder/$name"));
     }
 }
