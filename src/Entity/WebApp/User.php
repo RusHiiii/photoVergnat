@@ -211,4 +211,9 @@ class User implements UserInterface
     {
         return $this->firstname . ' ' . $this->lastname;
     }
+
+    public function getShortName()
+    {
+        return $this->firstname . ' ' . substr($this->lastname, 0, 1) . '.';
+    }
 }
