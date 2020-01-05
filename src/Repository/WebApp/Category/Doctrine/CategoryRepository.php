@@ -41,7 +41,7 @@ class CategoryRepository extends ServiceEntityRepository implements CategoryRepo
             ->andWhere('c.active = :val')
             ->setParameter('val', $value)
             ->setMaxResults(4)
-            ->orderBy('DESC', 'c.created')
+            ->orderBy('c.created', 'DESC')
             ->getQuery()
             ->getResult()
             ;
