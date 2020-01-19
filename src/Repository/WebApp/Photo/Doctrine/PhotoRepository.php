@@ -73,7 +73,7 @@ class PhotoRepository extends ServiceEntityRepository implements PhotoRepository
             ->andWhere('category.active = :act')
             ->setParameter('val', $type)
             ->setParameter('act', 1)
-            ->orderBy('p.id', 'ASC')
+            ->orderBy('p.id', 'DESC')
             ->setMaxResults(8)
             ->getQuery()
             ->getResult()
