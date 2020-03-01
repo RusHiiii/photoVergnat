@@ -10,6 +10,8 @@ doctrine:
                 user:     '%env(BDD_DEFAULT_USERNAME)%'
                 password: '%env(BDD_DEFAULT_PASS)%'
                 charset:  UTF8
+                options:
+                    1002: 'SET sql_mode=(SELECT REPLACE(@@sql_mode, "ONLY_FULL_GROUP_BY", ""))'
     orm:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore
