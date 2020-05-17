@@ -41,6 +41,7 @@ class PhotoEntityListener
 
         $this->uploadFile($entity);
         $this->getExifData($entity);
+        $this->generateImage($entity);
     }
 
     /**
@@ -81,6 +82,7 @@ class PhotoEntityListener
         }
 
         $this->getExifData($entity);
+        $this->generateImage($entity);
         $entity->setUpdated(new \DateTime('now'));
     }
 
@@ -128,5 +130,12 @@ class PhotoEntityListener
         }
 
         $photo->setInformation($information);
+    }
+
+    private function generateImage(Photo $photo)
+    {
+        $path = $this->uploader->getTargetDirectory() . $photo->getFile();
+        $this->cacheManager->getBrowserPath($path, 'big');
+        $this->cacheManager->getBrowserPath($path, 'thumbnail_category');
     }
 }
