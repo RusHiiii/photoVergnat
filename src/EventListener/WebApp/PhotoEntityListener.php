@@ -6,15 +6,21 @@ use App\Entity\WebApp\Photo;
 use App\Service\Tools\FileUploaderService;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
+use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class PhotoEntityListener
 {
     private $uploader;
 
-    public function __construct(FileUploaderService $uploader)
-    {
+    private $cacheManager;
+
+    public function __construct(
+        FileUploaderService $uploader,
+        CacheManager $cacheManager
+    ) {
         $this->uploader = $uploader;
+        $this->cacheManager = $cacheManager;
     }
 
     /**
@@ -35,6 +41,7 @@ class PhotoEntityListener
 
         $this->uploadFile($entity);
         $this->getExifData($entity);
+        $this->generateImage($entity);
     }
 
     /**
@@ -122,5 +129,11 @@ class PhotoEntityListener
         }
 
         $photo->setInformation($information);
+    }
+
+    private function generateImage(Photo $photo)
+    {
+        $path = $this->uploader->getTargetDirectory() . $photo->getFile();
+        $this->cacheManager->getBrowserPath($path, 'big');
     }
 }
