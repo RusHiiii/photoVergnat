@@ -17,7 +17,7 @@ class AdminController extends AbstractController
         Request $request,
         PhotoRepository $photoRepository
     ) {
-        $photos = $photoRepository->findAll();
+        $photos = $photoRepository->findBy([], ['created' => 'ASC']);
 
         return $this->render('photo/admin/index.html.twig', [
             'photos' => $photos,

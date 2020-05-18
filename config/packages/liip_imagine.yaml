@@ -1,5 +1,5 @@
 liip_imagine:
-  
+
   # As mentioned above, gd, imagick or gmagick are possible
   driver: "gd"
   data_loader: default
