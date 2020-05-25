@@ -34,12 +34,12 @@ class Category
     private $city;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=8)
+     * @ORM\Column(type="decimal", precision=6, scale=4)
      */
     private $latitude;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=8)
+     * @ORM\Column(type="decimal", precision=6, scale=4)
      */
     private $longitude;
 
